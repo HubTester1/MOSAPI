@@ -270,16 +270,12 @@ module.exports = {
 			const incomingMessageCopy = 
 				Utilities.ReturnUniqueObjectGivenAnyValue(incomingMessage);
 			// weed out some unnecessary image data
-			const imagesConverted = [];
-			incomingMessageCopy.newMessageImages.forEach((imageValue) => {
-				imagesConverted.push(imageValue.name);
-			});
 			const messageToInsert = {
 				messageID: incomingMessageCopy.newMessageID,
 				messageTag: incomingMessageCopy.newMessageTag,
 				messageSubject: incomingMessageCopy.newMessageSubject,
 				messageBody: incomingMessageCopy.newMessageBody,
-				messageImages: imagesConverted,
+				messageImages: incomingMessageCopy.newMessageImages,
 				messageCreated: new Date(),
 				messageCreator: incomingMessageCopy.newMessageCreator,
 				messageModified: new Date(),
@@ -313,16 +309,11 @@ module.exports = {
 			// preserve function parameter
 			const incomingMessageCopy =
 				Utilities.ReturnUniqueObjectGivenAnyValue(incomingMessage);
-			// weed out some unnecessary image data
-			const imagesConverted = [];
-			incomingMessageCopy.newMessageImages.forEach((imageValue) => {
-				imagesConverted.push(imageValue.name);
-			});
 			const messagePropsToSet = [
 				{ key: 'messageTag', value: incomingMessageCopy.newMessageTag },
 				{ key: 'messageSubject', value: incomingMessageCopy.newMessageSubject },
 				{ key: 'messageBody', value: incomingMessageCopy.newMessageBody },
-				{ key: 'messageImages', value: imagesConverted },
+				{ key: 'messageImages', value: incomingMessageCopy.newMessageImages },
 				{
 					key: 'messageExpiration',
 					value: moment(incomingMessageCopy.newMessageExpirationDate).toDate(),
@@ -341,6 +332,83 @@ module.exports = {
 				.catch((error) => { reject(error); });
 		}),
 
+
+	// ---------------------
+
+
+	ReturnS3FileSystem: (bucketName) => new S3FS(bucketName, module.exports.ReturnS3Options()),
+
+	ReturnS3Options: () => ({
+		region: 'us-east-1',
+		accessKeyId: process.env.authMOSAPISLSAdminAccessKeyID,
+		secretAccessKey: process.env.authMOSAPISLSAdminSecretAccessKey,
+	}),
+
+	ConvertImage: (messageID, fileName, fileIndex, quantityImagesConverting) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// set up promise container vars
+			const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+			// extract base file name
+			const baseFileName = fileName.substring(0, fileName.lastIndexOf('.'));
+			// construct file paths
+			const readFilePath = `/hub-message-assets/incoming/${messageID}/${fileName}`;
+			const writeFilePath = `/hub-message-assets/formatted/${messageID}/${baseFileName}.jpg`;
+			// get a promise to read the file
+			S3FileSystem.readFile(readFilePath)
+				// if the promise is resolved with a result
+				.then((readResult) => {
+					// get a promise to reformat the image
+					sharp(readResult.Body)
+						.resize(600, null)
+						.toFormat('jpg')
+						.jpeg({
+							quality: 80,
+						})
+						.toBuffer()
+						// if the promise is resolved with a result
+						.then((formattingResult) => {
+							// get a promise to 
+							S3FileSystem.writeFile(writeFilePath, formattingResult, { ACL: 'public-read' })
+								// if the promise is resolved with a result
+								.then((writingResult) => {
+									if ((fileIndex + 1) === quantityImagesConverting) {
+										// get a promise to 
+										S3FileSystem.rmdirp(
+											`/hub-message-assets/incoming/${messageID}`,
+										)
+											// if the promise is resolved with a result
+											.then((removalResult) => {
+												// then resolve this promise with earlier result
+												resolve(writeFilePath);
+											})
+											// if the promise is rejected with an error
+											.catch((removalError) => {
+												// reject this promise with the error
+												reject(removalError);
+											});
+									} else {
+										resolve(writeFilePath);
+									}
+								})
+								// if the promise is rejected with an error
+								.catch((writingError) => {
+									// reject this promise with the error
+									reject(writingError);
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((formattingError) => {
+							// reject this promise with the error
+							reject(formattingError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((readError) => {
+					// reject this promise with the error
+					reject(readError);
+				});
+		}),
 
 	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -662,61 +730,6 @@ module.exports = {
 	 * @description Handle request to format a message's images.
 	 */
 
-	ReturnS3FileSystem: (bucketName) => new S3FS(bucketName, module.exports.ReturnS3Options()),
-
-	ReturnS3Options: () => ({
-		region: 'us-east-1',
-		accessKeyId: process.env.authMOSAPISLSAdminAccessKeyID,
-		secretAccessKey: process.env.authMOSAPISLSAdminSecretAccessKey,
-	}),
-
-	ReadFormatAndStoreImage: (messageID, fileName) => 
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// set up promise container vars
-			const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
-			// construct file paths
-			const readFilePath = `/hub-message-assets/incoming/${messageID}/${fileName}`;
-			const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}`;
-			// get a promise to read the file
-			S3FileSystem.readFile(readFilePath)
-				// if the promise is resolved with a result
-				.then((readResult) => {
-					// get a promise to reformat the image
-					sharp(readResult.Body)
-						.resize(600, null)
-						.jpeg({
-							quality: 80,
-						})
-						.toBuffer()
-						// if the promise is resolved with a result
-						.then((formattingResult) => {
-							// get a promise to 
-							S3FileSystem.writeFile(writeFilePath, formattingResult)
-								// if the promise is resolved with a result
-								.then((writingResult) => {
-									// then resolve this promise with the result
-									resolve(writeFilePath);
-								})
-								// if the promise is rejected with an error
-								.catch((writingError) => {
-									// reject this promise with the error
-									reject(writingError);
-								});
-						})
-						// if the promise is rejected with an error
-						.catch((formattingError) => {
-							// reject this promise with the error
-							reject(formattingError);
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((readError) => {
-					// reject this promise with the error
-					reject(readError);
-				});
-		}),
-
 	HandleImageFormattingRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -738,11 +751,13 @@ module.exports = {
 						.then((readDirectoryResult) => {
 							const fileProcessingPromises = [];
 							// for each file in the directory
-							readDirectoryResult.forEach((fileName) => {
+							readDirectoryResult.forEach((fileName, fileIndex) => {
 								fileProcessingPromises.push(
-									module.exports.ReadFormatAndStoreImage(
+									module.exports.ConvertImage(
 										messageID,
 										fileName,
+										fileIndex,
+										readDirectoryResult.length,
 									),
 								);
 							});
@@ -804,5 +819,74 @@ module.exports = {
 				});
 		}),
 
+
+	/**
+	 * @name HandleDeleteImageRequest
+	 * @function
+	 * @async
+	 * @description Handle request to delete an image.
+	 */
+
+	HandleDeleteImageRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				HubMessages.ReturnHubMessagesWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					const eventBodyCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event.body);
+					const { messageID } = eventBodyCopy;
+					const { fileName } = eventBodyCopy;
+					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+					// get a promise to 
+					S3FileSystem.rmdirp(
+						`/hub-message-assets/incoming/${messageID}/${fileName}`,
+					)
+						// if the promise is resolved with a result
+						.then((removalResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: removalResult,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((removalError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 401,
+								responder: resolve,
+								content: {
+									error: removalError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+
 };
-// HandleDeleteImagesRequest
