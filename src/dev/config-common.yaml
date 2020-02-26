@@ -1,0 +1,48 @@
+custom:
+  config:
+    layerARNNPM: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevNPM:23
+    layerARNServices: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevServices:58
+    stage: dev
+#-------------
+authJWTPayloadMessage: ${ssm:auth-jwt-payload-message}
+authJWTPayloadSecret: ${ssm:auth-jwt-secret}
+authMOSAPISLSAdminAccessKeyID: ${ssm:auth-mos-api-sls-admin-access-key-id}
+authMOSAPISLSAdminSecretAccessKey: ${ssm:auth-mos-api-sls-admin-secret-access-key}
+cronScheduleEmailQueueProcessing: ${ssm:cron-schedule-email-queue-processing}
+cronScheduleGSEJobSync: ${ssm:cron-schedule-gse-job-sync}
+cronScheduleGSEScheduleSync: ${ssm:cron-schedule-gse-schedule-sync}
+cronScheduleGSESignupSync: ${ssm:cron-schedule-gse-signup-sync}
+cronScheduleGSESignupReminders: ${ssm:cron-schedule-gse-signup-reminders}
+cronScheduleGSECreditReminders: ${ssm:cron-schedule-gse-credit-reminders}
+cronSchedulePeopleProcessing: ${ssm:cron-schedule-people-processing}
+graphClientID: ${ssm:graph-client-id}
+graphClientSecret: ${ssm:graph-client-secret}
+graphTenantID: ${ssm:graph-tenant-id}
+mongoDbHostUnique: ${ssm:mongodb-host-unique}
+mongoDbPass: ${ssm:mongodb-pass}
+mongoDbUser: ${ssm:mongodb-user}
+provider:
+  runtime: nodejs12.x
+  profile: mos-api-sls-admin
+twitterConsumerKey: ${ssm:twitter-consumer-key}
+twitterConsumerSecret: ${ssm:twitter-consumer-secret}
+twitterAccessTokenKey: ${ssm:twitter-access-token-key}
+twitterAccessTokenSecret: ${ssm:twitter-access-token-secret}
+upApiKey: ${ssm:up-api-key}
+upEmployeeChangesPass: ${ssm:up-emp-changes-pw}
+upEmployeeChangesUser: ${ssm:up-emp-changes-user}
+endpoints:
+  dev:
+    access:
+      awsCredentials:         access/aws-credentials
+    health:
+      check:                  health/check
+    email:
+      send:                   email/send
+    hubMessages:
+      settings:               hubMessages/settings
+      messages:               hubMessages/messages
+      add:                    hubMessages/add
+      update:                 hubMessages/update
+      nextID:                 hubMessages/nextid
+      images:                 hubMessages/images
