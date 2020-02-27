@@ -34,6 +34,8 @@
 		"sharp": "^0.24.1",
 		"status": "file:Services/Status",
 		"ultipro": "file:Services/UltiPro",
-		"utilities": "file:Services/Utilities"
+		"url-exists": "^1.0.3",
+		"utilities": "file:Services/Utilities",
+		"uuid": "^7.0.1"
 	}
 }

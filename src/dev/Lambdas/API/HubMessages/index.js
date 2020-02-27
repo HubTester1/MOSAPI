@@ -11,8 +11,11 @@ const Response = require('response');
 const DataQueries = require('data-queries');
 const Utilities = require('utilities');
 const moment = require('moment');
+const axios = require('axios');
 const S3FS = require('s3fs');
 const sharp = require('sharp');
+const uuid = require('uuid');
+const urlExists = require('url-exists');
 
 /**
  * @typedef {import('../../../TypeDefs/HubMessage').HubMessage} HubMessage
@@ -332,6 +335,276 @@ module.exports = {
 				.catch((error) => { reject(error); });
 		}),
 
+
+	// ---------------------
+
+
+	ReturnAllMessagesData: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			axios.get('https://neso.mos.org/hcMessages/messages/all')
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result.data.docs);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	StoreOneConvertedMessage: (messageToInsert) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			// get a promise to retrieve all documents from the hcMessagesSettings document collection
+			DataQueries.InsertDocIntoCollection(messageToInsert, 'hubMessages')
+				// if the promise is resolved with the docs, then resolve this promise with the docs
+				.then((result) => { resolve(result); })
+				// if the promise is rejected with an error, then reject this promise with an error
+				.catch((error) => { reject(error); });
+		}),
+
+	ConvertAndStoreAllMessagesData: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			DataQueries.DeleteAllDocsFromCollection('hubMessages')
+				// if the promise is resolved with a result
+				.then((deletionResult) => {
+					// get a promise to 
+					module.exports.ReturnAllMessagesData()
+						// if the promise is resolved with a result
+						.then((allMessagesData) => {
+							// console.log(allMessagesData);
+							const allNewMessagePromises = [];
+							allMessagesData.forEach((oldMessage) => {
+								const newMessageImages = [];
+								if (oldMessage.messageImages) {
+									oldMessage.messageImages.forEach((oldImage) => {
+										const newImage = {
+											name: oldImage.name,
+											url: `https://mos-api-misc-storage.s3.amazonaws.com/hub-message-assets/formatted/${oldMessage.messageID}/${oldImage.name}.jpg`,
+											key: uuid.v4(),
+										};
+										newMessageImages.push(newImage);
+									});
+								}
+								const newMessage = {
+									messageID: oldMessage.messageID,
+									messageTag: oldMessage.messageTags[0].name,
+									messageSubject: oldMessage.messageSubject,
+									messageBody: oldMessage.messageBody,
+									messageImages: newMessageImages,
+									messageCreated: oldMessage.messageCreated,
+									messageCreator: oldMessage.messageCreator,
+									messageModified: oldMessage.messageModified,
+									messageExpiration: oldMessage.messageExpiration,
+								};
+								allNewMessagePromises.push(
+									module.exports.StoreOneConvertedMessage(newMessage),
+								);
+							});
+							// get a promise to 
+							Promise.all(allNewMessagePromises)
+								// if the promise is resolved with a result
+								.then((result) => {
+									// then resolve this promise with the result
+									resolve({});
+								})
+								// if the promise is rejected with an error
+								.catch((error) => {
+									// reject this promise with the error
+									reject(error);
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((allMessagesError) => {
+							// reject this promise with the error
+							reject({ allMessagesError });
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((deletionError) => {
+					// reject this promise with the error
+					reject(deletionError);
+				});
+		}),
+
+
+	TempReturnS3FileSystem: (bucketName) => 
+		new S3FS(bucketName, module.exports.TempReturnS3Options()),
+
+	TempReturnS3Options: () => ({
+		region: 'us-east-1',
+		accessKeyId: 'AKIAVAMR4WIEUGDIZUD7',
+		secretAccessKey: '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',
+	}),
+
+	ReturnURLExists: (url) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			urlExists(url, (err, exists) => {
+				console.log('exists', exists);
+				resolve(exists);
+			});
+		}),
+
+	ReadAndStoreOneMessageImage: async (messageID, fileName, oldURL) => {
+		// set up promise container vars
+		const S3FileSystem = module.exports.TempReturnS3FileSystem('mos-api-misc-storage');
+		const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}`;
+		const writer = S3FileSystem.createWriteStream(writeFilePath);
+		const response = await axios({
+			method: 'get',
+			url: oldURL,
+			responseType: 'stream',
+		});
+
+		response.data.pipe(writer);
+
+		return new Promise((resolve, reject) => {
+			writer.on('finish', resolve);
+			writer.on('error', resolve);
+		});
+	},
+
+	ReadAndStoreAllMessageImages: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			module.exports.ReturnAllMessagesData()
+				// if the promise is resolved with a result
+				.then((allMessagesData) => {
+					const allImageStoragePromises = [];
+					allMessagesData.forEach((oldMessage) => {
+						if (
+							oldMessage.messageImages && 
+								oldMessage.messageImages[0]
+						) {
+							oldMessage.messageImages
+								.forEach((imageObject) => {
+									const oldURL = 
+											imageObject.urlLarge ? 
+												imageObject.urlLarge : 
+												imageObject.uriQuark;
+									// console.log('oldURL', oldURL);
+									// get a promise to 
+									module.exports.ReturnURLExists(oldURL)
+										// if the promise is resolved with a result
+										.then((existenceResult) => {
+											console.log('existenceResult', existenceResult);
+											if (existenceResult) {
+												allImageStoragePromises.push(
+													module.exports
+														.ReadAndStoreOneMessageImage(
+															oldMessage.messageID,
+															imageObject.name,
+															oldURL,
+														),
+												);
+											}
+										});
+								});
+						}
+					});
+					// get a promise to 
+					Promise.all(allImageStoragePromises)
+						// if the promise is resolved with a result
+						.then((result) => {
+							// then resolve this promise with the result
+							resolve({});
+						})
+						// if the promise is rejected with an error
+						.catch((error) => {
+							// reject this promise with the error
+							reject(error);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((allMessagesError) => {
+					// reject this promise with the error
+					reject({ allMessagesError });
+				});
+		}),
+
+
+	/* 
+	ReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			if (module.exports.ReturnURLExists(oldURL)) {
+				// set up promise container vars
+				const S3FileSystem = module.exports.TempReturnS3FileSystem('mos-api-misc-storage');
+				const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}`;
+				const writer = S3FileSystem.createWriteStream(writeFilePath);
+				writer.on('finish', resolve);
+				writer.on('error', resolve);
+
+				// get a promise to
+				axios({
+					method: 'get',
+					url: oldURL,
+					responseType: 'stream',
+				})
+					// if the promise is resolved with a result
+					.then((response) => {
+						// then resolve this promise with the result
+						response.data.pipe(writer);
+					})
+					// if the promise is rejected with an error
+					.catch((error) => {
+						// reject this promise with the error
+						reject(error);
+					});
+			} else {
+				resolve();
+			}
+		}),
+
+	
+	ReadAndStoreOneMessageImage: async (messageID, fileName, oldURL) => 
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// set up promise container vars
+			const S3FileSystem = 
+				module.exports.TempReturnS3FileSystem('mos-api-misc-storage');
+			const writeFilePath = 
+				`/hub-message-assets/formatted/${messageID}/${fileName}`;
+			const writer = S3FileSystem.createWriteStream(writeFilePath);
+			// get a promise to 
+			axios({
+				method: 'get',
+				url: oldURL,
+				responseType: 'stream',
+			})
+				// if the promise is resolved with a result
+				.then((readResponse) => {
+					console.log(messageID);
+					console.log(readResponse);
+					// get a promise to 
+					readResponse.data.pipe(writer)
+						// if the promise is resolved with a result
+						.then((writeResult) => {
+							// then resolve this promise with the result
+							resolve();
+						})
+						// if the promise is rejected with an error
+						.catch((writeError) => {
+							// reject this promise with the error
+							reject(writeError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((readError) => {
+					// reject this promise with the error
+					reject(readError);
+				});
+		}), */
 
 	// ---------------------
 
