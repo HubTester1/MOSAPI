@@ -344,7 +344,7 @@ module.exports = {
 		secretAccessKey: process.env.authMOSAPISLSAdminSecretAccessKey,
 	}),
 
-	ConvertImage: (messageID, fileName, fileIndex, quantityImagesConverting) =>
+	ConvertImage: (messageID, fileName) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// set up promise container vars
@@ -372,24 +372,20 @@ module.exports = {
 							S3FileSystem.writeFile(writeFilePath, formattingResult, { ACL: 'public-read' })
 								// if the promise is resolved with a result
 								.then((writingResult) => {
-									if ((fileIndex + 1) === quantityImagesConverting) {
-										// get a promise to 
-										S3FileSystem.rmdirp(
-											`/hub-message-assets/incoming/${messageID}`,
-										)
-											// if the promise is resolved with a result
-											.then((removalResult) => {
-												// then resolve this promise with earlier result
-												resolve(writeFilePath);
-											})
-											// if the promise is rejected with an error
-											.catch((removalError) => {
-												// reject this promise with the error
-												reject(removalError);
-											});
-									} else {
-										resolve(writeFilePath);
-									}
+									// get a promise to 
+									S3FileSystem.unlink(
+										`/hub-message-assets/incoming/${messageID}/${fileName}`,
+									)
+									// if the promise is resolved with a result
+										.then((removalResult) => {
+											// then resolve this promise with earlier result
+											resolve(writeFilePath);
+										})
+									// if the promise is rejected with an error
+										.catch((removalError) => {
+											// reject this promise with the error
+											reject(removalError);
+										});
 								})
 								// if the promise is rejected with an error
 								.catch((writingError) => {
@@ -756,8 +752,6 @@ module.exports = {
 									module.exports.ConvertImage(
 										messageID,
 										fileName,
-										fileIndex,
-										readDirectoryResult.length,
 									),
 								);
 							});
@@ -843,8 +837,8 @@ module.exports = {
 					const { fileName } = eventBodyCopy;
 					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
 					// get a promise to 
-					S3FileSystem.rmdirp(
-						`/hub-message-assets/incoming/${messageID}/${fileName}`,
+					S3FileSystem.unlink(
+						`/hub-message-assets/formatted/${messageID}/${fileName}`,
 					)
 						// if the promise is resolved with a result
 						.then((removalResult) => {
