@@ -15,7 +15,7 @@ const axios = require('axios');
 const S3FS = require('s3fs');
 const sharp = require('sharp');
 const uuid = require('uuid');
-const urlExists = require('url-exists');
+// const urlExists = require('url-exists');
 
 /**
  * @typedef {import('../../../TypeDefs/HubMessage').HubMessage} HubMessage
@@ -359,13 +359,51 @@ module.exports = {
 	StoreOneConvertedMessage: (messageToInsert) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get a promise to 
 			// get a promise to retrieve all documents from the hcMessagesSettings document collection
 			DataQueries.InsertDocIntoCollection(messageToInsert, 'hubMessages')
 				// if the promise is resolved with the docs, then resolve this promise with the docs
 				.then((result) => { resolve(result); })
 				// if the promise is rejected with an error, then reject this promise with an error
 				.catch((error) => { reject(error); });
+		}),
+
+	ReturnOneNewMessage: (oldMessage) => 
+	// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to return all of the old message's 
+			// 		images that actually exist on Neso
+			module.exports.ReturnAllOldImagesThatExist(oldMessage.messageImages)
+			// when the promise is resolved with the existing old images,
+			// 		as it always will be even if there are none
+				.then((existingOldImages) => {
+					// console.log('existingOldImages');
+					// console.log(existingOldImages);
+					// set up container for new image objects
+					const newMessageImages = [];
+					// for each of the existing old images
+					existingOldImages.forEach((oldImage) => {
+						// push to container a constructed new message object
+						newMessageImages.push({
+							name: oldImage.name,
+							url: `https://mos-api-misc-storage.s3.amazonaws.com/hub-message-assets/formatted/${oldMessage.messageID}/${oldImage.name}.jpg`,
+							key: uuid.v4(),
+						});
+					});
+					// construct new message object
+					const newMessage = {
+						messageID: oldMessage.messageID,
+						messageTag: oldMessage.messageTags[0].name,
+						messageSubject: oldMessage.messageSubject,
+						messageBody: oldMessage.messageBody,
+						messageImages: newMessageImages,
+						messageCreated: oldMessage.messageCreated,
+						messageCreator: oldMessage.messageCreator,
+						messageModified: oldMessage.messageModified,
+						messageExpiration: oldMessage.messageExpiration,
+					};
+					// resolve this promise with the new message
+					resolve(newMessage);
+				});
 		}),
 
 	ConvertAndStoreAllMessagesData: () =>
@@ -379,46 +417,37 @@ module.exports = {
 					module.exports.ReturnAllMessagesData()
 						// if the promise is resolved with a result
 						.then((allMessagesData) => {
-							// console.log(allMessagesData);
-							const allNewMessagePromises = [];
+							// set up container for message storage promises
+							const allNewMessageRetrievalPromises = [];
+							const allNewMessageStoragePromises = [];
+							// for each old message
 							allMessagesData.forEach((oldMessage) => {
-								const newMessageImages = [];
-								if (oldMessage.messageImages) {
-									oldMessage.messageImages.forEach((oldImage) => {
-										const newImage = {
-											name: oldImage.name,
-											url: `https://mos-api-misc-storage.s3.amazonaws.com/hub-message-assets/formatted/${oldMessage.messageID}/${oldImage.name}.jpg`,
-											key: uuid.v4(),
-										};
-										newMessageImages.push(newImage);
-									});
-								}
-								const newMessage = {
-									messageID: oldMessage.messageID,
-									messageTag: oldMessage.messageTags[0].name,
-									messageSubject: oldMessage.messageSubject,
-									messageBody: oldMessage.messageBody,
-									messageImages: newMessageImages,
-									messageCreated: oldMessage.messageCreated,
-									messageCreator: oldMessage.messageCreator,
-									messageModified: oldMessage.messageModified,
-									messageExpiration: oldMessage.messageExpiration,
-								};
-								allNewMessagePromises.push(
-									module.exports.StoreOneConvertedMessage(newMessage),
+								allNewMessageRetrievalPromises.push(
+									module.exports.ReturnOneNewMessage(oldMessage),
 								);
 							});
-							// get a promise to 
-							Promise.all(allNewMessagePromises)
-								// if the promise is resolved with a result
-								.then((result) => {
-									// then resolve this promise with the result
-									resolve({});
-								})
-								// if the promise is rejected with an error
-								.catch((error) => {
-									// reject this promise with the error
-									reject(error);
+							// when all message retrieval promises have been fulfilled
+							Promise.all(allNewMessageRetrievalPromises)
+								// when the promise is resolved with a result
+								.then((messageRetrievalResults) => {
+									// for each message retrieved
+									messageRetrievalResults.forEach((newMessage) => {
+										allNewMessageStoragePromises.push(
+											module.exports.StoreOneConvertedMessage(newMessage),
+										);
+									});
+									Promise.all(allNewMessageStoragePromises)
+										// if the promise is resolved with a result
+										.then((result) => {
+											console.log('storage results', result);
+											// then resolve this promise with the result
+											resolve({});
+										})
+										// if the promise is rejected with an error
+										.catch((error) => {
+											// reject this promise with the error
+											reject(error);
+										});
 								});
 						})
 						// if the promise is rejected with an error
@@ -434,24 +463,86 @@ module.exports = {
 				});
 		}),
 
-
-	TempReturnS3FileSystem: (bucketName) => 
-		new S3FS(bucketName, module.exports.TempReturnS3Options()),
-
-	TempReturnS3Options: () => ({
-		region: 'us-east-1',
-		accessKeyId: 'AKIAVAMR4WIEUGDIZUD7',
-		secretAccessKey: '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',
-	}),
-
-	ReturnURLExists: (url) =>
+	ReturnOldImageURL: (oldImage) => (oldImage.urlLarge ?
+		oldImage.urlLarge :
+		oldImage.uriQuark),
+	
+	ReturnAllOldImagesThatExist: (oldImageArray = []) => 
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get a promise to 
-			urlExists(url, (err, exists) => {
-				console.log('exists', exists);
-				resolve(exists);
+			// set up a container for promises to check that 
+			// 		the image actually exists
+			const oldImageCheckingPromises = [];
+			// for each old message image
+			oldImageArray.forEach((oldImage) => {
+				// push to container a promise to determine the existence of the image
+				oldImageCheckingPromises
+					.push(
+						module.exports.ReturnResourceExistsAtURI(
+							module.exports.ReturnOldImageURL(oldImage),
+						),
+					);
 			});
+			// when all promises to check existence have been fulfilled
+			Promise.all(oldImageCheckingPromises)
+				// if all promises were resolved, and they always will be
+				.then((allExistenceResults) => {
+					// set up container for the images to return
+					const imagesThatExist = [];
+					// for each old message image
+					oldImageArray.forEach((oldImage) => {
+						// get the old url for the old image
+						const oldImageURI = module.exports.ReturnOldImageURL(oldImage);
+						// for each existence result
+						allExistenceResults.forEach((existenceResult) => {
+							if (
+								existenceResult.uri === oldImageURI && 
+								existenceResult.exists
+							) {
+								imagesThatExist.push(oldImage);
+							}
+						});
+					});
+					resolve(imagesThatExist);
+					/* // if the image exists
+					if (existenceResult) {
+						// construct a new image object and push it
+						// 		to the container
+						newMessageImages.push({
+							name: oldImage.name,
+							url: `https://mos-api-misc-storage.s3.amazonaws.com/hub-message-assets/formatted/${oldMessage.messageID}/${oldImage.name}.jpg`,
+							key: uuid.v4(),
+						});
+					} */
+				});
+		}),
+
+	ReturnResourceExistsAtURI: (uri) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			const HandleResponse = (response) => {
+				let existenceFlag = false;
+				// response.status = 200
+				// response.response.status = 400
+				if (
+					response && 
+					response.status &&
+					response.status === 200
+				) {
+					existenceFlag = true;
+				}
+				resolve({
+					uri,
+					exists: existenceFlag,
+				});
+			};
+			axios.head(uri)
+				.then((response) => {
+					HandleResponse(response);
+				})
+				.catch((response) => {
+					HandleResponse(response);
+				});
 		}),
 
 	ReadAndStoreOneMessageImage: async (messageID, fileName, oldURL) => {
@@ -493,22 +584,14 @@ module.exports = {
 												imageObject.urlLarge : 
 												imageObject.uriQuark;
 									// console.log('oldURL', oldURL);
-									// get a promise to 
-									module.exports.ReturnURLExists(oldURL)
-										// if the promise is resolved with a result
-										.then((existenceResult) => {
-											console.log('existenceResult', existenceResult);
-											if (existenceResult) {
-												allImageStoragePromises.push(
-													module.exports
-														.ReadAndStoreOneMessageImage(
-															oldMessage.messageID,
-															imageObject.name,
-															oldURL,
-														),
-												);
-											}
-										});
+									allImageStoragePromises.push(
+										module.exports
+											.ReadAndStoreOneMessageImage(
+												oldMessage.messageID,
+												imageObject.name,
+												oldURL,
+											),
+									);
 								});
 						}
 					});
@@ -533,6 +616,14 @@ module.exports = {
 		}),
 
 
+	TempReturnS3FileSystem: (bucketName) =>
+		new S3FS(bucketName, module.exports.TempReturnS3Options()),
+
+	TempReturnS3Options: () => ({
+		region: 'us-east-1',
+		accessKeyId: 'AKIAVAMR4WIEUGDIZUD7',
+		secretAccessKey: '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',
+	}),
 	/* 
 	ReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
 		// return a new promise
