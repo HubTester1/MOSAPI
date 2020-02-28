@@ -368,7 +368,7 @@ module.exports = {
 		}),
 
 	ReturnOneNewMessage: (oldMessage) => 
-	// return a new promise
+		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to return all of the old message's 
 			// 		images that actually exist on Neso
@@ -439,7 +439,6 @@ module.exports = {
 									Promise.all(allNewMessageStoragePromises)
 										// if the promise is resolved with a result
 										.then((result) => {
-											console.log('storage results', result);
 											// then resolve this promise with the result
 											resolve({});
 										})
@@ -564,6 +563,33 @@ module.exports = {
 		});
 	},
 
+	AttemptToReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to determine whether or not image exists
+			module.exports.ReturnResourceExistsAtURI(oldURL)
+				// if the promise is resolved with a result
+				.then((existenceResult) => {
+					if (existenceResult.exists) {
+						// get a promise to 
+						module.exports.ReadAndStoreOneMessageImage(
+							messageID, fileName, oldURL,
+						)
+							// if the promise is resolved with a result
+							.then(resolve())
+							// if the promise is rejected with an error
+							.catch(resolve());
+					} else {
+						resolve();
+					}
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					resolve();
+				});
+		}),
+
 	ReadAndStoreAllMessageImages: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -579,14 +605,11 @@ module.exports = {
 						) {
 							oldMessage.messageImages
 								.forEach((imageObject) => {
-									const oldURL = 
-											imageObject.urlLarge ? 
-												imageObject.urlLarge : 
-												imageObject.uriQuark;
+									const oldURL = module.exports.ReturnOldImageURL(imageObject);
 									// console.log('oldURL', oldURL);
 									allImageStoragePromises.push(
 										module.exports
-											.ReadAndStoreOneMessageImage(
+											.AttemptToReadAndStoreOneMessageImage(
 												oldMessage.messageID,
 												imageObject.name,
 												oldURL,
