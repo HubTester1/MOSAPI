@@ -6,6 +6,7 @@
 
 const moment = require('moment');
 const atob = require('atob');
+const axios = require('axios');
 
 module.exports = {
 
@@ -349,4 +350,32 @@ module.exports = {
 		}
 		return returnValue;
 	},
+
+	ReturnResourceExistsAtURI: (uri) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			const HandleResponse = (response) => {
+				let existenceFlag = false;
+				// response.status = 200
+				// response.response.status = 400
+				if (
+					response &&
+					response.status &&
+					response.status === 200
+				) {
+					existenceFlag = true;
+				}
+				resolve({
+					uri,
+					exists: existenceFlag,
+				});
+			};
+			axios.head(uri)
+				.then((response) => {
+					HandleResponse(response);
+				})
+				.catch((response) => {
+					HandleResponse(response);
+				});
+		}),
 };

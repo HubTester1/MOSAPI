@@ -297,4 +297,278 @@ module.exports = {
 				});
 		}),
 
+	// SHAREPOINT & ONEDRIVE SHORTHANDS & EXAMPLES
+
+	// NO PROD
+	ReturnAllDrivesInRootSite: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				'sites/bmos.sharepoint.com,1126b168-bc22-457b-b1f5-dbec6aee1011,3d7301a7-d5b8-4975-8182-c64cd5ac1bc2/drives',
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnDrive: (driveID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`drives/${driveID}`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnAllDriveImmediateChildren: (driveID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`drives/${driveID}/root/children`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnAllListsInRootSite: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				'sites/bmos.sharepoint.com,1126b168-bc22-457b-b1f5-dbec6aee1011,3d7301a7-d5b8-4975-8182-c64cd5ac1bc2/lists',
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnList: (siteID, listID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`sites/${siteID}/lists/${listID}`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnListItemsMetadata: (siteID, listID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`sites/${siteID}/lists/${listID}/items`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnListItemContent: (siteID, listID, itemID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`sites/${siteID}/lists/${listID}/items/${itemID}`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	CreateFolderInDrive: (driveID, parentID, folderName) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
+			// folderName = '1007';
+			// parentID = '01OO6BYSV6Y2GOVW7725BZO354PWSELRRZ';
+			// get a promise to get an access token
+			module.exports.ReturnGraphAccessToken()
+				// if the promise is resolved with the token
+				.then((accessTokenResult) => {
+					const config = module.exports.ReturnGraphQueryConfig(
+						`drives/${driveID}/items/${parentID}/children`,
+						accessTokenResult.accessToken,
+					);
+					config.body = {
+						name: folderName,
+						folder: {},
+						'@microsoft.graph.conflictBehavior': 'rename',
+					};
+					axios.post(config.uri, config.body, config.options)
+						// if the promise is resolved
+						.then((createResult) => {
+							// if status indicates success
+							if (createResult.status === 201) {
+								// resolve this promise with the list items
+								resolve({
+									error: false,
+									msGraphURI: config.uri,
+									requestedName: folderName,
+									createdName: createResult.data.name,
+								});
+								// if status indicates other than success
+							} else {
+								// create a generic error
+								const errorToReport = {
+									error: true,
+									msGraphError: true,
+									msGraphURI: config.uri,
+									msGraphStatus: createResult.status,
+								};
+								// reject this promise with the error
+								reject(errorToReport);
+							}
+						})
+						// if the promise is rejected with an error
+						.catch((createError) => {
+							// create a generic error
+							const errorToReport = {
+								error: true,
+								msGraphError: 'send',
+								msGraphErrorDetails: createError,
+							};
+							// reject this promise with an error
+							reject(errorToReport);
+						});
+				})
+				// if the promise is rejected with an error, 
+				.catch((tokenError) => {
+					// create a generic error
+					const errorToReport = {
+						error: true,
+						msGraphError: 'token',
+						msGraphErrorDetails: tokenError,
+					};
+					// reject this promise with an error
+					reject(errorToReport);
+				});
+		}),
+
+	CreateFileInDrive: (driveID, parentID, fileName, fileContent, fileType) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
+			// // folderName = '1007';
+			// parentID = '01OO6BYSV6Y2GOVW7725BZO354PWSELRRZ';
+			// fileBinary = '';
+			// get a promise to get an access token
+			module.exports.ReturnGraphAccessToken()
+				// if the promise is resolved with the token
+				.then((accessTokenResult) => {
+					const config = module.exports.ReturnGraphQueryConfig(
+						`drives/${driveID}/items/${parentID}:/${fileName}/content`,
+						accessTokenResult.accessToken,
+						fileType,
+					);
+					config.body = fileContent;
+					axios.put(config.uri, config.body, config.options)
+						// if the promise is resolved
+						.then((createResult) => {
+							// if status indicates success
+							if (createResult.status === 201) {
+								// resolve this promise with the list items
+								resolve({
+									error: false,
+									msGraphURI: config.uri,
+									fileName,
+									createResult,
+								});
+								// if status indicates other than success
+							} else {
+								// create a generic error
+								const errorToReport = {
+									error: true,
+									msGraphError: true,
+									msGraphURI: config.uri,
+									msGraphStatus: createResult.status,
+								};
+								// reject this promise with the error
+								reject(errorToReport);
+							}
+						})
+						// if the promise is rejected with an error
+						.catch((createError) => {
+							// create a generic error
+							const errorToReport = {
+								error: true,
+								msGraphError: 'send',
+								msGraphErrorDetails: createError,
+							};
+							// reject this promise with an error
+							reject(errorToReport);
+						});
+				})
+				// if the promise is rejected with an error, 
+				.catch((tokenError) => {
+					// create a generic error
+					const errorToReport = {
+						error: true,
+						msGraphError: 'token',
+						msGraphErrorDetails: tokenError,
+					};
+					// reject this promise with an error
+					reject(errorToReport);
+				});
+		}),
+
+
 };

@@ -7,6 +7,8 @@
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
 	"dependencies": {
-		"data-queries": "file:../DataQueries"
+		"data-queries": "file:../DataQueries",
+		"moment": "^2.24.0",
+		"utilities": "file:../Utilities"
 	}
 }
