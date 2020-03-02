@@ -1,0 +1,7 @@
+{
+	"name": "layer-dev-libraries-ms-graph",
+	"description": "AWS Lambda Layer containing MSGraph library from Libraries directory.",
+	"dependencies": {
+		"ms-graph": "file:../../../Libraries/MSGraph"
+	}
+}

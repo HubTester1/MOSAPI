@@ -1,0 +1,5 @@
+@baseURI = https://f5amy8a50e.execute-api.us-east-1.amazonaws.com/dev
+
+
+GET {{baseURI}}/email/processQueue
+Authorization: Bearer {{accessToken}}

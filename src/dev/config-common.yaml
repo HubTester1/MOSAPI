@@ -1,7 +1,13 @@
 custom:
   config:
-    layerARNNPM: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevNPM:25
-    layerARNServices: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevServices:58
+    layerARNNPMCommon: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevNPMCommon:4
+    layerARNLibCommon: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevLibrariesCommon:6
+    layerARNNPMNPMSharp: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevNPMSharp:2
+    layerARNLibHubMessages: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevLibrariesHubMessages:3
+    layerARNLibUltiPro: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevLibrariesUltiPro:1
+    layerARNLibMSGraph: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevLibrariesMSGraph:1
+    layerARNLibHubFiles: arn:aws:lambda:us-east-1:344440222217:layer:LayerDevLibrariesFiles:1
+
     stage: dev
 #-------------
 authJWTPayloadMessage: ${ssm:auth-jwt-payload-message}
@@ -23,7 +29,7 @@ mongoDbPass: ${ssm:mongodb-pass}
 mongoDbUser: ${ssm:mongodb-user}
 provider:
   runtime: nodejs12.x
-  profile: mos-api-sls-admin
+  profile: mos-api-programmatic-admin
 twitterConsumerKey: ${ssm:twitter-consumer-key}
 twitterConsumerSecret: ${ssm:twitter-consumer-secret}
 twitterAccessTokenKey: ${ssm:twitter-access-token-key}

@@ -1,0 +1,14 @@
+service: layer-dev-libraries-common
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  profile: mos-api-programmatic-admin
+  deploymentBucket:
+    name: mos-api-dev-layers
+
+layers:
+  LayerDevLibrariesCommon:
+    path: nodejs
+    description: "AWS Lambda Layer containing commonly-used libraries from Libraries directory."

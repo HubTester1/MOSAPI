@@ -1,0 +1,14 @@
+service: layer-dev-npm-common
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  profile: mos-api-programmatic-admin
+  deploymentBucket:
+    name: mos-api-dev-layers
+
+layers:
+  LayerDevNPMCommon:
+    path: nodejs
+    description: "AWS Lambda Layer containing commonly-used third-party Node.js modules."

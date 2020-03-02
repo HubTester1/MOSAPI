@@ -4,10 +4,12 @@
  * @description Handles all Hub Messages-related requests.
  */
 
-const HubMessages = require('hub-messages');
 const Access = require('access');
 const Response = require('response');
 const Utilities = require('utilities');
+const HubMessages = require('hub-messages');
+const S3 = require('s3');
+const Images = require('images');
 
 
 /**
@@ -95,7 +97,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((accessResult) => {
 					// get a promise to return health status
-					module.exports.ReturnSpecifiedMessages(
+					HubMessages.ReturnSpecifiedMessages(
 						event.queryStringParameters,
 					)
 						// if the promise is resolved with a result
@@ -158,7 +160,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((accessResult) => {
 					// get a promise to return health status
-					module.exports.AddMessage(
+					HubMessages.AddMessage(
 						event.body,
 					)
 						// if the promise is resolved with a result
@@ -221,7 +223,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((accessResult) => {
 					// get a promise to return health status
-					module.exports.UpdateMessage(
+					HubMessages.UpdateMessage(
 						event.body,
 					)
 						// if the promise is resolved with a result
@@ -284,7 +286,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((accessResult) => {
 					// get a promise to return health status
-					module.exports.ReturnNextMessageIDAndIterate()
+					HubMessages.ReturnNextMessageIDAndIterate()
 						// if the promise is resolved with a result
 						.then((settingsResult) => {
 							// send indicative response
@@ -349,7 +351,7 @@ module.exports = {
 					// const eventBodyCopy =
 					// 	Utilities.ReturnUniqueObjectGivenAnyValue(eventBody);
 					const { messageID } = eventBodyCopy;
-					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+					const S3FileSystem = S3.ReturnS3FileSystem('mos-api-misc-storage');
 					S3FileSystem.readdir(`/hub-message-assets/incoming/${messageID}`)
 						// if the promise is resolved with a result
 						.then((readDirectoryResult) => {
@@ -357,7 +359,7 @@ module.exports = {
 							// for each file in the directory
 							readDirectoryResult.forEach((fileName, fileIndex) => {
 								fileProcessingPromises.push(
-									module.exports.ConvertImage(
+									Images.ConvertImage(
 										messageID,
 										fileName,
 									),
@@ -443,7 +445,7 @@ module.exports = {
 						Utilities.ReturnUniqueObjectGivenAnyValue(event.body);
 					const { messageID } = eventBodyCopy;
 					const { fileName } = eventBodyCopy;
-					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+					const S3FileSystem = S3.ReturnS3FileSystem('mos-api-misc-storage');
 					// get a promise to 
 					S3FileSystem.unlink(
 						`/hub-message-assets/formatted/${messageID}/${fileName}`,

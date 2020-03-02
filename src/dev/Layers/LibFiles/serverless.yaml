@@ -1,0 +1,14 @@
+service: layer-dev-libraries-files
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  profile: mos-api-programmatic-admin
+  deploymentBucket:
+    name: mos-api-dev-layers
+
+layers:
+  LayerDevLibrariesFiles:
+    path: nodejs
+    description: "AWS Lambda Layer containing Files library from Libraries directory."

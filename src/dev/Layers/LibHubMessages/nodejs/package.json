@@ -1,0 +1,7 @@
+{
+	"name": "layer-dev-libraries-hub-messages",
+	"description": "AWS Lambda Layer containing Hub Messages library from Libraries directory.",
+	"dependencies": {
+		"hub-messages": "file:../../../Libraries/HubMessages"
+	}
+}

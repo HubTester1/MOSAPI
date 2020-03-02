@@ -1,0 +1,15 @@
+{
+	"name": "layer-dev-libraries-common",
+	"description": "AWS Lambda Layer containing commonly-used libraries from Libraries directory.",
+	"dependencies": {
+		"access": "file:../../../Libraries/Access",
+		"data-connection": "file:../../../Libraries/DataConnection",
+		"data-queries": "file:../../../Libraries/DataQueries",
+		"email": "file:../../../Libraries/Email",
+		"health": "file:../../../Libraries/Health",
+		"log": "file:../../../Libraries/Log",
+		"response": "file:../../../Libraries/Response",
+		"status": "file:../../../Libraries/Status",
+		"utilities": "file:../../../Libraries/Utilities"
+	}
+}

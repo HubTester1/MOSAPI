@@ -1,0 +1,7 @@
+{
+	"name": "layer-dev-libraries-ultipro",
+	"description": "AWS Lambda Layer containing UltiPro library from Libraries directory.",
+	"dependencies": {
+		"ultipro": "file:../../../Libraries/UltiPro"
+	}
+}

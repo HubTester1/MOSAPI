@@ -1,0 +1,7 @@
+{
+	"name": "layer-dev-libraries-s3",
+	"description": "AWS Lambda Layer containing S3 library from Libraries directory.",
+	"dependencies": {
+		"s3": "file:../../../Libraries/S3"
+	}
+}

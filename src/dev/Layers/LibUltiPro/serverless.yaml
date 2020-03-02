@@ -1,0 +1,14 @@
+service: layer-dev-libraries-ultipro
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  profile: mos-api-programmatic-admin
+  deploymentBucket:
+    name: mos-api-dev-layers
+
+layers:
+  LayerDevLibrariesUltiPro:
+    path: nodejs
+    description: "AWS Lambda Layer containing UltiPro library from Libraries directory."

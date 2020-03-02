@@ -1,0 +1,7 @@
+{
+	"name": "layer-dev-npm-sharp",
+	"description": "AWS Lambda Layer containing Sharp third-party Node.js module.",
+	"dependencies": {
+		"sharp": "^0.24.1"
+	}
+}

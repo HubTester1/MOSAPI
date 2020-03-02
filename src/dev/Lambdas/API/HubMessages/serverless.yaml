@@ -67,42 +67,41 @@ functions:
 service: ${self:custom.config.service}
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: ${self:custom.file.provider.runtime}
+  # runtime: nodejs10.x
   stage: ${self:custom.file.custom.config.stage}
   region: us-east-1
   profile: ${self:custom.file.provider.profile}
   memorySize: ${self:custom.config.memorySize}
   timeout: ${self:custom.config.timeout}
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "s3:ListBucket"
-      Resource: "arn:aws:s3:::mos-api-temp"
-    - Effect: "Allow"
-      Action:
-        - "s3:AbortMultipartUpload"
-        - "s3:CreateBucket"
-        - "s3:PutObject"
-        - "s3:DeleteBucket"
-        - "s3:DeleteBucketPolicy"
-        - "s3:DeleteObject"
-        - "s3:GetBucketPolicy"
-        - "s3:GetLifecycleConfiguration"
-        - "s3:ListBucket"
-        - "s3:ListBucketMultipartUploads"
-        - "s3:ListMultipartUploadParts"
-        - "s3:PutBucketPolicy"
-        - "s3:PutLifecycleConfiguration"
-        - "s3:PutObject"
-      Resource: "arn:aws:s3:::mos-api-temp/*"
+  # iamRoleStatements:
+  #   - Effect: "Allow"
+  #     Action:
+  #       - "s3:ListBucket"
+  #     Resource: "arn:aws:s3:::mos-api-temp"
+  #   - Effect: "Allow"
+  #     Action:
+  #       - "s3:AbortMultipartUpload"
+  #       - "s3:CreateBucket"
+  #       - "s3:PutObject"
+  #       - "s3:DeleteBucket"
+  #       - "s3:DeleteBucketPolicy"
+  #       - "s3:DeleteObject"
+  #       - "s3:GetBucketPolicy"
+  #       - "s3:GetLifecycleConfiguration"
+  #       - "s3:ListBucket"
+  #       - "s3:ListBucketMultipartUploads"
+  #       - "s3:ListMultipartUploadParts"
+  #       - "s3:PutBucketPolicy"
+  #       - "s3:PutLifecycleConfiguration"
+  #       - "s3:PutObject"
+  #     Resource: "arn:aws:s3:::mos-api-temp/*"
   deploymentBucket:
     name: mos-api-${self:provider.stage}-lambdas
   environment:
     NODE_PATH: "./:/opt/node_modules"
     authJWTPayloadMessage: ${self:custom.file.authJWTPayloadMessage}
     authJWTPayloadSecret: ${self:custom.file.authJWTPayloadSecret}
-    authMOSAPISLSAdminAccessKeyID: ${self:custom.file.authMOSAPISLSAdminAccessKeyID}
-    authMOSAPISLSAdminSecretAccessKey: ${self:custom.file.authMOSAPISLSAdminSecretAccessKey}
     cronScheduleEmailQueueProcessing: ${self:custom.file.cronScheduleEmailQueueProcessing}
     cronScheduleGSEJobSync: ${self:custom.file.cronScheduleGSEJobSync}
     cronScheduleGSEScheduleSync: ${self:custom.file.cronScheduleGSEScheduleSync}
@@ -125,5 +124,8 @@ provider:
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
   layers:
-    - ${self:custom.file.custom.config.layerARNNPM}
-    - ${self:custom.file.custom.config.layerARNServices}
+    - ${self:custom.file.custom.config.layerARNNPMCommon}
+    - ${self:custom.file.custom.config.layerARNLibCommon}
+    - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
+    - ${self:custom.file.custom.config.layerARNLibHubMessages}
+    - ${self:custom.file.custom.config.layerARNLibHubFiles}

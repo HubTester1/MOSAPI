@@ -1,1 +1,0 @@
-GET https://neso.mos.org/hcMessages/messages/all

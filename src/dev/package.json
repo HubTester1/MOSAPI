@@ -13,8 +13,6 @@
 		"hub-messages": "file:Services/HubMessages",
 		"images": "file:Services/Images",
 		"log": "file:Services/Log",
-		"moment": "^2.24.0",
-		"moment-timezone": "^0.5.27",
 		"mongodb": "^3.4.1",
 		"monk": "^7.1.2",
 		"ms-graph": "file:Services/MSGraph",
