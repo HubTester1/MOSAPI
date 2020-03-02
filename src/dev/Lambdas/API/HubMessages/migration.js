@@ -1,10 +1,29 @@
+/* eslint-disable max-len */
+
+/* 
+
+	===========
+	MIGRATE MESSAGE DATA
+	===========
+	-from /MOSAPI/
+	lambda-local -l src/dev/Lambdas/API/HubMessages/migration.js -h ConvertAndStoreAllMessagesData -e src/dev/Lambdas/API/HubMessages/get-messages-event.js --envfile .env --timeout 30000
+
+	===========
+	MIGRATE MESSAGE IMAGES
+	===========
+	-from /MOSAPI/
+	lambda-local -l src/dev/Lambdas/API/HubMessages/migration.js -h ReadAndStoreAllMessageImages -e src/dev/Lambdas/API/HubMessages/get-messages-event.js --envfile .env --timeout 30000
+
+ */
 
 const DataQueries = require('data-queries');
 const Utilities = require('utilities');
-const S3 = require('s3');
-
+const S3FS = require('s3fs');
 const axios = require('axios');
 const uuid = require('uuid');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '../../../.env' });
 
 module.exports = {
 
@@ -45,8 +64,6 @@ module.exports = {
 				// when the promise is resolved with the existing old images,
 				// 		as it always will be even if there are none
 				.then((existingOldImages) => {
-					// console.log('existingOldImages');
-					// console.log(existingOldImages);
 					// set up container for new image objects
 					const newMessageImages = [];
 					// for each of the existing old images
@@ -175,21 +192,58 @@ module.exports = {
 				});
 		}),
 
-	ReadAndStoreOneMessageImage: async (messageID, fileName, oldURL) => {
-		const S3FileSystem = S3.ReturnS3FileSystemOverHTTP('mos-api-misc-storage');
-		const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}`;
+	/* ReadAndStoreOneMessageImage: async (messageID, fileName, oldURL) => {
+		// set up promise container vars
+		const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+		const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}.jpg`;
 		const writer = S3FileSystem.createWriteStream(writeFilePath, { ACL: 'public-read' });
 		const response = await axios({
 			method: 'get',
 			url: oldURL,
 			responseType: 'stream',
 		});
+
 		response.data.pipe(writer);
+
 		return new Promise((resolve, reject) => {
 			writer.on('finish', resolve);
 			writer.on('error', resolve);
 		});
-	},
+	}, */
+
+	ReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to 
+			axios({
+				method: 'get',
+				url: oldURL,
+				responseType: 'stream',
+			})
+				// if the promise is resolved with a result
+				.then((result) => {
+					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+					const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}.jpg`;
+					const writer = S3FileSystem.createWriteStream(writeFilePath, { ACL: 'public-read' });
+					writer.on('finish', resolve);
+					writer.on('error', resolve);
+					result.data.pipe(writer);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
+		}),
+
+	ReturnS3FileSystem: (bucketName) =>
+		new S3FS(bucketName, module.exports.ReturnS3Options()),
+
+	ReturnS3Options: () => ({
+		region: 'us-east-1',
+		accessKeyId: process.env.authMOSAPISLSAdminAccessKeyID,
+		secretAccessKey: process.env.authMOSAPISLSAdminSecretAccessKey,
+	}),
 
 	AttemptToReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
 		// return a new promise
@@ -204,9 +258,7 @@ module.exports = {
 							messageID, fileName, oldURL,
 						)
 							// if the promise is resolved with a result
-							.then((result) => {
-								resolve(result);
-							})
+							.then(resolve())
 							// if the promise is rejected with an error
 							.catch(resolve());
 					} else {
@@ -231,18 +283,16 @@ module.exports = {
 					allMessagesData.forEach((oldMessage) => {
 						if (
 							oldMessage.messageImages &&
-							oldMessage.messageImages[0] && 
-							oldMessage.messageID < 20
+							oldMessage.messageImages[0]
 						) {
 							oldMessage.messageImages
 								.forEach((imageObject) => {
 									const oldURL = module.exports.ReturnOldImageURL(imageObject);
-									// console.log('oldURL', oldURL);
 									allImageStoragePromises.push(
 										module.exports
 											.AttemptToReadAndStoreOneMessageImage(
 												oldMessage.messageID,
-												`${imageObject.name}.jpg`,
+												imageObject.name,
 												oldURL,
 											),
 									);
