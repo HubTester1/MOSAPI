@@ -1,0 +1,2427 @@
+[{
+		"messageID": 1,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "All,<br />Please be advised that IIT will be performing a planned network maintenance on the following date and time:<br /><br />Tuesday November 13th  2018 from 6:00pm to 11:59pm <br /><br />This maintenance is necessary to perform upgrades to our network infrastructure.  We anticipate this scheduled outage will take approximately 4 to 6 hrs. to complete.  During this maintenance window you may experience brief outages where servers, business applications, and or files may not be accessible both internally and externally.  To ensure uptime and stability of our platform, we are performing this upgrade shortly after close of business so we can maximize our efforts to ensure business operations will not be impacted when we open the next day.<br />  <br />If you have any questions or concerns please contact the Service Desk team at x0130. <br /> <br />We thank you in advance for your attention and understanding.",
+		"messageSubject": "Planned Network Maintenance Night 11-13-18",
+		"messageExpiration": {
+			"$date": "2019-05-08T21:34:48.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-09T22:34:48.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-09T22:34:48.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Angela Collins",
+			"account": "acollins"
+		}
+	},
+	{
+		"messageID": 6,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "The \"Welcome to Fabulous Las Vegas\" sign that was the photo-op centerpiece of Accounting's Viva MOS Vegas Halloween extravaganza is up for grabs.  Anyone who's interested please e-mail me at showe@mos.org by noon next Friday (11/16).  If more than one person expresses an interest, we'll draw a name at random to choose a winner.",
+		"messageSubject": "Vegas Sign (Free)",
+		"messageExpiration": {
+			"$date": "2019-05-07T16:29:35.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-08T17:29:35.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-08T17:29:35.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Stan Howe",
+			"account": "showe"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "IMG_3925a.jpg",
+			"key": "SJ-DXmcVTQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/IMG_3925a.jpg"
+		}]
+	},
+	{
+		"messageID": 4,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Using Microsoft Outlook Calendar for Appointments<br /><br />Outlook Calendar is the tool used by all MOS staff to schedule appointments and any other Museum business that requires your guest to check in at the Information Desk. When scheduling an appointment or meeting, be sure to always invite the Information Desk so that we know to expect your guests when they arrive. <br /><br /><br />Directions to follow when notifying the Information Desk of an appointment. <br />1. In Outlook Calendar, select New Meeting <br />2. In the [To] field, select Shared_Infodesk from the address book (NOT infodesk@mos.org) <br />3. In the [Subject] field, enter your guest's name and who they are here to see <br />4. In the [Location] field, enter where the appointment/meeting will take place <br />5. REQUIRED: In the notes field, enter instructions for the Information Desk staff/volunteer: who to call (with extension) when your guest arrives, parking validation, and any other relevant information. <br />6. Send <br /><br />PLEASE NOTE: THE INFORMATION DESK CALENDAR IS FOR APPOINTMENTS AND MEETINGS ONLY. IF YOU HAVE FRIENDS OR FAMILY VISITING THE MUSEUM, PLEASE ARRANGE TO MEET THEM IN THE LOBBY. <br /><br />You have several options for granting your guests access into the Museum once you meet them in the lobby: <br />•Use your MOS Membership card at the main lobby entrance (you must be present) <br />•Use your HR-issued paper passes at the main lobby entrance. <br /><br />If you know that you will not be in the building when your guests arrive: <br />•Use your MOS membership electronic passes – either online (using an email confirmation) or in person at the box office in advance of their visit. Please reach out if you need guidance on how this process works. <br />•Leave your HR-issued paper passes at will call, located at the box office, clearly marked with your guest’s name and the date of their visit. <br /><br />PLEASE NOTE: INFORMATION DESK STAFF CANNOT AUTHORIZE FREE EXHIBIT HALLS ADMISSION FOR FRIENDS OR FAMILY. <br /><br />If you have any questions, contact Erika Di Sciascio, Assistant Manager of Science Central and the Information Desk: edsciascio@mos.org or x0126",
+		"messageSubject": "Using Microsoft Outlook Calendar for Appointments",
+		"messageExpiration": {
+			"$date": "2019-05-07T21:43:49.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-08T22:43:49.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-08T22:43:49.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Erika Di Sciascio",
+			"account": "edisciascio"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "calendar.JPG",
+			"key": "BJlw7QcEaQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/calendar.JPG"
+		}]
+	},
+	{
+		"messageID": 10,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "On Wednesday, November 11th we will introducing a new rotating station to replace Barbecue.<br />Old World Delicatessen will feature the following craft-made sandwiches made to order on artisan breads:<br /><br />hot spiced pastrami or lean corned beef<br />chef’s daily marketplace carved special<br />6” or 12” traditional ITALIAN hero<br /><br />sides and sweets include:<br /><br />warm german potato salad<br />deli macaroni salad<br />new york style cheesecake<br /><br />value meal options will also be offered and include:<br /><br />choice of two sides<br />fountain drink or milk <br /><br />come visit us at the Riverview Café and build your own masterpiece!",
+		"messageSubject": "Old World Deli Station",
+		"messageExpiration": {
+			"$date": "2018-11-26T05:00:00.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-06T18:12:24.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-06T18:12:24.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Andrew Lambros",
+			"account": "alambros"
+		}
+	},
+	{
+		"messageID": 3,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Kudos",
+			"camlName": "kudos"
+		}],
+		"messageBody": "CONGRATULATIONS to the following MOS Team Members who have graduated from the Guest Service Orientation. Thanks to their enthusiastic participation, the workshop was a huge success. We're looking forward to their further contributions to the Museum.<br /><br />Bryan Allen, Facilities<br />Kyle Baron, School Visits<br />Krista Beem, EiE Operations<br />Jose Brenes Coto, Live Presentations<br />Jessica Brownstien, Public Safety<br />Casey Colleen, Advancement<br />Livingston Farrand IV, Visitor Services <br />Hannah Fried-Tanzer, Advancement<br />Peter Mahoney, Temporary Exhibits Operations<br />Sofia Mankin, Leadership and Planned Giving<br />Ben Pacheco, Facilities<br />Vincent Sbarra, Education Technology<br /><br /><br />Next time you see them, be sure to say Congratulations!<br /><br />Extra special thanks to our facilitators, Wendy Tatarouns, Assistant Manager, Visitor Services and Sheryl White Vincent, Director, Event and Conference Services!",
+		"messageSubject": "GSO Congrats",
+		"messageExpiration": {
+			"$date": "2019-05-08T15:39:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-09T16:39:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-09T16:39:26.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Aurelia GrantWingate",
+			"account": "agrantwingate"
+		}
+	},
+	{
+		"messageID": 9,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Good Ideas",
+			"camlName": "goodIdeas"
+		}],
+		"messageBody": "Farewell, Quark! See you on the Hub. <br /><br />Today's Wellness Wednesday is an article on tips to avoid the flu this season. Hopefully many of you took advantage of our flu shot clinic last month. If not, check your local pharmacy and get your shot today!<br /><br />https://www.medicalnewstoday.com/articles/321005.php",
+		"messageSubject": "Wellness Wednesday: Avoid the Flu This Season",
+		"messageExpiration": {
+			"$date": "2019-05-06T14:40:34.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-07T15:40:34.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-07T15:40:34.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gina Crotty",
+			"account": "gcrotty"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-new-new-Bewelllogo.jpg",
+			"key": "HJGw779N6m",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-new-new-Bewelllogo.jpg"
+		}]
+	},
+	{
+		"messageID": 2,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "This coming Tuesday at 9:00 AM start your day off with a bang by attending a special showing of Omni's newest giant screen film \"Volcanoes: The Fires of Creation\"  Visitors often ask about our films so why try to bluff your way through when you can spend a dynamic hour with us in Omni and know for yourself all about this new title in our unique giant dome theater. -- Robin Doty",
+		"messageSubject": "Start you day off with a blast - Volcanoes in Omni",
+		"messageExpiration": {
+			"$date": "2018-11-13T05:00:00.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-09T18:57:36.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-09T18:57:36.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Robin Doty",
+			"account": "rdoty"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "volcanoes-the-fires-of-creation-in-imax-L-1.jpg",
+			"key": "BkvQmc46Q",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/volcanoes-the-fires-of-creation-in-imax-L-1.jpg"
+		}]
+	},
+	{
+		"messageID": 7,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">Chef’s Demo</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">November 8; 2:00pm-3:00pm</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">Skyline</span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Wellness Team is hosting a Chef’s Demonstration in collaboration with Wolfgang Puck Catering!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Chef will be demonstrating how to make a <strong>Butternut Squash Canestri Pasta</strong>. At the end of the demo there will be samples and recipe cards for you to take with you.</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Let us know you’re coming by <a href=\"https://www.surveygizmo.com/s3/4641316/Chef-s-Demo-2018\">clicking here</a>. RSVPs are not required but we would like to get a rough headcount.</span></p><br /><p> </p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">We look forward to seeing you there!</span></p>",
+		"messageSubject": "Chef's Demo - Today",
+		"messageExpiration": {
+			"$date": "2019-05-07T12:42:43.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-08T13:42:43.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-08T13:42:43.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 5,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Tomorrow, Friday 11/9, is the premier of our newest IMAX Film - Volcanoes: The Fire of Creation. The star of the film, photographer Carsten Peter, will be at the Museum tomorrow. He will be speaking at the Current Science & Technology Stage at 12:30 - stop by and check it out!<br /><br />About the film:<br />Volcanoes: The Fires of Creation is a tale of science, culture, and thrilling adventure! Earth is a planet born of fire. For billions of years, volcanoes have helped create the world we know. From the continents to the air we breathe and even life itself, all have their origins in fire. With over 500 active volcanoes, Earth is bursting at the seams with these forces of mass construction. The story of volcanoes is the story of the planet’s creation, and the story of us.<br /><br />With intrepid explorer Carsten Peter as your guide, dodge boulders at the edge of an active volcano in Indonesia, descend to a lava lake in Vanuatu, and visit the incredible mineral deposit fields in Ethiopia. Travel across the globe to see the archaeological ghost town of Pompeii and witness the devastating effects of the recent Kilauea eruption in Hawaii. You'll be on the edge of your seat as you discover molten worlds and exploding craters in this adrenaline-filled, immersive experience that only IMAX®/Giant Screen films can provide!",
+		"messageSubject": "Volcanoes IMAX Guest Speaker!",
+		"messageExpiration": {
+			"$date": "2019-05-07T19:53:25.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-08T20:53:25.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-08T20:53:25.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Eric O'Dea",
+			"account": "eodea"
+		}
+	},
+	{
+		"messageID": 8,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "HOLIDAY GIFT WRAPPING TO BENEFIT LOW INCOME FAMILIES<br /><br />Come and Wrap presents this Holiday season at CambridgeSide Galleria to benefit A Bed For Every Child Program. All funds raised by this wonderful volunteer activity will be used to purchase brand new twin beds for unprivileged kids throughout Massachusetts.<br /><br />The money raised at the giftwrap booth will go directly to A Bed for Every Child Initiative. This initiative provides beds to low income families through Massachusetts. Last year, we were able to raise $10,265.50 enough to purchase 41 beds.<br /><br />With your help we will make this possible again!<br /><br />If you are ready to select a volunteer date, please visit: <br />http://signup.com/go/TPExOmn<br /><br />If you have any questions, please reach out to Melissa Rousselle at mrousselle@mos.org <br /><br />Thank you!<br />Melissa",
+		"messageSubject": "Charity Gift Wrapping at CambridgeSide Galleria!",
+		"messageExpiration": {
+			"$date": "2019-05-06T14:42:36.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-07T15:42:36.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-07T15:42:36.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Melissa Rousselle",
+			"account": "mrousselle"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "2018-11-07_10-39-16.jpg",
+			"key": "rymDm75VpX",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/2018-11-07_10-39-16.jpg"
+		}]
+	},
+	{
+		"messageID": 13,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Cool Science",
+			"camlName": "coolScience"
+		}],
+		"messageBody": "Hi MoS Family! I recently started a side business doing Alaskan sawmilling. I use a chainsaw mill to create live edge slabs from fallen trees and logs. I'll be giving a lecture on the process and showing off some slabs and equipment at Artisan's Asylum on Thursday, November 8th from 7:00 - 8:30. Come on by!!",
+		"messageSubject": "Sawmilling Lecture at Artisan's Asylum, Somerville",
+		"messageExpiration": {
+			"$date": "2019-05-02T18:08:35.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-03T18:08:35.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-03T18:08:35.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Chris San Antonio-Tunis",
+			"account": "csanantonio"
+		}
+	},
+	{
+		"messageID": 20,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/920060.html\">Director, Relationship Development</a></p></h5><br /><p>The Director, Relationship Development will be responsible for managing special volunteer leadership initiatives, and together with senior Advancement leadership and fundraising teams, set annual Advancement board development goals up to and including collaborative creation, execution, and follow-up on donor engagement and recruitment initiatives. This position will work closely with the SVP to advance the volunteer engagement agenda by developing and implementing a strategic engagement plan that serves fundraising goals across the Museum. The primary functions will be management of special board initiatives, with a focus on cross-Division advancement projects and volunteer leadership management. The Director will meet individually and collectively with leading donors to deepen their involvement with the Museum. The Director will partner with the President's Senior Management Team and the President's Office to strategically shape the agendas, materials and presentations volunteer leadership meetings. Together with the President's Office, specifically engage in the board nomination strategy process. This role will provide administrative support for select Committees and Task Forces, as needed.</p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, November 1, 2018<br /><p><i>This position is full-time, 40 hours/week, Monday-Friday, with some weekend, evening and travel required.</i> </p>",
+		"messageSubject": "Internal Job Listing - Director, Relationship Deve",
+		"messageExpiration": {
+			"$date": "2019-04-24T21:32:21.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-26T21:32:21.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-26T21:32:21.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 30,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "School and Youth Programs, along with the Forums Department, is hosting the <i>Chemistry is Out of This World</i> High School Science Series <b>today, Friday, 10/19</b>. We are expecting a full house with around 300 Massachusetts high school students and their teachers participating in our program. We would like to invite you all to check out our space-themed Hands-on Activities and Keynote Demonstration. <br /><p><br /><b>Schedule</b><br /><p><br /><b>9:30 AM:</b> Hands-on Activities open in the Blue Wing Well<br /><p><br /><b>11:00 AM -11:45 AM:</b> Keynote Demonstration presented by Museum Educator, David Sittenfeld, in Cahners Theater <br /><p><br /><b>12:00 PM:</b> Hands-on Activities close<br /><p><br />We hope to see you there!",
+		"messageSubject": "TODAY 10/19: Chemistry High School Science Series",
+		"messageExpiration": {
+			"$date": "2019-04-17T11:53:27.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-19T11:53:27.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-19T11:56:10.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Meghan Carter",
+			"account": "mcarter"
+		}
+	},
+	{
+		"messageID": 25,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "We have TONS of leftover MilliporeSigma giveaways from our National Chemistry Week Celebration on Sunday!<br /><br />Stop by the Forum Pod (end of Gordon East by the Quiet Room) and grab as many folders as you would like! They are on the table. <br /><br />Each folder has a laminated periodic table and a pencil.",
+		"messageSubject": "Free Periodic Table and Pencil Giveaways!",
+		"messageExpiration": {
+			"$date": "2019-04-21T16:55:05.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-23T16:55:05.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-23T17:04:14.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Emily Hostetler",
+			"account": "ehostetler"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "IMG_1885.jpg",
+			"key": "ByVvQQqVaQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/IMG_1885.jpg"
+		}]
+	},
+	{
+		"messageID": 40,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "I am looking for someone to carpool with a few days each week from the south shore. I live in Pembroke and could pick up at any Park & Ride along Route 3.  I want to make use of that HOV lane! Please pass along to anyone outside of MOS that might benefit from a carpool from the SS too! <br />mmahoney@mos if you are interested!",
+		"messageSubject": "Carpool buddy",
+		"messageExpiration": {
+			"$date": "2019-04-08T11:26:25.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-10T11:26:25.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-10T11:26:25.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Meredith Mahoney",
+			"account": "mmahoney"
+		}
+	},
+	{
+		"messageID": 35,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Membership has 2 half-day card fulfillment GSEs available for Thursday, October 16. This GSE lets you...<p><br />&#10004; listen to your favorite music, audiobook, or podcasts on your headphones while you work<br /><p>&#10004; enjoy a workstation with an up close and personal view of the Charles River<br /><p>&#10004; earn GSE credit<br /><p>&#10004; and experience the satisfaction of knowing you've helped the Membership Department and the Museum's members!<br /><p>If you have the availability, please consider signing up.",
+		"messageSubject": "Membership GSEs for Thursday!",
+		"messageExpiration": {
+			"$date": "2019-04-14T17:15:00.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-16T17:15:00.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-16T17:15:00.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bethany Zaiatz",
+			"account": "bzaiatz"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-new-new-new-GSE-pooh-window.jpg",
+			"key": "ryrPmX5ETQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-new-new-new-GSE-pooh-window.jpg"
+		}]
+	},
+	{
+		"messageID": 45,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi everyone,<br /><br />We are looking for a few guest educators to help facilitate chemistry activities in the Blue Wing Well on October 19th from 9 am to 12:30 pm as part of our High School Science Series: Chemistry is Out of This World! You can find the sign-up page here:<br /><br />https://quark.mos.org/getitdone/gse/signup/showschedule.cfm?Schedule=33205<br /><br />All guest educators will receive an educator guide and video training resource to help them learn 1 of 6 chemistry activities that will connect to Space. If you are interested and want to know more, please feel free to contact Christina Moscat or Meghan Carter at cmoscat@mos.org and mcarter@mos.org.<br /><br />Thank you!<br /><br />Christina",
+		"messageSubject": "GSEs for HSSS on 10/19!",
+		"messageExpiration": {
+			"$date": "2019-04-01T19:46:19.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-03T19:46:19.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-03T19:46:19.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Christina Moscat",
+			"account": "cmoscat"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "ncw2.jpg",
+			"key": "ryIPQ75Va7",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/ncw2.jpg"
+		}]
+	},
+	{
+		"messageID": 50,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Effective December 1, 2018, the Museum will no longer be able to provide staff with a pre-tax MBTA or commuter rail pass.  The new Internal Revenue Code, Section 512(a)(7) has eliminated the pre-tax offering that companies can make.<br /><br />If you were thinking of ordering a pass you can do so online here: https://commerce.mbta.com/Passes/<br />If you choose to order your pass online, please be aware that the MBTA ships out passes 7-10 business days before the pass is activated on the first of the month.   You can also sign up for the MBTA mobile app.  Additional information can be found here: https://www.mbta.com/fares/commuter-rail-fares#how-to-pay<br /><br />We are truly sorry for the inconvenience.",
+		"messageSubject": "MBTA Pass Program",
+		"messageExpiration": {
+			"$date": "2019-03-27T20:20:04.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-28T20:20:04.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-28T20:20:04.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Aurelia GrantWingate",
+			"account": "agrantwingate"
+		}
+	},
+	{
+		"messageID": 55,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "In April 2017, the Museum installed four Level 2 EV Charging Stations on the fourth floor of the garage to accommodate Museum guests and staff who drive EV vehicles. Due to the high demand, an additional Level 1 EV parking spots were installed to help accommodate Museum staff and guests who will be parking in the garage during the day. <br /><br />We ask the Museum Staff and Volunteers make an effort to park in one of the Level 1 EV parking spots, which vehicles can be left in all day. Should you park in a Level 2 EV parking spot, we ask that your vehicle be moved upon completion of charging. This will help maximize usage of the EV charging stations and ensure availability for both Museum staff and guests. <br /><br />Please contact Mike Sullivan at x4495 if you have any questions.",
+		"messageSubject": "EV Charging on the 4th Floor of the Garage",
+		"messageExpiration": {
+			"$date": "2019-03-25T14:32:35.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-26T14:32:35.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-26T14:32:35.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Michael Sullivan",
+			"account": "msullivan"
+		}
+	},
+	{
+		"messageID": 60,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<p class=\"xmsonormal\" style=\"text-align: center;\" align=\"center\"><strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\">Last Month </span></strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\">for&nbsp;</span><strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: red;\">MOScar</span></strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\"> submissions!</span></p><br /><p class=\"xmsonormal\" style=\"text-align: center;\" align=\"center\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">&nbsp;</span><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">The 2017-2018 &ldquo;</span></strong><span class=\"highlight\"><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">MOScar</span></strong></span><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">s Season&rdquo; officially ends on </span></strong><em><strong><u><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">September 30th</span></u></strong></em><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">!</span></strong></p><br /><p class=\"xmsonormal\" style=\"text-align: left;\" align=\"center\"><strong><em><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: red;\">What does this mean?</span></em></strong></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">Any <span class=\"highlight\">MOScar</span> submitted through September 30 is eligible to be nominated for a 2018 trophy! Don't miss the chance to recognize your fellow colleagues for their excellence! </span></p><br /><p class=\"xmsonormal\"><strong><em><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: red;\">What do we need from YOU?</span></em></strong></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">Say thank you to a colleague, volunteer, or intern by September 30th by clicking </span><span style=\"font-size: 14.0pt; font-family: 'Calibri',sans-serif; color: black;\"><a href=\"http://www.surveygizmo.com/s3/3331098/MOScar-Recognition-Form\">HERE</a></span><span style=\"font-family: 'Calibri',sans-serif; color: black;\">. Remember, we love thank you&rsquo;s big and small, now&rsquo;s your chance to make someone&rsquo;s day!</span></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">We are </span><strong><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: black;\">ONLY <u>6</u></span></strong><span style=\"font-family: 'Calibri',sans-serif; color: black;\"> nominations away from breaking our <span class=\"highlight\">MOScar</span> record! Let&rsquo;s work together to make 2017-2018 our most thankful season.</span></p><br /><p class=\"xmsonormal\">&nbsp;</p><br /><p class=\"xmsonormal\"><strong><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: black;\">The <span class=\"highlight\">MOScar</span> award ceremony will be held in early 2019, the official date will be coming to your inbox soon!</span></strong></p>",
+		"messageSubject": "Only 6 Away!",
+		"messageExpiration": {
+			"$date": "2019-03-23T14:28:44.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-24T14:28:44.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-24T14:28:44.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 65,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Kudos",
+			"camlName": "kudos"
+		}],
+		"messageBody": "CONGRATULATIONS to the following MOS Team Members who have graduated from the Guest Service Orientation. Thanks to their enthusiastic participation, the workshop was a huge success. We're looking forward to their further contributions to the Museum.<br /> <br /><br />Amy Anderson, Tech Studio<br />Rae Becerra, IIT<br />Brian Brewster, Marketing<br />Charlotte Callahan, ECS Corporate<br />Emily Carolin, Donor Relations<br />Sara  Castellucci, Exhibit Design<br />Destinee Chandler, Informal Engineering & CSL <br />Mark DeCew, IIT-Interactive Media<br />Donna DiBartolomeo, Traveling Exhibitions & Project Management<br />Sara  Fried, Marketing<br />Trina Lafata, CSEI<br />David Marino, Live Presentations<br />Brian Mobbs, Computer Science Education<br />Henry Saniuk Jr., Interactive Media<br />Rebecca Siladi, Live Presentations<br />Karen Turpin, Leadership & Planned Giving<br />Collin Van Son, Live Presentations<br />Brianna Wilkinson, CSEI<br />Arga Yunus, Informal Engineering & CSL <br /> <br /><br />Next time you see them, be sure to say Congratulations!<br /><br />Extra special thanks to our facilitators, Mike Adams, Manager, Traveling Programs and Robin Doty, Manager, Omni & 4D Theater. Thanks, Mike and Robin!",
+		"messageSubject": "GSO - Congrats!",
+		"messageExpiration": {
+			"$date": "2019-03-19T13:29:03.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-20T13:29:03.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-20T13:29:03.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 70,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi Everyone,<br /><br />We are thrilled to announce the headliner for our upcoming Winter/Spring 2019 SubSpace season of adult programming! Jonathan Van Ness, Emmy-winning star of Netflix’s “Queer Eye”, will come to the Museum for one night only with his popular podcast, Getting Curious with Jonathan Van Ness, on Wednesday, February 27th, 2019. This will be a live recording which will become a future episode of the podcast, and feature Jonathan exploring a science or health related topic with a special guest expert. The show will take place in the Blue Wing, with seating on the terrace level, and standing room on level 1 and 2.<br /><br />The show is being announced and tickets go live today, Wednesday, 9/19 at 9:00AM, and we will begin rolling out to the public and press that hour, with JVN making the exciting announcement shortly after. <br /><br />We wanted to share this exciting news with staff ahead of time. Tickets are limited and we are unable to hold or comp any tickets, so we urge interested folks to purchase sooner than later! GSE's will be made available shortly as well for those interested.<br /><br />Once again, we are thrilled to be bringing this important voice of today's culture to the Museum, and hope you all share that excitement! <br /><br />-James<br /><br />A RENO FAMILY FOUNDATION SYMPOSIUM— <br />Getting Curious with Jonathan Van Ness<br />Wednesday, February 27, 2019; 7:30pm<br />Blue Wing<br />Tickets: Seated- $35; Standing-$25; On sale Wednesday, September 19th at 9:00AM EST<br /><br />Television personality, Emmy winner, and hairstylist to the stars, Jonathan Van Ness comes to the Museum of Science for one night only! Enjoy a live taping of his popular podcast Getting Curious with Jonathan Van Ness.<br /><br />Growing up, Jonathan had a ravenous curiosity for learning new stuff (like his obsession with Finland) that defied the more common pursuits of midwestern boys. In Getting Curious: The Podcast, Jonathan’s curiosity marches on, exploring topics like the Armenian Genocide, Gravitational waves and the Romanovs to lighter fare featuring Margaret Cho or Denise Bidot on what it’s like being a model in fashion today. Each episode focuses on a different topic of interest, welcoming an expert in that particular field to satiate everyone’s curiosity. Jonathan has been turning out episodes since 2015, you will find Getting Curious on Earwolf, Libsyn or the Apple Podcast Store.<br /><br />Funding provided by the Reno Family Foundation Fund.<br /><br />Seating and standing room is general admission, so we encourage you to arrive early to guarantee your party is seated together. Doors to the show will open at 7:00 pm.",
+		"messageSubject": "Jonathan Van Ness- Live at MOS!",
+		"messageExpiration": {
+			"$date": "2019-03-18T12:46:27.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-19T12:46:27.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-19T13:37:24.000Z"
+		},
+		"messageCreator": {
+			"displayName": "James Wetzel",
+			"account": "jwetzel"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "jvnsmall.jpg",
+			"key": "HkvvXQ94p7",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/jvnsmall.jpg"
+		}]
+	},
+	{
+		"messageID": 75,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<p>This policy applies to all staff at the Museum, whether working on the Museum property or conducting off-site Museum business as it relates to the use of chemicals. This includes all chemicals, including cleaning and maintenance supplies as well as chemicals used for educational purposes.  A <a href=\"https://bmos.sharepoint.com/EHSDocs/Chemical%20Safety%20Tips.pdf\">Chemical Safety Tip Sheet</a> has been posted on the EH&S  Hub to help summarize the program.</p><br /><p>This Chemical Safety Program addresses minimum requirements and guidelines for safe handling of chemicals while addressing regulatory and best practices for chemical purchases, usage, labeling, transporting, storage and waste disposal.</p><br /><p>The Chemical Safety Program is located on the <a href=\"https://bmos.sharepoint.com/SitePages/Environmental%20Health%20and%20Safety.aspx\">EH&S Hub</a> in the category “Program” or follow this direct link: <a href=\"https://bmos.sharepoint.com/EHSDocs/Chemical%20Safety%20Program.pdf\">https://bmos.sharepoint.com/EHSDocs/Chemical%20Safety%20Program.pdf</a></p><br /><p>Please don’t hesitate to contact me with your safety questions. And thank you for your continued dedication to making the Museum even safer!</p><br /><p>Best regards,</p><br /><p>Christina</p><br /><p><span style=\"font-size: 8pt;\"><span style=\"color: #7f7f7f;\">Christina Dillard </span><span style=\"color: #a6a6a6;\">|</span><span style=\"color: #7f7f7f;\"> Environmental Health &amp; Safety (EHS) Program Manager </span></span><span style=\"font-size: 8pt;\"><span style=\"color: #7f7f7f;\">X4249 </span><span style=\"color: #a6a6a6;\">|&nbsp;</span><a href=\"mailto:cdillard@mos.org\"><span style=\"color: blue;\">cdillard@mos.org</span></a> </span></p>",
+		"messageSubject": "Did you see the *new* Chemical Safety Policy?",
+		"messageExpiration": {
+			"$date": "2019-03-13T17:30:21.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-14T17:30:21.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-14T17:30:21.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Christina Dillard",
+			"account": "cdillard"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "ChemicalSafetyTips.JPG",
+			"key": "B1uP77qVTQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/ChemicalSafetyTips.JPG"
+		}]
+	},
+	{
+		"messageID": 80,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The 5th floor of the garage will not be available for parking Thursday and Friday (9/13 & 9/14), will be available for parking this weekend, and then shut down again for the next few weeks starting Monday (9/17). <br /><br />During this time, Museum staff and contract parkers will be asked to park on the 3rd and 4th floors; similar to how we manage large snow events. <br /><br />But….”There’s no snow (yet?)” you might say – very observant! This is for our “Phase 1” of Garage Repair Projects being executed throughout this fall and next spring. <br /><br />Over the course of the next months, Contracting Specialists Inc (CSI) will be systematically performing repairs with several crews throughout our garage and exterior facade on a variety of prioritized items to maintain and extend the useful life of the Garage. When the work has to affect parking or garage traffic, like their first phase on the 5th floor which includes concrete repairs and recoating the entire surface in a multi-step process, we will be posting messages like this one. Additional areas will be coned off for the required work locations, staging, and safety requirements where needed, so please obey them. Should you have any questions or concerns, please let me know. <br />Thanks!<br />-Jena Boehm x.0145",
+		"messageSubject": "Garage Phase 1 Repairs **NOTE:PARKING AFFECTED**",
+		"messageExpiration": {
+			"$date": "2019-03-11T15:20:06.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-12T15:20:06.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-12T15:20:06.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Jena Boehm",
+			"account": "jboehm"
+		}
+	},
+	{
+		"messageID": 85,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "All,<br /><br />Please be advised that IIT will be performing a planned out of band network maintenance on the following date and time:<br /><br />Tuesday September 11th 2018 from 6:00pm to 11:59pm <br /><br />This maintenance is necessary to perform upgrades to our network infrastructure.  We anticipate this scheduled outage will take approximately 4 to 6 hrs. to complete.  During this maintenance window you may experience brief outages where servers, business applications, and or files may not be accessible both internally and externally.  To ensure uptime and stability of our platform, we are performing this upgrade shortly after close of business so we can maximize our efforts to ensure business operations will not be impacted when we open the next day.  <br /><br />If you have any questions or concerns please contact the Service Desk team at x0130.  <br /><br />We thank you in advance for your attention and understanding.",
+		"messageSubject": "Planned Network Maintenance Night 9-11-18",
+		"messageExpiration": {
+			"$date": "2019-03-09T18:15:32.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-10T17:15:32.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-10T17:15:32.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Angela Collins",
+			"account": "acollins"
+		}
+	},
+	{
+		"messageID": 90,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<h2 style=\"text-align: center;\"><span style=\"color: #339966; font-family: arial, helvetica, sans-serif;\"><strong>Mobile Mini Golf</strong><strong><br />September 13th 11:00am - 3:00pm<br />Skyline</strong></span></h5><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Wellness Team is hosting a day of mini golf! Nine holes mini golf will be set up at the Museum! These colorful holes are designed to challenge teams with hills, jumps, bumps, and loops! Take some time out of your day to de-stress, move around, and have fun with your colleagues.</span><br /><br /><span style=\"font-family: arial, helvetica, sans-serif;\">You will receive all materials needed at the event, including score cards. A leader board will be kept so that you can see how your team is doing throughout the day.</span><br /><br /><span style=\"font-family: arial, helvetica, sans-serif;\">Teams have the opportunity to earn <strong>BONUS POINTS</strong> that deduct from your final team score by:</span></p><br /><ul><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Create a fun team name</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Having multi-department teammates</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Having themed or matching outfits</span></li><br /></ul><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Important notes:</strong> You will sign up for a tee time in groups of 5 (can be less, but no more than 5). A 9 hole circuit will take about 40-45 minutes for a team of 5. The tee times only allow for 1 team per slot, if you do not see a time slot it is because it has been taken.</span></p><br /><p style=\"text-align: center;\"> </p><br /><p style=\"text-align: center;\"><a href=\"https://www.surveygizmo.com/s3/4534133/Mobile-Mini-Golf-2018\"><span style=\"font-family: arial, helvetica, sans-serif;\">TO SIGN UP CLICK HERE!</span></a></p>",
+		"messageSubject": "Reminder - Mobile Mini Golf",
+		"messageExpiration": {
+			"$date": "2019-03-04T15:16:01.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-05T14:16:01.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-05T14:16:01.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 95,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "This Friday, August 31st, the DCR will be paving the parking lot of the facility next to the garage on the corner of Land Blvd. and O’Brien Highway. This will include paving up to the stairs in the rear of the Gordon Wing.<br /><br />Please plan accordingly and do not use the door on the Cambridgeside/Riverside except for emergency egress only. Signs will be posted on the garage stairwells and on the exit door. <br /><br />Please contact Mike Sullivan at x4495 with any questions.",
+		"messageSubject": "DCR Paving Work",
+		"messageExpiration": {
+			"$date": "2019-02-26T18:18:21.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-30T17:18:21.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-30T17:18:21.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Michael Sullivan",
+			"account": "msullivan"
+		}
+	},
+	{
+		"messageID": 100,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<h2 style=\"text-align: center;\"><span style=\"color: #339966; font-family: arial, helvetica, sans-serif;\"><strong>Mobile Mini Golf</strong><strong><br />September 13th 11:00am - 3:00pm<br />Skyline/d'Arb</strong></span></h5><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Wellness Team is hosting a day of mini golf! Nine holes mini golf will be set up at the Museum! These colorful holes are designed to challenge teams with hills, jumps, bumps, and loops! Take some time out of your day to de-stress, move around, and have fun with your colleagues.</span><br /><br /><span style=\"font-family: arial, helvetica, sans-serif;\">You will receive all materials needed at the event, including score cards. A leader board will be kept so that you can see how your team is doing throughout the day.</span><br /><br /><span style=\"font-family: arial, helvetica, sans-serif;\">Teams have the opportunity to earn <strong>BONUS POINTS</strong> that deduct from your final team score by:</span></p><br /><ul><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Create a fun team name</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Having multi-department teammates</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Having themed or matching outfits</span></li><br /></ul><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Important notes:</strong> You will sign up for a tee time in groups of 5 (can be less, but no more than 5). A 9 hole circuit will take about 40-45 minutes for a team of 5. The tee times only allow for 1 team per slot, if you do not see a time slot it is because it has been taken.</span></p><br /><p style=\"text-align: center;\"> </p><br /><p style=\"text-align: center;\"><a href=\"https://www.surveygizmo.com/s3/4534133/Mobile-Mini-Golf-2018\"><span style=\"font-family: arial, helvetica, sans-serif;\">TO SIGN UP CLICK HERE!</span></a></p>",
+		"messageSubject": "Mobile Mini Golf Returns!",
+		"messageExpiration": {
+			"$date": "2019-02-23T15:19:37.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-27T14:19:37.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-27T14:19:37.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 105,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "THANK YOU, THANK YOU, THANK YOU to all who donated blood yesterday!<br /><br />We had an excellent turnout with 42 donors presenting and 40 units of blood collected! We even had 17 people donate for the first time! This has the potential to save over 120 lives, and will go a long way towards helping patients in this difficult time of year for the American Red Cross.",
+		"messageSubject": "THANK YOU - Red Cross Blood Drive",
+		"messageExpiration": {
+			"$date": "2019-02-18T18:29:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-22T17:29:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-22T17:29:26.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 115,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Membership has two half-day GSEs available for Monday. This GSE lets you...<p><br />&#10004;  listen to your favorite music, audiobook, or podcasts on your headphones while you work<br /><p>&#10004;  enjoy a workstation with an up close and personal view of the Charles River<br /><p>&#10004;  earn GSE credit<br /><p>&#10004;  and experience the satisfaction of knowing you've helped the Membership Department and the Museum's members!<br /><p>If you have the availability, please consider signing up.",
+		"messageSubject": "Half-Day Membership GSEs on Monday!",
+		"messageExpiration": {
+			"$date": "2019-02-12T21:13:51.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-16T20:13:51.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-16T20:14:11.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bethany Zaiatz",
+			"account": "bzaiatz"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-new-new-GSE-pooh-window.jpg",
+			"key": "rkKw7XqNTQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-new-new-GSE-pooh-window.jpg"
+		}]
+	},
+	{
+		"messageID": 120,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The Riverview Café will no longer be offering Tapas and Late Night Bites on Friday Nights. The Café will continue to serve beer and wine selections during regular business hours. <br /><br />Grill Open Daily from 11am-7pm<br />All other stations 11am-4pm<br /><br />Also- look for a new station to replace Smokehouse this fall! <br /><br />Thank you for your continued patronage. <br /><br />- The Wolfgang Puck Team",
+		"messageSubject": "No Mas Tapas!",
+		"messageExpiration": {
+			"$date": "2019-02-11T19:45:29.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-15T18:45:29.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-15T18:45:29.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Nicole Pugh",
+			"account": "npugh"
+		}
+	},
+	{
+		"messageID": 125,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "WHAT: PARTY!!<br />WHEN: Thursday Aug 16th, 2:30p<br />WHERE: Engineers Enclave (first classroom in old Clubhouse space)<br />WHY: To celebrate THREE awesome people!!<br /><br />-Shelby will be moving on to bigger and better things with her live animal menagerie!<br /><br />-Marian will be heading back to Pennsylvania to take the informal science education community there by storm!<br /><br />-Jonathan will be transitioning into an Education Associate with Live Presentations and CS&T!<br /><br />Spread the word to all<br />Hope to see you there!",
+		"messageSubject": "Live Presentations Celebrations!",
+		"messageExpiration": {
+			"$date": "2019-02-07T19:48:45.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-11T18:48:45.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-11T18:48:45.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Karen Powers",
+			"account": "kpowers"
+		}
+	},
+	{
+		"messageID": 130,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Kudos",
+			"camlName": "kudos"
+		}],
+		"messageBody": "<p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"color: red;\">CONGRATULATIONS</span></strong> to the following MOS Team Members who have graduated from the Guest Service Orientation. Thanks to their enthusiastic participation, the workshop was a huge success. We're looking forward to their further contributions to the Museum.</span></p><br /><p> </p><br /><ul><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Samantha Bennett, Visitor Services</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Amanda Brown, Visitor Services<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Sophia Chalsma, Visitor Services<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>John Drohan, Visitor Services<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Adriana Gleaton, Visitor Services<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Janna Greene, CF&G<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Ethan Hutchinson, Visitor Services<br /></strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Sophia Laurino, Visitor Services</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Meredith Mahoney, Educator Resource Center</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Jaylin Mejia-Mayen, Visitor Services</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Nicole Merullo, Hall of Human Life</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Jill Olson, EiE Business Operations</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Liz Petersen, Curriculum Marketing</strong></span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Melissa Roussel, Curriculum Marketing</strong></span></li><br /></ul><br /><p> </p><br /><p><span style=\"font-family: arial, helvetica, sans-serif; color: #000000;\">Next time you see them, be sure to say Congratulations!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif; color: #000000;\"><em>Extra special thanks</em> to our facilitators, <strong>Carl Zukroff, Director, Marketing Communications and Dan MacDonald, Manager, Exhibit Maintenance.</strong> Thanks, Carl and Dan!</span></p>",
+		"messageSubject": "Congrats - GSO Participants!",
+		"messageExpiration": {
+			"$date": "2019-02-06T14:29:15.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-10T13:29:15.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-10T13:29:15.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 135,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The Rotating Destiny Lab modules in the \"Space\" exhibit will be shut down Wednesday and Thursday, and likely Friday. <br /><br />Please reach out to me (gignarri@mos.org, x4456) if you have any questions. <br /><br />Thank you!",
+		"messageSubject": "Space Rotating Labs Down",
+		"messageExpiration": {
+			"$date": "2019-02-03T14:18:54.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-07T13:18:54.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-07T22:26:31.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Grace Fo",
+			"account": "gfo"
+		}
+	},
+	{
+		"messageID": 140,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Comment Card Report 7/1/18-7/31/18 Part 1<br /><br />“Disappointed that the Dora exhibit is ending soon! So many of the sections are a favorite with my 2.5 year old and when we say we are going to MOS, something in that room is what she says she'd like to do, the slide, planting the flowers, playing with the balls or checking the animals. The variety of little kid sized activities in there is awesome. Some sections don't have much at eye level for the toddler/pre-K set, though we do love many of the other areas of the MOS which have little kid oriented elements, like the \"\"sewer\"\" she can crawl in under the exhibit down on the bottom floor. The baby chicks are a great level for littles and others and the height chart with magnets nearby it is good access for shorties and grownups too. Would very much appreciate some more permanent or visiting areas which have interactive spaces workable for toddlers/pre-K.”<br /><br />“Hi! Just wanted to inform you of a bug on your webpage. On at least (assuming you recycle your javascipt) your \"\"Exhibits\"\" page (Home>Explore>Exhibits), your dialogue boxes, upon hovering, go full blown Tigger and keep bouncing. This is on Safari for MacOS Vs. 11.1. Thanks!”<br /><br />“Today we had the pleasure of going to the Discovery Center and working with the wonderful staff there.  In particular, Elizabeth worked with our 4 year old son to put together an ostrich skeleton.  We were extremely impressed with how she managed the different kids that came and left while our son stayed put.  He can be very shy and is petite so he can easily be overshadowed by other children.  She was very careful to include him in everything and listened to everything he said, no matter how quiet.  He will have many great memories thanks to her!”<br /><br />“So sad to see the Dora exhibit closing, we LOVE IT! Please ass more younger kid playspaces, it's a nice change to Discovery Center & especially useful for stay at home families with kids who don't go to school yet to do in the week. We have come more to MOS because of it.”<br /><br />“Came down for Night of Sky at Planetarium due to website looked like you were shown a lot of animals and person shaped in sky and presenter just showed 3 things in 45 minutes as a member I was upset.”<br /><br />“Please please please<br />1) Bring back the Dora exhibit (we know it leaves July 4th)<br />2) More exhibits like it for younger kids”<br /><br />“Love Dora room. Kiddo is only 20 mo. so we don't actually care about Dora. But a place for a toddler to climb and adventure! Yes!”<br />“More exhibits like the Dora exhibit”<br /><br />“Bye bye Dora please bring the exhibit back again. Soon.”<br /><br />“I visited the museum with my son this morning. I tried 5 different hand sanitizer stations and they were all empty. This was between 10 and 10:30 am so there is no way they had all been used up that morning. If you are going to have them out, please keep them filled.”<br /><br />“We visited the Hayden planetarium today and I had not been there for a number of years”<br /><br />\"Please explain why you're giving the stage of a kid/family museum to this event.  https://www.mos.org/public-events/summer-thursdays/drag”<br /><br />\"I was very disappointed to hear about the so called 'Drag Thursdays' now scheduled at your once fine publicly supported institution. Entirely inappropriate and offensive.  I will no longer support the MOS.”<br /><br />\"Hello! I recently visited the museum for the first time. It was a great experience. I learned a lot, but left wondering...  what becomes of the chicks hatched in the Hall of Human Life's hatchery after their tenure in the exhibit?  Thank you”<br /><br />\"Great visit, as usual. A suggestion: Many (not all) exhibits have only US measure units in their explanation text. Consider adding metric equvalents to all museum exhibits.\"<br /><br />“My charge (age 5) had an idea for an exhibit while eating lunch: the science and stickiness of grilled cheese!”<br /><br /> “Koby was great! The food court was clean, quick and inviting.<br />Love this.”<br /><br />“Hi - I have been a member for several years and, having guests this past week, pulled out my Omni passes to use on our visit. I discovered expiration dates such that it seems that none of these passes are any longer valid. What a disappointment. Retail stores can no longer invalidate gift cards for it was declared a deceptive practice. I ask that you reconsider this practice for the same reason. Such a practice leads me to reconsider my support for MOS. Thanks for considering.”<br /><br />“Can you please have someone clean the Flying Over The Atomic Landscape exhibit? It is filled with grime in the holes that you’re supposed to put the red/blue/green pegs in to.”<br /><br />“Math exhibit needs more acknowledgment of African culture and people. All science was stolen from African genius culture that white scientists profit from. That wall of scientists is ALL white people! White scientists owe reparations to African people.\"<br /><br />“Been to many museums worldwide. This one was the best! Thanks.\"<br /><br />“I've ended our membership with the museum.  Our family had been members for about 10 years.  I don't believe that drag performances align to the charter of the museum.  As such, I will contribute to other entities”<br /><br />“Toilet in basement men's room won't flush.”<br /><br />“Hello, I purchased two memberships today during my first visit. I was very disappointed to find that only one of the hand sanitizer dispensers in the entire indoor premises (the one near the stairwell to the Live Animal Center) was working. This was very disappointing, as there are a lot of germs being spread around and one of the exhibits in the Journey to Space event involves putting your hand in a glove. Please fix this going forward.”<br /><br />“Most staff was very kind and helpful.  The conditions of the women's bathroom in the blue wing (2nd and 3rd floor) was disgusting!  I was surprised and completely grossed out by the mess and smell in both bathrooms.  The cafe needs to be better organized.  It was REALLY busy today (due to the rainy weather) and the cafe was chaotic.  I have never visited a place and felt so frustrated as I did today.  I will NEVER visit the MOS on a rainy weekend again!!  I was thinking about becoming a member but I changed my mind today.”",
+		"messageSubject": "A New Comment Card Report Part 1",
+		"messageExpiration": {
+			"$date": "2019-01-28T17:58:53.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-01T16:58:53.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-05T12:52:20.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 145,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\" https://mos.applicantpro.com/internaljobs/855247.html\"> Manager, Living Collections</a></p></h5><br /><p> The Senior Curator/Manager of the Living Collections Department is responsible for the overall management of the Live Animal Care Center and the Butterfly Garden composed of approximately 140 vertebrate animals and 60 individuals or colonies of invertebrates. The Manager must ensure that all Museum standards, governmental regulations and AZA accreditation standards for live animals and plants are being met or surpassed. The Manager has the final approval of all animals and plants used in programs and exhibits. Working with a full-time staff of nine and part-time staff of six, the Manager must ensure that the living collection is relevant to the Museum mission, species are appropriate for exhibits or programs, that acquisitions and transfers meet all permit requirements and that there are sufficient resources to support the collection. Every five years the Manager must also lead the AZA accreditation process.</p><br /><p><b>Deadline for Internal Applicants:</b> Wednesday, August 8<br /><p><i> This position is full-time, 40 hours/week, Tuesday-Saturday and must be available for emergencies</i> </p>",
+		"messageSubject": "Internal Job Listing - Manager, Living Collections",
+		"messageExpiration": {
+			"$date": "2019-01-29T19:42:08.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-02T18:42:08.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-02T18:42:08.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 150,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Comment Card report 7/1/18-7/31/18 Part 3<br /><br />\"I'm a diehard fan of the remnants of the Boston Community Solar System and would love to see it reinstated to its former glory. What would be involved in restoring the planets throughout the city? Please!”<br /><br />“I went to your website to plan a trip for my visiting grandchildren. I came across your Drag Queen events on Thursdays in the Planetarium. First of all what in heavens names does this have to do with science and secondly what kind of education are you trying to provide to young minds?  Sure I cannot bring my grandchildren to the Museum in Thursday’s and avoid this exposure. But if this is where you are investing your dollars and programming, then I will not give one dollar of my money to the museum any day of the week. We have enjoyed bringing our kids and grandkids to the museum over the years. No more!”<br /><br />“When I bought my membership, I got a temporary card that’s valid for 14 days. However, wouldn’t it be better for it to be 21 days to cover the 3-4 week wait time for the actual card? I understand that we could just go to the box office to receive a temporary 1 day, but what if I didn’t receive the card until the end of the 4th week and went multiple times?”<br /><br />“Hi what T area are you closest too? Thx”<br /><br />“I was beyond impressed with a young gentleman who helped us when we were seeing \"\"dream big\"\"  at 3 PM. He was so accommodating and helped my 4 year old be comfortable in the theater. He is incredibly kind and patient and has excellent skills with children. i am a child psychiatrist so really impressed. Thank you! Please make sure he is recognized. An outstanding employee I apologize I can't recall his name! thank you!”<br /><br />“mrn was fantastic! We learned so much about Boston from her as opposed to everyone else we have met, despite tours. Absolutely great, glad we came!”<br /><br /> “My family visited the museum. Upon going through the gates at the exhibit hall we had an instance that I need to share with you which was very unpleasant. My 8 year old daughter was standing on the side of me while I was pushing a baby stroller and my husband and son were ahead of us.  The employee letting us through did not realize my daughter standing next to me was with us (not sure how because we were all standing together) and they screamed very loudly at my daughter and scared her immensely. I did not think this was necessary at all.  I told the employee she was our daughter and while my 8 yo started crying they did not even apologize or say anything at all.  Needless to say this ruined our experience and honestly upset my daughter to the point that she was upset about this for days.  It really made an impact on her.  I am not trying to sound dramatic but I feel this was very unnecessary what happened.  I wanted to pass this information on to you. Thank you for your time.”<br /><br />“Member feedback on frustration at MOS. First on more than one occasion, I have checked out at parking and entered the info and charge card before entering member card and therefore did not get 2 hr free parking. this is because I am an English reader and read top to bottom left to right. the last thing at station is member card at bottom right. could you place a reminder for members to enter member card first? second I have emailed the member email about this after a frustrating experience and did not receive a response. third I was there ayt April vacation in a long line waiting to purchase tics for a long time until a volunteer asked if there were members in line because there was a special short line for members to purchase or pick up tics. A sign would have saved a half hour waiting with young children.”",
+		"messageSubject": "A Comment Card Report Part 3",
+		"messageExpiration": {
+			"$date": "2019-01-28T18:02:10.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-01T17:02:10.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-01T17:02:10.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 155,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "Hey all, I've got a broken PlayStation 2 on my hands that I have no use for. Not sure what's wrong with it, but it doesn't power on, so it might just be the power supply. If you want to try and fix it, or just use it for parts, it's yours for $15 OBO! Email me @ kkane@mos.org if you're interested in getting your tinker on!",
+		"messageSubject": "Broken PlayStation2",
+		"messageExpiration": {
+			"$date": "2019-01-19T19:32:56.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-23T18:32:56.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-30T18:33:42.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Kayleigh Kane",
+			"account": "kkane"
+		}
+	},
+	{
+		"messageID": 160,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Just a reminder that Summer Courses still needs 2 liter soda bottles. Please call X0435 and we will come and get them, thanks.",
+		"messageSubject": "soda bottles",
+		"messageExpiration": {
+			"$date": "2019-01-20T18:51:02.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-24T17:51:02.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-24T17:51:02.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Dennis Donahue",
+			"account": "ddonahue"
+		}
+	},
+	{
+		"messageID": 165,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The students in my Jr Museum Guides summer course have spent this week learning about all the types of education that happen in our museum and today they are ready to share what they have learned! <br /><br />We will be having our Activity Fair in the Blue Wing Well from 3-3:45pm this afternoon and everyone is invited to come see the students in action, sharing hands on activities with our visitors. Please join us if you'd like to see the results of the hard work they've been doing this week!",
+		"messageSubject": "Jr Museum Guide Activity Fair",
+		"messageExpiration": {
+			"$date": "2019-01-16T13:02:24.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-20T12:02:24.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-20T12:02:24.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Jill Neblett",
+			"account": "jneblett"
+		}
+	},
+	{
+		"messageID": 170,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 18.0pt;\">Virtual Walk/Run/Bike</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 18.0pt;\">2018 Summer Series Continues!</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 18.0pt;\">July 28 – 29</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 18.0pt;\">3 mile walk/run & 12 mile bike</span></strong></span></p><br /><p> </p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\">Our summer series continues with a 3 mile walk/run and a 12 mile bike ride! We hope you enjoyed our June virtual race and are displaying (or wearing) your medals proudly. Our second event in the series pushes you a little bit further. Don’t forget if you’re not able to do this in one fell swoop, you can do this over the course of two days. </span></p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\"> </span></p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\">As a reminder, a virtual race is a race in which you can do on your own time, at your own pace, anywhere you would like. </span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 10.5pt; line-height: 105%;\"> </span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 10.5pt; line-height: 105%;\">Participants will receive a personalized printable bib to wear while walking, running, or biking and a medal!</span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 10.5pt; line-height: 105%;\"> </span></strong></span></p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\">To participate in our<strong> second</strong> virtual race all you have to do is:</span></p><br /><ol><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Sign up </span><a href=\"https://www.surveygizmo.com/s3/4414221/Be-Well-Virtual-Walk-Run-Bike-3-Mile-12-Miles\"><span style=\"font-size: 10.5pt;\">HERE</span></a><span style=\"font-size: 10.5pt;\"> by July 26, 2018</span></span></li><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Complete 1 mile the weekend of June 28 - 29</span></li><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Send proof of your distance to </span><a href=\"mailto:wellness@mos.org\"><span style=\"font-size: 10.5pt;\">wellness@mos.org</span></a></span></li><br /></ol><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\">How can you send us proof?</span></p><br /><ul><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Screenshot your Heath App (iPhone)</span></li><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Screenshot any other fitness tracking apps you may have (iPhone or otherwise)</span></li><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Take a picture of your FitBit/Garmin/wearable device</span></li><br /><li style=\"line-height: normal; tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Take a picture of your treadmill dashboard data</span></li><br /></ul><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt; line-height: 105%;\">Send those screenshots and any pictures you take of your race to </span><a href=\"mailto:wellness@mos.org\"><span style=\"font-size: 10.5pt; line-height: 105%;\">wellness@mos.org</span></a><span style=\"font-size: 10.5pt; line-height: 105%;\">!</span></span></p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%; font-family: arial, helvetica, sans-serif;\"> </span></p><br /><p style=\"text-align: center;\"><a href=\"https://www.surveygizmo.com/s3/4414221/Be-Well-Virtual-Walk-Run-Bike-3-Mile-12-Miles\"><span style=\"font-size: 10.5pt; line-height: 105%;\"><span style=\"font-family: arial, helvetica, sans-serif;\">CLICK HERE TO SIGN UP!</span></span></a></p><br /><p><span style=\"font-size: 10.5pt; line-height: 105%;\"> </span></p>",
+		"messageSubject": "Virtual Walk/Run/Bike - Summer Series Continues",
+		"messageExpiration": {
+			"$date": "2019-01-07T15:12:47.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-11T14:12:47.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-11T14:12:47.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 175,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "All,<br /><br />Please be advised that IIT will be performing a planned out of band network maintenance on the following date and time:<br /><br />Tuesday July 10th, 2018 from 8:00pm to 11:59pm <br /><br />This maintenance is necessary to perform upgrades to our network infrastructure.  We anticipate this scheduled outage will take approximately 4 to 6 hrs. to complete.  During this maintenance window you may experience brief outages where servers, business applications, and or files may not be accessible both internally and externally.  To ensure uptime and stability of our platform, we are performing this upgrade shortly after close of business so we can maximize our efforts to ensure business operations will not be impacted when we open the next day. <br /> <br />If you have any questions or concerns please contact the Service Desk team at x0130.  <br />We thank you in advance for your attention and understanding.",
+		"messageSubject": "Planned Network Maintenance Night 7-10-18",
+		"messageExpiration": {
+			"$date": "2019-01-05T17:21:32.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-09T16:21:32.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-09T16:21:32.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Angela Collins",
+			"account": "acollins"
+		}
+	},
+	{
+		"messageID": 11,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "After 2.5 years at the Museum, please join me in wishing Mike Sullivan a fond farewell and the best of luck in his new endeavors! Mike will be using her considerable security experience and talent in his new position as the Industrial Specialist for the Defense Contract Management Agency based in Andover Massachusetts. Over the years, Mike has impacted the Museum in many ways, he has received several Moscar recognitions for exemplary service and has enhanced our departments efforts in countless way! Please join me in wishing Mike all the best in this exciting opportunity.  Mike last day of work will be Tuesday November 20th!",
+		"messageSubject": "Fond Farewell",
+		"messageExpiration": {
+			"$date": "2019-05-05T13:45:25.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-06T14:45:25.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-06T14:45:25.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bob Colantoni",
+			"account": "bcolantoni"
+		}
+	},
+	{
+		"messageID": 180,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "We generated a new Comment Card Report-June 6, 2018-June 30, 2018<br /><br />“Why did you discontinue the Let's Celebrate 4th of July! Member event? So disappointing!”<br /><br />“ The museum was fun for myself, my husband and 3 young nieces. However, in your In The Kitchen exhibit, my 5 year old niece unfortunately infested some of the water that was part of the exhibit. She became very ill with diarrhea and dehydration the very next day. I do not think it is wise to have a hands on exhibit that would invite young children to drink the liquids that have been exposed to bacteria and harmful microorganisms from every person that comes into contact with it. These are very young children who will impulsively drink from a paper cup that they often drink from. It’s a very unsafe exhibit which caused my niece to become terribly ill. It should be enclosed so that others do not have the same unfortunate incident.”<br /> <br />\"Sometimes the lines to purchase items in the museum gift shop are prohibitively long.  Perhaps you might consider adding a temporary cash register station during the times when there are school field trips (end of the school year).  Other than that, the museum caters so well to the student population during the crush of end-of-the-year field trips.  Thank you so much!”<br /><br />“Trying to register to give a gift membership.  The web page keeps telling me my address is invalid.  Help!”<br /><br />“Just an idea: maybe start an urban garden here at the museum which could be used for education as well as for the cafe/education (https://greencitygrowers.com). Also maybe start composting to use in the garden.”<br /><br />\"As a longtime Museum of Science member and former freelance employee, I object to the policy of having unused passes expire at the end of the membership year. I have paid for them and should have the use of them for as long as my membership is current. This was your policy with paper passes but apparently changed with the introduction of electronic passes. I think the expiration of passes is a disservice to loyal members like me!”<br /><br />“ James Otis Students really enjoyed the scholarship that allowed them to visit the Museum on June 6th. They learned a lot and had a great time.THANKS!”<br /><br />“I would like to see an OMNI film on the Northern Lights. Thank you”<br /><br />“Kobie Garcia, the Cafe Manager in the Museum of Science was so wonderful!  We were on a visit with 45 students and our tour company neglected to make lunch reservations to ensure we’d have somewhere to sit together.  Kobie arranged for us to have a spot in the reserved area anyway and with a waterfront view to boot!! So accommodating and kind!”<br /><br />“Please label the cats in the natural Wonder Exhibit.”<br /><br />“It takes too long to knock them down.\"<br /><br />“Please don't have live animals in your exhibits. This is cruel and unnecessary.”<br /><br />“ Just wanted to say that I live in Joliet Illinois and the lightning bugs have massively increased in the last 2 years in my area.”<br /><br />“I have a couple of ideas for exhibits. Do you take suggestions of this kind? If so, who should I contact?”<br /><br />“Hi, we were visting the museum this week and, while in the Red Wing discovering our universe, we noticed a slight typo. There's a place describing radio waves and how they're measured and recorded. On it it mentions the ALMA device located in Atacama, Chile. However, you have it spelled as ALTACAMA, with an L. Probably a slight oversight, but I figured I'd point it out to you.”<br /><br />\"Linda at Omni brought my daughter's lost hat and brought it up to us in the theater. She was so sweet to do that.”<br /><br />“Loved everything! Except for the live animal exhibits. It's inhumane. All else great!”<br /><br />“The Space exhibit is fantastic.  And I think The Museum of Science should have lots of stuff like it as permanent exhibits.  Space content is woefully underrepresented in The Museum and this exhibit not only highlighted that fact but also showed how well it can be done.  The rotating simulator wouldn't be necessary, of course, but any of the smaller parts of the exhibit would be great additions.”<br /><br />“We have SO enjoyed the Dora kid play space!  My kids could spend hours in there.  Our family would love to see more of those types of things for the younger kiddos at the museum.”<br /><br />“Please can you put the taco stand back. It makes no sense that there are two stands with burgers and hot dogs. So can you please bring the taco stand back.”<br /><br />“Roof top garden outside the bee exhibit!”<br /><br />“More toddler spaces like the Dora exhibit or water area like at the children’s museum.”",
+		"messageSubject": "A New Comment Card Report",
+		"messageExpiration": {
+			"$date": "2018-12-28T19:42:20.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-01T18:42:20.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-01T18:42:20.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 16,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi friends! We are looking for extra help in the Discovery Center over the next 2 weeks. Sign up for a GSE to come facilitate hands-on activities with children and families. GSEs are available November 6th-15th.<br /><br />Thanks!<br />Janna <br />x0427",
+		"messageSubject": "Discovery Center Help Needed!",
+		"messageExpiration": {
+			"$date": "2018-11-16T05:00:00.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-01T20:14:24.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-01T20:14:24.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Janna Doherty",
+			"account": "jdoherty"
+		}
+	},
+	{
+		"messageID": 21,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Just wanted to let everyone know about some of the newest additions in the Charles River Gallery exhibit. This past week 2 Brown Bullhead catfish, 3 Red-breasted sunfish, and 1 Bluegill were added to the tank. There are also some new pieces of driftwood that provide new territories and hiding places. The fish are now establishing new territories so there's been some interesting behavior to observe!<br /><br />-Christa",
+		"messageSubject": "New additions in Charles River Gallery",
+		"messageExpiration": {
+			"$date": "2019-04-23T18:39:27.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-25T18:39:27.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-25T18:39:27.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Christa Carceo",
+			"account": "ccarceo"
+		}
+	},
+	{
+		"messageID": 26,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "As of today the 5th floor renovation has been concluded and the 5th floor is again open for staff and guests. <br /><br />As always, parking on levels 2 and 3 are reserved for our guests. <br /><br />Now that the 5th floor is open again, staff and volunteers are expected to park on the 4th and 5th floors.<br /><br />Thank you for your cooperation as we deal with the impact of the garage renovation project.",
+		"messageSubject": "Garage",
+		"messageExpiration": {
+			"$date": "2019-04-21T15:28:19.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-23T15:28:19.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-23T15:28:19.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bob Colantoni",
+			"account": "bcolantoni"
+		}
+	},
+	{
+		"messageID": 31,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "Now closed- Starting Wednesday morning 10/17 at 8:30am, IIT will be having a yard sale of retired computers.  It is mostly PC laptops at this time but we do have a few older 21\" iMacs.<br /><br />The price range is $50 to $125. Everything is first come, first served. There are NO keyboards or mice to go with the iMacs. All of the machines will have a clean install of the OS as if it were a new machine. All of the equipment is older but working and is sold as is. Please keep in mind that these are used machines and will show some wear and tear.  Battery life is also something we cannot guarantee.<br /><br />All sales are final and must leave the museum property after being purchased. You will need to pay by cash or check at the time of the purchase and we cannot hold machines. <br /><br />So please stop by the 3rd floor on Wednesday after 8:30am and see me.  Please email if you have any question prior to the sale.<br /><br />Thank you!<br />Allie",
+		"messageSubject": "Yardsale has ended- thank you",
+		"messageExpiration": {
+			"$date": "2019-04-14T18:42:49.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-16T18:42:49.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-18T14:53:41.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Allie Curtis",
+			"account": "acurtis"
+		}
+	},
+	{
+		"messageID": 36,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/910155.html \">Exhibit Maintenance Technician  II</a></p></h5><br /><p>Responsible for the maintenance, repair and installation of exhibits and exhibit components throughout the museum utilizing skills in mechanical, electro-mechanical, woodworking areas. Perform daily rounds of exhibit areas and exhibit components to ensure they are working properly and provide on the spot repairs when damage is found and report all existing or potential problems. Assists senior technicians with the installation of lighting and power as well as upkeep and repairs of temporary exhibits. Assist other technicians in the performance of their duties, including inspection rounds, exhibit installations, lighting and other tasks as needed.</p><br /><p><b>Deadline for Internal Applicants:</b> 10/19/18<br /><p><i>This position is Full-Time, 40 hours/wk, Tuesday-Saturday 8:00am-5:00pm</i> </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2019-04-13T17:48:16.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-15T17:48:16.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-15T17:48:16.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 41,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "All,<br /><br />Please be advised that IIT will be performing a planned network maintenance on the following date and time:<br /><br />Tuesday October 9th 2018 from 6:00pm to 11:59pm <br /><br />This maintenance is necessary to perform upgrades to our network infrastructure.  We anticipate this scheduled outage will take approximately 4 to 6 hrs. to complete.  During this maintenance window you may experience brief outages where servers, business applications, and or files may not be accessible both internally and externally.  To ensure uptime and stability of our platform, we are performing this upgrade shortly after close of business so we can maximize our efforts to ensure business operations will not be impacted when we open the next day.  <br /><br />If you have any questions or concerns please contact the Service Desk team at x0130.  <br /><br />We thank you in advance for your attention and understanding.",
+		"messageSubject": "Planned Network Maintenance Night 10-9-18",
+		"messageExpiration": {
+			"$date": "2019-04-03T22:33:49.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-05T22:33:49.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-09T17:40:55.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Angela Collins",
+			"account": "acollins"
+		}
+	},
+	{
+		"messageID": 12,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/930668.html\">Hall of Human Life Program Presenter (Friday Shift)</a></p></h5><br /><p>The Hall of Human Life (HHL) Program Presenter will present and facilitate a variety of hands-on activities/interpretations for small and large groups, and will assist HHL staff in the training of HHL educators. The Program Presenter will be responsible for opening, closing, and ongoing daily maintenance of the HHL space, including cleaning, maintenance, setting up/breaking down interpretations, and documentation of daily educational activities.</p><br /><p><b>Deadline for Internal Applicants:</b> 11/9/18<br /><p><i>This position is regular, part-time, 7 hours/week, Friday 9:00 AM to 5:00 PM. </i> </p>",
+		"messageSubject": "Internal Listing",
+		"messageExpiration": {
+			"$date": "2019-05-05T13:34:12.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-06T14:34:12.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-06T14:34:12.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 17,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "With the Holiday Season just around the corner now, this is a good time to remind all staff that no personal packages should be sent into the Museum.<br /><br />You should arrange to have your packages shipped and picked up at your local post office or UPS location.<br /><br />If it is an emergency and a package must be delivered here, such as medicine, please email both Steve smonico@mos.org and Heather hyoung@mos.org that a package is coming.  Once your package arrives you will be notified to go to the dock to pick it up, it will not be delivered.<br /><br />Your attention to this policy is appreciated.<br /><br />Thank you in advance,<br />Heather",
+		"messageSubject": "No personal packages",
+		"messageExpiration": {
+			"$date": "2019-04-30T12:44:13.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-01T12:44:13.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-01T12:44:13.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Heather Young",
+			"account": "hyoung"
+		}
+	},
+	{
+		"messageID": 22,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The Museum has signed on to Freedom Massachusetts’ efforts to support Yes on 3. As a place of public accommodation, we believe in being inclusive and welcoming to all, and to treat our employees, customers and visitors with dignity and respect. Please see below for a link to their website and our statement of support. If you receive any inquiries regarding this, please direct them to tsperry@mos.org.<br /><br />https://www.freedommassachusetts.org/nonprofit/<br /><br />\"The Museum of Science endorses Yes on 3 because everyone should have basic protections. As a place of public accommodation, we believe in being inclusive and welcoming to all, and to treat our employees, customers and visitors with dignity and respect. No one should be worried about discrimination or harassment at a restaurant, store, museum or anywhere else. Voting Yes on 3 keeps Massachusetts fair and safe for all.”",
+		"messageSubject": "Yes on 3",
+		"messageExpiration": {
+			"$date": "2019-04-22T16:39:17.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-24T16:39:17.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-24T16:39:17.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Todd Sperry",
+			"account": "tsperry"
+		}
+	},
+	{
+		"messageID": 27,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<p><span style=\"font-family: arial, helvetica, sans-serif;\">The Wellness Team is looking to add some variety and expand our offerings. We want to learn about your interests in wellness and health-related activities. Using this information, we hope to provide wellness offerings that are exciting and relevant to you!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Please take a few minutes to complete this anonymous, voluntary survey.</span></p><br /><p style=\"margin-bottom: .0001pt;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Information about your participation:</strong></span></p><br /><ul><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">This survey should take approximately 10 minutes to complete</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">The survey is optional, and you may skip any questions or stop at any time.</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">Your responses will be anonymous.</span></li><br /><li><span style=\"font-family: arial, helvetica, sans-serif;\">You must be 18 years older to participate</span></li><br /></ul><br /><p style=\"background: white;\"><span style=\"font-family: arial, helvetica, sans-serif;\">As a thank you for your time, <strong>all participants who submit a survey by the end of the day <u>November 13th</u>&nbsp; will have the choice to enter a drawing for one of three $50 AMEX gift cards.</strong></span></p><br /><p style=\"background: white;\">&nbsp;</p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Please <a href=\"https://www.surveygizmo.com/s3/4431929/Be-Well-Interest-Survey\">CLICK HERE</a> to access the survey.</span></p><br /><p>&nbsp;</p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Thank you in advance for your feedback!</span></p><br /><p>&nbsp;</p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">If you have any questions about the survey, please contact Lorah Broderick at <a href=\"mailto:lbroderick@mos.org\">lbroderick@mos.org</a>. If you have any questions about the Wellness Program in general please contact <a href=\"mailto:wellness@mos.org\">wellness@mos.org</a>.</span></p>",
+		"messageSubject": "We Want to Hear from You - Wellness Survey!",
+		"messageExpiration": {
+			"$date": "2019-04-21T15:01:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-23T15:01:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-23T15:01:26.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 32,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "IKEA White entertainment system for sale.<br /><br />Dimensions: 47 1/4\"W x 16\"D x 19 1/2\"H<br /><br />2 shelves, plus two drawers.<br /><br />Asking $100.<br /><br />Located in Fenway area, can drop off (within reason).<br /><br />Email Mike @ ragingfish@gmail.com",
+		"messageSubject": "IKEA Entertainment Center",
+		"messageExpiration": {
+			"$date": "2019-04-15T19:43:52.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-17T19:43:52.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-17T19:43:52.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Karen Powers",
+			"account": "kpowers"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "IMG_5518.jpg",
+			"key": "By5DQQqETQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/IMG_5518.jpg"
+		}]
+	},
+	{
+		"messageID": 37,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/910155.html \">Exhibit Maintenance Technician </a></p></h5><br /><p>Responsible for the routine maintenance of exhibits, including exhibit lighting and a various equipment within exhibit components. Perform daily rounds of exhibit areas and exhibit components to ensure they are working properly and provide on the spot repairs when damage is found and report all existing or potential problems. Clean and perform basic preventive maintenance routines involving minor carpentry, basic mechanical and basic electrical repairs. Assist other technicians in the performance of their duties, including installation, refurbishment and removal of exhibits. </p><br /><p><b>Deadline for Internal Applicants:</b> 10/19/18<br /><p><i>This position is part-time, 17.5 hours/week, on Friday (12:00pm – 9:30pm) and Saturday (8:00am – 5:30pm). </i> </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2019-04-13T17:46:36.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-15T17:46:36.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-15T17:46:36.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 42,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\" https://mos.applicantpro.com/internaljobs/902711.html\"> Sr. Facilities Project Manager</a></p></h5><br /><p> The Senior Facilities Project Manager will be responsible for collaborating with the Director of Facilities in order to successfully deliver projects with minimum negative impact on the Museum. These projects will vary in size and scope and each will necessitate working with various employees and contractors of the Museum. The senior project manager will be responsible for carrying a project forward to successful completion while keeping the Director of Facilities informed and involved on a daily basis.</p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, October 11, 2018<br /><p><i>This position is full-time, 40 hours/week, Monday-Friday </i> </p>",
+		"messageSubject": "Internal Job Listing - Sr. Facilities Project Mana",
+		"messageExpiration": {
+			"$date": "2019-04-02T22:01:43.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-04T22:01:43.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-04T22:01:43.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 47,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "We just generated a new comment card report for Sept. 1-Sept. 30, 2018<br /><br />Comment Card Report 9/1/18-9/30/18--Part 2<br /><br />\"Bring back Mac and cheese in the pasta section my children and now grandchildren and everyone I bring loved the famous science museum cheese its a Museum classic\"<br /><br />\"We have been circling your parking garage for 40 minutes with about 30 other cars. One whole level is blocked off for construction, which is understandable.  However, there should be a limit on how many cars are allowed in when there are no spaces. Specially when there are frustrated drivers going through a parking garage with kids.\"<br /><br />\"The whole grain salads on today's salad bar were all awesome! Please have them more often.\"<br /><br />\"Lots of people eating in the exhibit halls - tons of food in space ship<br />*unsafe for allergies!\"<br /><br />\"I got your email about membership appreciation day this Sunday. Immediately tried to sign up and couldn't and eventually called and was advised it was sold out within 5 minutes of opening--The items I wanted are not available. I feel more like the victim of a bait and switch than an appreciated member. Please don't send anymore emails.\"<br /><br />\"Hi: I have been a member of your place probably more than 10 years with my kids and previously other years when I was single. I have to say that i enjoyed the musuem a lot ... and now with kids even more. However I want to say how disappointing is your membership appreciation night. I have been trying the complimentary tickets online. The opening was at 11 am . It is 11:05 and there were gone. I understand that is first come first serve, however it sounds unfair for all your members.  I am sure that a lot of them are disappointed at this time. Is there any other way that you can give the free tickets, maybe as a lottery ? or Maybe don’t do it at all... I do not like to see after 5 min of the offer: We were unable to add the seats to your cart. There may be insufficient availability Thank you for your consideration.”<br /><br />“Hello, I went to go see the Beyonce Experience last night, 9/22/2018, and I was extremely disappointed. The word I would use would be bizarre. I had to leave early as it truly made no sense. I was not the only one.”<br /><br />\"I recently attented a showing of Pink Floyd's Dark Side of the Moon laser show at the Charles Hayden Planetarium.  Although I overall enjoyed the show, I was particularly impressed by the background projections that take you through mountainscapes, space, and other psychedelic worlds.  Out of all the people who went with me to the laser show and that I spoke with after, all agreed that the laser projection itself was kind of cheesy and distracting from the beautiful projections that were going on behind the laser.  Laser light showings like this have been around since the 70's and although it was considered impressive then to see a laser show playing with your favorite album, the technology portrayed behind the scenes at the Hayden planetarium far surpasses the technology of the laser itself and makes it look like a screen saver from Windows 95'.  I just wanted to give my feedback that I think all who attend the musicly inspired laser shows at the planetarium would like to see the technology of the planetarium itself fully utilized to create vast moving images that give the viewer an almost unlimited view of projection.  The laser itself only fills the top middle portion of the theater, while the background imagery filled the entire screen.\"<br /><br />\"I am from Chester County Pennsylvania and I am still seeing firflies at dusk here in my yard - September 28 th. I have never seen them previously that late in the year.\"<br /><br />\"Hello. I am currently living Maine . I grew up in Cambridge. I took my daughter here when we were in town for another reason which we are every couple months. We had a late entry but we were told at the desk that she stamped our tickets and we could come back anytime within the next 6 months. Well when i put the tickets in my pocket the stamp smeared and it just looks like two ink smudges on our tickets. I was very disappointed when I saw this .    I went to your museum a lot as a kid, I loved it. Field trips as well.  It was a huge part of my childhood . To take my daughter back here and explore it with her and just see the same glimmer in her eyes was amazing. Unfortunately we arrived too late for a lot of the shows , the butterfly room or anything and did not get to see all the exhibits but We still payed full price.   I would love to bring my daughter back here and explore the museum fully and really make another trip out of it . Was wondering if these tickets were still good to get us back in even though its smudged. I can send you pictures of the tickets if  that helps.    It was a Child and an Adult Ticket.    Thank You for years and years of happiness and memories and look forward to being back there again with my family .    Thank You\"<br /><br />“Please consider an exhibit dedicated to the science of human nutrition.”",
+		"messageSubject": "A New Comment Card Report-Part 2",
+		"messageExpiration": {
+			"$date": "2019-04-01T17:49:11.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-03T17:49:11.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-03T17:49:11.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 52,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<p class=\"xmsonormal\" style=\"text-align: center;\" align=\"center\"><strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\">Last Call </span></strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\">for&nbsp;</span><strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: red;\">MOScar</span></strong><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\"> submissions!</span></p><br /><p class=\"xmsonormal\" style=\"text-align: center;\" align=\"center\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">&nbsp;</span></p><br /><p class=\"xmsonormal\" style=\"text-align: center;\" align=\"center\"><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">The 2017-2018 &ldquo;</span></strong><span class=\"highlight\"><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">MOScar</span></strong></span><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">s Season&rdquo; officially ends on </span></strong><em><strong><u><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">September 30th</span></u></strong></em><strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">!</span></strong></p><br /><p class=\"xmsonormal\"><strong><em><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: red;\">What does this mean?</span></em></strong></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">Any <span class=\"highlight\">MOScar</span> submitted through September 30 is eligible to be nominated for a 2018 trophy! Don't miss the chance to recognize your fellow colleagues for their excellence! </span></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">&nbsp;</span></p><br /><p class=\"xmsonormal\"><strong><em><span style=\"font-size: 16.0pt; font-family: 'Calibri',sans-serif; color: red;\">What do we need from YOU?</span></em></strong></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">Say thank you to a colleague, volunteer, or intern by September 30th by clicking </span><span style=\"font-size: 14.0pt; font-family: 'Calibri',sans-serif; color: black;\"><a href=\"http://www.surveygizmo.com/s3/3331098/MOScar-Recognition-Form\">HERE</a></span><span style=\"font-family: 'Calibri',sans-serif; color: black;\">. Remember, we love thank you&rsquo;s big and small, now&rsquo;s your chance to make someone&rsquo;s day!</span></p><br /><p class=\"xmsonormal\"><span style=\"font-family: 'Calibri',sans-serif; color: black;\">&nbsp;</span></p><br /><p class=\"xmsonormal\"><em><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">YOU DID THAT</span></em><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\">! We have broken our all-time MOScar record! </span><strong><u><span style=\"font-size: 22.0pt; font-family: 'Calibri',sans-serif; color: black;\">617</span></u></strong><strong><u><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\"> Thank You&rsquo;s have been given this year with a MOScar.</span></u></strong><span style=\"font-size: 18.0pt; font-family: 'Calibri',sans-serif; color: black;\"> We look forward to celebrating every single one of you at our MOScar award ceremony in early 2019!</span></p>",
+		"messageSubject": "We Did It - MOScars Last Call!",
+		"messageExpiration": {
+			"$date": "2019-03-27T13:25:02.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-28T13:25:02.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-28T13:25:02.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 57,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi All,<br /><br />The HR office has free Red Sox tickets for Wednesday @ 1:05PM, Red Sox vs. Baltimore Orioles - tonight’s game postponed due to inclement weather. We have 3 sets of 2 tickets available. <br /><br />Please email agrantwingate@mos.org to reserve your tickets. First-come, first-served! <br /><br />Thanks,<br />Aurelia",
+		"messageSubject": "Red Sox Tickets for Wednesday 9/26 @ 1:05PM",
+		"messageExpiration": {
+			"$date": "2019-03-24T20:27:43.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-25T20:27:43.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-25T20:27:43.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Aurelia GrantWingate",
+			"account": "agrantwingate"
+		}
+	},
+	{
+		"messageID": 62,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\" https://mos.applicantpro.com/internaljobs/891294.html\"> Information Specialist</a></p></h5><br /><p> The Information Specialist provides exceptional service to guests, providing prompt, proactive, and efficient response to problems, issues, and questions at the Information Desk.<br /></p><br /><p><b>Deadline for Internal Applicants:</b> 9/26/18<br /><p><i> This position is part-time, 8 hours/week, Sundays from 8:45am - 5:15pm </i> </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2019-03-19T18:24:58.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-20T18:24:58.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-20T18:24:58.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 67,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Department News",
+			"camlName": "departmentNews"
+		}],
+		"messageBody": "I am pleased to announce that Bethany Zaiatz has been promoted to Membership Coordinator.  Bethany came to the Membership Department in September 2016 following her initial role as a Visitor Service Representative in the Box Office.  In addition to continuing many of her current responsibilities, in her new role Bethany will build upon our successful library passbook program (the Library Passbooks and library patrons that visit drive approximately $800k in annual revenue) to increase engagement among our librarian contacts and also leverage her understanding of both front line sales and the Membership department to help maximize Membership sales initiatives.  <br /><br />Please join me in congratulating Bethany!",
+		"messageSubject": "Membership Department Promotion",
+		"messageExpiration": {
+			"$date": "2019-03-18T18:50:28.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-19T18:50:28.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-19T18:50:28.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Sue MacLaren",
+			"account": "smaclaren"
+		}
+	},
+	{
+		"messageID": 72,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "I was wondering if anyone could help with Medford's strong to donate anything at all, for the Crystal Campbell campaign Scholarship fund, that is considered Medford Day, My friend Johnny Joyce is putting it together it is on Sept 22, 2018 if so please send me a email thanks to all",
+		"messageSubject": "Boston Strong",
+		"messageExpiration": {
+			"$date": "2019-03-17T15:18:22.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-18T15:18:22.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-18T15:18:22.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Kim McInerney",
+			"account": "kmcinerney"
+		}
+	},
+	{
+		"messageID": 77,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p><span style=\"font-family: arial, helvetica, sans-serif; font-size: 12pt;\"><strong>Mobile Mini Golf!</strong><strong><br />11:00am - 3:00pm<br />Skyline</strong></span></p><br /><p><span style=\"font-size: 12pt; font-family: arial, helvetica, sans-serif;\">Come up and join us for a round of mini golf today! There are plenty of spots available between 12-3. If you haven&rsquo;t had a chance to sign up yet, no worries! Check the sign up for available tee times today and drop in with your fellow colleagues!</span></p><br /><p>&nbsp;</p><br /><p style=\"margin-bottom: 12.0pt;\"><span style=\"font-size: 12pt; font-family: arial, helvetica, sans-serif;\">We hope everyone has a fun day on the course!</span></p><br /><p><span style=\"font-size: 12pt; font-family: arial, helvetica, sans-serif;\">&nbsp;</span><span style=\"font-size: 16.0pt;\"><a href=\"https://www.surveygizmo.com/s3/4534133/Mobile-Mini-Golf-2018\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 12pt;\">TO SIGN UP CLICK HERE!</span></a></span></p>",
+		"messageSubject": "Come Play! - Mobile Mini Golf",
+		"messageExpiration": {
+			"$date": "2019-03-12T15:17:02.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-13T15:17:02.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-13T15:17:02.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 82,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "New GSE's have been posted for working in Receiving the weeks of Sept. 24-28 and October 25 - Nov. 2.",
+		"messageSubject": "GSE's for Receiving",
+		"messageExpiration": {
+			"$date": "2019-03-10T15:30:51.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-11T15:30:51.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-11T15:30:51.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Heather Young",
+			"account": "hyoung"
+		}
+	},
+	{
+		"messageID": 87,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi everyone,<br /><br />September 11, 2018 marks the start of our 26th year with the Fenway High School Partnership. We are looking forward to hosting 25 Juniors from Fenway High School most Tuesdays from 8:15 am- 12:30 pm through June 11, 2019.<br /><br />While here the Fenway students will volunteer in various departments across the Museum, in addition to having Humanities and Science classes taught by their teachers.<br /><br />Please greet our Fenway students when you see them!<br /><br />Best,<br /><br />The School & Youth Program Team",
+		"messageSubject": "Fenway High School Partnership Starts on 9/11",
+		"messageExpiration": {
+			"$date": "2019-03-06T17:51:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-07T16:51:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-07T16:51:26.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Christina Moscat",
+			"account": "cmoscat"
+		}
+	},
+	{
+		"messageID": 92,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Comment Card Report 8/1/18 through 8/31/18-Part 1<br /><br />\"First/basement bathroom is not clean!\"<br /><br />\"‘Engineering in a River System’ is a very well designed interactive exhibit. As is the entire Charles River section. Well done. I would be curious about the experience designers.”<br /><br />“We brought our 13 and 15 year old Finnish grandsons to the Museum. They and I were disappointed in the number of parents who let their smaller children loose to just bang on all the buttons ( since they couldn’t read yet) and take up the time older kids needed to try out the different exhibits. I wish the staff would patrol or post the need for parents to keep track of toddlers and kids who shouldn’t be abusing the exhibit controls. My grandchildren are from Finland and were really astounded by this behavior.”<br /><br />\"Hello! I visited the museum last weekend - it is fantastic!! I just wanted to point out that in the natural science areas, there's a tree leaf matching game... some of the leaves aren't labeled correctly (ex: a red ginko leaf is labeled as an English Hawthorne). Just wanted to let you know so as to make your museum as great as possible!\"<br /><br />\"Plaque explaining how often the pendulum knocks over pieces. We wanted to watch it hit a piece but with no info on how it works that couldn't happen.\"<br /><br />\"Have better postcards. Only two specific to the museum is depressing.\"<br /><br />\"The guest spoke to a friend whose father suffers from macular degeneration. She brought her father to an Omni show, and perhaps due to the size of the screen and/or the curved surface, he was able to see the film as if he had no visual impairment. He was deeply moved to have such an opportunity. The guest suggested this was something we could promote and hopefully reach more people with this condition.\"<br /><br />\"While in the dinosaur room, I noticed how none of the exhibits mentioned how these beautiful creatures once possessed feathers. We now know they did, so the exhibit overall lacked a bit of an update.\"<br /><br />\"Went to the lightning show with my nieces and nephew. People were continuously standing on the red carpet although it was announced multiple times people still stood blocking the children's view. DO NOT PLAN ON COMING BACK.\"<br /><br />“While eating in the cafe, the guest saw dirigibles further down the river. He thought it would be a good idea to get dirigibles to fly close to the Museum - for advertising, perhaps, and also to get kids to think about science.”<br /><br />\"On the third floor, in the Weems sculpture exhibit, I believe one of the sculptures is mislabeled. It is labeled ‘Clydesdale Stallion,’ but I'm pretty sure the title is mixed up with the neighboring one. The rest of the info does appear correct.\"<br /><br />\"Went to the ‘Lightning’ show - disaster! No staff directing crowds, staff person running the show had to continually stop show to ask people to move to designed areas. Worst live show experience, should have more staff to control crowd flow.\"<br /><br />\"Good day:<br />My grandson is in one of the Summer programs. I happened to be in the Charles River exhibit by myself when the students arrived. I observed the tutors in charges of the group. They were sitting looking at the children as they ran from exhibit to exhibit with no orientation or direction. As an ex-teacher and principal of an elementary school I recommend the following:<br />The tutors need to be trained on how to _engage_ the students. They need to be actively involved in provoking questions and structuring an overview of the exhibit.<br />As to the exhibit itself, it needs some monitoring. For example, the Turbidity exhibit has three tubes for observation, algae, clear water, and one more. The most turbid was the clear water due to the interior condensation leading to an erroneous conclusion that clear water is the most turbid because the Secchi disk is barely visible.<br />Charles River<br />-Aquatic insects audio guide not working<br />-Monitoring the Charles River EPA data is over a year old and some indicators register nothing.”<br /><br />“Our experience at the museum today is a good example of why we did not renew our membership last year, and why we have stopped recommending the museum as a ‘can't miss’ attraction to our friends who visit the area. As great as the museum is, it seems there is always something that ruins the experience. A special thank you to the custodian in the food court, who was in such a rush to sweep under our table that he literally swept our legs and feet, and then continued to do so EVEN HARDER after we asked them very politely to stop. And another special thank you to the staff at the Information desk who wouldn't take a complaint and said ‘they're separate; go back and complain to them’). We will not be returning to the museum anymore.”<br /><br />\"Why would you spend all the time and money for a museum and have such a poor, unclear website and then have no one to talk to when a call is placed.   I planned on visiting and will not longer.Lots to do but not able to plan a day, lack of info due to poor management.  I was trying to coordinate a day for a small group but cannot develop any type of syllabus\"<br /><br />“Just want to say that Mia in the little kids Discovery Center was awesome! She went above and beyond all expectations. My kids love her!!!”<br /><br />“We arrived at the virtual reality ride for our scheduled time, but my daughter started to not feel well due to low blood sugar (she is 10 and type 1 diabetic). Sam was so kind and helpful in allowing us to reschedule and wait until our daughter's blood glucose level was in a safe range after a snack. Thank you!!\"<br /><br />“I want to thank George from security. He helped to find my phone. He was awesome and really helpful. Thank you, George!! You are the best!”<br /><br />“Please increase the cleaning times in cafe men + women's bathrooms. 4 toilets out of 5 were disgusting when I opened women's stalls. Feces over filled with T/P. Gross. Please increase cleaning to adjust for peak times.”",
+		"messageSubject": "A New Comment Card Report",
+		"messageExpiration": {
+			"$date": "2019-03-02T15:19:47.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-03T14:19:47.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-03T14:19:47.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 102,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "After an additional week of work and repairs, BOTH ISS Destiny Lab modules are rotating and running normally in the Space exhibit again.",
+		"messageSubject": "Space Rotating Labs Both Rotating Again",
+		"messageExpiration": {
+			"$date": "2019-02-20T19:26:10.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-24T18:26:10.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-24T18:26:10.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Grace Fo",
+			"account": "gfo"
+		}
+	},
+	{
+		"messageID": 97,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "...or know someone who does and is passionate about it? My Mom was, as well, and she assembled a box-full of resource materials that I'd like to find a good home for: from books on basic grammar, to phonics,to simple conversational tools, and everything in-between. I know supporting this cause can be costly (books are expensive!), so I'd like to find a good home for these materials. Mom taught ESL to Polish immigrants, but the books can be applied to any learner of any speaking background and age. Please let me know if you're interested - I'd be thrilled to find someone who could put these resources to good use! - Barbara (bwroblewski@mos.org, x0192)",
+		"messageSubject": "FOUND A GOOD HOME FOR THESE...Do you teach ESL...",
+		"messageExpiration": {
+			"$date": "2019-02-23T13:29:31.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-27T12:29:31.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-28T13:41:46.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Barbara Wroblewski",
+			"account": "bwroblewski"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "ESL-photo.jpg",
+			"key": "Bkiv7m5Vp7",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/ESL-photo.jpg"
+		}]
+	},
+	{
+		"messageID": 107,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 18.0pt;\">&nbsp;</span></strong></span><span style=\"font-family: arial, helvetica, sans-serif; font-size: 14pt;\"><strong>Virtual Walk/Run/Bike</strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 14pt;\"><strong>2018 Summer Series Coming to an end!</strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 14pt;\"><strong>August 25 &ndash; 26</strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif; font-size: 14pt;\"><strong>5 mile walk/run &amp; 20 mile bike</strong></span></p><br /><p><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Our summer series ends with a 5 mile walk/run and a 20 mile bike ride! Challenge yourself to complete the series, you know you want all three medals to display proudly in your office </span><span style=\"font-size: 10.5pt;\">:).</span><span style=\"font-size: 10.5pt;\"> Don&rsquo;t forget if you&rsquo;re not able to do this in one fell swoop, you can do this over the course of two days. </span></span></p><br /><p>&nbsp;</p><br /><p><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">As a reminder, a virtual race is a race in which you can do on your own time, at your own pace, anywhere you would like. </span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 10.5pt;\">&nbsp;</span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 10.5pt;\">Participants will receive a personalized printable bib to wear while walking, running, or biking and a medal!</span></strong></span></p><br /><p>&nbsp;</p><br /><p><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">To participate in our<strong> second</strong> virtual race all you have to do is:</span></p><br /><ol><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Sign up </span><a href=\"https://www.surveygizmo.com/s3/4502089/Be-Well-Virtual-Walk-Run-Bike-3-Mile-12-Miles-copy\"><span style=\"font-size: 10.5pt;\">HERE</span></a><span style=\"font-size: 10.5pt;\"> by August 23, 2018</span></span></li><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Complete distance the weekend of August 25-26</span></li><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Send proof of your distance to </span><a href=\"mailto:wellness@mos.org\"><span style=\"font-size: 10.5pt;\">wellness@mos.org</span></a></span></li><br /></ol><br /><p><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">How can you send us proof?</span></p><br /><ul><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Screenshot your Heath App (iPhone)</span></li><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Screenshot any other fitness tracking apps you may have (iPhone or otherwise)</span></li><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Take a picture of your FitBit/Garmin/wearable device</span></li><br /><li style=\"tab-stops: list .5in;\"><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">Take a picture of your treadmill dashboard data</span></li><br /></ul><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><span style=\"font-size: 10.5pt;\">Send those screenshots and any pictures you take of your race to </span><a href=\"mailto:wellness@mos.org\"><span style=\"font-size: 10.5pt;\">wellness@mos.org</span></a><span style=\"font-size: 10.5pt;\">!</span></span></p><br /><p><span style=\"font-size: 10.5pt; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><a href=\"https://www.surveygizmo.com/s3/4502089/Be-Well-Virtual-Walk-Run-Bike-3-Mile-12-Miles-copy\"><span style=\"font-size: 10.5pt;\">CLICK HERE TO SIGN UP!</span></a></span></p>",
+		"messageSubject": "Reminder - Virtual Walk/Run/Bike",
+		"messageExpiration": {
+			"$date": "2019-02-18T15:05:27.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-22T14:05:27.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-22T14:05:27.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 112,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/867391.html\"> Manager, Content Strategy & Social Media</a></p></h5><br /><p>The Marketing Manager, Content Strategy and Social Media plays a critical role on the Museum's Marketing team in shaping the direction for the future of our content across channels inclusive of social, SEO, email, sponsored content, and web. This role is responsible for identifying and defining the vision for the future state of the Museum's content marketing and the pathways to achieve our goals and take the program to the next level – increasing its reach, relevancy, and impact. The person in this role works on developing best practices and processes around content development to ensure a sustainable, efficient, and effective operation. The person in this role is a passionate advocate for storytelling across multiple mediums (social, video, infographics, photography, long form articles and more) and has the ability to work collaboratively with the creative team and other internal stakeholders to achieve goals. The Manager of Content Strategy works closely with the Director of Marketing and the Associate Marketing Manager to determine content needs and ensure development of compelling, timely, and relevant content for each customer segment and/or product or program as needed. This role oversees the SEO strategy, works collaboratively with internal partners to optimize the Museum's email initiatives, and oversees the Museum's social media program and social infrastructure to ensure that these channels are optimized and producing the desired outcomes. This role also works with internal and external partners to continue evolving the analytics and reporting framework</p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, August 23<br /><p><i>This position is full-time, 40 hours/week, Monday-Friday. </i> </p>",
+		"messageSubject": "Internal Job Listing - Manager, Content Strategy &",
+		"messageExpiration": {
+			"$date": "2019-02-13T22:56:13.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-17T21:56:13.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-17T21:56:13.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 117,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "**Reminder** <br />The Blue Wing Escalator Project will start this Sunday night, August 19th, with the set up of the construction barriers, and be out of service through mid-December as part of our efforts to improve the vertical transportation throughout the Museum.<br /><br />As many of you know our existing Blue Wing escalators utilize outmoded mechanics and technology that require expensive repairs, cause an increase in downtime during peak periods, exhibit higher energy consumption, and are not equipped with modern safety devices. <br /><br />After an extensive design and bid process, we have partnered with KONE to implement their EcoMod system. With the EcoMod system, we can undertake a complete modernization, replacing all existing components within the surrounding structure and truss with brand new technology, therefore minimizing downtime and visitor impact. The EcoMod system will also eliminate the need for structural modifications to the Blue Wing’s Lower Level and First Floor as a traditional replacement would have required.<br /><br />Additional EcoMod features include: <br />•Improved ride and passenger safety through fully synchronized step and handrail movement<br />•Ensures smooth, constant deceleration improving passenger safety<br />•Constantly monitors speed, direction, safety status, and other operating parameters to enhance safety and maintenance diagnostics<br />•Modifications that reduce handrail drag, reducing maintenance downtime<br /><br />How Will This Impact Museum Day to Day Operations?<br />•All four escalators will be completed simultaneously in order to minimize disruption to the Visitor Experience.<br />•The total project will take 16 weeks, spanning from mid to late August to early December. (We currently are targeting Sunday night August 19th thru December 18th) <br />•Eight foot high barriers will surround the construction areas. (These barriers will affect the pedestrian passage between the escalators on the 1st floor, adjacent to the CS&T stage.) <br />•Guests will be directed to use the stairwells and elevators with the same signage we currently use during escalator breakdowns and wayfinding will be adjusted to properly direct guests. <br />•Construction will take place from early morning hours into mid-afternoon, during museum operating hours, and will have the similar sounds of active construction to those of the Yawkey Gallery on the Charles River, Lobby, or Concourse renovations. <br />•We are working closely with Kone and various Museum Departments with the Museum Wide Calendar to schedule deliveries, off hour work, and the associated impacts. <br /><br />Thank you in advance for your cooperation as we work to improve the functionality of our vertical transportation within the building. We look forward to working through this construction to provide the museum safe & reliable vertical transportation for the Blue Wing guest experience.",
+		"messageSubject": "Blue Wing Escalators to begin week of August 19th",
+		"messageExpiration": {
+			"$date": "2019-01-19T17:03:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-23T16:03:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-16T18:35:12.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Jena Boehm",
+			"account": "jboehm"
+		}
+	},
+	{
+		"messageID": 127,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/861996.html\">Interactive Software Developer</a></p></h5><br /><p> Working in collaboration with project teams, the Interactive Software Developer creates exciting experiences for Museum visitors by developing high quality interactive media software in an iterative, user-centered process. The role coordinates work with the Interactive Media team to follow a software development process, research new technologies, and provide technical guidance to project teams. The position also tests, supports, and maintains interactive media software to ensure its quality throughout the duration of use. Software development and the domain of work may include exhibits, web, mobile, gaming, game engines (Unity 3D), VR/AR/XR/MR, embedded systems (mainly Arduino or Raspberry Pi), computer graphics, computer vision, signal processing, or related subjects.<p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, August 16<br /><p><i> This position is full-time, 40 hours/week, Monday-Friday.</i> </p><br /><br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/862015.html\"> Web Projects Manager</a></p></h5><br /><p> The Web Projects Manager oversees the allocation of staff resources to all web related activities such as redesigns, new pages and sections, and virtual exhibits consistent with the Museum's high standards of quality to ensure clients' expectations are met and balanced with best practices. This role works collaboratively with the institutional stakeholders and project teams to effectively prioritize and schedule web content so that workflow and project requirements are met in a timely and efficient way.</p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, August 16<br /><p><i> This position is full-time, 40 hours/week, Monday-Friday.</i> </p>",
+		"messageSubject": "Internal Job Listings - Interactive Media Position",
+		"messageExpiration": {
+			"$date": "2019-02-06T21:37:32.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-10T20:37:32.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-10T20:37:32.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 122,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Classifieds",
+			"camlName": "classifieds"
+		}],
+		"messageBody": "BOTH SOLD <br /><br />Ace sori brand smartphone camera lens kit.  Brand new, never used.  Comes with 3 different lens (fish eye, wide angle and macro lens) a cleaning cloth and carrying pouch.  Lenses attach magnetically.<br /><br />I have two of these kits for sale.<br /><br />Asking $5.00 each<br /><br />If interested please email hyoung@mos.org",
+		"messageSubject": "SOLD - Smartphone camera lens",
+		"messageExpiration": {
+			"$date": "2019-02-10T11:23:36.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-14T10:23:36.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-14T13:37:36.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Heather Young",
+			"account": "hyoung"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-001.JPG",
+			"key": "B12DmX5N6Q",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-new-001.JPG"
+		}]
+	},
+	{
+		"messageID": 132,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Thank you everyone for your overwhelming interest in the passes.<br /><br />We are now all out of passes, but remember you are able to get you and a friend or family member in for free with your badge!<br /><br />Thank you",
+		"messageSubject": "All Out - Roger Williams Passes",
+		"messageExpiration": {
+			"$date": "2019-02-04T16:07:50.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-08T15:07:50.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-08T15:07:50.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 137,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "This past weekend I rode in the PMC with Team Kermit. Saturday Sturbridge to Bourne. Sunday Bourne to Ptown. For a total of 192miles.  Team Kermit raises money for the Jared Branfman Sunflower for life fund. <br />http://profile.pmc.org/MF0312<br /><br />In 2004 Jared was diagnosed with Jared was diagnosed with spinal/cranial tumors. In 2004 and 2005 Adam (Jared brother) and Steven (his dad) rode the Pan Mass while Ellen (Jared Mom) and Jared volunteered, Jared in a wheelchair. 2006 was going to be the year that we all rode together. Instead, Ellen, Adam, and Steven rode in Jared's honor and memory along with 15 other dear friends as Team Kermit. They established the Jared Branfman Sunflowers For Life Fund For Pediatric Brain And Spinal Cancer Research at the Jimmy Fund. All the money raised by Team Kermit goes through the PMC and into our fund. It supports research into the type of disease that Jared had and is helping to make the dream of no more cancer a reality. It is a fitting legacy to Jared's wish to help others.<br /><br />This year I joined Team Kermit. What better year to do it that 2018? In Jewish culture the number 18 has special meaning and is associated with life, in Hebrew Chai (with a hard ch). Numerically, the word consists of the eighth (chet) and tenth (yud) letters of the Hebrew alphabet, adding up to eighteen the number 18.<br />I am asking you to donate in multiples of 18 to give a life: 18, 36, 54, 78, 90, 108 etc<br />Join us in our fight to rid the world of this terrible disease so that your children, grandchildren, and great grandchildren never have to hear the word cancer again. By using this link http://profile.pmc.org/MF0312<br /><br />Thanks",
+		"messageSubject": "PMC 218 - Donate to Team Kermit",
+		"messageExpiration": {
+			"$date": "2019-02-03T14:15:53.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-07T13:15:53.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-07T13:15:53.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Miriam Franks",
+			"account": "mfranks"
+		}
+	},
+	{
+		"messageID": 152,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Good Ideas",
+			"camlName": "goodIdeas"
+		}],
+		"messageBody": "Happy August! We have been experiencing exceptionally humid/warm days this summer, so it is important that we all take care of ourselves and stay hydrated. <br /><br />For tips on how to properly hydrate and stay alert this summer, here is an article from Everyday Health:https://www.everydayhealth.com/columns/johannah-sakimura-nutrition-sleuth/simple-ways-stay-hydrated-this-summer/<br /><br />Keep calm, and drink you water!",
+		"messageSubject": "Wellness Wednesday: 4 Tips to Stay Hydrated",
+		"messageExpiration": {
+			"$date": "2019-01-28T13:32:15.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-01T12:32:15.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-01T12:32:15.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gina Crotty",
+			"account": "gcrotty"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-Bewelllogo.jpg",
+			"key": "ByTP77cNpQ",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-Bewelllogo.jpg"
+		}]
+	},
+	{
+		"messageID": 167,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Looking to see if anyone happens to have any flowers in their office they don't need today Saturday 7/14, we would be using them in the lab for the lab program this afternoon. I can swing by and pick them up. Thanks!",
+		"messageSubject": "Looking for Flowers",
+		"messageExpiration": {
+			"$date": "2019-01-10T15:16:35.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-14T14:16:35.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-14T14:16:35.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Liz Chinian",
+			"account": "echinian"
+		}
+	},
+	{
+		"messageID": 182,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Membership has a half-day card fulfillment GSE available for tomorrow, Friday, June 29. This GSE lets you...<p><br />&#10004; listen to your favorite music, audiobook, or podcasts on your headphones while you work<br /><p>&#10004; enjoy a workstation with an up close and personal view of the Charles River<br /><p>&#10004; earn GSE credit<br /><p>&#10004; and experience the satisfaction of knowing you've helped the Membership Department and the Museum's members!<br /><p>If you have the availability, please consider signing up.",
+		"messageSubject": "Need a last minute half-day GSE?",
+		"messageExpiration": {
+			"$date": "2018-12-25T17:12:29.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-28T16:12:29.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-28T16:12:29.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bethany Zaiatz",
+			"account": "bzaiatz"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "new-GSE-pooh-window.jpg",
+			"key": "BJ1lPQm5N6m",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/new-GSE-pooh-window.jpg"
+		}]
+	},
+	{
+		"messageID": 162,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">Cirque Du Soleil Raffle!</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Friday, July 27, 2018 at 8:00 PM</strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong>Suffolk Downs</strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Our vendor TicketsatWork has offered the Museum two complimentary tickets to Cirque Du Soleil Luiza, <strong>Friday, July 27, 2018 at 8:00 PM </strong>which we are raffling off to staff!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">If you would like to learn more about Cirque Du Soleil Luiza please visit, <a href=\"https://www.cirquedusoleil.com/luzia\">https://www.cirquedusoleil.com/luzia</a>.</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">To enter the raffle <a href=\"https://www.surveygizmo.com/s3/4485328/Cirque-Du-Soleil-Raffle\">CLICK HERE</a>!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><em><span style=\"color: #ff6600;\">Please note: 1 entry per staff member. These tickets will be raffled off as a pair. The raffle will be pulled Thursday July 26 at 12:00 PM. Ticket must be picked up in HR by end of day Friday.</span></em></span></p>",
+		"messageSubject": "Cirque Du Soleil Luzia Raffle!",
+		"messageExpiration": {
+			"$date": "2019-01-20T14:29:26.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-24T13:29:26.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-24T13:29:26.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 187,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "Dear all, <br /><br />Tomorrow morning the Fundraising Events team will be hosting a Sunrise Yoga event to celebrate Tau Day (6/28 = 6.28318…) from 6:00 a.m. to 8:00 a.m.! <br /><br />We will be using the back-half of the Lobby past the turnstiles for our yoga classes with preparation beginning as early as 5:00AM. Between the hours of 5:00AM-8:30AM, please utilize the Red Wing to access the Blue and Green wings (or Door 16 if coming up from the garage.) We wish to maintain a quiet, mindful library atmosphere for our event participants. A Public Safety officer will be posted in the lobby between these hours, and we will have signage beginning at the Concourse for all those parking in the garage. Following the classes, we have asked C&W to clean the floor in preparation for our 9:00am public opening.<br /><br />Thank you in advance for your flexibility and patience. If you have any questions, please feel free to reach out to me directly. <br /><br />Best,<br />Gina Crotty",
+		"messageSubject": "Thursday, 6/28 Sunrise Yoga: Lobby Access Between",
+		"messageExpiration": {
+			"$date": "2018-12-24T17:31:08.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-27T16:31:08.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-27T16:31:08.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gina Crotty",
+			"account": "gcrotty"
+		}
+	},
+	{
+		"messageID": 192,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Effective July 5, 2018, the Exhibit Halls prices will increase by $3 to $28 for adults, $24 for seniors, and $23 for children for tickets purchased on the day of visit.  The Exhibit Halls combination prices will likewise increase by $3 for same day purchases. This is the first Exhibit Halls price increase in 2 years and still positions the Museum competitively with our peer institutions. <br /><br />In order to increase advance purchases and provide more price conscious visitors an option, prices will remain at their current levels for those who purchase their tickets at least one day in advance of their visit.  Non-school groups, who are always required to purchase their tickets in advance, will receive a $4 discount off of the new prices while school group pricing will remain flat.",
+		"messageSubject": "Exhibit Halls Price Increase",
+		"messageExpiration": {
+			"$date": "2018-12-19T20:34:10.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-22T19:34:10.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-22T19:34:10.000Z"
+		},
+		"messageCreator": {
+			"displayName": "John Slakey",
+			"account": "jslakey"
+		}
+	},
+	{
+		"messageID": 142,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/855814.html\">Visitor Services Specialist (Shift #314)</a></p></h5><br /><p>The Visitor Services Specialist helps guests have the best possible experience at the Museum of Science! The VSS functions as a member of the Museum's sales and guest service force -- selling tickets and memberships and proactively making suggestions to guests at point of purchase to match guest interests to Museum offerings and meet sales goals. In addition, the VSS conducts school group check in, operates the Thrill Ride 360 simulators, 4-D Theater, coat room, and Omni Theater front-of-house, and controls access to venues including Exhibit Halls, Discovery Center, Butterfly Garden, 4-D Theater, and Omni Theater.</p><br /><p><b>Deadline for Internal Applicants:</b> 8/9/18<br /><p><i>This position is full-time, 32.25 hours a week, with the following schedule:<br />•Monday 8:30am- 3:00pm<br />•Tuesday 8;45am-5:15pm<br />•Friday 4:45pm-10:00pm<br />•Saturday 4:45m-9:45pm<br />•Sunday 8:45am-5:15pm",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2019-01-30T17:36:35.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-03T16:36:35.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-03T16:36:35.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 172,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi everyone,<br /><br />After 6 years of dedicated service to the Museum of Science, Erica Panacopoulos will be starting a new adventure in her career as a classroom teacher at Kipp Academy Charter School in Lynn, where she will be teaching science to first, second, and third grade students. Her last day at the Museum will be July 12th.<br /> <br />Erica has had many roles at the Museum, including Intern, Fellow and Education Associate in departments such as the Discovery Center, Courses, Overnights, and School & Youth Programs. She has also been instrumental in starting and implementing programs such as BEST (Buddies Exploring Science Together), creating a positive learning environment for our 2nd graders and Volunteers of Eye Opener, and much, much more!<br /><br />Please join us on Wednesday, July 11 from 2-4 pm in the Gordon Classroom to celebrate Erica’s accomplishments at the Museum and say a fond farewell. <br /><br />Warmly,<br /><br />The School & Youth Programs Team",
+		"messageSubject": "Reminder: Farewell Party for Erica P. today!",
+		"messageExpiration": {
+			"$date": "2019-01-01T14:23:31.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-05T13:23:31.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-11T12:16:13.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Christina Moscat",
+			"account": "cmoscat"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "science-beaker-banner-vector.jpg",
+			"key": "SJ0P7Xq4pm",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/science-beaker-banner-vector.jpg"
+		}]
+	},
+	{
+		"messageID": 197,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "Discounted MOS employee/volunteer tickets for Community Boating’s July 4th SAILabration<br /><br />As you know the Museum of Science is no longer hosting the Let’s Celebrate July 4th event at the Museum.  One of the Museum’s donors heard this and offered to extend a discount to Community Boating’s fundraising event.  They are offering Museum of Science staff and volunteers a generous $75 discount to the Community Boating July 4 SAILabration Fundraiser for the Junior and Universal Access Program (Members have access to a $50 discount).  This discount applies to most of the seating options. <br /><br />Your tickets include a New England clam bake followed by Ben and Jerry’s ice cream, your choice of reserved or picnic table seating, DJ, photo booth, face painting, jumbotron video screens simulcasting the Boston Pops Fireworks Spectacular concert and fabulous river views right beside the Esplanade.<br /><br />Register here for your discount (https://www.eventbrite.com/e/july-4-sailabration-fundraiser-for-the-junior-and-universal-access-program-tickets-35661377139?discount=MOS_STAFF).<br /><br />If you have questions contact Community Boating directly at 617-523-1038.  <br /><br />Please note, this link that provides access to the discount should not be shared as it is a special discount Community Boating is extending to MOS staff and volunteers for their fundraising event.  <br /><br />We recommend taking public transportation if you are staying for the evening as the Museum Garage will close at 5pm.",
+		"messageSubject": "MOS Employee/volunteer discount for July 4th event",
+		"messageExpiration": {
+			"$date": "2018-12-18T15:24:41.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-21T14:24:41.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-21T14:24:41.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Sue MacLaren",
+			"account": "smaclaren"
+		}
+	},
+	{
+		"messageID": 207,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "This August I'll be running in the Falmouth Road Race to raise money for The Ronald McDonald House Boston Harbor. RMH helps families who bring their children to Boston to receive critical pediatric medical treatment by providing comfortable, free housing and amenities.<br /><br />If you're interested in supporting this cause, please consider donating to my fundraising page. Many thanks for your support!<br /><br />https://www.firstgiving.com/fundraiser/liz-sillari/Falmouth-Road-Race-2018",
+		"messageSubject": "Donate to Help the Ronald McDonald House",
+		"messageExpiration": {
+			"$date": "2018-12-12T21:36:58.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-15T20:36:58.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-15T20:36:58.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Liz Sillari",
+			"account": "lsillari"
+		}
+	},
+	{
+		"messageID": 217,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Museum in the News",
+			"camlName": "museumInTheNews"
+		}],
+		"messageBody": "Our own Jeannine Madrid was interviewed by Boston Magazine to talk about her cool job here at the Museum of Science! When asked what the best part of her job is, Jeannine said, \"Besides making lightning, which is super fun, just sharing my passion for learning. I meet so many different kinds of people who all are here and we have this shared experience together, and they all walk away with a memory. That’s the best part for me.\"<br /><br />You can read the full article here:<br /><br />https://www.bostonmagazine.com/news/2018/06/08/lightning-museum-of-science-jeannine-madrid-i-love-my-job/",
+		"messageSubject": "Jeannine Madrid in Boston Magazine",
+		"messageExpiration": {
+			"$date": "2018-12-07T19:21:40.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-10T18:21:40.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-10T18:21:40.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Kaylan Petrie",
+			"account": "kpetrie"
+		}
+	},
+	{
+		"messageID": 212,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Membership has an afternoon half-day card fulfillment GSE available for tomorrow (Thursday, June 14). This GSE lets you...<p><br />&#10004;   listen to your favorite music, audiobook, or podcasts on your headphones while you work<br /><p>&#10004;   enjoy a workstation with an up close and personal view of the Charles River<br /><p>&#10004;   earn GSE credit<br /><p>&#10004;   and experience the satisfaction of knowing you've helped the Membership Department and the Museum's members!<br /><p>If you have the availability, please consider signing up.",
+		"messageSubject": "Membership GSE for Thursday!",
+		"messageExpiration": {
+			"$date": "2018-12-10T14:45:06.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-13T13:45:06.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-13T13:45:51.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Bethany Zaiatz",
+			"account": "bzaiatz"
+		},
+		"messageImages": [{
+			"error": false,
+			"name": "GSE-pooh-window.jpg",
+			"key": "HJelwXX9V6Q",
+			"migratedFromQuark": true,
+			"uriQuark": "https://neso.mos.org:443/images/hcMessages/migratedFromQuark/image/jpeg/GSE-pooh-window.jpg"
+		}]
+	},
+	{
+		"messageID": 232,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Information Technology is excited to announce the formation of our new service desk team, System Support Services.  This is a step towards evolving what was the IT Help Desk into a larger team of first responders to address your various computing and system needs.  The team will be led by Tony Farrand, who will be joining the Museum on June 4th as a new manager. <p><br />With Tony’s arrival, Amy Gallant and Allie Curtis, both of whom have coordinated the previous Help Desk, will now transition fully to their new positions.  Amy has taken on the role of IT Business Analyst, working with departments across the Museum on both process design and system needs, with a focus on Tessitura.  Allie serves as our IT Operations and Project Manager, with her primary focus being project management, communications, operational documentation, and vendor and contract management.<p><br />The new System Support Services team has many familiar faces, including Norah Alqahtani, John Barbieri, Eric Workman and Jeff Lozeau.  You can still reach us via the same channels!  You can call x0130, email <a href=\"mailto:ithelp@mos.org\"> ithelp@mos.org</a> or submit a <a href=\"http://kepler/TIWEB8/scripts/TIWebPortal/TrackItUser.asp\">request online</a>.",
+		"messageSubject": "Introducing IT System Support Services",
+		"messageExpiration": {
+			"$date": "2018-11-20T15:27:50.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-05-24T14:27:50.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-05-24T14:27:50.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Patricia Sheppard",
+			"account": "psheppard"
+		}
+	},
+	{
+		"messageID": 247,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/798077.html\">Hall of Human Life Education Associate</a></p></h5><br /><p>The Hall of Human Life Education Associate will be responsible for training staff and volunteer interpreters, and maintaining accurate logs of training including scheduling of volunteers. S/he will work closely with HHL Education Associates and HHL Program Manager to educate, inform and motivate volunteers to ensure an overall positive, educational and fun experience for MoS visitors. S/he will engage in on-going information research with Museum staff in order to assist in the development of new interpretations/programing and updating current interpretations in HHL. Assist in the daily operation of the Interpretation Program including maintaining and up keep of interpretation materials and interpretation spaces.<br /><br /></p><br /><p><b>Deadline for Internal Applicants:</b> 5/22/18<br /><p><i>This position is full-time, 35 hours/week, 9am-5pm, including one weekend day. Requires occasional holiday hours of 11am-7pm. </i> </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2018-11-11T21:32:17.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-05-15T20:32:17.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-05-15T20:32:17.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 242,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The Museum's annual Red Sox Weekend is coming up on Saturday, June 2 and Sunday, June 3. We had a blast last year, and this year is sure to be just as fun. If you are in need of a GSE, please sign-up to be a Red Sox Weekend Helper. GSEs have been posted for both days. Responsibilities include welcoming guests, answering questions, line management, and having fun! Red Sox gear encouraged. Please reach out with any questions.",
+		"messageSubject": "Red Sox GSEs",
+		"messageExpiration": {
+			"$date": "2018-11-13T16:05:07.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-05-17T15:05:07.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-05-17T15:05:07.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Liz Sillari",
+			"account": "lsillari"
+		}
+	},
+	{
+		"messageID": 147,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "Quiet Time<br />Thursday, August 2nd<br />10:00am – 10:25am<br />Planetarium<br /><br /><br /><br />Practice the art of quieting your mind in the Planetarium! Enjoy peaceful music as you look up at thousands of stars and clear your mind.<br /><br /><br />Hope to see you there!",
+		"messageSubject": "Quiet Time - Today (8/2)!",
+		"messageExpiration": {
+			"$date": "2019-01-29T13:31:50.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-08-02T12:31:50.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-08-02T12:31:50.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 177,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\" https://mos.applicantpro.com/internaljobs/834745.html\"> Senior Advancement Officer – Foundation Relations</a></p></h5><br /><p> The Senior Advancement Officer – Foundation Relations is a key member of the Corporate, Foundation and Government Relations team responsible for securing $2M-$4M annually through the identification, cultivation, and stewardship of current and prospective Museum donors. The Sr. Advancement Officer will work across the Museum and Division in order to develop effective fundraising strategies, including compelling proposals, to maintain and grow foundation funding for a variety of programmatic, educational, and capital needs.<br /></p><br /><p><b>Deadline for Internal Applicants:</b> Thursday, July 12<br /><p><i>This position is full-time, 40 hours/week, Monday-Friday. </i> </p>",
+		"messageSubject": "Internal Job Listing - Sr. Advancement Officer",
+		"messageExpiration": {
+			"$date": "2019-01-05T14:24:08.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-07-09T13:24:08.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-07-09T13:24:08.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Margo Smith",
+			"account": "msmith"
+		}
+	},
+	{
+		"messageID": 202,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/823027.html\">Audio Visual Technician</a></p></h5><br /><p>The Audio Visual Technician performs set-up, operation, and break down of audio visual equipment throughout the building and grounds to support functions, special events, and meetings. Additionally, this position is responsible for working with internal or external stakeholders to ensure audio visual support needs are met in an organized, timely and professional manner. The Audio Visual Technician will also update and maintain existing AV facilities as well as designing and installing media systems to support new projects.</p><br /><p><b>Deadline for Internal Applicants:</b> 6/26/18<br /><p><i>This position is full-time, 40 hours/week, with one weekend day and some holidays as required. </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2018-12-17T16:34:23.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-20T15:34:23.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-20T15:34:47.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 29,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">Chef’s Demo</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">November 8; 2:00pm-3:00pm</span></strong></span></p><br /><p style=\"text-align: center;\"><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt;\">Skyline/d’Arb</span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Wellness Team is hosting a Chef’s Demonstration in collaboration with Wolfgang Puck Catering!</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">The Chef will be demonstrating how to make a <strong>Butternut Squash Canestri Pasta</strong>. At the end of the demo there will be samples and recipe cards for you to take with you.</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">Let us know you’re coming by <a href=\"https://www.surveygizmo.com/s3/4641316/Chef-s-Demo-2018\">clicking here</a>. RSVPs are not required but we would like to get a rough headcount.</span></p><br /><p> </p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\">We look forward to seeing you there!</span></p>",
+		"messageSubject": "Chef's Demo - November 8",
+		"messageExpiration": {
+			"$date": "2019-04-17T13:20:18.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-19T13:20:18.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-19T13:20:18.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 227,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "<h4>Internal Job Postings </h4><br /><br /><b> Paid staff positions will be posted internally for five (5) business days to give internal applicants priority during the recruitment process, in support of the Museum’s Affirmative Action Plan. All positions accepting internal applications can be found on our <a href=\"https://mos.applicantpro.com/internaljobs/\">Internal Employment Opportunities</a> page. <p><b> To apply, simply click on the position title below and complete the online application. <i>If internal staff apply after the position is posted externally, they will not be considered as a candidate because they did not apply during the internal posting period.<br /></i> <p>At this time, the below listings are actively accepting internal applications:<br /><br /><p><h5><a href=\"https://mos.applicantpro.com/internaljobs/809875.html \">Interpretation Education Associate II </a></p></h5><br /><p>The Interpretation Education Associate II is part of the Exhibit Interpretation Team that provide daily hands-on, inquiry and design-based learning experiences for Museum visitors in exhibits and teaching spaces. Assist with the daily operations of the Exhibit Interpretation programs, including co-planning and delivery of daily briefings and training for volunteers and staff, maintaining materials and spaces, scheduling personnel, and assisting with program set-up and clean-up. Co-develop and design experiences and materials that support visitors' exploration of exhibit themes and encourage visitors to use their scientific and engineering skills and practices. Collaborate with other educators and projects in the development of department –wide goals, including training and professional learning for the educational teams. </p><br /><p><b>Deadline for Internal Applicants:</b> 6/7/18<br /><p><i>This position is full time, 40 hours/week, with one regular weekend day and/or Friday night and some holidays and extended hours as required. </i> </p>",
+		"messageSubject": "Internal Job Listing",
+		"messageExpiration": {
+			"$date": "2018-11-28T18:08:53.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-06-01T17:08:53.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-06-01T17:08:53.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Gievaughann Brown",
+			"account": "gbrown"
+		}
+	},
+	{
+		"messageID": 15,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Comment Card Report-October 1, 2018-October 31, 2018--Part 2<br /> <br />“My wife and I came to visit your museum on October 12th. While we were takiing a break we had some difficulty with the self serve vending machines, which your Cafe Manager, Kobie Garcia remedied with prompt and professional skill. His service was greatly appreciated. I just wanted to let you know of his excellent service and hope you know that his extroidinary service really made our day.”<br /><br />“I strongly suggest you have a large display of evolution of earth and evolution of man!”<br /><br />“I attended the evening event and it would have been so nice to have a coffee! Can you keep Starbucks open for evening events?”<br /><br />“I found the Exhibits too elementary and not well coordinated. A person cannot develop an understanding of the subject from them.”<br /><br />“My girlfriend and I recently came to the museum while in Boston as it was recommended to do so online. After spending an overpriced admission fee we began to explore the facility. We both have been to museums of science in other cities before and greatly enjoyed them but did not at your facility. Nearly everything on display was childish and insulting to anyone other than a child. If it were a children's museum the advertising and representation done by your organization is clearly off. We left after less than an hour in the facility and would definitely not recommend to anyone who is not going with a child. Thank you for a waste of time and money.”<br /><br />“Hello. I am a long time premiere member and my son has celiac disease which means he can’t eat gluten. I was shocked to find out - after asking a cafeteria manager - that one have no gluten free food options. While I understand that technically the salad bar options are gluten free, they are easily cross contaminated and not sage for those with celiac. Most similar museums and amusement parks now offer gluten free buns, pizza and pasta. I strongly suggest you find a way to offer safe gluten free items to your guests”<br /><br />“Yesterday was my birthday and my son and I spent the day in Boston.  Being that it was so rainy and cold, I bought tickets for the museum and we decided to check it out.  We arrived at 3 p.m., and were saddened to see that one of the wings closed within an hour and it appeared that a lot of exhibits were closed.  We did not realize that most of the shows were early on in the day and that we would be arriving at the wrong time.  I feel that I spent $56 to see a few displays and a snake.  I feel it was not at all worth the money spent for less than two hours.”<br /><br />“As a member, I love getting the monthly email notifications, so I can plan my visits. But I have now received spam about this damn stargazing quiz at least three times.  Moreover, I can't see any way to unsubscribe from terrible spam like this without also unsubscribing from notifications of museum calendars. If I have to, I”<br /><br />“I do not know who to contact about the cams on your roof, but the cam facing east has a wrong time setting, it is 1 hour earlier than it really is. DST does not start for another week. Just so you know, whoever is caring for the cams has made a mistake here. Thank you.”<br /><br /><br />“Please bring back the quesadilla station in the cafe. I love those quesadillas and I miss them very much. Have a nice day!”<br /><br /><br />“Hello there. I submitted a comment regarding a recent visit and my experience. We had a very bad experience which affected my daughter immensely due to a member of your staff. I’m very disappointed that no one has even responded with an email at all. I understand that there’s many departments but I would of expected something at least via email by now.”<br /><br /> “I am not finding much information on your website about which exhibits are good for toddlers.  Can you tell me what exhibits/activities you have for kids around 2 years of age?” <br /><br />“Dear Membership Team, Thank you so much for thinking of us and sending four free passes!! It is a very thoughtful and touching gesture!”",
+		"messageSubject": "A New Comment Card Report Part 2",
+		"messageExpiration": {
+			"$date": "2019-04-30T22:37:12.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-11-01T22:37:12.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-11-01T22:37:12.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Amy Germaine",
+			"account": "agermaine"
+		}
+	},
+	{
+		"messageID": 39,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Events",
+			"camlName": "events"
+		}],
+		"messageBody": "<p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">Hello Everyone,</span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">We will be holding a two Flu Shot Clinics this year for Museum employees. These clinics will be held on <strong>Wednesday October 17, 2018</strong> AND <strong>Tuesday October 23, 2018</strong> from <strong>10:00am -2:00pm</strong>. There will be a limited number of vaccinations so please make sure to sign up if you are interested. The clinic will be held in the <strong>6th Floor Conference Room</strong>.</span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">To sign up for a flu shot please click one of the following links:</span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt; color: black;\"><a href=\"https://www.surveygizmo.com/s3/4620403/Flu-Shot-Clinic-October-17-2018\">Wednesday October 17th Sign-Up</a></span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt; color: black;\">&nbsp;</span></strong></span></p><br /><p><span style=\"font-family: arial, helvetica, sans-serif;\"><strong><span style=\"font-size: 14.0pt; color: black;\"><a href=\"https://www.surveygizmo.com/s3/4620418/Flu-Shot-Clinic-October-23rd\">Tuesday October 23rd Sign-Up</a></span></strong></span></p><br /><p><span style=\"color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p style=\"margin-bottom: 6.0pt;\"><span style=\"font-size: 12pt; color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p style=\"margin-bottom: 6.0pt;\"><span style=\"font-size: 12pt; color: black; font-family: arial, helvetica, sans-serif;\">Let me know if you have any questions or issues with the sign up.</span></p><br /><p style=\"margin-bottom: 6.0pt;\"><span style=\"font-size: 12pt; color: black; font-family: arial, helvetica, sans-serif;\">&nbsp;</span></p><br /><p style=\"margin-bottom: 6.0pt;\"><span style=\"font-size: 12pt; color: black; font-family: arial, helvetica, sans-serif;\">*Please note, we will not be able to offer the 65+ flu shot. If you are in need of this vaccination please visit your doctor, local urgent care, or local pharmacy.</span></p>",
+		"messageSubject": "Flu Shot Clinic Dates & Sign Up",
+		"messageExpiration": {
+			"$date": "2019-04-08T14:49:50.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-10-10T14:49:50.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-10T14:49:50.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Lorah Broderick",
+			"account": "lbroderick"
+		}
+	},
+	{
+		"messageID": 19,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "The event logistics meeting on Wed. Oct. 31st (Halloween!) at 10 AM will be held in the Upper Morse Conference Room (not Hodge) this week only. We will be covering events hosted between Oct. 31st and Nov. 10th. The meeting returns to Hodge the subsequent week. Thanks!",
+		"messageSubject": "Location change for event logistic meeting - 10/31",
+		"messageExpiration": {
+			"$date": "2018-01-03T16:17:48.000Z"
+		},
+		"messageCreated": {
+			"$date": "2017-07-07T15:17:48.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-10-29T20:32:36.000Z"
+		},
+		"messageCreator": {
+			"displayName": "Barbara Wroblewski",
+			"account": "bwroblewski"
+		}
+	},
+	{
+		"messageID": 54,
+		"migratedFromQuark": true,
+		"messageTags": [{
+			"name": "Announcements",
+			"camlName": "announcements"
+		}],
+		"messageBody": "Hi all,<br /><br />Many of you know Katie Baur who has been the Child Development Project Coordinator in the Discovery Center over the last few years.  Katie has recently been promoted and will now be the Assistant Project Manager for the Forum department in Education and Enrichment Programs.  Please congratulate Katie on her new position! She'll be sitting in the Gordon Wing.<br /><br />David",
+		"messageSubject": "Welcome and congrats to Katie Baur",
+		"messageExpiration": {
+			"$date": "2019-03-26T13:42:06.000Z"
+		},
+		"messageCreated": {
+			"$date": "2018-09-27T13:42:06.000Z"
+		},
+		"messageModified": {
+			"$date": "2018-09-27T13:42:06.000Z"
+		},
+		"messageCreator": {
+			"displayName": "David Sittenfeld",
+			"account": "dsittenfeld"
+		}
+	}
+]

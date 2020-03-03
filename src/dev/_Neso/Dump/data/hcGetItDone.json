@@ -1,0 +1,282 @@
+[{
+		"Groups": ["Accessibility"],
+		"Name": "ASL Interpreter Request",
+		"URL": "https://bmos.sharepoint.com/sites/mea-interpreter/SitePages/My%20ASL%20Interpreter%20Requests.aspx",
+		"Description": "Request an ASL interpreter to aid visitors."
+	},
+	{
+		"Groups": ["Advancement"],
+		"Name": "In-Kind Gift Report",
+		"URL": "https://bmos.sharepoint.com/AdvDMSFiles/In-Kind-Donation-Report.docx",
+		"Description": "Report donations of goods or services from individuals, vendors, and other organizations."
+	},
+	{
+		"Groups": ["Collections & Archives"],
+		"Name": "Archives Use Request",
+		"URL": "https://bmos.sharepoint.com/sites/ed-archives-use/SitePages/My%20Archives%20Use%20Requests.aspx",
+		"Description": "Request access, use, or reproduction of materials from the Museum's archives."
+	},
+	{
+		"Groups": ["Collections & Archives"],
+		"Name": "Incoming Loan Request",
+		"URL": "https://bmos.sharepoint.com/sites/ed-incoming-loan/SitePages/My%20Incoming%20Loan%20Requests.aspx",
+		"Description": "Request a loan of objects from outside individuals or institutions for program or exhibit use."
+	},
+	{
+		"Groups": ["Collections & Archives"],
+		"Name": "Interdepartmental Loan Request",
+		"URL": "https://bmos.sharepoint.com/sites/ed-interdepartmental-loan/SitePages/My%20Interdepartmental%20Loan%20Requests.aspx",
+		"Description": "Request use of Collections objects for programs or lectures."
+	},
+	{
+		"Groups": ["Event and Conference Services", "Events"],
+		"Name": "Event Space Request",
+		"URL": "https://bmos.sharepoint.com/sites/vxo-event-space/SitePages/My%20Event%20Space%20Requests.aspx",
+		"Description": "Request Museum space for an event."
+	},
+	{
+		"Groups": ["Event and Conference Services", "Events"],
+		"Name": "In-House Needs Sheet",
+		"URL": "https://bmos.sharepoint.com/ECSDocs/In%20House%20Need%20Sheet.docx",
+		"Description": "Request what you need for your event."
+	},
+	{
+		"Groups": ["IT", "Events"],
+		"Name": "Event AV Request (Tech Services Request)",
+		"URL": "https://bmos.sharepoint.com/sites/iit-event-av/SitePages/App.aspx",
+		"Description": "Audio and/or visual equipment and staff for meetings and events.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["Wolfgang Puck Catering", "Events"],
+		"Name": "Puck Quick Pick Request",
+		"URL": "https://bmos.sharepoint.com/ECSDocs/Puck%20Catering%20Quick%20Pick.doc",
+		"Description": "Café selections are available for pick up. Designed for internal groups of 10 or fewer."
+	},
+	{
+		"Groups": ["Wolfgang Puck Catering", "Events"],
+		"Name": "Puck Catering Request",
+		"URL": "https://bmos.sharepoint.com/ECSDocs/Puck%20Conference%20Catering%20Form.docx",
+		"Description": "Dropoff-style catering. Designed for internal groups of 1 – 50."
+	},
+	{
+		"Groups": ["HR"],
+		"Name": "Employment Authorization Request (EAR)",
+		"URL": "https://bmos.sharepoint.com/sites/hr-employment/SitePages/App.aspx?r=0",
+		"Description": "Request authorization for a position.",
+		"restrictedToRoles": ["manager", "earAdmin"],
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["HR"],
+		"Name": "Internal Application for a Job Opening",
+		"URL": "https://bmos.sharepoint.com/SitePages/Internal%20Application%20for%20a%20Job%20Opening.aspx",
+		"Description": "Apply for a Museum job opening during the internal posting period.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["HR"],
+		"Name": "Outside Employment Disclosure",
+		"URL": "https://bmos.sharepoint.com/sites/hr-outside-employment/SitePages/App.aspx",
+		"Description": "Submit this request to HR prior to accepting employment outside the Museum."
+	},
+	{
+		"Groups": ["HR"],
+		"Name": "Personnel Action Request (PAF)",
+		"URL": "https://bmos.sharepoint.com/sites/hr-personnel/SitePages/App.aspx?r=0",
+		"Description": "Request hiring, position changes, and more.",
+		"restrictedToRoles": ["manager", "pafAdmin"],
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["HR"],
+		"Name": "Refer a Friend",
+		"URL": "https://bmos.sharepoint.com/sites/hr-referral/SitePages/App.aspx",
+		"Description": "Refer someone to HR for a staff, intern, or volunteer position.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["IT", "Tessitura", "Data Management Services (DMS)"],
+		"Name": "Tessitura Access Agreement",
+		"URL": "https://bmos.sharepoint.com/MWLib/Tessitura%20Access%20Agreement.docx",
+		"Description": "For current staff members, this agreement should be signed and submitted prior to requesting Tessitura access via the Network Access Request. For staff members who have not yet started, request Tessitura access via the Network Access Request and have this agreement signed and submitted on the staff member's first day."
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "Network Access Request",
+		"URL": "https://museumofscience.service-now.com/nav_to.do?uri=com.glideapp.servicecatalog_cat_item_view.do?sysparm_id=3b30c80adbef2f0056580252ba961928",
+		"Description": "Add / modify access to the Museum network for an employee, volunteer, or contractor.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["Marketing", "IT"],
+		"Name": "Promotion Request",
+		"URL": "https://bmos.sharepoint.com/sites/mea-promo/SitePages/App.aspx",
+		"Description": "Request promotion of a Museum offering.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "Equipment Loan Request",
+		"URL": "https://bmos.sharepoint.com/sites/iit-equipment-loan/SitePages/App.aspx",
+		"Description": "Request equipment from IT.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "VPN Access Request",
+		"URL": "https://bmos.sharepoint.com/sites/iit-vpn-access/SitePages/App.aspx",
+		"Description": "Request access to the Museum network from other locations."
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "Admin Access Request",
+		"URL": "https://bmos.sharepoint.com/sites/iit-admin-access/SitePages/My%20Admin%20Access%20Requests.aspx",
+		"Description": "Get administrative access to your Museum computer.",
+		"restrictedToRoles": ["componentGrpAdmin"]
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "Firewall Change Request",
+		"URL": "https://bmos.sharepoint.com/sites/iit-firewall-change/SitePages/My%20Firewall%20Change%20Requests.aspx",
+		"Description": "Request a change to the Museum's network firewall."
+	},
+	{
+		"Groups": ["MarCom"],
+		"Name": "Logo Request",
+		"URL": "https://bmos.sharepoint.com/sites/mea-logo/SitePages/App.aspx",
+		"Description": "Get a Museum logo. (If sending to vendor, use the Project Request, instead.)"
+	},
+	{
+		"Groups": ["MarCom"],
+		"Name": "Photo Request",
+		"URL": "https://bmos.sharepoint.com/sites/mea-photo/SitePages/App.aspx",
+		"Description": "Get a photo from a recent shoot or from our archive."
+	},
+	{
+		"Groups": ["MarCom"],
+		"Name": "MarCom Project Request",
+		"URL": "https://bmos.sharepoint.com/sites/mea-mc-project/SitePages/App.aspx",
+		"Description": "Submit a request for signs, slides, Colorvision, logos for vendors, or print projects."
+	},
+	{
+		"Groups": ["MarCom"],
+		"Name": "Business Card Requests",
+		"URL": "https://bmos.sharepoint.com/SitePages/Business%20Card%20Requests.aspx",
+		"Description": "Request business cards be approved and printed."
+	},
+	{
+		"Groups": ["MarCom"],
+		"Name": "Nameplate Requests",
+		"URL": "https://bmos.sharepoint.com/SitePages/Nameplate%20Requests.aspx",
+		"Description": "Request a nameplate for a desk, directory, or room."
+	},
+	{
+		"Groups": ["Public Safety"],
+		"Name": "Garage Access Request",
+		"URL": "https://bmos.sharepoint.com/sites/ps-garage-access/SitePages/App.aspx",
+		"Description": "Get approval to park a vehicle in the garage during normal operations hours."
+	},
+	{
+		"Groups": ["Public Safety"],
+		"Name": "Garage Discount Request",
+		"URL": "https://bmos.sharepoint.com/sites/ps-garage-discount/SitePages/My%20Garage%20Discount%20Requests.aspx",
+		"Description": "Request a discount on or waiver of parking fees at the garage for groups of 20 or more."
+	},
+	{
+		"Groups": ["Public Safety"],
+		"Name": "Overnight Parking Request",
+		"URL": "https://bmos.sharepoint.com/sites/ps-overnight-parking/SitePages/My%20Overnight%20Parking%20Requests.aspx",
+		"Description": "Get approval to park a vehicle in the Museum garage overnight."
+	},
+	{
+		"Groups": ["Public Safety"],
+		"Name": "Key Request",
+		"URL": "https://bmos.sharepoint.com/sites/ps-key/SitePages/App.aspx",
+		"Description": "Staff and interns: gain access to parts of the Museum."
+	},
+	{
+		"Groups": ["Grants Planning Committee"],
+		"Name": "Grants Planning Committee (GPC)",
+		"URL": "https://bmos.sharepoint.com/SitePages/Grants%20Planning%20Committee.aspx",
+		"Description": "Grant proposals must be vetted and approved prior to submitting to a funder."
+	},
+	{
+		"Groups": ["Museumwide"],
+		"Name": "Guest Service Experiences (GSE)",
+		"URL": "https://bmos.sharepoint.com/SitePages/Guest%20Service%20Experiences.aspx",
+		"Description": "Opportunities to serve our visitors and colleagues."
+	},
+	{
+		"Groups": ["Museumwide"],
+		"Name": "Museum Events Calendar",
+		"URL": "https://bmos.sharepoint.com/sites/mw-events/SitePages/App.aspx?f=cal",
+		"Description": "Goings-on around the Museum."
+	},
+	{
+		"Groups": ["Museumwide"],
+		"Name": "Museum Product Timeline",
+		"URL": "https://bmos.sharepoint.com/sites/pt/SitePages/Product%20Timeline.aspx",
+		"Description": "A history of the Museum's offerings."
+	},
+	{
+		"Groups": ["Museumwide"],
+		"Name": "Museum Buyouts Calendar",
+		"URL": "https://bmos.sharepoint.com/sites/mw-buyouts/SitePages/App.aspx?f=cal",
+		"Description": "Get info on products bought out for events."
+	},
+	{
+		"Groups": ["Accounting"],
+		"Name": "All Forms and References",
+		"URL": "https://bmos.sharepoint.com/SitePages/Accounting.aspx",
+		"Description": "All Abouts, policy documents, and other materials relating to buyouts, taxes, grants, and other Accounting topics",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["CRM", "Tessitura"],
+		"Name": "Pass Request",
+		"URL": "https://bmos.sharepoint.com/sites/mw-pass/SitePages/App.aspx",
+		"Description": "Request 25+ Museum paper passes."
+	},
+	{
+		"Groups": ["Facilities"],
+		"Name": "C&W Service Ticket",
+		"URL": "https://museumofscience.service-now.com/nav_to.do?uri=com.glideapp.servicecatalog_category_view.do?sysparm_parent=d79180dedb27230056580252ba961922",
+		"Description": "Request work from C&W.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["CRM", "Tessitura"],
+		"Name": "CRM Service Ticket",
+		"URL": "https://museumofscience.service-now.com/nav_to.do?uri=com.glideapp.servicecatalog_category_view.do?sysparm_parent=56b08c9edb27230056580252ba9619c0",
+		"Description": "Request work from CRM System Services.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["Facilities"],
+		"Name": "Facilities Service Ticket",
+		"URL": "https://museumofscience.service-now.com/nav_to.do?uri=com.glideapp.servicecatalog_category_view.do?sysparm_parent=7b81889edb27230056580252ba9619b4",
+		"Description": "Request work from Facilities.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	},
+	{
+		"Groups": ["IT"],
+		"Name": "IT Service Ticket",
+		"URL": "https://museumofscience.service-now.com/nav_to.do?uri=com.glideapp.servicecatalog_category_view.do?sysparm_parent=72d040dedb27230056580252ba96193f",
+		"Description": "Request work from IT.",
+		"HCProminent": true,
+		"GetItDoneProminent": true
+	}
+]

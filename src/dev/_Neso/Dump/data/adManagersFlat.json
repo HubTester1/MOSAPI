@@ -1,0 +1,1084 @@
+{
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98de"
+	},
+	"account": "madams",
+	"employeeID": "010385",
+	"firstName": "Mike",
+	"lastName": "Adams",
+	"firstInitial": "M",
+	"lastInitial": "A",
+	"displayName": "Mike Adams",
+	"title": "Manager, Traveling Programs",
+	"email": "madams@mos.org",
+	"officePhone": "617-589-4253",
+	"mobilePhone": "",
+	"manager": "shorrigan",
+	"department": "Traveling Programs",
+	"division": "Education",
+	"securityGroups": ["SP_Team_Write_EEP", "mos.org", "TrackIT Users", "Traveling Programs", "Budget_EdPrograms", "SP_Staff", "FinanceSSRSUsers", "Traveling Programs admin", "Budget_Education", "MMTfolder", "WiFi Access", "Outreach", "PGP_BASIC", "Community Outreach", "Tessitura Education", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "SP_Team_Write_Safety", "EEP", "GSW Scripts and Slides", "Safety_Zeus", "BWEducationExp"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea975d"
+	},
+	"account": "calpert",
+	"employeeID": "000311",
+	"firstName": "Carol Lynn",
+	"lastName": "Alpert",
+	"firstInitial": "C",
+	"lastInitial": "A",
+	"displayName": "Carol Lynn Alpert",
+	"title": "Director, Strategic Projects Group",
+	"email": "calpert@mos.org",
+	"officePhone": "617-589-0401",
+	"mobilePhone": "",
+	"manager": "lbell",
+	"department": "Strategic Projects",
+	"division": "Finance \u0026 System Services",
+	"securityGroups": ["StartProjex", "CS\u0026amp;T", "mos.org", "TrackIT Users", "NISE", "GPC", "Strategic Projects", "SP_Staff", "SPG", "Budget_StrategicInitiatives", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "MMTfolder", "WiFi Access", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98b6"
+	},
+	"account": "lbeall",
+	"employeeID": "009983",
+	"firstName": "Lydia",
+	"lastName": "Beall",
+	"firstInitial": "L",
+	"lastInitial": "B",
+	"displayName": "Lydia Beall",
+	"title": "Mgr Staffed Exh Spaces",
+	"email": "lbeall@mos.org",
+	"officePhone": "617-589-0328",
+	"mobilePhone": "",
+	"manager": "tporter",
+	"department": "Staffed Exhibit Spaces",
+	"division": "Education",
+	"securityGroups": ["CreativityWS", "Staffed Exhibit Spaces", "BWVisitorExp", "DCTechStudio", "mos.org", "TrackIT Users", "Visitor Programs", "Exhibits_Projects_TechGallery", "Youth Programs", "Exhibits_Projects_Engineering_2016", "Tech Galleries", "Digital Signage Access", "Design Challenge", "HHL Communications", "Exhibit Leadership", "CCPlace", "Exhibits_Projects_Tech_and_You", "SP_Staff", "Exhibits_Projects_MercuryToMars", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "HHL", "Pixar Ed Programs", "Human Body Connection", "Budget_Education", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "Exhibits_Titan", "WiFi Access", "DC Gordon", "Exhibits", "SP_Dept_HR_ManagersHandbook", "Budget_Exhibits", "Budget_RestrictedAccess", "Exhibits WS", "School Programs", "Crystal Enterprise", "Hall of Human Life", "Exhibit Content Development", "GSW Scripts and Slides", "Schedules"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98b8"
+	},
+	"account": "lbell",
+	"employeeID": "000630",
+	"firstName": "Larry",
+	"lastName": "Bell",
+	"firstInitial": "L",
+	"lastInitial": "B",
+	"displayName": "Larry Bell",
+	"title": "SVP, Strategic Int \u0026 Assoc Dir NCTL",
+	"email": "lbell@mos.org",
+	"officePhone": "617-589-0282",
+	"mobilePhone": "",
+	"manager": "imiaoulis",
+	"department": "Strategic Initiatives Adm",
+	"division": "Strategic Initiatives",
+	"securityGroups": ["Research - Development - Production Administration", "BWVisitorExp", "StartProjex", "MComm", "NCTL group", "CS\u0026amp;T", "SMT", "StarWars", "mos.org", "TrackIT Users", "Chem Attitudes", "BPT", "MC", "NISE", "GPC", "MajorPro", "SP_Staff", "SPG", "Wellness Committee", "Budget_StrategicInitiatives", "FinanceSSRSUsers", "Patterns", "OS X Users", "Grants Workshops", "Web VPN Access", "HHL", "Chem Attitudes Finance", "MMTfolder", "Forum", "Showcase", "VFT", "WiFi Access", "PGP_BASIC", "Exhibits", "Weather-Project", "Making Models", "SP_Dept_HR_ManagersHandbook", "Exhibits_Contracts", "Budget_RestrictedAccess", "Crystal Enterprise", "MSPES", "MSPES Finance", "NISE Finance", "BWEducationExp", "AnyConnect VPN Access", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99e5"
+	},
+	"account": "wbouchard",
+	"employeeID": "010309",
+	"firstName": "Wayne",
+	"lastName": "Bouchard",
+	"firstInitial": "W",
+	"lastInitial": "B",
+	"displayName": "Wayne Bouchard",
+	"title": "President (Interim)",
+	"email": "wbouchard@mos.org",
+	"officePhone": "617-589-0225",
+	"mobilePhone": "617-285-5614",
+	"manager": "imiaoulis",
+	"department": "Museum-Wide Admin",
+	"division": "Administration",
+	"securityGroups": ["BWVisitorExp", "SMT", "mos.org", "TrackIT Users", "BPT", "FoodCharrette", "MC", "Master Planning", "Long Range Plan", "BWPhysicalExp", "DS Info", "SP_Business_Intelligence", "SP_Staff", "Wellness Committee", "Budget_FullAccess", "SP_Team_Write_ISGT", "MMTfolder", "BWCoreTeam", "Omni Restricted", "WiFi Access", "ConstructionImages", "Director''s Office", "SP_Dept_HR_ManagersHandbook", "ISGT", "ISR-Mgmt", "Emergency Management Plan", "Exhibits_Contracts", "Accessibility_Shared", "Crystal Enterprise", "space", "BWEducationExp", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9820"
+	},
+	"account": "jburke",
+	"employeeID": "000980",
+	"firstName": "Jonathan",
+	"lastName": "Burke",
+	"firstInitial": "J",
+	"lastInitial": "B",
+	"displayName": "Jonathan Burke",
+	"title": "SVP, Visitor Experience \u0026 Operations",
+	"email": "jburke@mos.org",
+	"officePhone": "617-589-0313",
+	"mobilePhone": "617-851-6364",
+	"manager": "wbouchard",
+	"department": "Visitor Experience \u0026 Ops",
+	"division": "Administration",
+	"securityGroups": ["Visitor Experience and Outreach Administration", "SP_Team_Write_ECS", "VS Closing", "Segway", "BWVisitorExp", "COI other", "Redboard_viewers", "VS Admin", "VXO_Admin", "VS_Mgmt", "DCRConstruction", "SMT", "StarWars", "mos.org", "SP_Team_Write_PublicSafety", "Omni and 4-D", "TrackIT Users", "NRT", "SC Admin", "LSI_Admits", "LOTR", "Facilities group", "MC", "Parking", "CRM System Services", "Master Planning", "BoxOffice - Less Restricted Users", "Kiosk Access", "GWRenovation", "Box Office FAQs", "CSI Project Team", "Omni", "Harry Potter", "BWPhysicalExp", "Wayfinder", "BodyWorlds", "Streaming-Tech", "VS_MembershipSales", "SP_Staff", "Facilities Admin", "Lost-And-Found", "InfoDesk_Grp", "FinanceSSRSUsers", "MaxFlight", "Web VPN Access", "PA System Project", "PublicBodyWorlds", "Facility_Users", "MMTfolder", "BOI", "BWCoreTeam", "Omni Restricted", "AdmitsBackOffice", "BodyWorlds Public Share Restricted", "WiFi Access", "Public Safety Admin", "Pompeii", "Information Desk", "PGP_BASIC", "Shift-Leaders", "SP_Team_Write_NEST", "SP_Dept_HR_ManagersHandbook", "SP_Team_Write_Safety_Ldrs", "GSP Project Team", "Safety Leadership", "VXO Strategy", "Emergency Management Plan", "Budget_RestrictedAccess", "Accessibility_Shared", "Crystal Enterprise", "Weekly Sales", "SP_Team_Write_Safety", "VS_SW", "4D Theater Operations", "Platform", "GSW Scripts and Slides", "Camp In", "Safety_Zeus", "PompeiiOps", "ReportExport", "Garage_Project", "Admits", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea96f4"
+	},
+	"account": "abuzay",
+	"employeeID": "014592",
+	"firstName": "Aaron",
+	"lastName": "Buzay",
+	"firstInitial": "A",
+	"lastInitial": "B",
+	"displayName": "Aaron Buzay",
+	"title": "AVP, Advancement Ops",
+	"email": "abuzay@mos.org",
+	"officePhone": "617-589-0181",
+	"mobilePhone": "978-771-3712",
+	"manager": "elliestarr",
+	"department": "Advancement Operations",
+	"division": "Advancement",
+	"securityGroups": ["Data Services", "mos.org", "AdvancementData", "AdvAdmin", "Tessitura Advancement", "Development", "Special Events", "Annual Fund", "SP_Staff", "ADV Operations", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "MMTfolder", "WiFi Access", "Budget_RestrictedAccess", "Crystal Enterprise", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97fa"
+	},
+	"account": "hcalvin",
+	"employeeID": "001159",
+	"firstName": "Heather",
+	"lastName": "Calvin",
+	"firstInitial": "H",
+	"lastInitial": "C",
+	"displayName": "Heather Calvin",
+	"title": "AVP, Visitor Exp \u0026 Operations",
+	"email": "hcalvin@mos.org",
+	"officePhone": "617-589-0182",
+	"mobilePhone": "781-454-6709",
+	"manager": "jburke",
+	"department": "Visitor Svcs \u0026 Membership",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Visitor Experience and Outreach Administration", "Baseball", "Resources", "Membership - Aspen", "TStatsUsers", "BWVisitorExp", "Redboard_viewers", "ENews Editors", "VS Admin", "VXO_Admin", "VS_Mgmt", "Swat team", "SP_Team_Write_deadseascrolls", "Budget_VisitorServices", "DCRConstruction", "mos.org", "Omni and 4-D", "TrackIT Users", "SC Admin", "LSI_Admits", "Visitor Experience Monitoring", "MC", "CRM System Services", "Campaign Cabinet - Aspen", "Development", "AATF", "SC Documentation", "GWRenovation", "commentcards", "CSI Project Team", "Omni", "Harry Potter", "Tessitura Administration", "BWPhysicalExp", "Wayfinder", "SP_Team_Write_DMSCharge", "InfoDeskAdmin", "Annual Fund", "Exhibits_Projects_Tech_and_You", "VS_MembershipSales", "SP_Staff", "FinanceSSRSUsers", "HPExhibitHost", "Web VPN Access", "MMTfolder", "BWCoreTeam", "ProjectManagers", "GreenTeam", "Omni Restricted", "Membership_Staff", "Visitor Services and Membership", "WiFi Access", "Mem_DMS_Protected", "Pompeii", "Lobby Training", "PGP_BASIC", "SP_Team_Write_NEST", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Digital Signage", "VXO Strategy", "Emergency Management Plan", "Budget_RestrictedAccess", "Accessibility_Shared", "Crystal Enterprise", "Tessitura Core Team", "Tessitura Shared", "Campaign Cabinet", "Membership_Grp", "4D Theater Operations", "Platform", "GSW Scripts and Slides", "VS_Staff", "IN Children''s Museum Survey", "PompeiiOps", "ReportExport", "MemBoothProxy - Allow", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9741"
+	},
+	"account": "bcolantoni",
+	"employeeID": "001355",
+	"firstName": "Bob",
+	"lastName": "Colantoni",
+	"firstInitial": "B",
+	"lastInitial": "C",
+	"displayName": "Bob Colantoni",
+	"title": "Director, Public Safety",
+	"email": "bcolantoni@mos.org",
+	"officePhone": "617-589-0495",
+	"mobilePhone": "617-605-7558",
+	"manager": "jburke",
+	"department": "Public Safety Admin.",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["BWVisitorExp", "ParkingCapacity", "COI other", "Swat team", "Budget_VisitorServices", "mos.org", "SP_Team_Write_PublicSafety", "TrackIT Users", "GarageKeys", "Public Safety", "LSI_Admits", "Parking", "Garage Bank", "BoxOffice - Less Restricted Users", "GWRenovation", "BWPhysicalExp", "NeedSheets", "SP_Staff", "FinanceSSRSUsers", "GarageSignRemoteAccess", "BWOPS", "SP_Team_Write_ISGT", "Web VPN Access", "PA System Project", "MMTfolder", "BOI", "ProjectManagers", "Safety Admin", "SN Public Safety Managers", "Amenity Log", "WiFi Access", "Public Safety Admin", "Garage", "Information Desk", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "SP_Team_Write_Safety_Ldrs", "Safety Leadership", "ISGT", "SP_Team_Write_Security_IP_CCTV", "Emergency Management Plan", "Budget_RestrictedAccess", "Crystal Enterprise", "SP_Team_Write_Safety", "Medical Incident Reports", "SP_Team_Write_PublicSafety_Mgmt", "Safety_Zeus", "Garage_Project", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9828"
+	},
+	"account": "jdoherty",
+	"employeeID": "011586",
+	"firstName": "Janna",
+	"lastName": "Doherty",
+	"firstInitial": "J",
+	"lastInitial": "D",
+	"displayName": "Janna Doherty",
+	"title": "Program Manager, Volunteer \u0026 Family Engagement",
+	"email": "jdoherty@mos.org",
+	"officePhone": "617-589-0427",
+	"mobilePhone": "",
+	"manager": "rkipling",
+	"department": "Staffed Exhibit Spaces",
+	"division": "Education",
+	"securityGroups": ["Staffed Exhibit Spaces", "BWVisitorExp", "DCTechStudio", "mos.org", "TrackIT Users", "OnSite Research", "DC-LL Staff", "National Living Lab", "Digital Signage Access", "Living Laboratory - DC", "ECEMgr", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Pixar Ed Programs", "SP_Dept_Write_Volunteer_Supervisors", "Discovery", "WiFi Access", "Crystal Enterprise", "TOE Component"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9829"
+	},
+	"account": "jdonnelly",
+	"employeeID": "012661",
+	"firstName": "Jesse",
+	"lastName": "Donnelly",
+	"firstInitial": "J",
+	"lastInitial": "D",
+	"displayName": "Jesse Donnelly",
+	"title": "Mgr, Overnight Programs \u0026 Summer Courses",
+	"email": "jdonnelly@mos.org",
+	"officePhone": "617-589-0351",
+	"mobilePhone": "",
+	"manager": "shorrigan",
+	"department": "Overnight Programs",
+	"division": "Education",
+	"securityGroups": ["SP_Team_Write_EEP", "mos.org", "Courses group", "TrackIT Users", "Budget_EdPrograms", "SP_Staff", "FinanceSSRSUsers", "Web VPN Access", "Budget_Education", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "WiFi Access", "PGP_BASIC", "Tessitura Education", "Camp-Ins", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "Overnight Information", "EEP", "Camp In", "Safety_Zeus"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9960"
+	},
+	"account": "rdoty",
+	"employeeID": "002540",
+	"firstName": "Robin",
+	"lastName": "Doty",
+	"firstInitial": "R",
+	"lastInitial": "D",
+	"displayName": "Robin Doty",
+	"title": "Manager, Omni \u0026 3D Theater",
+	"email": "rdoty@mos.org",
+	"officePhone": "617-589-0266",
+	"mobilePhone": "617-470-8715",
+	"manager": "hcalvin",
+	"department": "Omni",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["TStatsUsers", "Segway", "Budget_VisitorServices", "mos.org", "Omni and 4-D", "TrackIT Users", "LSI_Admits", "Audio Visual", "Omni", "SP_Staff", "FinanceSSRSUsers", "Tessitura Ticketing", "MaxFlight", "OS X Users", "Web VPN Access", "MMTfolder", "Showcase", "Omni Restricted", "WiFi Access", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Omni Operations", "Budget_RestrictedAccess", "Crystal Enterprise", "4D Theater Operations", "Platform", "GSW Scripts and Slides", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99c3"
+	},
+	"account": "tfarrand",
+	"employeeID": "014710",
+	"firstName": "Tony",
+	"lastName": "Farrand",
+	"firstInitial": "T",
+	"lastInitial": "F",
+	"displayName": "Tony Farrand",
+	"title": "Manager of System Support Services",
+	"email": "tfarrand@mos.org",
+	"officePhone": "617-589-0493",
+	"mobilePhone": "",
+	"manager": "psheppard",
+	"department": "System Support Services",
+	"division": "Finance \u0026 System Services",
+	"securityGroups": ["Budget_Finance", "PGP_ADMIN", "mos.org", "DameWare Admins", "IITProd", "SP_Dept_Write_IIT", "Tessitura Administration", "SP_Team_Write_IIT", "SP_Staff", "OS X Users", "Web VPN Access", "IIT group", "MMTfolder", "aqmsalerts", "WiFi Access", "Office 365 Admins", "Budget_RestrictedAccess", "SN IT Service Desk", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97ea"
+	},
+	"account": "gfavreau",
+	"employeeID": "014913",
+	"firstName": "Gail",
+	"lastName": "Favreau",
+	"firstInitial": "G",
+	"lastInitial": "F",
+	"displayName": "Gail Favreau",
+	"title": "Director, Fundraising Events",
+	"email": "gfavreau@mos.org",
+	"officePhone": "617-589-0204",
+	"mobilePhone": "",
+	"manager": "",
+	"department": "Fundraising Events",
+	"division": "Advancement",
+	"securityGroups": ["Data Services", "mos.org", "TrackIT Users", "AdvancementData", "Tessitura Advancement", "Development", "Special Events", "Annual Fund", "SP_Staff", "ADV Operations", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "MMTfolder", "WiFi Access", "Crystal Enterprise", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97fd"
+	},
+	"account": "hfriedtanzer",
+	"employeeID": "014836",
+	"firstName": "Hannah",
+	"lastName": "Fried-Tanzer",
+	"firstInitial": "H",
+	"lastInitial": "F",
+	"displayName": "Hannah Fried-Tanzer",
+	"title": "Asoc Dir Found Rel",
+	"email": "hfriedtanzer@mos.org",
+	"officePhone": "617-589-4493",
+	"mobilePhone": "",
+	"manager": "",
+	"department": "Corp/Found/Gov't Relat'ns",
+	"division": "Advancement",
+	"securityGroups": ["mos.org", "AdvancementData", "Development", "OS X Users", "Web VPN Access", "WiFi Access", false, "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea994b"
+	},
+	"account": "pgarland",
+	"employeeID": "003498",
+	"firstName": "Peter",
+	"lastName": "Garland",
+	"firstInitial": "P",
+	"lastInitial": "G",
+	"displayName": "Peter Garland",
+	"title": "Mgr, Temporary Exhibitions Operations",
+	"email": "pgarland@mos.org",
+	"officePhone": "617-589-0286",
+	"mobilePhone": "",
+	"manager": "bharvey",
+	"department": "Temporary Exhibit Ops",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Baseball", "Exhibits_Projects_Menzel", "Temp Exhibits", "StarWars", "mos.org", "TrackIT Users", "Exhibits_Projects_Pixar", "GWRenovation", "Exhibits Enterprise", "SP_Staff", "FinanceSSRSUsers", "Butterfly Garden", "OS X Users", "Web VPN Access", "Budget_Education", "Exhibits_Projects_Escher", "MMTfolder", "Exhibits_Titan", "Darwin Exhibit", "COI MOS", "WiFi Access", "PGP_BASIC", "Exhibit Fabrication and Installation", "Exhibits", "SP_Dept_HR_ManagersHandbook", "Budget_Exhibits", "Exhibits_Contracts", "Budget_RestrictedAccess", "EE Staff", "Temp Exhibit Team", "Crystal Enterprise", "Exhibits Development", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9705"
+	},
+	"account": "agermaine",
+	"employeeID": "003930",
+	"firstName": "Amy",
+	"lastName": "Germaine",
+	"firstInitial": "A",
+	"lastInitial": "G",
+	"displayName": "Amy Germaine",
+	"title": "Mgr, Science Central \u0026 Info Desk",
+	"email": "agermaine@mos.org",
+	"officePhone": "617-589-0377",
+	"mobilePhone": "",
+	"manager": "hcalvin",
+	"department": "Science Central",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Tessitura Training", "VS Closing", "Membership - Aspen", "Redboard_viewers", "Budget_VisitorServices", "SC Volunteers", "mos.org", "TrackIT Users", "SC Admin", "LSI_Admits", "Volsupervisors", "CRM System Services", "SC Documentation", "Kiosk Access", "Box Office FAQs", "commentcards", "NeedSheets", "WWV \u0026amp; VS-R", "InfoDeskAdmin", "SP_Staff", "Lost-And-Found", "InfoDesk_Grp", "FinanceSSRSUsers", "BWOPS", "Tessitura Ticketing", "Web VPN Access", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "WWV", "TPP Data Cleanup", "Amenity Log", "BodyWorlds Public Share Restricted", "WiFi Access", "Mem_DMS_Protected", "Lobby Training", "Information Desk", "Shift-Leaders", "Science Central", "SP_Team_Write_NEST", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Digital Signage", "Budget_RestrictedAccess", "Crystal Enterprise", "SC Purchase Orders", "GSW Scripts and Slides", "Admits", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98f4"
+	},
+	"account": "mgrace",
+	"employeeID": "013313",
+	"firstName": "Michael",
+	"lastName": "Grace",
+	"firstInitial": "M",
+	"lastInitial": "G",
+	"displayName": "Michael Grace",
+	"title": "Director, Annual Giving",
+	"email": "mgrace@mos.org",
+	"officePhone": "617-589-0441",
+	"mobilePhone": "",
+	"manager": "abuzay",
+	"department": "Annual Giving",
+	"division": "Advancement",
+	"securityGroups": ["Budget_Advancement", "mos.org", "AdvancementData", "LSI_Admits", "Tessitura Advancement", "Development", "Annual Fund", "SP_Staff", "FinanceSSRSUsers", "Web VPN Access", "MMTfolder", "WiFi Access", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97c9"
+	},
+	"account": "egrizzard",
+	"employeeID": "014377",
+	"firstName": "Eva",
+	"lastName": "Grizzard",
+	"firstInitial": "E",
+	"lastInitial": "G",
+	"displayName": "Eva Grizzard",
+	"title": "Sr Archivist",
+	"email": "egrizzard@mos.org",
+	"officePhone": "617-589-0368",
+	"mobilePhone": "",
+	"manager": "bharvey",
+	"department": "Archives",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["mos.org", "Collections", "SP_Staff", "OS X Users", "Web VPN Access", "WiFi Access", "ExhibitsData", "Collections Archive", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97fe"
+	},
+	"account": "hgunsallus",
+	"employeeID": "014677",
+	"firstName": "Heather",
+	"lastName": "Gunsallus",
+	"firstInitial": "H",
+	"lastInitial": "G",
+	"displayName": "Heather Gunsallus",
+	"title": "VP STEM Ed",
+	"email": "hgunsallus@mos.org",
+	"officePhone": "617-589-0116",
+	"mobilePhone": "443-474-2476",
+	"manager": "asawyer",
+	"department": "STEM Education",
+	"division": "Education",
+	"securityGroups": ["EiE PTF", "mos.org", "QuarkLogin", "EIE - Aspen", "Budget_EdPrograms", "EiE Implementation", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "Budget_Education", "MMTfolder", "WiFi Access", "Budget_RestrictedAccess", "Budget_EiE", "EiE Salesforce Backup", "EiE Product Strategy", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9745"
+	},
+	"account": "bharvey",
+	"employeeID": "004275",
+	"firstName": "BarB",
+	"lastName": "Harvey",
+	"firstInitial": "B",
+	"lastInitial": "H",
+	"displayName": "BarB Harvey",
+	"title": "Dir, Conservation \u0026 Temp Exh Ops",
+	"email": "bharvey@mos.org",
+	"officePhone": "617-589-0331",
+	"mobilePhone": "",
+	"manager": "creich",
+	"department": "Conservatn \u0026 Temp Exh Ops",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["BWVisitorExp", "MComm", "mos.org", "TrackIT Users", "BPT", "SP_Team_Write_HHL_Maintenance", "MC", "AATF", "Master Planning", "GWRenovation", "GPC", "Design Challenge", "BWPhysicalExp", "MajorPro", "Exhibit Leadership", "SP_Dept_Write_Collections", "Collections", "CollectionsCarolynAdmin", "SP_Staff", "SPG", "FinanceSSRSUsers", "Programs JDs", "Butterfly Garden", "OS X Users", "Web VPN Access", "HHL", "Budget_Education", "PlatinumUsers", "MMTfolder", "ProjectManagers", "GreenTeam", "ITASE", "Living Collections", "VFT", "BWExhibitsPlanningTeam", "WiFi Access", "JanusUsers", "Collections Archive", "SP_Dept_Write_GPC", "PGP_BASIC", "DC Gordon", "ConstructionImages", "Director''s Office", "SP_Dept_HR_ManagersHandbook", "Budget_Exhibits", "Exhibits_Contracts", "Budget_RestrictedAccess", "Exhibits_Projects_ELEEE_New", "Crystal Enterprise", "AzbackupshareEX", "space", "Strategic Initiatives", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea970c"
+	},
+	"account": "ahile",
+	"employeeID": "013890",
+	"firstName": "Angela",
+	"lastName": "Hile",
+	"firstInitial": "A",
+	"lastInitial": "H",
+	"displayName": "Angela Hile",
+	"title": "Director, Visitor Services",
+	"email": "ahile@mos.org",
+	"officePhone": "617-589-0218",
+	"mobilePhone": "617-947-2198",
+	"manager": "hcalvin",
+	"department": "Visitor Svcs/Box Office",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Tessitura Training", "VS Closing", "VS Admin", "VS_Mgmt", "Budget_VisitorServices", "VS_Training", "mos.org", "SaleWizard Maintenance Users", "LSI_Admits", "CRM System Services", "Tessitura Users", "BoxOffice - Less Restricted Users", "Box Office FAQs", "SP_Staff", "FinanceSSRSUsers", "Tessitura Ticketing", "Box Office FAQs Modify", "OS X Users", "Web VPN Access", "Lockers", "MMTfolder", "WiFi Access", "Lobby Training", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "Tessitura Core Team", "GSW Scripts and Slides", "VS_Staff", "Box Office Admin", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea998f"
+	},
+	"account": "shorrigan",
+	"employeeID": "004431",
+	"firstName": "Sharon",
+	"lastName": "Horrigan",
+	"firstInitial": "S",
+	"lastInitial": "H",
+	"displayName": "Sharon Horrigan",
+	"title": "Faranon Director, Education",
+	"email": "shorrigan@mos.org",
+	"officePhone": "617-589-0339",
+	"mobilePhone": "",
+	"manager": "asawyer",
+	"department": "Ed \u0026 Outreach Progs.",
+	"division": "Education",
+	"securityGroups": ["BWVisitorExp", "ENews Editors", "SP_Team_Write_EEP", "CS\u0026amp;T", "mos.org", "TrackIT Users", "Youth Programs", "LSI_Admits", "Computer Clubhouse", "Budget_EdPrograms", "BWPhysicalExp", "YIM", "SP_Staff", "FinanceSSRSUsers", "Traveling Programs admin", "school ves admins", "OS X Users", "Pixar Ed Programs", "Budget_Education", "Library Group - Zeus", "MMTfolder", "schproginfo", "Live Presentations", "BWCoreTeam", "Darwin Exhibit", "Step_Grp", "Showcase", "BWExhibitsPlanningTeam", "BodyWorlds Public Share Restricted", "WiFi Access", "PO and Invoice record Read Only", "ShowControl", "PGP_BASIC", "Tessitura Education", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Accessibility_Shared", "School Programs", "Crystal Enterprise", "Charles River Gallery", "EEP", "GSW Scripts and Slides", "Schedules", "BWEducationExp"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98f9"
+	},
+	"account": "mhorvath",
+	"employeeID": "004679",
+	"firstName": "Michael",
+	"lastName": "Horvath",
+	"firstInitial": "M",
+	"lastInitial": "H",
+	"displayName": "Michael Horvath",
+	"title": "Director, Exhibit Design \u0026 Production",
+	"email": "mhorvath@mos.org",
+	"officePhone": "617-589-0457",
+	"mobilePhone": "",
+	"manager": "creich",
+	"department": "Exhibit Design \u0026 Productn",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Baseball", "Exhibits_Projects_BGUpdates", "Exhibits_Projects_What_Is_Technology", "CreativityWS", "BWVisitorExp", "Exhibits_Projects_Share", "Exhibits_Projects_Random", "Exhibits_Projects_LACC", "StarWars", "mos.org", "Exhibits_Projects_Mos_Then_And_Now", "TrackIT Users", "Exhibits_Projects_Pixar", "Exhibits_Projects_Engineering_2016", "LeafcutterAnts", "Tech Galleries", "Master Planning", "GWRenovation", "BWPhysicalExp", "Exhibit Leadership", "Exhibits_Projects_Tech_and_You", "SP_Staff", "Exhibits_Projects_MercuryToMars", "FinanceSSRSUsers", "Exhibits_Projects_ProductiveStruggle", "OS X Users", "Web VPN Access", "Exhibits_Projects_New_Exhibition", "Budget_Education", "Exhibits_Projects_Escher", "MMTfolder", "Exhibits_Titan", "Birds Exhibit", "Exhibit Admin Group", "BWCoreTeam", "Science of Wine", "Exhibits_Projects_Bird_Refurb_2016", "BWExhibitsPlanningTeam", "WiFi Access", "ExhibitScans", "ExhibitsData", "Exhibits Senior Leadership", "ShowControl", "Facilities-Exhibit Projects", "PO and Invoice records", "Exhibits", "SP_Dept_HR_ManagersHandbook", "Budget_Exhibits", "Budget_RestrictedAccess", "Exhibits WS", "Exhibits Design", "Exhibits_Projects_ELEEE_New", "Star_Wars_Pics", "Temp Exhibit Team", "Charles River Gallery", "Exhibits Development", "Exhibits_Projects_EmotionalEntanglement", "AzbackupshareEX", "TOE Component", "BWEducationExp"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea994d"
+	},
+	"account": "pippolito",
+	"employeeID": "011704",
+	"firstName": "Paul",
+	"lastName": "Ippolito",
+	"firstInitial": "P",
+	"lastInitial": "I",
+	"displayName": "Paul Ippolito",
+	"title": "Associate Vice President, Facilities",
+	"email": "pippolito@mos.org",
+	"officePhone": "617-589-0154",
+	"mobilePhone": "617-733-1684",
+	"manager": "jburke",
+	"department": "Facilities",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["BWVisitorExp", "COI other", "Budget_VisitorServices", "mos.org", "Exhibits_Projects_Mos_Then_And_Now", "TrackIT Users", "BPT", "Facilities group", "SN Facilities Managers", "Master Planning", "GWRenovation", "BWPhysicalExp", "Wayfinder", "SP_Staff", "Facilities Admin", "FinanceSSRSUsers", "Unicco_Grp", "Butterfly Garden", "Web VPN Access", "Facility_Users", "SN Facilities Technicians", "MMTfolder", "BWCoreTeam", "ProjectManagers", "GreenTeam", "WiFi Access", "PGP_BASIC", "Power Users", "Facilities-Exhibit Projects", "SP_Dept_HR_ManagersHandbook", "SP_Team_Write_Safety_Ldrs", "Safety Leadership", "Emergency Management Plan", "Budget_RestrictedAccess", "Accessibility_Shared", "Crystal Enterprise", "SP_Team_Write_Safety", "Safety_Zeus", "space", "TrackIT Technicians", "AnyConnect VPN Access", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9968"
+	},
+	"account": "rkipling",
+	"employeeID": "009934",
+	"firstName": "Becki",
+	"lastName": "Kipling",
+	"firstInitial": "B",
+	"lastInitial": "K",
+	"displayName": "Becki Kipling",
+	"title": "Mgr Exh Invn Proj",
+	"email": "rkipling@mos.org",
+	"officePhone": "617-589-0429",
+	"mobilePhone": "",
+	"manager": "tporter",
+	"department": "Exhibit Innovation Proj.",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["BWVisitorExp", "Exhibits_Projects_Share", "Living Lab Finances", "DCTechStudio", "mos.org", "TrackIT Users", "Visitor Programs", "OnSite Research", "Exhibits_Projects_TechGallery", "Youth Programs", "DC-LL Staff", "Exhibits_Projects_Engineering_2016", "Volsupervisors", "National Living Lab", "Living Laboratory - DC", "ECEMgr", "Exhibit Leadership", "Exhibits_Projects_Tech_and_You", "SP_Staff", "FinanceSSRSUsers", "Exhibits_Projects_ProductiveStruggle", "OS X Users", "Web VPN Access", "Pixar Ed Programs", "TSRCP", "Budget_Education", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "BWCoreTeam", "Imagination Conference", "WWV", "Discovery", "Education", "Exhibits_Projects_Bird_Refurb_2016", "BWExhibitsPlanningTeam", "WiFi Access", "ExhibitsData", "PGP_BASIC", "Exhibits_Projects_ELEEE_New_Restricted", "SP_Dept_HR_ManagersHandbook", "IRB Documentation", "Budget_Exhibits", "Budget_RestrictedAccess", "Exhibits WS", "Crystal Enterprise", "WWV-R \u0026amp; VS-RW", "Exhibits_Projects_EmotionalEntanglement", "Exhibit Content Development", "GSW Scripts and Slides", "Schedules", "NLL - Teens", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97d1"
+	},
+	"account": "ekollmann",
+	"employeeID": "010587",
+	"firstName": "Liz",
+	"lastName": "Kunz Kollmann",
+	"firstInitial": "L",
+	"lastInitial": "K",
+	"displayName": "Liz Kunz Kollmann",
+	"title": "Manager, Research \u0026 Evaluation",
+	"email": "ekollmann@mos.org",
+	"officePhone": "617-589-0467",
+	"mobilePhone": "",
+	"manager": "lbell",
+	"department": "Research and Evaluation",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Exhibits_Projects_What_Is_Technology", "Research Reports", "BWVisitorExp", "Exhibits_Projects_Share", "StarWars", "Exhibits_Projects_Colby", "mos.org", "TrackIT Users", "Chem Attitudes", "Exhibits_Projects_Pixar", "Exhibits_Projects_Engineering_2016", "MEPERG", "commentcards", "Research_Grants", "SP_Staff", "Budget_StrategicInitiatives", "FinanceSSRSUsers", "Web VPN Access", "SigningScience", "HHL", "Chem Attitudes Finance", "MMTfolder", "BWCoreTeam", "WiFi Access", "ExhibitsData", "PGP_BASIC", "Exhibits", "IRB Documentation", "Budget_RestrictedAccess", "Exhibits_Projects_ELEEE_New", "Crystal Enterprise", "Research and Evaluation", "Research", "MSPES", "Exhibits_Projects_EmotionalEntanglement", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97ad"
+	},
+	"account": "dleblanc",
+	"employeeID": "004937",
+	"firstName": "Dani",
+	"lastName": "LeBlanc",
+	"firstInitial": "D",
+	"lastInitial": "L",
+	"displayName": "Dani LeBlanc",
+	"title": "Dir, Charles Hayden Plnt \u0026 Adult Prgms",
+	"email": "dleblanc@mos.org",
+	"officePhone": "617-589-0272",
+	"mobilePhone": "",
+	"manager": "asawyer",
+	"department": "Planetarium \u0026 Adult Progs",
+	"division": "Education",
+	"securityGroups": ["mos.org", "TrackIT Users", "Budget_EdPrograms", "PlanetariumShowSales", "Planetarium Operations", "CST_Working", "SP_Staff", "CRPROG", "FinanceSSRSUsers", "Budget_Education", "MMTfolder", "NASA 2011 CP4SMP Award", "WiFi Access", "Outreach", "Programs", "Tessitura Education", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Star_Wars_Pics", "Crystal Enterprise"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea999e"
+	},
+	"account": "smaclaren",
+	"employeeID": "013789",
+	"firstName": "Sue",
+	"lastName": "MacLaren",
+	"firstInitial": "S",
+	"lastInitial": "M",
+	"displayName": "Sue MacLaren",
+	"title": "Director, Membership",
+	"email": "smaclaren@mos.org",
+	"officePhone": "617-589-0394",
+	"mobilePhone": "",
+	"manager": "hcalvin",
+	"department": "Membership",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Tessitura Training", "Membership - Aspen", "TStatsUsers", "Budget_VisitorServices", "mos.org", "Data Protection Compliance", "LSI_Admits", "CRM System Services", "Tessitura Advancement", "OneLogin", "Box Office FAQs", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "MMTfolder", "BodyWorlds Public Share Restricted", "WiFi Access", "Mem_DMS_Protected", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea971b"
+	},
+	"account": "amelia",
+	"employeeID": "012741",
+	"firstName": "Adrian",
+	"lastName": "Melia",
+	"firstInitial": "A",
+	"lastInitial": "M",
+	"displayName": "Adrian Melia",
+	"title": "Asst Mgr Staffed Exh Spac",
+	"email": "amelia@mos.org",
+	"officePhone": "617-589-4246",
+	"mobilePhone": "",
+	"manager": "lbeall",
+	"department": "Staffed Exhibit Spaces",
+	"division": "Education",
+	"securityGroups": ["Staffed Exhibit Spaces", "BWVisitorExp", "Exhibits_Projects_TechGallery", "Exhibits_Projects_Engineering_2016", "Digital Signage Access", "Design Challenge", "CCPlace", "SP_Staff", "Exhibits_Projects_MercuryToMars", "OS X Users", "Web VPN Access", "Pixar Ed Programs", "SP_Dept_Write_Volunteer_Supervisors", "WiFi Access", "Exhibits WS", "Crystal Enterprise"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97f2"
+	},
+	"account": "gmurray",
+	"employeeID": "006207",
+	"firstName": "Greg",
+	"lastName": "Murray",
+	"firstInitial": "G",
+	"lastInitial": "M",
+	"displayName": "Greg Murray",
+	"title": "Sr Elec Tech Designer",
+	"email": "gmurray@mos.org",
+	"officePhone": "617-589-4256",
+	"mobilePhone": "",
+	"manager": "mhorvath",
+	"department": "Tech. Design \u0026 Production",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["COI other", "CS\u0026amp;T", "Exhibits_Projects_Random", "mos.org", "TrackIT Users", "Exhibits_Projects_Engineering_2016", "LeafcutterAnts", "Current Science \u0026amp; Technology", "Exhibit Leadership", "Exhibits_Projects_Yawkey_Remedial_2019_FINAL", "Exhibits_Projects_Tech_and_You", "SP_Staff", "Exhibits_Projects_MercuryToMars", "FinanceSSRSUsers", "Ship Cases", "OS X Users", "Exhibits_Projects_New_Exhibition", "Budget_Education", "MMTfolder", "Exhibits_Titan", "Live Presentations", "BWExhibitsPlanningTeam", "WiFi Access", "ExhibitsData", "Outreach", "ShowControl", "PGP_BASIC", "PO and Invoice records", "Budget_Exhibits", "Budget_RestrictedAccess", "Crystal Enterprise", "SP_Team_Write_Safety", "Schedules", "TOE Component", "Safety_Zeus"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea977f"
+	},
+	"account": "cnash",
+	"employeeID": "014669",
+	"firstName": "Carrie",
+	"lastName": "Nash",
+	"firstInitial": "C",
+	"lastInitial": "N",
+	"displayName": "Carrie Nash",
+	"title": "Media Relations Manager",
+	"email": "cnash@mos.org",
+	"officePhone": "617-589-0250",
+	"mobilePhone": "",
+	"manager": "prosenthal",
+	"department": "Media Rel \u0026 Social Media",
+	"division": "Marketing Strategy \u0026 Comm",
+	"securityGroups": ["Budget_Marketing", "mos.org", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "EiE Museum", "Web VPN Access", "MMTfolder", "WiFi Access", "Budget_RestrictedAccess", "Crystal Enterprise", "Media Relations Group", "Marketing", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9853"
+	},
+	"account": "jolson",
+	"employeeID": "014704",
+	"firstName": "Jill",
+	"lastName": "Olson",
+	"firstInitial": "J",
+	"lastInitial": "O",
+	"displayName": "Jill Olson",
+	"title": "Director, Operations \u0026 Professional Development",
+	"email": "jolson@mos.org",
+	"officePhone": "617-589-0399",
+	"mobilePhone": "508-265-3081",
+	"manager": "hgunsallus",
+	"department": "EiE Professional Devel",
+	"division": "Education",
+	"securityGroups": ["mos.org", "EIE - Aspen", "EiE Implementation", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "MMTfolder", "Education", "WiFi Access", "JanusUsers", "EiE Salesforce Backup", "EiE Product Strategy", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9856"
+	},
+	"account": "jpeeler",
+	"employeeID": "014861",
+	"firstName": "Jackie",
+	"lastName": "Peeler",
+	"firstInitial": "J",
+	"lastInitial": "P",
+	"displayName": "Jackie Peeler",
+	"title": "Manager, Living Collections",
+	"email": "jpeeler@mos.org",
+	"officePhone": "--",
+	"mobilePhone": "",
+	"manager": "bharvey",
+	"department": "Living Collections",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Exhibits_Projects_LACC", "mos.org", "SP_Staff", "FinanceSSRSUsers", "Butterfly Garden", "OS X Users", "Web VPN Access", "Budget_Education", "MMTfolder", "Exhibit Admin Group", "Living Collections", "WiFi Access", "Budget_Exhibits", "Budget_RestrictedAccess"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98a1"
+	},
+	"account": "kpetrie",
+	"employeeID": "014611",
+	"firstName": "Kaylan",
+	"lastName": "Petrie",
+	"firstInitial": "K",
+	"lastInitial": "P",
+	"displayName": "Kaylan Petrie",
+	"title": "Manager, Education Programs",
+	"email": "kpetrie@mos.org",
+	"officePhone": "617-589-3186",
+	"mobilePhone": "",
+	"manager": "shorrigan",
+	"department": "Education Programs",
+	"division": "Education",
+	"securityGroups": ["mos.org", "Youth Programs", "Budget_EdPrograms", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "Budget_Education", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "BWExhibitsPlanningTeam", "WiFi Access", "ShowControl", "Tessitura Education", "Budget_RestrictedAccess", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9723"
+	},
+	"account": "apetroff",
+	"employeeID": "014338",
+	"firstName": "Annie",
+	"lastName": "Petroff",
+	"firstInitial": "A",
+	"lastInitial": "P",
+	"displayName": "Annie Petroff",
+	"title": "CRM Manager",
+	"email": "apetroff@mos.org",
+	"officePhone": "617-589-3168",
+	"mobilePhone": "",
+	"manager": "hcalvin",
+	"department": "CRM System Services",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Tessitura Training", "Membership - Aspen", "TStatsUsers", "Budget_VisitorServices", "mos.org", "LSI_Admits", "CRM System Services", "Tessitura Users", "Tessitura Advancement", "OneLogin", "Tessitura Administration", "SP_Staff", "FinanceSSRSUsers", "Tessitura Ticketing", "SN CRM System Users", "OS X Users", "Web VPN Access", "MMTfolder", "WiFi Access", "Tessitura Marketing", "Tessitura HelpDocs", "Tessitura Education", "Budget_RestrictedAccess", "Tessitura Core Team", "Tessitura Shared", "Tessitura Finance", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9724"
+	},
+	"account": "apizzolato",
+	"employeeID": "012410",
+	"firstName": "Angela",
+	"lastName": "Pizzolato",
+	"firstInitial": "A",
+	"lastInitial": "P",
+	"displayName": "Angela Pizzolato",
+	"title": "Assoc Dir Adv Info Serv",
+	"email": "aPizzolato@mos.org",
+	"officePhone": "617-589-0461",
+	"mobilePhone": "617-543-2045",
+	"manager": "abuzay",
+	"department": "Advancement Info Services",
+	"division": "Advancement",
+	"securityGroups": ["Budget_Advancement", "Data Services", "Tessitura Training", "Resources", "TStatsUsers", "Millennium Documents", "mos.org", "TrackIT Users", "LSI_Admits", "CRM System Services", "Tessitura Advancement", "Development", "DMSChargeUsers", "Box Office FAQs", "SP_Team_Write_DMSCharge", "Millennium Report Writers", "SP_Staff", "FinanceSSRSUsers", "Web VPN Access", "MMTfolder", "Membership_Staff", "WiFi Access", "ExhibitsData", "Mem_DMS_Protected", "MillApp_exports", "PGP_BASIC", "Tessitura HelpDocs", "SP_Team_Write_NEST", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "Tessitura Core Team", "DMS - Aspen", "Membership_Grp", "IN Children''s Museum Survey", "ReportExport", "TrackIT Technicians", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99ae"
+	},
+	"account": "spokress",
+	"employeeID": "014680",
+	"firstName": "Shay",
+	"lastName": "Pokress",
+	"firstInitial": "S",
+	"lastInitial": "P",
+	"displayName": "Shay Pokress",
+	"title": "Director, Computer Science Education",
+	"email": "spokress@mos.org",
+	"officePhone": "617-589-4238",
+	"mobilePhone": "-",
+	"manager": "asawyer",
+	"department": "Computer Science Ed Init",
+	"division": "Education",
+	"securityGroups": ["EiE PTF", "mos.org", "EIE - Aspen", "Budget_EdPrograms", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "Budget_Education", "MMTfolder", "WiFi Access", "Budget_RestrictedAccess", "EiE Product Strategy", "CSEI", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99d4"
+	},
+	"account": "tporter",
+	"employeeID": "014559",
+	"firstName": "Tim",
+	"lastName": "Porter",
+	"firstInitial": "T",
+	"lastInitial": "P",
+	"displayName": "Tim Porter",
+	"title": "Dir Exh Cont \u0026 Proj Mngmt",
+	"email": "tporter@mos.org",
+	"officePhone": "617-589-0149",
+	"mobilePhone": "",
+	"manager": "creich",
+	"department": "Exh Content \u0026 Proj Mgmt",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Exhibits_Projects_BGUpdates", "BWVisitorExp", "Exhibits_Projects_Share", "Exhibits_Projects_Random", "mos.org", "Exhibits_Projects_TechGallery", "LeafcutterAnts", "Exhibit Leadership", "Exhibits_Projects_HHL_Refurb", "Exhibits_Projects_Tech_and_You", "SP_Staff", "Exhibits_Projects_MercuryToMars", "FinanceSSRSUsers", "Exhibits_Projects_ProductiveStruggle", "OS X Users", "Web VPN Access", "Exhibits_Projects_New_Exhibition", "HHL", "Budget_Education", "MMTfolder", "Exhibits_Titan", "Exhibit Admin Group", "Science of Wine", "BWExhibitsPlanningTeam", "WiFi Access", "ExhibitsData", "Exhibits Senior Leadership", "Exhibits", "Budget_Exhibits", "Budget_RestrictedAccess", "Exhibits_Projects_ELEEE_New", "Crystal Enterprise", "Hall of Human Life", "Charles River Gallery", "Exhibits_Projects_EmotionalEntanglement", "Exhibit Content Development", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9782"
+	},
+	"account": "creich",
+	"employeeID": "008763",
+	"firstName": "Christine",
+	"lastName": "Reich",
+	"firstInitial": "C",
+	"lastInitial": "R",
+	"displayName": "Christine Reich",
+	"title": "SVP Exhibits \u0026 Research",
+	"email": "creich@mos.org",
+	"officePhone": "617-589-0302",
+	"mobilePhone": "",
+	"manager": "wbouchard",
+	"department": "EDC Administration",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Planetarium Study", "Exhibits_Projects_What_Is_Technology", "BWVisitorExp", "Exhibits_Projects_Share", "Temp Exhibits", "Exhibits_Projects_Random", "StarWars", "mos.org", "TrackIT Users", "Exhibits_Projects_TechGallery", "Exhibits_Projects_Pixar", "ExhibitsAdministrationFolder", "FoodCharrette", "LeafcutterAnts", "MEPERG", "Tech Galleries", "Master Planning", "National Living Lab", "NISE", "commentcards", "BWPhysicalExp", "SP_Dept_Write_PublicSafety", "Exhibit Leadership", "Exhibits_Projects_HHL_Refurb", "Exhibits_Projects_Tech_and_You", "SP_Staff", "FinanceSSRSUsers", "Exhibits_Projects_ProductiveStruggle", "Grants Workshops", "Web VPN Access", "SigningScience", "HHL", "Budget_Education", "MMTfolder", "Exhibits_Titan", "Exhibit Admin Group", "BWCoreTeam", "Forum", "Science of Wine", "Showcase", "Living Collections", "VFT", "BWExhibitsPlanningTeam", "BodyWorlds Public Share Restricted", "WiFi Access", "ExhibitsData", "Exhibits Senior Leadership", "PGP_BASIC", "PO and Invoice records", "Exhibits", "Making Models", "SP_Dept_HR_ManagersHandbook", "SP_Team_Write_Safety_Ldrs", "IRB Documentation", "Safety Leadership", "Budget_Exhibits", "Budget_RestrictedAccess", "Accessibility_Shared", "Exhibits_Projects_ELEEE_New", "Crystal Enterprise", "Hall of Human Life", "SP_Team_Write_Safety", "Charles River Gallery", "Exhibits_Projects_EmotionalEntanglement", "TOE Component", "Safety_Zeus", "Tech Showcase", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9951"
+	},
+	"account": "prosenthal",
+	"employeeID": "014301",
+	"firstName": "Pamela",
+	"lastName": "Rosenthal",
+	"firstInitial": "P",
+	"lastInitial": "R",
+	"displayName": "Pamela Rosenthal",
+	"title": "Director, Marketing",
+	"email": "prosenthal@mos.org",
+	"officePhone": "617-589-0253",
+	"mobilePhone": "",
+	"manager": "tsperry",
+	"department": "Marketing",
+	"division": "Marketing Strategy \u0026 Comm",
+	"securityGroups": ["Planetarium Study", "BWVisitorExp", "SP_Dept_Write_Marketing_Promo", "Budget_Marketing", "mos.org", "Courses group", "Data Protection Compliance", "Exhibits_Projects_Pixar", "FoodCharrette", "SP_Dept_Write_Marketing", "Media Relations", "OneLogin", "Courses and Travel", "E-Marketing", "HHL Communications", "SP_Staff", "FinanceSSRSUsers", "Brainy Acts", "External Marketing", "OS X Users", "Courses \u0026amp; Travel Administration", "Web VPN Access", "MMTfolder", "MarCom_Dept", "BWCoreTeam", "SP_Team_Write_Marketing", "Marketing Administration", "BodyWorlds Public Share Restricted", "WiFi Access", "ExhibitsData", "Pompeii", "Tessitura Marketing", "SP_Team_Write_NEST", "SP_Dept_HR_ManagersHandbook", "Media Production", "Budget_RestrictedAccess", "Crystal Enterprise", "Charles River Gallery", "Media Relations Group", "Marketing", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea972a"
+	},
+	"account": "arussell",
+	"employeeID": "014523",
+	"firstName": "Andrew",
+	"lastName": "Russell",
+	"firstInitial": "A",
+	"lastInitial": "R",
+	"displayName": "Andrew Russell",
+	"title": "AVP, Corp Foundation \u0026 Govt Relations",
+	"email": "arussell@mos.org",
+	"officePhone": "617-589-0142",
+	"mobilePhone": "",
+	"manager": "elliestarr",
+	"department": "Corp/Found/Gov't Relat'ns",
+	"division": "Advancement",
+	"securityGroups": ["Budget_Advancement", "mos.org", "AdvancementData", "Tessitura Advancement", "Development", "SP_Staff", "ADV Operations", "FinanceSSRSUsers", "OS X Users", "EiE Museum", "Web VPN Access", "MMTfolder", "WiFi Access", "Budget_RestrictedAccess", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea972d"
+	},
+	"account": "asawyer",
+	"employeeID": "010719",
+	"firstName": "Annette",
+	"lastName": "Sawyer",
+	"firstInitial": "A",
+	"lastInitial": "S",
+	"displayName": "Annette Sawyer",
+	"title": "Sr Vice President, Education",
+	"email": "asawyer@mos.org",
+	"officePhone": "617-589-4281",
+	"mobilePhone": "",
+	"manager": "wbouchard",
+	"department": "Educat'n \u0026 Enrichmt Progs",
+	"division": "Education",
+	"securityGroups": ["Planetarium Study", "BWVisitorExp", "EiE PTF", "Living Lab Finances", "SP_Team_Write_EEP", "mos.org", "Courses group", "TrackIT Users", "OnSite Research", "Youth Programs", "FoodCharrette", "EIE - Aspen", "Budget_EdPrograms", "EiE Implementation", "Courses and Travel", "Youth Programs group", "Design Challenge", "SP_Staff", "Wellness Committee", "FinanceSSRSUsers", "Brainy Acts", "LMS", "Courses \u0026amp; Travel Administration", "Web VPN Access", "Pixar Ed Programs", "Budget_Education", "MMTfolder", "NASA 2011 CP4SMP Award", "Outreach \u0026amp; Enrichment Admin", "SP_Dept_Write_Volunteer_Supervisors", "BWCoreTeam", "ProjectManagers", "BodyWorlds Public Share Restricted", "WiFi Access", "Outreach", "PGP_BASIC", "DC Gordon", "Tessitura Education", "SP_Team_Write_NEST", "Camp-Ins", "SP_Dept_HR_ManagersHandbook", "SP_Team_Write_Safety_Ldrs", "Safety Leadership", "Budget_RestrictedAccess", "Crystal Enterprise", "Living Lab Admins", "Overnight Information", "EEP", "EiE Product Strategy", "GSW Scripts and Slides", "Camp In", "Safety_Zeus", "BWEducationExp", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9953"
+	},
+	"account": "psheppard",
+	"employeeID": "014608",
+	"firstName": "Patricia",
+	"lastName": "Sheppard",
+	"firstInitial": "P",
+	"lastInitial": "S",
+	"displayName": "Patricia Sheppard",
+	"title": "AVP IT",
+	"email": "psheppard@mos.org",
+	"officePhone": "617-589-3135",
+	"mobilePhone": "",
+	"manager": "jslakey",
+	"department": "IIT Administration",
+	"division": "Finance \u0026 System Services",
+	"securityGroups": ["Budget_Finance", "mos.org", "TrackIT Users", "Data Protection Compliance", "Tessitura Administration", "SP_Team_Write_IIT", "SP_Staff", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "IIT group", "SN IT HQ", "MMTfolder", "IITInfra", "aqmsalerts", "WiFi Access", "Office 365 Admins", "Budget_RestrictedAccess", "Crystal Enterprise", "SP_IIT_Admin", "TrackIT Technicians", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9863"
+	},
+	"account": "jslakey",
+	"employeeID": "008199",
+	"firstName": "John",
+	"lastName": "Slakey",
+	"firstInitial": "J",
+	"lastInitial": "S",
+	"displayName": "John Slakey",
+	"title": "SVP, Finance \u0026 System Services",
+	"email": "jslakey@mos.org",
+	"officePhone": "617-589-0144",
+	"mobilePhone": "",
+	"manager": "wbouchard",
+	"department": "Finance",
+	"division": "Finance \u0026 System Services",
+	"securityGroups": ["Data Services", "MComm", "CFO", "Living Lab Finances", "SMT", "mos.org", "TrackIT Users", "BPT", "MC", "Fundware Finance Users", "Master Planning", "OneLogin", "SP_Team_Write_HRIS_Payroll", "GPC", "Accounting", "MajorPro", "SP_Staff", "SPG", "FinanceSSRSUsers", "Budget_FullAccess", "SP_Team_Write_ISGT", "Comp_Sales", "Web VPN Access", "Facility_Users", "Finance Administration", "MMTfolder", "Report Launcher", "COI", "COI MOS", "Business Services", "Omni Restricted", "WiFi Access", "PGP_BASIC", "payroll finance", "Financial Edge", "SP_Dept_HR_ManagersHandbook", "ISGT", "ISR-Mgmt", "Emergency Management Plan", "Exhibits_Contracts", "EE Staff", "Controller", "Crystal Enterprise", "Tessitura Finance", "Medical Incident Reports", "ECoupon_Reset", "PCCasheGlobal", "IN Children''s Museum Survey", "space", "AnyConnect VPN Access", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9920"
+	},
+	"account": "msmith",
+	"employeeID": "011998",
+	"firstName": "Margo",
+	"lastName": "Smith",
+	"firstInitial": "M",
+	"lastInitial": "S",
+	"displayName": "Margo Smith",
+	"title": "Dir Talent \u0026 Dev",
+	"email": "msmith@mos.org",
+	"officePhone": "617-589-0123",
+	"mobilePhone": "",
+	"manager": "bobrien",
+	"department": "Recruitment",
+	"division": "Human Resc \u0026 Vol Services",
+	"securityGroups": ["SNHRManagers", "VolunteerAdmin", "SP_Dept_Write_HR", "mos.org", "TrackIT Users", "QuarkLogin", "HRIS Project 2017", "VSys", "Mangrove", "SP_Team_Write_HRIS_Payroll", "volunteerDB", "YIM", "SP_Staff", "Budget_HumanResources", "FinanceSSRSUsers", "Web VPN Access", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "Ivantage HR Staff", "BWCoreTeam", "ProjectManagers", "WWV", "WiFi Access", "Volunteer Services", "Camp In Hires", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Accessibility_Shared", "Crystal Enterprise", "GSW Scripts and Slides", "HR Staff", "RRT", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99d7"
+	},
+	"account": "tsperry",
+	"employeeID": "014171",
+	"firstName": "Todd",
+	"lastName": "Sperry",
+	"firstInitial": "T",
+	"lastInitial": "S",
+	"displayName": "Todd Sperry",
+	"title": "SVP, Marketing Strategy \u0026 Communication",
+	"email": "tsperry@mos.org",
+	"officePhone": "617-589-0252",
+	"mobilePhone": "",
+	"manager": "imiaoulis",
+	"department": "Marketing Admin.",
+	"division": "Marketing Strategy \u0026 Comm",
+	"securityGroups": ["Planetarium Study", "BWVisitorExp", "SP_Dept_Write_Marketing_Promo", "Budget_Marketing", "mos.org", "Courses group", "Exhibits_Projects_Pixar", "FoodCharrette", "SP_Dept_Write_Marketing", "Media Relations", "OneLogin", "Courses and Travel", "E-Marketing", "HHL Communications", "SP_Staff", "FinanceSSRSUsers", "Brainy Acts", "school ves admins", "External Marketing", "OS X Users", "Courses \u0026amp; Travel Administration", "EiE Museum", "Web VPN Access", "MMTfolder", "MarCom_Dept", "BWCoreTeam", "SP_Team_Write_Marketing", "Marketing Administration", "ves school results", "Omni Restricted", "BodyWorlds Public Share Restricted", "WiFi Access", "ExhibitsData", "Pompeii", "SP_Team_Write_NEST", "SP_Dept_HR_ManagersHandbook", "Media Production", "Budget_RestrictedAccess", "Crystal Enterprise", "Charles River Gallery", "Media Relations Group", "Marketing", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea98d6"
+	},
+	"account": "lstanley",
+	"employeeID": "014192",
+	"firstName": "Lindsay",
+	"lastName": "Stanley",
+	"firstInitial": "L",
+	"lastInitial": "S",
+	"displayName": "Lindsay Stanley",
+	"title": "Manager, Annual Giving",
+	"email": "lstanley@mos.org",
+	"officePhone": "617-589-0476",
+	"mobilePhone": "",
+	"manager": "mgrace",
+	"department": "Annual Giving",
+	"division": "Advancement",
+	"securityGroups": ["mos.org", "TrackIT Users", "AdvancementData", "LSI_Admits", "Tessitura Advancement", "Development", "Annual Fund", "SP_Staff", "Web VPN Access", "MMTfolder", "WiFi Access", "Millennium Users", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea97d3"
+	},
+	"account": "elliestarr",
+	"employeeID": "013941",
+	"firstName": "Ellie",
+	"lastName": "Starr",
+	"firstInitial": "E",
+	"lastInitial": "S",
+	"displayName": "Ellie Starr",
+	"title": "Sr Vice President, Advancement",
+	"email": "elliestarr@mos.org",
+	"officePhone": "617-589-0148",
+	"mobilePhone": "",
+	"manager": "imiaoulis",
+	"department": "Advancement",
+	"division": "Advancement",
+	"securityGroups": ["Resources", "SMT", "mos.org", "TrackIT Users", "BPT", "FoodCharrette", "AdvAdmin", "MC", "Tessitura Advancement", "Campaign Cabinet - Aspen", "Development", "Master Planning", "Long Range Plan", "Trustee-Overseer-Relations_Grp", "Washburn Anniversary", "NCTL Inserts", "SP_Staff", "ADV Operations", "FinanceSSRSUsers", "Web VPN Access", "MMTfolder", "BWCoreTeam", "WiFi Access", "Maris Files", "Advancement Administration", "PGP_BASIC", "Millennium Users", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "Campaign Cabinet", "IN Children''s Museum Survey", "AnyConnect VPN Access", "BPT - Aspen"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea974e"
+	},
+	"account": "bobrien",
+	"employeeID": "006429",
+	"firstName": "Britton",
+	"lastName": "Stephens O'Brien",
+	"firstInitial": "B",
+	"lastInitial": "S",
+	"displayName": "Britton Stephens O'Brien",
+	"title": "SVP, HR \u0026 Volunteer Services",
+	"email": "bobrien@mos.org",
+	"officePhone": "617-589-0124",
+	"mobilePhone": "",
+	"manager": "wbouchard",
+	"department": "Human Resources Admin.",
+	"division": "Human Resc \u0026 Vol Services",
+	"securityGroups": ["SP_Team_Write_HR", "Employment", "MComm", "SMT", "mos.org", "TrackIT Users", "MC", "VSys", "SP_Team_Write_HRIS_Payroll", "SP_Staff", "Budget_HumanResources", "Wellness Committee", "FinanceSSRSUsers", "SP_Team_Write_ISGT", "Web VPN Access", "MMTfolder", "SP_Dept_Write_Volunteer_Supervisors", "Ivantage HR Staff", "ProjectManagers", "Accounting - Zeus", "WiFi Access", "SP_Dept_HR_ManagersHandbook", "GSP Project Team", "ISGT", "Emergency Management Plan", "Budget_RestrictedAccess", "Accessibility_Shared", "Crystal Enterprise", "GSW Scripts and Slides", "HR Staff"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99ef"
+	},
+	"account": "wtatarouns",
+	"employeeID": "010726",
+	"firstName": "Wendy",
+	"lastName": "Tatarouns",
+	"firstInitial": "W",
+	"lastInitial": "T",
+	"displayName": "Wendy Tatarouns",
+	"title": "Assistant Manager, Visitor Services",
+	"email": "wtatarouns@mos.org",
+	"officePhone": "617-589-0213",
+	"mobilePhone": "617-275-3166",
+	"manager": "ahile",
+	"department": "Visitor Svcs/Box Office",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Tessitura Training", "VS Closing", "Redboard_viewers", "VS_Mgmt", "VS_Training", "mos.org", "SaleWizard Maintenance Users", "TrackIT Users", "LSI_Admits", "DSS Audio Tour Inventory", "Visitor Services", "BoxOffice - Less Restricted Users", "Kiosk Access", "Box Office FAQs", "CSI Project Team", "MOSAccess Admin Users", "VS_MembershipSales", "SP_Staff", "Box Office FAQ - Don''t Use_See Pierre", "Tessitura Ticketing", "MaxFlight", "Box Office FAQs Modify", "PA System Project", "Lockers", "SP_Dept_Write_Volunteer_Supervisors", "BOI", "WWV", "WiFi Access", "Lobby Training", "Shift-Leaders", "SP_Dept_HR_ManagersHandbook", "Digital Signage", "Crystal Enterprise", "SP_Team_Write_Safety", "VS_SW", "4D Theater Operations", "VS_PassDonation", "GSW Scripts and Slides", "VS_Staff", "Box Office Admin", "PompeiiOps", "Admits"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99d9"
+	},
+	"account": "tthamer",
+	"employeeID": "011889",
+	"firstName": "Tom",
+	"lastName": "Thamer",
+	"firstInitial": "T",
+	"lastInitial": "T",
+	"displayName": "Tom Thamer",
+	"title": "Manager, Facilities Maintenance",
+	"email": "tthamer@mos.org",
+	"officePhone": "617-589-0151",
+	"mobilePhone": "617-999-9614",
+	"manager": "pippolito",
+	"department": "Facilities",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["COI other", "Swat team", "mos.org", "TrackIT Users", "Facilities group", "SN Facilities Managers", "SP_Staff", "Facilities Admin", "FinanceSSRSUsers", "Unicco_Grp", "Web VPN Access", "Facility_Users", "SN Facilities Technicians", "MMTfolder", "ProjectManagers", "WiFi Access", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Emergency Management Plan", "Temp Exhibit Team", "Crystal Enterprise", "SP_Team_Write_Safety", "Safety_Zeus", "PompeiiOps", "TrackIT Technicians", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9755"
+	},
+	"account": "btherrien",
+	"employeeID": "012286",
+	"firstName": "Brian",
+	"lastName": "Therrien",
+	"firstInitial": "B",
+	"lastInitial": "T",
+	"displayName": "Brian Therrien",
+	"title": "Vice President, Finance",
+	"email": "btherrien@mos.org",
+	"officePhone": "617-589-0109",
+	"mobilePhone": "",
+	"manager": "jslakey",
+	"department": "Controller's Office",
+	"division": "Finance \u0026 System Services",
+	"securityGroups": ["Data Services", "VS Closing", "COI other", "CFO", "mos.org", "TrackIT Users", "HRIS Project 2017", "Garage Bank", "CRM System Services", "Fundware Finance Users", "Master Planning", "Mangrove", "SP_Team_Write_HRIS_Payroll", "Accounting", "EIEgrants", "Payroll Printer", "SP_Staff", "Wellness Committee", "SP_Wellness_Read_Devpages", "FinanceSSRSUsers", "Budget_FullAccess", "SP_Team_Write_ISGT", "Web VPN Access", "Lockers", "MMTfolder", "COI MOS", "Business Services", "WiFi Access", "PGP_BASIC", "CompBudget", "payroll finance", "SP_Team_Write_NEST", "Financial Edge", "SP_Dept_HR_ManagersHandbook", "ISGT", "EE Staff", "Controller", "Crystal Enterprise", "SC Purchase Orders", "Tessitura Finance", "NISE Finance", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9978"
+	},
+	"account": "rvenegas",
+	"employeeID": "014810",
+	"firstName": "Renee",
+	"lastName": "Venegas",
+	"firstInitial": "R",
+	"lastInitial": "V",
+	"displayName": "Renee Venegas",
+	"title": "Manager, Customer Success \u0026 Inside Sales",
+	"email": "rvenegas@mos.org",
+	"officePhone": "857-332-0832",
+	"mobilePhone": "",
+	"manager": "hgunsallus",
+	"department": "EiE Business Ops \u0026 Sales",
+	"division": "Education",
+	"securityGroups": ["mos.org", "EIE - Aspen", "EiE Implementation", "SP_Staff", "FinanceSSRSUsers", "Web VPN Access", "WiFi Access", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9870"
+	},
+	"account": "jwetzel",
+	"employeeID": "014147",
+	"firstName": "James",
+	"lastName": "Wetzel",
+	"firstInitial": "J",
+	"lastInitial": "W",
+	"displayName": "James Wetzel",
+	"title": "Co-Producer, Adult Programs",
+	"email": "jwetzel@mos.org",
+	"officePhone": "617-589-4206",
+	"mobilePhone": "",
+	"manager": "asawyer",
+	"department": "Adult Programs",
+	"division": "Education",
+	"securityGroups": ["mos.org", "QuarkLogin", "SP_Staff", "CRPROG", "FinanceSSRSUsers", "OS X Users", "Web VPN Access", "WiFi Access", "Tessitura Education", "Crystal Enterprise", "CST_Admin", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea99bb"
+	},
+	"account": "swvincent",
+	"employeeID": "009448",
+	"firstName": "Sheryl",
+	"lastName": "White Vincent",
+	"firstInitial": "S",
+	"lastInitial": "W",
+	"displayName": "Sheryl White Vincent",
+	"title": "Director, Event \u0026 Conference Services",
+	"email": "swvincent@mos.org",
+	"officePhone": "617-589-0193",
+	"mobilePhone": "617-851-8296",
+	"manager": "jburke",
+	"department": "Event and Conference Svcs",
+	"division": "Visitor Experience \u0026 Ops",
+	"securityGroups": ["Filemaker", "ECSEventCoordinators", "SP_Team_Write_ECS", "BWVisitorExp", "Event and Conference Services", "Budget_VisitorServices", "mos.org", "TrackIT Users", "NRT", "LSI_Admits", "Volsupervisors", "Box Office FAQs", "BWPhysicalExp", "SP_Staff", "FinanceSSRSUsers", "GarageSignRemoteAccess", "Web VPN Access", "EventOperations", "MMTfolder", "WiFi Access", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Crystal Enterprise", "Charles River Gallery", "GSW Scripts and Slides", "Admits", "AnyConnect VPN Access"]
+} {
+	"_id": {
+		"$oid": "5e2c9e409e2b81033cea9758"
+	},
+	"account": "bwilson",
+	"employeeID": "012698",
+	"firstName": "Ben",
+	"lastName": "Wilson",
+	"firstInitial": "B",
+	"lastInitial": "W",
+	"displayName": "Ben Wilson",
+	"title": "Director of Digital \u0026 Interactive Media",
+	"email": "bwilson@mos.org",
+	"officePhone": "617-589-0143",
+	"mobilePhone": "",
+	"manager": "jslakey",
+	"department": "Interactive Media",
+	"division": "Exhibits \u0026 Research",
+	"securityGroups": ["Budget_Finance", "Exhibits_Projects_What_Is_Technology", "BWVisitorExp", "SP_Dept_Write_Marketing_Promo", "Web Development and Operations", "Exhibits_Projects_Share", "Exhibits_Projects_Colby", "mos.org", "SaleWizard Maintenance Users", "TrackIT Users", "Data Protection Compliance", "Exhibits_Projects_Pixar", "HHL Interactive Admins", "LSI_Admits", "SP_Team_Write_HHL_Maintenance", "Exhibits_Projects_Engineering_2016", "Interactive Media", "webprojectdev", "Tech Galleries", "DMSChargeUsers", "OneLogin", "Tessitura Administration", "IITMgmt", "IITDev", "HHL Communications", "SP_Team_Write_IIT", "Exhibit Leadership", "Exhibits_Projects_HHL_Refurb", "SP_Team_Write_DMSCharge", "SP_Team_Write_IIT_Ldrs", "Exhibits_Projects_Tech_and_You", "SP_Staff", "Redboard IIT Admins", "FinanceSSRSUsers", "Exhibits_Projects_ProductiveStruggle", "Web VPN Access", "IIT group", "SN IT Exhibit Software", "HHL", "MMTfolder", "BWCoreTeam", "Exhibits_Projects_Bird_Refurb_2016", "BWExhibitsPlanningTeam", "Exhibits Projects", "WiFi Access", "SN Exhibit Technicians", "PGP_BASIC", "SP_Dept_HR_ManagersHandbook", "Budget_RestrictedAccess", "Accessibility_Shared", "Exhibits_Projects_ELEEE_New", "Crystal Enterprise", "Tessitura Core Team", "Tessitura Shared", "Hall of Human Life", "Charles River Gallery", "Exhibits Development", "Exhibits_Projects_EmotionalEntanglement", "ECoupon_Reset", "Crystal Enterprise Administrators", "PompeiiOps", "TrackIT Technicians", "AnyConnect VPN Access"]
+}

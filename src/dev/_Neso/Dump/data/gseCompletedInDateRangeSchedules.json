@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5e28a84c9e2b81033cea274f"},"Id":5641,"ID":5641,"ShiftLength":"3.5 hours","Date":"2020-01-03T10:00:00Z","JobID":"1254"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2750"},"Id":5662,"ID":5662,"ShiftLength":"3.5 hours","Date":"2020-01-03T10:00:00Z","JobID":"1255"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2751"},"Id":5666,"ID":5666,"ShiftLength":"3.5 hours","Date":"2020-01-02T10:00:00Z","JobID":"1255"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2752"},"Id":5670,"ID":5670,"ShiftLength":"3.5 hours","Date":"2020-01-07T10:00:00Z","JobID":"1257"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2753"},"Id":5671,"ID":5671,"ShiftLength":"3.5 hours","Date":"2020-01-16T10:00:00Z","JobID":"1258"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2754"},"Id":5688,"ID":5688,"ShiftLength":"3.5 hours","Date":"2020-01-14T10:00:00Z","JobID":"1142"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2755"},"Id":5694,"ID":5694,"ShiftLength":"3.5 hours","Date":"2019-12-31T10:00:00Z","JobID":"1085"}
+{"_id":{"$oid":"5e28a84c9e2b81033cea2756"},"Id":5696,"ID":5696,"ShiftLength":"3.5 hours","Date":"2020-01-15T10:00:00Z","JobID":"1274"}

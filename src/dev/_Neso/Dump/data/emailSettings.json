@@ -1,0 +1,1 @@
+{"_id":{"$oid":"59fa4aa09df7b4d52d9e1551"},"smtpProcessingStatus":true,"queueProcessingStatus":false,"whitelistedDomains":["http://uptonine.com","https://bmos.sharepoint.com"],"transporterOptions":{"host":"192.168.13.11","port":25,"secure":false}}
