@@ -1,0 +1,73 @@
+@baseURI =  https://fplknof444.execute-api.us-east-1.amazonaws.com/dev
+
+
+#########
+# Get all settings
+GET {{baseURI}}/hubMessages/settings
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get next messageID
+GET {{baseURI}}/hubMessages/nextid
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all unexpired messages
+GET {{baseURI}}/hubMessages/messages?expiration=unexpired
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a quantity of unexpired messages
+GET {{baseURI}}/hubMessages/messages?limit=4
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all unexpired messages, tagged Announcements
+GET {{baseURI}}/hubMessages/messages?tag=Announcements
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get 1 unexpired message, tagged Announcements
+GET {{baseURI}}/hubMessages/messages?expiration=unexpired&limit=1&tag=Announcements
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Add message
+POST {{baseURI}}/hubMessages/add
+Authorization: Bearer {{accessToken}}
+
+{
+	"newMessageID": 2084,
+	"newMessageTag": "Announcements",
+	"newMessageSubject": "Test Subject",
+	"newMessageBody": "This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body.",
+	"newMessageImages": [],
+	"newMessageExpirationDate": "2020-02-29T05:00:00.000Z",
+	"newMessageKey": "q4ZF5Ori1",
+	"newMessageCreated": "2020-02-22T16:31:55-05:00",
+	"newMessageCreator": {"account":"jbaker","displayName":"James Baker"}
+}
+
+
+#########
+# Update message
+POST {{baseURI}}/hubMessages/update
+Authorization: Bearer {{accessToken}}
+
+{
+	"newMessageID": 2084,
+	"newMessageTag": "Events",
+	"newMessageSubject": "Test Subject 2",
+	"newMessageBody": "2222222222222",
+	"newMessageImages": [],
+	"newMessageExpirationDate": "2020-02-29T05:00:00.000Z",
+	"newMessageKey": "q4ZF5Ori1",
+	"newMessageCreated": "2020-02-22T16:31:55-05:00",
+	"newMessageCreator": {"account":"jbaker","displayName":"James Baker"}
+}

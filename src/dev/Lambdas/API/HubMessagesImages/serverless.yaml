@@ -2,52 +2,11 @@ custom:
   file: ${file(../../../config-common.yaml)}
 # -------------------------------------------------------
   config:
-    service: api-hub-messages
+    service: api-hub-messages-images
     memorySize: 256
     timeout: 5
 
 functions:
-  HandleSettingsRequest:
-    handler: index.HandleSettingsRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.settings}
-          method: get
-          cors: true
-  HandleNextMessageIDRequest:
-    handler: index.HandleNextMessageIDRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.nextID}
-          method: get
-          cors: true
-  HandleMessagesRequest:
-    handler: index.HandleMessagesRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.messages}
-          method: get
-          cors: true
-          request:
-            parameters:
-              querystrings:
-                expiration: true
-                tag: true
-                limit: true
-  HandleAddMessageRequest:
-    handler: index.HandleAddMessageRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.add}
-          method: post
-          cors: true
-  HandleUpdateMessageRequest:
-    handler: index.HandleUpdateMessageRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.update}
-          method: post
-          cors: true
   HandleImageFormattingRequest:
     handler: index.HandleImageFormattingRequest
     events:
@@ -124,7 +83,6 @@ provider:
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
   layers:
-    - ${self:custom.file.custom.config.layerARNNPMCommon}
     - ${self:custom.file.custom.config.layerARNLibCommon}
     - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
     - ${self:custom.file.custom.config.layerARNLibHubMessages}

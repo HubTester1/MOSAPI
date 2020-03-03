@@ -9,7 +9,7 @@ const uuid = require('uuid');
 // const urlExists = require('url-exists');
 
 /**
- * @typedef {import('../../../../TypeDefs/HubMessage').HubMessage} HubMessage
+ * @typedef {import('../../../TypeDefs/HubMessage').HubMessage} HubMessage
  */
 
 module.exports = {

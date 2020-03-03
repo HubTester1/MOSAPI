@@ -2,7 +2,7 @@ custom:
   file: ${file(../../../config-common.yaml)}
 # -------------------------------------------------------
   config:
-    service: api-hub-messages
+    service: api-hub-messages-data
     memorySize: 256
     timeout: 5
 
@@ -47,20 +47,6 @@ functions:
       - http:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.update}
           method: post
-          cors: true
-  HandleImageFormattingRequest:
-    handler: index.HandleImageFormattingRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-          method: post
-          cors: true
-  HandleDeleteImageRequest:
-    handler: index.HandleDeleteImageRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-          method: delete
           cors: true
 
 
@@ -126,6 +112,4 @@ provider:
   layers:
     - ${self:custom.file.custom.config.layerARNNPMCommon}
     - ${self:custom.file.custom.config.layerARNLibCommon}
-    - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
     - ${self:custom.file.custom.config.layerARNLibHubMessages}
-    - ${self:custom.file.custom.config.layerARNLibFiles}

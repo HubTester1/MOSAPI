@@ -1,0 +1,14 @@
+{
+	"name": "files",
+	"version": "1.0.0",
+	"description": "Handles all file operations, including image manipulation.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"s3fs": "^2.5.0",
+		"sharp": "^0.24.1"
+	}
+}
