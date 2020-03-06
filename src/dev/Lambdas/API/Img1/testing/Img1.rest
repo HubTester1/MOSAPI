@@ -1,4 +1,4 @@
-@baseURI = https://48qoc7sqkh.execute-api.us-east-1.amazonaws.com/dev
+@baseURI = https://7lxl0xo3cb.execute-api.us-east-1.amazonaws.com/dev
 
 
 #########
@@ -7,5 +7,5 @@ POST {{baseURI}}/hubMessages/images
 Authorization: Bearer {{accessToken}}
 
 {
-	"messageID":1157
+	"messageID":1190
 }

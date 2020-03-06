@@ -5,8 +5,8 @@
  */
 
 const Log = require('log');
-const Twitter = require('twitter');
-const moment = require('moment');
+// const Twitter = require('twitter');
+// const moment = require('moment');
 
 module.exports = {
 
@@ -60,7 +60,7 @@ module.exports = {
 	 * @description Given error data, construct Tweet and send it to Twitter.
 	 */
 
-	AddErrorToTwitter: (errorData) =>
+	/* AddErrorToTwitter: (errorData) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// try to post error to twitter
@@ -123,7 +123,7 @@ module.exports = {
 				// resolve the promise with the error data
 				resolve(twitterErrorData);
 			}
-		}),
+		}), */
 
 	/**
 	 * @name ProcessError
@@ -134,7 +134,7 @@ module.exports = {
 	 * process errors in different or additional ways in the future.)
 	 */
 
-	ProcessError: (errorData) =>
+	/* ProcessError: (errorData) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to add error to Twitter
@@ -150,5 +150,5 @@ module.exports = {
 					reject(error);
 				});
 		}),
-
+ */
 };

@@ -7,6 +7,6 @@
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
 	"dependencies": {
-		"moment": "^2.24.0"
+		"moment-timezone": "^0.5.28"
 	}
 }

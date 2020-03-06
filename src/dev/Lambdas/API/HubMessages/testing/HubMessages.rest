@@ -1,4 +1,4 @@
-@baseURI = https://48qoc7sqkh.execute-api.us-east-1.amazonaws.com/dev
+@baseURI = https://klwi1cvgsb.execute-api.us-east-1.amazonaws.com/dev
 
 
 #########
@@ -26,14 +26,14 @@ Authorization: Bearer {{accessToken}}
 
 
 #########
-# Get all unexpired messages, tagged announcements
-GET {{baseURI}}/hubMessages/messages?tag=announcements
+# Get all unexpired messages, tagged Announcements
+GET {{baseURI}}/hubMessages/messages?tag=Announcements
 Authorization: Bearer {{accessToken}}
 
 
 #########
-# Get 1 unexpired message, tagged announcements
-GET {{baseURI}}/hubMessages/messages?expiration=unexpired&limit=1&tag=announcements
+# Get 1 unexpired message, tagged Announcements
+GET {{baseURI}}/hubMessages/messages?expiration=unexpired&limit=1&tag=Announcements
 Authorization: Bearer {{accessToken}}
 
 
@@ -43,13 +43,8 @@ POST {{baseURI}}/hubMessages/add
 Authorization: Bearer {{accessToken}}
 
 {
-	"newMessageID":1084,
-	"newMessageTags": [
-		{
-			"name": "Announcements",
-			"camlName": "announcements"
-		}
-	],
+	"newMessageID":2085,
+	"newMessageTag": "Announcements",
 	"newMessageSubject": "Test Subject",
 	"newMessageBody": "This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body.",
 	"newMessageImages": [],
@@ -66,13 +61,8 @@ POST {{baseURI}}/hubMessages/update
 Authorization: Bearer {{accessToken}}
 
 {
-	"newMessageID":1084,
-	"newMessageTags": [
-		{
-			"name": "Events",
-			"camlName": "events"
-		}
-	],
+	"newMessageID":2085,
+	"newMessageTag": "Events",
 	"newMessageSubject": "Test Subject 2",
 	"newMessageBody": "2222222222222",
 	"newMessageImages": [],

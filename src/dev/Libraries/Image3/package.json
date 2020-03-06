@@ -1,0 +1,13 @@
+{
+	"name": "images-3",
+	"version": "1.0.0",
+	"description": "Handles image manipulation.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"imagemagick": "^0.1.3",
+		"s3fs": "^2.5.0"
+	}
+}

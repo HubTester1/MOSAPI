@@ -4,9 +4,9 @@
  * @description Handles all health-related requests.
  */
 
-const Health = require('health');
-const Access = require('access');
-const Response = require('response');
+const Access = require('../../../Libraries/Access');
+const Health = require('../../../Libraries/Health');
+const Response = require('../../../Libraries/Response');
 
 module.exports = {
 

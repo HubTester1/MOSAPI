@@ -1,6 +1,7 @@
 {
 	"name": "layer-dev-npm-sharp",
 	"description": "AWS Lambda Layer containing Sharp third-party Node.js module.",
+	"engines" : { "node" : ">=10.0" },
 	"dependencies": {
 		"sharp": "^0.24.1"
 	}

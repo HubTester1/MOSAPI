@@ -1,0 +1,11 @@
+@baseURI = https://gpxu6pjbw4.execute-api.us-east-1.amazonaws.com/dev
+
+
+#########
+# Format a message's images
+POST {{baseURI}}/hubMessages/images
+Authorization: Bearer {{accessToken}}
+
+{
+	"messageID":1190
+}

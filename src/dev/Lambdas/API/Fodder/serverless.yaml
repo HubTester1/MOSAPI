@@ -1,0 +1,80 @@
+custom:
+  file: ${file(../../../config-common.yaml)}
+# -------------------------------------------------------
+  config:
+    service: api-fodder
+    memorySize: 256
+    timeout: 5
+
+functions:
+  HandleImageFormattingRequest:
+    handler: index.HandleImageFormattingRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
+          method: post
+          cors: true
+
+service: ${self:custom.config.service}
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${self:custom.file.custom.config.stage}
+  region: us-east-1
+  profile: ${self:custom.file.provider.profile}
+  memorySize: ${self:custom.config.memorySize}
+  timeout: ${self:custom.config.timeout}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:ListBucket"
+      Resource: "arn:aws:s3:::mos-api-temp"
+    - Effect: "Allow"
+      Action:
+        - "s3:AbortMultipartUpload"
+        - "s3:CreateBucket"
+        - "s3:PutObject"
+        - "s3:DeleteBucket"
+        - "s3:DeleteBucketPolicy"
+        - "s3:DeleteObject"
+        - "s3:GetBucketPolicy"
+        - "s3:GetLifecycleConfiguration"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+        - "s3:ListMultipartUploadParts"
+        - "s3:PutBucketPolicy"
+        - "s3:PutLifecycleConfiguration"
+        - "s3:PutObject"
+      Resource: "arn:aws:s3:::mos-api-temp/*"
+  deploymentBucket:
+    name: mos-api-${self:provider.stage}-lambdas
+  environment:
+    NODE_PATH: "./:/opt/node_modules"
+    authJWTPayloadMessage: ${self:custom.file.authJWTPayloadMessage}
+    authJWTPayloadSecret: ${self:custom.file.authJWTPayloadSecret}
+    authMOSAPISLSAdminAccessKeyID: ${self:custom.file.authMOSAPISLSAdminAccessKeyID}
+    authMOSAPISLSAdminSecretAccessKey: ${self:custom.file.authMOSAPISLSAdminSecretAccessKey}
+    cronScheduleEmailQueueProcessing: ${self:custom.file.cronScheduleEmailQueueProcessing}
+    cronScheduleGSEJobSync: ${self:custom.file.cronScheduleGSEJobSync}
+    cronScheduleGSEScheduleSync: ${self:custom.file.cronScheduleGSEScheduleSync}
+    cronScheduleGSESignupSync: ${self:custom.file.cronScheduleGSESignupSync}
+    cronScheduleGSESignupReminders: ${self:custom.file.cronScheduleGSESignupReminders}
+    cronScheduleGSECreditReminders: ${self:custom.file.cronScheduleGSECreditReminders}
+    cronSchedulePeopleProcessing: ${self:custom.file.cronSchedulePeopleProcessing}
+    graphClientID: ${self:custom.file.graphClientID}
+    graphClientSecret: ${self:custom.file.graphClientSecret}
+    graphTenantID: ${self:custom.file.graphTenantID}
+    mongoDbHostUnique: ${self:custom.file.mongoDbHostUnique}
+    mongoDbPass: ${self:custom.file.mongoDbPass}
+    mongoDbUser: ${self:custom.file.mongoDbUser}
+    stage: ${self:provider.stage}
+    twitterConsumerKey: ${self:custom.file.twitterConsumerKey}
+    twitterConsumerSecret: ${self:custom.file.twitterConsumerSecret}
+    twitterAccessTokenKey: ${self:custom.file.twitterAccessTokenKey}
+    twitterAccessTokenSecret: ${self:custom.file.twitterAccessTokenSecret}
+    upApiKey: ${self:custom.file.upApiKey}
+    upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
+    upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
+  layers:
+    - ${self:custom.file.custom.config.layerARNNPMCommon}
+    - ${self:custom.file.custom.config.layerARNLibCommon}

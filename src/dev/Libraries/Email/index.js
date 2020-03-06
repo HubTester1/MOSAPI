@@ -8,7 +8,7 @@
 const DataQueries = require('data-queries');
 const Utilities = require('utilities');
 const MSGraph = require('ms-graph');
-const Errors = require('errors');
+// const Errors = require('errors');
 const Status = require('status');
 
 /**
@@ -217,7 +217,7 @@ module.exports = {
 												emailSendingError,
 												status: Status.ReturnStatusMessage(11),
 											};
-											Errors.ProcessError(errorToReport);
+											// Errors.ProcessError(errorToReport);
 											reject(errorToReport);
 										});
 								// if there are no emails to be sent
@@ -239,7 +239,7 @@ module.exports = {
 									mongoDBErrorDetails: emailQueueError,
 									status: Status.ReturnStatusMessage(13),
 								};
-								Errors.ProcessError(errorToReport);
+								// Errors.ProcessError(errorToReport);
 								reject(errorToReport);
 							});
 					// if there was no problem with retrieving the setting but 
@@ -263,7 +263,7 @@ module.exports = {
 							mongoDBErrorDetails: settingResult,
 							status: Status.ReturnStatusMessage(16),
 						};
-						Errors.ProcessError(errorToReport);
+						// Errors.ProcessError(errorToReport);
 						reject(errorToReport);
 					}
 				})
@@ -278,7 +278,7 @@ module.exports = {
 						mongoDBErrorDetails: settingError,
 						status: Status.ReturnStatusMessage(17),
 					};
-					Errors.ProcessError(errorToReport);
+					// Errors.ProcessError(errorToReport);
 					reject(errorToReport);
 				});
 		}),
@@ -667,7 +667,7 @@ module.exports = {
 											email: incomingEmail,
 											status: Status.ReturnStatusMessage(2),
 										};
-										Errors.ProcessError(errorToReport);
+										// Errors.ProcessError(errorToReport);
 										reject(errorToReport);
 									});
 							})
@@ -702,7 +702,7 @@ module.exports = {
 												email: incomingEmail,
 												status: Status.ReturnStatusMessage(4),
 											};
-											Errors.ProcessError(errorToReport);
+											// Errors.ProcessError(errorToReport);
 											reject(errorToReport);
 										});
 								// if email came from the queue
@@ -716,7 +716,7 @@ module.exports = {
 										email: incomingEmail,
 										status: Status.ReturnStatusMessage(5),
 									};
-									Errors.ProcessError(errorToReport);
+									// Errors.ProcessError(errorToReport);
 									reject(errorToReport);
 								}
 							});
@@ -751,7 +751,7 @@ module.exports = {
 									email: incomingEmail,
 									status: Status.ReturnStatusMessage(7),
 								};
-								Errors.ProcessError(errorToReport);
+								// Errors.ProcessError(errorToReport);
 								reject(errorToReport);
 							});
 					// if there was no problem with retrieving the setting but 
@@ -782,7 +782,7 @@ module.exports = {
 							email: incomingEmail,
 							status: Status.ReturnStatusMessage(9),
 						};
-						Errors.ProcessError(errorToReport);
+						// Errors.ProcessError(errorToReport);
 						reject(errorToReport);
 					}
 				})
@@ -798,7 +798,7 @@ module.exports = {
 						email: incomingEmail,
 						status: Status.ReturnStatusMessage(15),
 					};
-					Errors.ProcessError(errorToReport);
+					// Errors.ProcessError(errorToReport);
 					reject(errorToReport);
 				});
 		}),

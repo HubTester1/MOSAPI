@@ -6,10 +6,9 @@
 
 const Access = require('access');
 const Response = require('response');
-const Utilities = require('utilities');
+// const Utilities = require('utilities');
 const HubMessages = require('hub-messages');
-const S3 = require('s3');
-const Images = require('images');
+// const Files = require('files');
 
 
 /**
@@ -336,7 +335,7 @@ module.exports = {
 	 * @description Handle request to format a message's images.
 	 */
 
-	HandleImageFormattingRequest: (event, context) =>
+	/* HandleImageFormattingRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
@@ -351,7 +350,7 @@ module.exports = {
 					// const eventBodyCopy =
 					// 	Utilities.ReturnUniqueObjectGivenAnyValue(eventBody);
 					const { messageID } = eventBodyCopy;
-					const S3FileSystem = S3.ReturnS3FileSystem('mos-api-misc-storage');
+					const S3FileSystem = HubMessages.ReturnS3FileSystem('mos-api-misc-storage');
 					S3FileSystem.readdir(`/hub-message-assets/incoming/${messageID}`)
 						// if the promise is resolved with a result
 						.then((readDirectoryResult) => {
@@ -359,7 +358,7 @@ module.exports = {
 							// for each file in the directory
 							readDirectoryResult.forEach((fileName, fileIndex) => {
 								fileProcessingPromises.push(
-									Images.ConvertImage(
+									HubMessages.ConvertImage(
 										messageID,
 										fileName,
 									),
@@ -421,7 +420,7 @@ module.exports = {
 						},
 					});
 				});
-		}),
+		}), */
 
 
 	/**
@@ -431,7 +430,7 @@ module.exports = {
 	 * @description Handle request to delete an image.
 	 */
 
-	HandleDeleteImageRequest: (event, context) =>
+	/* HandleDeleteImageRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
@@ -445,7 +444,7 @@ module.exports = {
 						Utilities.ReturnUniqueObjectGivenAnyValue(event.body);
 					const { messageID } = eventBodyCopy;
 					const { fileName } = eventBodyCopy;
-					const S3FileSystem = S3.ReturnS3FileSystem('mos-api-misc-storage');
+					const S3FileSystem = HubMessages.ReturnS3FileSystem('mos-api-misc-storage');
 					// get a promise to 
 					S3FileSystem.unlink(
 						`/hub-message-assets/formatted/${messageID}/${fileName}`,
@@ -490,6 +489,6 @@ module.exports = {
 						},
 					});
 				});
-		}),
+		}), */
 
 };

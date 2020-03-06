@@ -5,6 +5,16 @@ custom:
     service: api-health
     memorySize: 256
     timeout: 5
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    excludeFiles: ./testing/*
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
 
 functions:
   HandleHealthCheckRequest:
@@ -54,6 +64,6 @@ provider:
     upApiKey: ${self:custom.file.upApiKey}
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
-  layers:
-    - ${self:custom.file.custom.config.layerARNNPMCommon}
-    - ${self:custom.file.custom.config.layerARNLibCommon}
+  # layers:
+  #   - ${self:custom.file.custom.config.layerARNNPMCommon}
+  #   - ${self:custom.file.custom.config.layerARNLibCommon}

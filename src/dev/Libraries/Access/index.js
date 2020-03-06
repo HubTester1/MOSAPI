@@ -4,7 +4,7 @@
  * @description Performs all access-related operations.
  */
 
-const Errors = require('errors');
+// const Errors = require('errors');
 const Status = require('status');
 const Utilities = require('utilities');
 
@@ -114,7 +114,7 @@ module.exports = {
 								whitelistError,
 								status: Status.ReturnStatusMessage(18, whitelistFunction.name),
 							};
-							Errors.ProcessError(errorToReport);
+							// Errors.ProcessError(errorToReport);
 							reject(errorToReport);
 						});
 				// if there's no access token and no origin header

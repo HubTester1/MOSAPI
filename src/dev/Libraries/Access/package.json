@@ -7,7 +7,6 @@
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
 	"dependencies": {
-		"errors": "file:../Errors",
 		"status": "file:../Status",
 		"utilities": "file:../Utilities"
 	}

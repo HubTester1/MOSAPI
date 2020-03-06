@@ -5,6 +5,16 @@ custom:
     service: api-hub-messages
     memorySize: 256
     timeout: 5
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    excludeFiles: ./testing/*
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
 
 functions:
   HandleSettingsRequest:
@@ -48,20 +58,20 @@ functions:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.update}
           method: post
           cors: true
-  HandleImageFormattingRequest:
-    handler: index.HandleImageFormattingRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-          method: post
-          cors: true
-  HandleDeleteImageRequest:
-    handler: index.HandleDeleteImageRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-          method: delete
-          cors: true
+  # HandleImageFormattingRequest:
+  #   handler: index.HandleImageFormattingRequest
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
+  #         method: post
+  #         cors: true
+  # HandleDeleteImageRequest:
+  #   handler: index.HandleDeleteImageRequest
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
+  #         method: delete
+  #         cors: true
 
 
 service: ${self:custom.config.service}
@@ -123,9 +133,9 @@ provider:
     upApiKey: ${self:custom.file.upApiKey}
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
-  layers:
-    - ${self:custom.file.custom.config.layerARNNPMCommon}
-    - ${self:custom.file.custom.config.layerARNLibCommon}
-    - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
-    - ${self:custom.file.custom.config.layerARNLibHubMessages}
-    - ${self:custom.file.custom.config.layerARNLibFiles}
+  # layers:
+  #   - ${self:custom.file.custom.config.layerARNNPMCommon}
+  #   - ${self:custom.file.custom.config.layerARNLibCommon}
+  #   - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
+  #   - ${self:custom.file.custom.config.layerARNLibHubMessages}
+  #   - ${self:custom.file.custom.config.layerARNLibFiles}
