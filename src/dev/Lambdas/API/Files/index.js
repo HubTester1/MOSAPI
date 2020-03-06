@@ -1,24 +1,20 @@
 /**
- * @name Hub Messages
+ * @name XXX
  * @api
- * @description Handles all Hub Messages-related requests.
+ * @description XXX
  */
 
 const Access = require('access');
-const HubMessages = require('hub-messages');
+const Files = require('files');
 const Response = require('response');
-
-/**
- * @typedef {import('../../../TypeDefs/HubMessage').HubMessage} HubMessage
- */
 
 module.exports = {
 
 	/**
-	 * @name HandleSettingsRequest
+	 * @name XXX
 	 * @function
 	 * @async
-	 * @description Handle request for settings.
+	 * @description XXX
 	 */
 
 	HandleSettingsRequest: (event, context) =>
@@ -27,12 +23,11 @@ module.exports = {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
+				Files.ReturnFilesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					// get a promise to return health status
-					HubMessages.ReturnHubMessagesSettings()
+					Files.ReturnFilesSettings()
 						// if the promise is resolved with a result
 						.then((settingsResult) => {
 							// send indicative response
@@ -40,7 +35,7 @@ module.exports = {
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: settingsResult.docs,
+									payload: settingsResult,
 									event,
 									context,
 								},
@@ -76,47 +71,44 @@ module.exports = {
 		}),
 
 	/**
-	 * @name HandleMessagesRequest
+	 * @name XXX
 	 * @function
 	 * @async
-	 * @description Handle request for messages.
+	 * @description XXX
 	 */
 
-	HandleMessagesRequest: (event, context) =>
+	HandleCreateFolderRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
+				Files.ReturnFilesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					// get a promise to return health status
-					HubMessages.ReturnSpecifiedMessages(
-						event.queryStringParameters,
-					)
+					Files.CreateFolder(event.body)
 						// if the promise is resolved with a result
-						.then((messagesResult) => {
+						.then((creationResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: messagesResult.docs,
+									payload: creationResult,
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((messagesError) => {
+						.catch((creationError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: messagesError,
+									error: creationError,
 									event,
 									context,
 								},
@@ -139,47 +131,44 @@ module.exports = {
 		}),
 
 	/**
-	 * @name HandleAddMessageRequest
+	 * @name XXX
 	 * @function
 	 * @async
-	 * @description Handle request to add message. Message object is in event.body.
+	 * @description XXX
 	 */
 
-	HandleAddMessageRequest: (event, context) =>
+	HandleCreateFileRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
+				Files.ReturnFilesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					// get a promise to return health status
-					HubMessages.AddMessage(
-						event.body,
-					)
+					Files.CreateFile(event.body)
 						// if the promise is resolved with a result
-						.then((addMessageResult) => {
+						.then((creationResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: addMessageResult.docs,
+									payload: creationResult,
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((addMessageError) => {
+						.catch((creationError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: addMessageError,
+									error: creationError,
 									event,
 									context,
 								},
@@ -201,48 +190,38 @@ module.exports = {
 				});
 		}),
 
-	/**
-	 * @name HandleUpdateMessageRequest
-	 * @function
-	 * @async
-	 * @description Handle request to update message. Message object is in event.body.
-	 */
-
-	HandleUpdateMessageRequest: (event, context) =>
+	/* XXXXX: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
+				Files.ReturnFilesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					// get a promise to return health status
-					HubMessages.UpdateMessage(
-						event.body,
-					)
+					XXX()
 						// if the promise is resolved with a result
-						.then((updateMessageResult) => {
+						.then((otherResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: updateMessageResult.docs,
+									payload: otherResult.docs[0],
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((updateMessageError) => {
+						.catch((otherError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: updateMessageError,
+									error: otherError,
 									event,
 									context,
 								},
@@ -264,114 +243,38 @@ module.exports = {
 				});
 		}),
 
-	/**
-	 * @name HandleNextMessageIDRequest
-	 * @function
-	 * @async
-	 * @description Handle request for the next message ID.
-	 */
-
-	HandleNextMessageIDRequest: (event, context) =>
+	XXXXX: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
+				Files.ReturnFilesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					// get a promise to return health status
-					HubMessages.ReturnNextMessageIDAndIterate()
+					XXX()
 						// if the promise is resolved with a result
-						.then((settingsResult) => {
+						.then((otherResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: settingsResult.docs,
+									payload: otherResult.docs[0],
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((settingsError) => {
+						.catch((otherError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: settingsError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}),
-
-	/**
-	 * @name HandleDeleteImageRequest
-	 * @function
-	 * @async
-	 * @description Handle request to delete an image.
-	 */
-
-	/* HandleDeleteImageRequest: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				HubMessages.ReturnHubMessagesWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					const eventBodyCopy =
-						Utilities.ReturnUniqueObjectGivenAnyValue(event.body);
-					const { messageID } = eventBodyCopy;
-					const { fileName } = eventBodyCopy;
-					const S3FileSystem = HubMessages.ReturnS3FileSystem('mos-api-misc-storage');
-					// get a promise to 
-					S3FileSystem.unlink(
-						`/hub-message-assets/formatted/${messageID}/${fileName}`,
-					)
-						// if the promise is resolved with a result
-						.then((removalResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: removalResult,
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((removalError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 401,
-								responder: resolve,
-								content: {
-									error: removalError,
+									error: otherError,
 									event,
 									context,
 								},

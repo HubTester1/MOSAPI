@@ -1,7 +1,0 @@
-{
-	"name": "layer-dev-libraries-files",
-	"description": "AWS Lambda Layer containing Files library from Libraries directory.",
-	"dependencies": {
-		"images": "file:../../../Libraries/Files"
-	}
-}

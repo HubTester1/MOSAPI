@@ -1,20 +1,16 @@
 custom:
   file: ${file(../../../config-common.yaml)}
-# -------------------------------------------------------
   config:
-    service: api-hub-messages
-    memorySize: 256
-    timeout: 5
-  webpack:
+    webpack:
     webpackConfig: './webpack.config.js'
     includeModules: true
     excludeFiles: ./testing/*
 
-package:
-  individually: true
+# -------------------------------------------------------
 
-plugins:
-  - serverless-webpack
+    service: api-hub-messages
+    memorySize: 256
+    timeout: 5
 
 functions:
   HandleSettingsRequest:
@@ -78,34 +74,11 @@ service: ${self:custom.config.service}
 provider:
   name: aws
   runtime: ${self:custom.file.provider.runtime}
-  # runtime: nodejs10.x
   stage: ${self:custom.file.custom.config.stage}
   region: us-east-1
   profile: ${self:custom.file.provider.profile}
   memorySize: ${self:custom.config.memorySize}
   timeout: ${self:custom.config.timeout}
-  # iamRoleStatements:
-  #   - Effect: "Allow"
-  #     Action:
-  #       - "s3:ListBucket"
-  #     Resource: "arn:aws:s3:::mos-api-temp"
-  #   - Effect: "Allow"
-  #     Action:
-  #       - "s3:AbortMultipartUpload"
-  #       - "s3:CreateBucket"
-  #       - "s3:PutObject"
-  #       - "s3:DeleteBucket"
-  #       - "s3:DeleteBucketPolicy"
-  #       - "s3:DeleteObject"
-  #       - "s3:GetBucketPolicy"
-  #       - "s3:GetLifecycleConfiguration"
-  #       - "s3:ListBucket"
-  #       - "s3:ListBucketMultipartUploads"
-  #       - "s3:ListMultipartUploadParts"
-  #       - "s3:PutBucketPolicy"
-  #       - "s3:PutLifecycleConfiguration"
-  #       - "s3:PutObject"
-  #     Resource: "arn:aws:s3:::mos-api-temp/*"
   deploymentBucket:
     name: mos-api-${self:provider.stage}-lambdas
   environment:
@@ -133,9 +106,9 @@ provider:
     upApiKey: ${self:custom.file.upApiKey}
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
-  # layers:
-  #   - ${self:custom.file.custom.config.layerARNNPMCommon}
-  #   - ${self:custom.file.custom.config.layerARNLibCommon}
-  #   - ${self:custom.file.custom.config.layerARNNPMNPMSharp}
-  #   - ${self:custom.file.custom.config.layerARNLibHubMessages}
-  #   - ${self:custom.file.custom.config.layerARNLibFiles}
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack

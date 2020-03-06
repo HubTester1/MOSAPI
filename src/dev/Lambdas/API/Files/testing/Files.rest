@@ -1,0 +1,29 @@
+@baseURI = https://ldv1zap4x5.execute-api.us-east-1.amazonaws.com/dev
+
+
+#########
+# Get all settings
+GET {{baseURI}}/files/settings
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Create folder
+GET {{baseURI}}/files/folder
+Authorization: Bearer {{accessToken}}
+
+{
+	"parentFolderName": "HubMessageAssets",
+	"folderName": "TestFolder"
+}
+
+#########
+# Create file
+GET {{baseURI}}/files/file
+Authorization: Bearer {{accessToken}}
+
+{
+	"parentFolderName": "HubMessageAssets",
+	"fileName": "fileName.jpg"
+}
+

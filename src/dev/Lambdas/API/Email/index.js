@@ -4,10 +4,10 @@
  * @description Handles all email-related requests.
  */
 
-const Email = require('email');
 const Access = require('access');
-const Utilities = require('utilities');
+const Email = require('email');
 const Response = require('response');
+const Utilities = require('utilities');
 
 module.exports = {
 

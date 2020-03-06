@@ -1,0 +1,13 @@
+{
+	"name": "files",
+	"version": "1.0.0",
+	"description": "Handle all file operations.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"data-queries": "file:../DataQueries",
+		"@pnp/sp": "^2.0.3"
+	}
+}

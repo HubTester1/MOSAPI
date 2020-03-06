@@ -1,0 +1,17 @@
+{
+	"name": "api-img-3",
+	"version": "1.0.0",
+	"main": "../index.js",
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"access": "file:../../../Modules/Access",
+		"data-queries": "file:../../../Modules/DataQueries",
+		"hub-messages": "file:../../../Modules/HubMessages",
+		"moment": "^2.24.0",
+		"response": "file:../../../Modules/Response",
+		"s3fs": "^2.5.0",
+		"sharp": "^0.24.1",
+		"utilities": "file:../../../Modules/Utilities"
+	}
+}

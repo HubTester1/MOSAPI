@@ -1,0 +1,12 @@
+{
+	"name": "api-img-2",
+	"version": "1.0.0",
+	"main": "../index.js",
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"image-2": "file:../../../Modules/Image2",
+		"response": "file:../../../Modules/Response",
+		"utilities": "file:../../../Modules/Utilities"
+	}
+}

@@ -1,4 +1,4 @@
-@baseURI = https://klwi1cvgsb.execute-api.us-east-1.amazonaws.com/dev
+@baseURI = https://gprxlfdjxj.execute-api.us-east-1.amazonaws.com/dev
 
 
 #########
@@ -43,7 +43,7 @@ POST {{baseURI}}/hubMessages/add
 Authorization: Bearer {{accessToken}}
 
 {
-	"newMessageID":2085,
+	"newMessageID":1216,
 	"newMessageTag": "Announcements",
 	"newMessageSubject": "Test Subject",
 	"newMessageBody": "This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body. This is a test message body.",
@@ -61,7 +61,7 @@ POST {{baseURI}}/hubMessages/update
 Authorization: Bearer {{accessToken}}
 
 {
-	"newMessageID":2085,
+	"newMessageID":1216,
 	"newMessageTag": "Events",
 	"newMessageSubject": "Test Subject 2",
 	"newMessageBody": "2222222222222",

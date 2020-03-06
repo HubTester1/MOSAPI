@@ -5,8 +5,8 @@
  */
 
 const Access = require('access');
-const Response = require('response');
 const DataQueries = require('data-queries');
+const Response = require('response');
 
 module.exports = {
 

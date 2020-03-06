@@ -8,18 +8,60 @@ custom:
 
 # -------------------------------------------------------
 
-    service: api-health
+    service: api-files
     memorySize: 256
     timeout: 5
 
 functions:
-  HandleHealthCheckRequest:
-    handler: index.HandleHealthCheckRequest
+  HandleSettingsRequest:
+    handler: index.HandleSettingsRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.health.check}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
           method: get
           cors: true
+  HandleCreateFolderRequest:
+    handler: index.HandleCreateFolderRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.files.folder}
+          method: post
+          cors: true
+  HandleCreateFileRequest:
+    handler: index.HandleCreateFileRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.files.file}
+          method: post
+          cors: true
+  # XXX:
+  #   handler: index.XXX
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
+  #         method: XXX
+  #         cors: true
+  # XXX:
+  #   handler: index.XXX
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
+  #         method: XXX
+  #         cors: true
+  # XXX:
+  #   handler: index.XXX
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
+  #         method: XXX
+  #         cors: true
+  # XXX:
+  #   handler: index.XXX
+  #   events:
+  #     - http:
+  #         path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
+  #         method: XXX
+  #         cors: true
 
 # -------------------------------------------------------
 

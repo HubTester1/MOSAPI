@@ -1,5 +1,5 @@
 {
-	"name": "api-hub-messages",
+	"name": "api-email",
 	"version": "1.0.0",
 	"main": "../index.js",
 	"author": "Museum of Science, Boston",
@@ -9,7 +9,8 @@
 	},
 	"dependencies": {
 		"access": "file:../../../Modules/Access",
-		"hub-messages": "file:../../../Modules/HubMessages",
-		"response": "file:../../../Modules/Response"
+		"email": "file:../../../Modules/Email",
+		"response": "file:../../../Modules/Response",
+		"utilities": "file:../../../Modules/Utilities"
 	}
 }

@@ -1,8 +1,14 @@
 custom:
   file: ${file(../../../config-common.yaml)}
-# -------------------------------------------------------
   config:
-    service: XXX
+    webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    excludeFiles: ./testing/*
+
+# -------------------------------------------------------
+
+    service: api-XXX
     memorySize: 256
     timeout: 5
 
@@ -11,7 +17,7 @@ functions:
     handler: index.XXX
     events:
       - http:
-          path: XXX/XXX
+          path: ${self:custom.file.endpoints.${self:provider.stage}.XXX.XXX}
           method: XXX
           cors: true
 
@@ -54,6 +60,9 @@ provider:
     upApiKey: ${self:custom.file.upApiKey}
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
-  layers:
-    - ${self:custom.file.custom.config.layerARNNPM}
-    - ${self:custom.file.custom.config.layerARNServices}
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
