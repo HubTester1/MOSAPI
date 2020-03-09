@@ -1,10 +1,13 @@
 {
-	"name": "XXX",
+	"name": "files",
 	"version": "1.0.0",
-	"description": "XXX.",
+	"description": "Handles everything related to file CRUD operations.",
 	"main": "index.js",
 	"scripts": {},
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
-	"dependencies": {}
+	"dependencies": {
+		"data-queries": "file:../DataQueries",
+		"ms-graph": "file:../MSGraph"
+	}
 }

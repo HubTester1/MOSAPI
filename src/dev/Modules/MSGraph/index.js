@@ -148,7 +148,6 @@ module.exports = {
 					);
 					let allValues = [];
 					let singleValue;
-					console.log('========= baseConfig', baseConfig);
 					// set up recursive function to get all pages of employees
 					const AttemptToGetOnePageOfDataFromGraph = (attemptConfig = baseConfig) => {
 						// get a promise to retrieve one page of employees
@@ -360,7 +359,6 @@ module.exports = {
 			module.exports.ReturnSiteFromToken(options)
 				// if the promise is resolved with a result
 				.then((siteResult) => {
-					console.log('++++++++++++++ siteResult', siteResult);
 					// get a promise to get the data
 					module.exports.ReturnAllSpecifiedDataFromGraph(
 						`sites/${siteResult.id}/drives`,
@@ -419,7 +417,7 @@ module.exports = {
 		}),
 
 		
-	// DRIVES AND FOLDERS
+	// DRIVES, FOLDERS, FILES
 
 	ReturnDriveFromID: (driveID) =>
 		// return a new promise
@@ -457,7 +455,7 @@ module.exports = {
 					// set up empty drive var
 					let requestedDrive;
 					// for each drive in the returned array of drives
-					allDrivesResult.forEach((drive) => {
+					allDrivesResult.allValues.forEach((drive) => {
 						// if this drive's name matches the name 
 						// 		of the drive requested
 						if (drive.name === optionsCopy.driveToken) {
@@ -499,7 +497,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((result) => {
 					// then resolve this promise with the result
-					resolve(result);
+					resolve(result.allValues);
 				})
 				// if the promise is rejected with an error
 				.catch((error) => {
@@ -559,7 +557,7 @@ module.exports = {
 					childrenResult.forEach((driveChild) => {
 						// if this child's name matches the 
 						// 		requested child token
-						if (driveChild.name === options.driveChildToken) {
+						if (driveChild.name === optionsCopy.driveChildToken) {
 							// select this child as the requested child
 							requestedChild = driveChild;
 						}
@@ -702,7 +700,20 @@ module.exports = {
 						.then((parentIdentificationResult) => {
 							// set up empty parent ID var and extract parent ID result
 							let parentID;
-							const parentIDResult = parentIdentificationResult[0];
+							let parentIDResult;
+							if (
+								parentIdentificationResult && 
+								parentIdentificationResult[0] && 
+								parentIdentificationResult[0].allValues
+							) {
+								parentIDResult = parentIdentificationResult[0].allValues;
+							} else if (
+								parentIdentificationResult && 
+								parentIdentificationResult[0]
+							) {
+								[parentIDResult] = parentIdentificationResult;
+							}
+							
 							// if the parent ID result is 'root'
 							if (parentIDResult === 'root') {
 								// set parent ID to 'root'
@@ -716,7 +727,7 @@ module.exports = {
 								driveChildren.forEach((driveChild) => {
 									// if this child's name matches the 
 									// 		requested parent ID token
-									if (driveChild.name === options.parentToken) {
+									if (driveChild.name === optionsCopy.parentToken) {
 										// select this child as the parent ID
 										parentID = driveChild.id;
 									}

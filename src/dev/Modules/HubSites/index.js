@@ -53,7 +53,7 @@ module.exports = {
 					// resolve this promise with the requested setting
 					resolve({
 						error: settings.error,
-						whitelistedDomains: settings.docs[0].whitelistedDomains,
+						whitelistedDomains: settings.whitelistedDomains,
 					});
 				})
 				// if the promise is rejected with an error

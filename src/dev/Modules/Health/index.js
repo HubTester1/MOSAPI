@@ -7,7 +7,6 @@
 const DataQueries = require('data-queries');
 
 module.exports = {
-	
 
 	/**
 	 * @name ReturnHealthSettingsData
