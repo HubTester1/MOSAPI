@@ -1,0 +1,15 @@
+{
+	"name": "api-hub-sites",
+	"version": "1.0.0",
+	"main": "../index.js",
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"scripts": {
+		"update": "rm -rf node_modules; rm package-lock.json; rm -rf .serverless; npm i"
+	},
+	"dependencies": {
+		"access": "file:../../../Modules/Access",
+		"hub-sites": "file:../../../Modules/HubSites",
+		"response": "file:../../../Modules/Response"
+	}
+}

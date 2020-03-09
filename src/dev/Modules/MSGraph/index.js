@@ -6,9 +6,12 @@
 
 const axios = require('axios');
 const qs = require('qs');
+const Status = require('status');
 const Utilities = require('utilities');
 
 module.exports = {
+
+	// GENERAL
 
 	ReturnGraphAuthorizationConfig: (page) => ({
 		uri: `https://login.microsoftonline.com/${process.env.graphTenantID}/oauth2/v2.0/token`,
@@ -87,13 +90,23 @@ module.exports = {
 			)
 				// if the promise is resolved
 				.then((dataResult) => {
+					let onePage;
+					let nextLink;
+					if (dataResult && dataResult.data && dataResult.data.value) {
+						onePage = dataResult.data.value;
+					} else if (dataResult && dataResult.data) {
+						onePage = dataResult.data;
+					}
+					if (dataResult && dataResult.data && dataResult.data['@odata.nextLink']) {
+						nextLink = dataResult.data['@odata.nextLink'];
+					}
 					// if status indicates success
 					if (dataResult.status === 200) {
 						// resolve this promise with the list items
 						resolve({
 							error: false,
-							onePage: dataResult.data.value,
-							nextLink: dataResult.data['@odata.nextLink'],
+							onePage,
+							nextLink,
 						});
 						// if status indicates other than success
 					} else {
@@ -134,6 +147,8 @@ module.exports = {
 						accessTokenResult.accessToken,
 					);
 					let allValues = [];
+					let singleValue;
+					console.log('========= baseConfig', baseConfig);
 					// set up recursive function to get all pages of employees
 					const AttemptToGetOnePageOfDataFromGraph = (attemptConfig = baseConfig) => {
 						// get a promise to retrieve one page of employees
@@ -149,21 +164,27 @@ module.exports = {
 									newAttemptConfig.uri = dataResult.nextLink;
 									AttemptToGetOnePageOfDataFromGraph(newAttemptConfig);
 									// if we've reached the end of the pages
-								} else {
-									// add the page of employees to allEmployees
+								} else if (
+									dataResult && 
+									dataResult.onePage && 
+									dataResult.onePage[0]
+								) {										
+									// add the page of data to allValues
 									allValues = [...allValues, ...dataResult.onePage];
-									// resolve this promise with all of the employees
+									// resolve this promise with all of the values
 									resolve({
 										error: false,
 										allValues,
 									});
-								}
-
-
-								/* resolve({
+								} else {
+									// add the page of data to singleValue
+									singleValue = dataResult.onePage;
+									// resolve this promise with all of the employees
+									resolve({
 										error: false,
-										data: dataResult.data.value,
-									}); */
+										singleValue,
+									});
+								}
 							})
 							// if the promise is rejected with an error, 
 							.catch((dataError) => {
@@ -192,6 +213,8 @@ module.exports = {
 					reject(errorToReport);
 				});
 		}),
+
+	// EMAIL
 		
 	SendEmailToGraph: (emailData) =>
 		// return a new promise
@@ -290,32 +313,117 @@ module.exports = {
 				});
 		}),
 
-	// SHAREPOINT & ONEDRIVE SHORTHANDS & EXAMPLES
+	// SP SITES
 
-	// NO PROD
-	ReturnAllDrivesInRootSite: () =>
+	ReturnSiteFromToken: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy = 
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
+			// set up endpoint var
+			let endpoint = '';
+			// if the site token received is root
+			if (optionsCopy.siteToken === 'root') {
+				// set endpoint accordingly
+				endpoint = 'sites/root';
+			// if the site teken received is NOT root
+			} else {
+				// set endpoint accordingly
+				endpoint = 
+					`sites/bmos.sharepoint.com:/sites/${optionsCopy.siteToken}`;
+			}
 			// get a promise to get the data
 			module.exports.ReturnAllSpecifiedDataFromGraph(
-				'sites/bmos.sharepoint.com,1126b168-bc22-457b-b1f5-dbec6aee1011,3d7301a7-d5b8-4975-8182-c64cd5ac1bc2/drives',
+				endpoint,
 			)
 				// if the promise is resolved with a result
 				.then((result) => {
 					// then resolve this promise with the result
-					resolve(result);
+					resolve(result.singleValue);
 				})
 				// if the promise is rejected with an error
 				.catch((error) => {
 					// reject this promise with the error
-					reject(error);
+					reject({
+						error: true,
+						errorDetails: Status.ReturnStatusMessage(20),
+					});
 				});
 		}),
 
-	ReturnDrive: (driveID) =>
+	ReturnAllDrivesInSite: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
+			// get a promise to get the relevant site
+			module.exports.ReturnSiteFromToken(options)
+				// if the promise is resolved with a result
+				.then((siteResult) => {
+					console.log('++++++++++++++ siteResult', siteResult);
+					// get a promise to get the data
+					module.exports.ReturnAllSpecifiedDataFromGraph(
+						`sites/${siteResult.id}/drives`,
+					)
+						// if the promise is resolved with a result
+						.then((result) => {
+							// then resolve this promise with the result
+							resolve(result);
+						})
+						// if the promise is rejected with an error
+						.catch((error) => {
+							// reject this promise with the error
+							reject({
+								error: true,
+								errorDetails: Status.ReturnStatusMessage(21),
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((siteError) => {
+					// reject this promise with the error
+					reject(siteError);
+				});
+		}),
+	
+	ReturnAllListsInSite: (options) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the relevant site
+			module.exports.ReturnSiteFromToken(options)
+				// if the promise is resolved with a result
+				.then((siteResult) => {
+					// get a promise to get the data
+					module.exports.ReturnAllSpecifiedDataFromGraph(
+						`sites/${siteResult.id}/lists`,
+					)
+						// if the promise is resolved with a result
+						.then((result) => {
+							// then resolve this promise with the result
+							resolve(result);
+						})
+						// if the promise is rejected with an error
+						.catch((error) => {
+							// reject this promise with the error
+							reject({
+								error: true,
+								errorDetails: Status.ReturnStatusMessage(23),
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((siteError) => {
+					// reject this promise with the error
+					reject(siteError);
+				});
+		}),
+
+		
+	// DRIVES AND FOLDERS
+
+	ReturnDriveFromID: (driveID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
 			// get a promise to get the data
 			module.exports.ReturnAllSpecifiedDataFromGraph(
 				`drives/${driveID}`,
@@ -328,11 +436,60 @@ module.exports = {
 				// if the promise is rejected with an error
 				.catch((error) => {
 					// reject this promise with the error
-					reject(error);
+					reject({
+						error: true,
+						errorDetails: Status.ReturnStatusMessage(21),
+					});
 				});
 		}),
 
-	ReturnAllDriveImmediateChildren: (driveID) =>
+	ReturnDriveFromTokens: (options) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
+			// get a promise to get the drives in the relevant site
+			module.exports.ReturnAllDrivesInSite(optionsCopy)
+				// if the promise is resolved with a result
+				.then((allDrivesResult) => {
+					// set up empty drive var
+					let requestedDrive;
+					// for each drive in the returned array of drives
+					allDrivesResult.forEach((drive) => {
+						// if this drive's name matches the name 
+						// 		of the drive requested
+						if (drive.name === optionsCopy.driveToken) {
+							// select this drive as the requested drive
+							requestedDrive = drive;
+						}
+					});
+					// if a drive was selected (if requestedDrive 
+					// 		is defined and isn't empty)
+					if (requestedDrive && requestedDrive.id) {
+						// resolve this promise with the selected drive
+						resolve(requestedDrive);
+					// if a drive was NOT selected
+					} else {
+						// reject this promise with an error
+						reject({
+							error: true,
+							errorDetails: Status.ReturnStatusMessage(21),
+						});
+					}
+				})
+				// if the promise is rejected with an error
+				.catch((allDrivesError) => {
+					// reject this promise with the error
+					reject({
+						error: true,
+						errorDetails: allDrivesError,
+					});
+				});
+		}),
+		
+	ReturnDriveImmediateChildrenFromID: (driveID) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to get the data
@@ -347,102 +504,113 @@ module.exports = {
 				// if the promise is rejected with an error
 				.catch((error) => {
 					// reject this promise with the error
-					reject(error);
+					reject({
+						error: true,
+						errorDetails: Status.ReturnStatusMessage(22),
+					});
 				});
 		}),
 
-	ReturnAllListsInRootSite: () =>
+	ReturnDriveImmediateChildrenFromTokens: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
 			// get a promise to get the data
-			module.exports.ReturnAllSpecifiedDataFromGraph(
-				'sites/bmos.sharepoint.com,1126b168-bc22-457b-b1f5-dbec6aee1011,3d7301a7-d5b8-4975-8182-c64cd5ac1bc2/lists',
-			)
+			module.exports.ReturnDriveFromTokens(optionsCopy)
 				// if the promise is resolved with a result
-				.then((result) => {
-					// then resolve this promise with the result
-					resolve(result);
+				.then((driveResult) => {
+					// get a promise to 
+					module.exports.ReturnDriveImmediateChildrenFromID(driveResult.id)
+						// if the promise is resolved with a result
+						.then((childrenResult) => {
+							// then resolve this promise with the result
+							resolve(childrenResult);
+						})
+						// if the promise is rejected with an error
+						.catch((childrenError) => {
+							// reject this promise with the error
+							reject(childrenError);
+						});
 				})
 				// if the promise is rejected with an error
-				.catch((error) => {
+				.catch((driveError) => {
 					// reject this promise with the error
-					reject(error);
+					reject(driveError);
 				});
 		}),
 
-	ReturnList: (siteID, listID) =>
+	ReturnDriveOneImmediateChildFromTokens: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
 			// get a promise to get the data
-			module.exports.ReturnAllSpecifiedDataFromGraph(
-				`sites/${siteID}/lists/${listID}`,
-			)
+			module.exports.ReturnDriveImmediateChildrenFromTokens(optionsCopy)
 				// if the promise is resolved with a result
-				.then((result) => {
-					// then resolve this promise with the result
-					resolve(result);
+				.then((childrenResult) => {
+					// set up empty requested child var
+					let requestedChild;
+					// for each child in the array of drive children
+					childrenResult.forEach((driveChild) => {
+						// if this child's name matches the 
+						// 		requested child token
+						if (driveChild.name === options.driveChildToken) {
+							// select this child as the requested child
+							requestedChild = driveChild;
+						}
+					});
+					// if a requested child was selected (if requestedChild
+					// 		is defined and isn't empty)
+					if (requestedChild && requestedChild.id) {
+						// resolve this promise with the requested child
+						resolve(requestedChild);
+					// if a requested child was NOT selected
+					} else {
+						// reject this promise with an error
+						reject({
+							error: true,
+							errorDetails: Status.ReturnStatusMessage(21),
+						});
+					}
 				})
 				// if the promise is rejected with an error
-				.catch((error) => {
+				.catch((childrenError) => {
 					// reject this promise with the error
-					reject(error);
+					reject(childrenError);
 				});
 		}),
 
-	ReturnListItemsMetadata: (siteID, listID) =>
+	// parent can only be root an immediate child of drive - no further nesting handled
+	CreateFolderInDriveFromIDs: (driveID, parentID, newFolderName) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get a promise to get the data
-			module.exports.ReturnAllSpecifiedDataFromGraph(
-				`sites/${siteID}/lists/${listID}/items`,
-			)
-				// if the promise is resolved with a result
-				.then((result) => {
-					// then resolve this promise with the result
-					resolve(result);
-				})
-				// if the promise is rejected with an error
-				.catch((error) => {
-					// reject this promise with the error
-					reject(error);
-				});
-		}),
-
-	ReturnListItemContent: (siteID, listID, itemID) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to get the data
-			module.exports.ReturnAllSpecifiedDataFromGraph(
-				`sites/${siteID}/lists/${listID}/items/${itemID}`,
-			)
-				// if the promise is resolved with a result
-				.then((result) => {
-					// then resolve this promise with the result
-					resolve(result);
-				})
-				// if the promise is rejected with an error
-				.catch((error) => {
-					// reject this promise with the error
-					reject(error);
-				});
-		}),
-
-	CreateFolderInDrive: (driveID, parentID, folderName) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
-			// folderName = '1007';
-			// parentID = '01OO6BYSXPXJOZSUGFZVCJFELM57U5S3MC';
+			// set up endpoint var
+			let endpoint = '';
+			// if the site token received is root
+			if (parentID === 'root') {
+				// set endpoint accordingly
+				endpoint = `drives/${driveID}/root/children`;
+				// if the site teken received is NOT root
+			} else {
+				// set endpoint accordingly
+				endpoint =
+					`drives/${driveID}/items/${parentID}/children`;
+			}
 			// get a promise to get an access token
 			module.exports.ReturnGraphAccessToken()
 				// if the promise is resolved with the token
 				.then((accessTokenResult) => {
 					const config = module.exports.ReturnGraphQueryConfig(
-						`drives/${driveID}/items/${parentID}/children`,
+						endpoint,
 						accessTokenResult.accessToken,
 					);
 					config.body = {
-						name: folderName,
+						name: newFolderName,
 						folder: {},
 						'@microsoft.graph.conflictBehavior': 'rename',
 					};
@@ -455,7 +623,7 @@ module.exports = {
 								resolve({
 									error: false,
 									msGraphURI: config.uri,
-									requestedName: folderName,
+									requestedName: newFolderName,
 									createdName: createResult.data.name,
 								});
 								// if status indicates other than success
@@ -496,13 +664,108 @@ module.exports = {
 				});
 		}),
 
-	CreateFileInDrive: (driveID, parentID, fileName, fileContent, fileType) =>
+	// siteToken
+	// driveToken
+	// parentToken
+	// newFolderName
+	CreateFolderInDriveFromTokens: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// driveID = 'b!aLEmESK8e0Wx9dvsau4QEacBcz241XVJgYLGTNWsG8K1KDjrFWLwRKe1-plsdrQ0';
-			// // folderName = '1007';
-			// parentID = '01OO6BYSV6Y2GOVW7725BZO354PWSELRRZ';
-			// fileBinary = '';
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
+			// get a promise to get the data
+			module.exports.ReturnDriveFromTokens(optionsCopy)
+				// if the promise is resolved with a result
+				.then((driveResult) => {
+					// set up a container for the promise to identify the parent
+					const parentIdentificationPromise = [];
+					// if the parent token is 'root'
+					if (optionsCopy.parentToken === 'root') {
+						// push to container a promise resolved with 'root'
+						parentIdentificationPromise.push(
+							Promise.resolve('root'),
+						);
+					// if the parent token is NOT 'root'
+					} else {
+						// push to container a promise to get all drive children
+						parentIdentificationPromise.push(
+							module.exports.ReturnDriveImmediateChildrenFromID(
+								driveResult.id,
+							),
+						);
+					}
+					// get a promise to 
+					Promise.all(parentIdentificationPromise)
+						// if the promise is resolved with a result
+						.then((parentIdentificationResult) => {
+							// set up empty parent ID var and extract parent ID result
+							let parentID;
+							const parentIDResult = parentIdentificationResult[0];
+							// if the parent ID result is 'root'
+							if (parentIDResult === 'root') {
+								// set parent ID to 'root'
+								parentID = 'root';
+							// if the parent ID result is NOT 'root'
+							} else {
+								// then it should be an array of drive children;
+								// 		rename for clarity
+								const driveChildren = parentIDResult;
+								// for each child in the array of drive children
+								driveChildren.forEach((driveChild) => {
+									// if this child's name matches the 
+									// 		requested parent ID token
+									if (driveChild.name === options.parentToken) {
+										// select this child as the parent ID
+										parentID = driveChild.id;
+									}
+								});
+							}
+							// if a parent ID was defined
+							if (parentID) {
+								// get a promise to use collected data 
+								// 		to create folder in drive
+								module.exports.CreateFolderInDriveFromIDs(
+									driveResult.id,
+									parentID,
+									optionsCopy.newFolderName,
+								)
+									// if the promise is resolved with a result
+									.then((result) => {
+										// then resolve this promise with the result
+										resolve(result);
+									})
+									// if the promise is rejected with an error
+									.catch((error) => {
+										// reject this promise with the error
+										reject(error);
+									});
+							// if a parent ID was NOT defined
+							} else {
+								// reject this promise with an error
+								reject({
+									error: true,
+									errorDetails: Status.ReturnStatusMessage(21),
+								});
+							}
+						})
+						// if the promise is rejected with an error
+						.catch((parentIdentificationError) => {
+							// reject this promise with the error
+							reject(parentIdentificationError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((driveError) => {
+					// reject this promise with the error
+					reject(driveError);
+				});
+		}),
+
+	CreateFileInDrive: (driveID, parentID, fileName, fileBinary, fileType) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
 			// get a promise to get an access token
 			module.exports.ReturnGraphAccessToken()
 				// if the promise is resolved with the token
@@ -512,7 +775,7 @@ module.exports = {
 						accessTokenResult.accessToken,
 						fileType,
 					);
-					config.body = fileContent;
+					config.body = fileBinary;
 					axios.put(config.uri, config.body, config.options)
 						// if the promise is resolved
 						.then((createResult) => {
@@ -563,5 +826,158 @@ module.exports = {
 				});
 		}),
 
+	// LISTS
+
+	ReturnListFromID: (siteID, listID) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				`sites/${siteID}/lists/${listID}`,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject({
+						error: true,
+						errorDetails: Status.ReturnStatusMessage(23),
+					});
+				});
+		}),
+
+	ReturnListFromTokens: (options) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
+			// get a promise to get the lists in the relevant site
+			module.exports.ReturnAllListsInSite(optionsCopy)
+				// if the promise is resolved with a result
+				.then((allListsResult) => {
+					// set up empty list var
+					let requestedList;
+					// for each list in the returned array of list
+					allListsResult.forEach((list) => {
+						// if this list's name matches the name
+						// 		of the list requested
+						if (list.name === optionsCopy.listToken) {
+							// select this list as the requested list
+							requestedList = list;
+						}
+					});
+					// if a list was selected (if requestedList
+					// 		is defined and isn't empty)
+					if (requestedList && requestedList.id) {
+						// resolve this promise with the selected list
+						resolve(requestedList);
+					// if a list was NOT selected
+					} else {
+						// reject this promise with an error
+						reject({
+							error: true,
+							errorDetails: Status.ReturnStatusMessage(21),
+						});
+					}
+				})
+				// if the promise is rejected with an error
+				.catch((allDrivesError) => {
+					// reject this promise with the error
+					reject({
+						error: true,
+						errorDetails: allDrivesError,
+					});
+				});
+		}),
+
+	// https://graph.microsoft.com/v1.0/sites/root/lists/00cf2efa-2bd8-409a-b3ca-e484c6669015/items?expand=fields(select=URL,ID,Category)&filter=fields/ID eq 5
+	ReturnListItemsFromIDs: (siteID, listID, fieldsArray, filterString) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// construct the endpoint
+			let endpoint = `sites/${siteID}/lists/${listID}/items?expand=fields`;
+			if (fieldsArray && fieldsArray[0]) {
+				endpoint += '(select=';
+				fieldsArray.forEach((fieldValue, fieldIndex) => {
+					endpoint += fieldValue;
+					if ((fieldIndex + 1) !== fieldsArray.length) {
+						endpoint += ',';
+					}
+				});
+				endpoint += ')';
+			}
+			if (filterString) {
+				endpoint += `&filter=fields/${filterString}`;
+			}
+			// get a promise to get the data
+			module.exports.ReturnAllSpecifiedDataFromGraph(
+				endpoint,
+			)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject({
+						error: true,
+						errorDetails: Status.ReturnStatusMessage(24),
+					});
+				});
+		}),
+
+	ReturnListItemsFromTokens: (options) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// preserve function parameter and ensure
+			// 		options is an object
+			const optionsCopy =
+				Utilities.ReturnUniqueObjectGivenAnyValue(options);
+			// get a promise to get the site
+			module.exports.ReturnSiteFromToken(options)
+				// if the promise is resolved with a result
+				.then((siteResult) => {
+					// get a promise to get the list
+					module.exports.ReturnListFromTokens(options)
+						// if the promise is resolved with a result
+						.then((listResult) => {
+							// get a promise to get the data
+							module.exports.ReturnListItemsFromIDs(
+								siteResult.id,
+								listResult.id,
+								optionsCopy.fieldsArray,
+								optionsCopy.filterString,
+							)
+								// if the promise is resolved with a result
+								.then((itemsMetadataResult) => {
+									// then resolve this promise with the result
+									resolve(itemsMetadataResult);
+								})
+								// if the promise is rejected with an error
+								.catch((itemsMetadataError) => {
+									// reject this promise with the error
+									reject(itemsMetadataError);
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((listError) => {
+							// reject this promise with the error
+							reject(listError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((siteError) => {
+					// reject this promise with the error
+					reject(siteError);
+				});
+		}),
 
 };

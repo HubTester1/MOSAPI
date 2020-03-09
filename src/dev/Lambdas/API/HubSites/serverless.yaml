@@ -8,7 +8,7 @@ custom:
 
 # -------------------------------------------------------
 
-    service: api-files
+    service: api-hub-sites
     memorySize: 256
     timeout: 5
 
@@ -17,43 +17,28 @@ functions:
     handler: index.HandleSettingsRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.settings}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.hubSites.settings}
           method: get
           cors: true
-functions:
-  HandleReturnDriveRequest:
-    handler: index.HandleReturnDriveRequest
+  HandleReturnSiteRequest:
+    handler: index.HandleReturnSiteRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.drive}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.hubSites.site}
           method: post
           cors: true
-  HandleReturnDriveChildrenRequest:
-    handler: index.HandleReturnDriveChildrenRequest
+  HandleReturnAllDrivesRequest:
+    handler: index.HandleReturnAllDrivesRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.driveChildren}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.hubSites.drives}
           method: post
           cors: true
-  HandleReturnDriveChildRequest:
-    handler: index.HandleReturnDriveChildRequest
+  HandleReturnAllListsRequest:
+    handler: index.HandleReturnAllListsRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.driveChild}
-          method: post
-          cors: true
-  HandleCreateFolderRequest:
-    handler: index.HandleCreateFolderRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.folder}
-          method: post
-          cors: true
-  HandleCreateFileRequest:
-    handler: index.HandleCreateFileRequest
-    events:
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.files.file}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.hubSites.lists}
           method: post
           cors: true
 

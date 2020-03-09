@@ -1,0 +1,38 @@
+@baseURI = https://kqybggd4qj.execute-api.us-east-1.amazonaws.com/dev
+
+
+#########
+# Get all settings
+GET {{baseURI}}/hubSites/settings
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a site
+POST {{baseURI}}/hubSites/site
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root"
+}
+
+
+#########
+# Get all drives
+POST {{baseURI}}/hubSites/drives
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root"
+}
+
+
+#########
+# Get all lists
+POST {{baseURI}}/hubSites/lists
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root"
+}
+

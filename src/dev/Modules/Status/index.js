@@ -75,16 +75,22 @@ module.exports = {
 		case 19:
 			messageToReturn = '19 - accessToken and origin missing';
 			break;
+		case 20:
+			messageToReturn = '20 - site not found';
+			break;
+		case 21:
+			messageToReturn = '21 - drive(s) not found';
+			break;
+		case 22:
+			messageToReturn = '22 - drive item(s) not found';
+			break;
+		case 23:
+			messageToReturn = '23 - list(s) not found';
+			break;
+		case 24:
+			messageToReturn = '24 - list item(s) not found';
+			break;
 		/* case XXX:
-			messageToReturn = 'XXXXXXXXXXXX';
-			break;
-		case XXX:
-			messageToReturn = 'XXXXXXXXXXXX';
-			break;
-		case XXX:
-			messageToReturn = 'XXXXXXXXXXXX';
-			break;
-		case XXX:
 			messageToReturn = 'XXXXXXXXXXXX';
 			break;
 		case XXX:

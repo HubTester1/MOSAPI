@@ -1,15 +1,13 @@
 {
-	"name": "files",
+	"name": "hub-sites",
 	"version": "1.0.0",
-	"description": "Handle all file operations.",
+	"description": "Handles everything related to SharePoint / Hub sites, including finding their lists and drives.",
 	"main": "index.js",
 	"scripts": {},
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
 	"dependencies": {
-		"@pnp/nodejs-commonjs": "^2.0.3",
-		"@pnp/sp-commonjs": "^2.0.3",
 		"data-queries": "file:../DataQueries",
-		"utilities": "file:../Utilities"
+		"ms-graph": "file:../MSGraph"
 	}
 }

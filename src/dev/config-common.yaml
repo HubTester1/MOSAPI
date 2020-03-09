@@ -2,6 +2,9 @@ custom:
   config:
     stage: dev
 #-------------
+provider:
+  runtime: nodejs12.x
+  profile: mos-api-programmatic-admin
 authJWTPayloadMessage: ${ssm:auth-jwt-payload-message}
 authJWTPayloadSecret: ${ssm:auth-jwt-secret}
 authMOSAPISLSAdminAccessKeyID: ${ssm:auth-mos-api-sls-admin-access-key-id}
@@ -19,9 +22,8 @@ graphTenantID: ${ssm:graph-tenant-id}
 mongoDbHostUnique: ${ssm:mongodb-host-unique}
 mongoDbPass: ${ssm:mongodb-pass}
 mongoDbUser: ${ssm:mongodb-user}
-provider:
-  runtime: nodejs12.x
-  profile: mos-api-programmatic-admin
+spClientID: ${ssm:sp-client-id}
+spClientSecret: ${ssm:sp-client-secret}
 twitterConsumerKey: ${ssm:twitter-consumer-key}
 twitterConsumerSecret: ${ssm:twitter-consumer-secret}
 twitterAccessTokenKey: ${ssm:twitter-access-token-key}
@@ -49,5 +51,18 @@ endpoints:
       images:                 hubMessages/images
     files:
       settings:               files/settings
+      drive:                  files/drive
+      driveChildren:          files/drive/children
+      driveChild:             files/drive/child
       folder:                 files/folder
       file:                   files/file
+    hubLists:
+      settings:               hubLists/settings
+      list:                   hubLists/list
+      items:                  hubLists/items
+    hubSites:
+      settings:               hubSites/settings
+      site:                   hubSites/site
+      drives:                 hubSites/drives
+      lists:                  hubSites/lists
+

@@ -5,7 +5,7 @@
  */
 
 const Access = require('access');
-const Files = require('files');
+const HubSites = require('hub-sites');
 const Response = require('response');
 
 module.exports = {
@@ -23,11 +23,11 @@ module.exports = {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				Files.ReturnFilesWhitelistedDomains,
+				HubSites.ReturnHubSitesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					Files.ReturnFilesSettings()
+					HubSites.ReturnHubSitesSettings()
 						// if the promise is resolved with a result
 						.then((settingsResult) => {
 							// send indicative response
@@ -35,7 +35,7 @@ module.exports = {
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: settingsResult.docs[0],
+									payload: settingsResult,
 									event,
 									context,
 								},
@@ -70,45 +70,38 @@ module.exports = {
 				});
 		}),
 
-	/**
-	 * @name XXX
-	 * @function
-	 * @async
-	 * @description XXX
-	 */
-
-	HandleCreateFolderRequest: (event, context) =>
+	HandleReturnSiteRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				Files.ReturnFilesWhitelistedDomains,
+				HubSites.ReturnHubSitesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					Files.CreateFolder(event.body)
+					HubSites.ReturnSite(event.body)
 						// if the promise is resolved with a result
-						.then((creationResult) => {
+						.then((siteResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: creationResult,
+									payload: siteResult,
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((creationError) => {
+						.catch((siteError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: creationError,
+									error: siteError,
 									event,
 									context,
 								},
@@ -130,45 +123,38 @@ module.exports = {
 				});
 		}),
 
-	/**
-	 * @name XXX
-	 * @function
-	 * @async
-	 * @description XXX
-	 */
-
-	HandleCreateFileRequest: (event, context) =>
+	HandleReturnAllDrivesRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				Files.ReturnFilesWhitelistedDomains,
+				HubSites.ReturnHubSitesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					Files.CreateFile(event.body)
+					HubSites.ReturnAllDrives(event.body)
 						// if the promise is resolved with a result
-						.then((creationResult) => {
+						.then((drivesResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: creationResult,
+									payload: drivesResult,
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((creationError) => {
+						.catch((drivesError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: creationError,
+									error: drivesError,
 									event,
 									context,
 								},
@@ -190,38 +176,38 @@ module.exports = {
 				});
 		}),
 
-	/* XXXXX: (event, context) =>
+	HandleReturnAllListsRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
-				Files.ReturnFilesWhitelistedDomains,
+				HubSites.ReturnHubSitesWhitelistedDomains,
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					XXX()
+					HubSites.ReturnAllLists(event.body)
 						// if the promise is resolved with a result
-						.then((otherResult) => {
+						.then((listsResult) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: otherResult.docs[0],
+									payload: listsResult,
 									event,
 									context,
 								},
 							});
 						})
 						// if the promise is rejected with an error
-						.catch((otherError) => {
+						.catch((listsError) => {
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
 								responder: resolve,
 								content: {
-									error: otherError,
+									error: listsError,
 									event,
 									context,
 								},
@@ -242,58 +228,5 @@ module.exports = {
 					});
 				});
 		}),
-
-	XXXXX: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				Files.ReturnFilesWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					XXX()
-						// if the promise is resolved with a result
-						.then((otherResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: otherResult.docs[0],
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((otherError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 500,
-								responder: resolve,
-								content: {
-									error: otherError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}), */
 
 };
