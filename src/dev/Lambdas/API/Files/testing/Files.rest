@@ -8,22 +8,58 @@ Authorization: Bearer {{accessToken}}
 
 
 #########
-# Create folder
-GET {{baseURI}}/files/folder
+# Get a drive
+POST {{baseURI}}/files/drive
 Authorization: Bearer {{accessToken}}
 
 {
-	"parentFolderName": "HubMessageAssets",
-	"folderName": "TestFolder"
+	"siteToken": "root",
+	"driveToken": "MOSAPIMiscStorage"
 }
 
+
 #########
-# Create file
-GET {{baseURI}}/files/file
+# Get all drive children
+POST {{baseURI}}/files/drive/children
 Authorization: Bearer {{accessToken}}
 
 {
-	"parentFolderName": "HubMessageAssets",
-	"fileName": "fileName.jpg"
+	"siteToken": "root",
+	"driveToken": "MOSAPIMiscStorage"
+}
+
+
+#########
+# Get one drive child
+POST {{baseURI}}/files/drive/child
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root",
+	"driveToken": "MOSAPIMiscStorage",
+	"driveChildToken": "custom-name.jpg"
+}
+
+
+#########
+# Create a folder
+POST {{baseURI}}/files/folder
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root",
+	"driveToken": "MOSAPIMiscStorage",
+	"parentToken": "HubMessageAssets",
+	"newFolderName": "2000"
+}
+
+
+#########
+# Create a file
+POST {{baseURI}}/files/file
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root"
 }
 
