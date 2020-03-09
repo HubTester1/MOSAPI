@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"access": "file:../../../Modules/Access",
-		"files": "file:../../../Modules/Files",
+		"hub-lists": "file:../../../Modules/HubLists",
 		"response": "file:../../../Modules/Response"
 	}
 }

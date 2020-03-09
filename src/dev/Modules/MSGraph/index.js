@@ -187,6 +187,11 @@ module.exports = {
 							})
 							// if the promise is rejected with an error, 
 							.catch((dataError) => {
+								console.log('----------------------- URI');
+								console.log(baseConfig.uri);
+
+								console.log('----------------------- dataError');
+								console.log(dataError);
 								// create a generic error
 								const errorToReport = {
 									error: true,
@@ -398,7 +403,7 @@ module.exports = {
 						// if the promise is resolved with a result
 						.then((result) => {
 							// then resolve this promise with the result
-							resolve(result);
+							resolve(result.allValues);
 						})
 						// if the promise is rejected with an error
 						.catch((error) => {
@@ -908,6 +913,7 @@ module.exports = {
 		}),
 
 	// https://graph.microsoft.com/v1.0/sites/root/lists/00cf2efa-2bd8-409a-b3ca-e484c6669015/items?expand=fields(select=URL,ID,Category)&filter=fields/ID eq 5
+	// &filter=fields/Title eq 'Purchase Order Request'
 	ReturnListItemsFromIDs: (siteID, listID, fieldsArray, filterString) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -933,7 +939,7 @@ module.exports = {
 				// if the promise is resolved with a result
 				.then((result) => {
 					// then resolve this promise with the result
-					resolve(result);
+					resolve(result.allValues);
 				})
 				// if the promise is rejected with an error
 				.catch((error) => {
@@ -956,10 +962,12 @@ module.exports = {
 			module.exports.ReturnSiteFromToken(options)
 				// if the promise is resolved with a result
 				.then((siteResult) => {
+					// console.log('+++++++++++ siteResult.id', siteResult.id);
 					// get a promise to get the list
 					module.exports.ReturnListFromTokens(options)
 						// if the promise is resolved with a result
 						.then((listResult) => {
+							// console.log('+++++++++++ listResult.id', listResult.id);
 							// get a promise to get the data
 							module.exports.ReturnListItemsFromIDs(
 								siteResult.id,
@@ -968,14 +976,14 @@ module.exports = {
 								optionsCopy.filterString,
 							)
 								// if the promise is resolved with a result
-								.then((itemsMetadataResult) => {
+								.then((itemsResult) => {
 									// then resolve this promise with the result
-									resolve(itemsMetadataResult);
+									resolve(itemsResult);
 								})
 								// if the promise is rejected with an error
-								.catch((itemsMetadataError) => {
+								.catch((itemsError) => {
 									// reject this promise with the error
-									reject(itemsMetadataError);
+									reject(itemsError);
 								});
 						})
 						// if the promise is rejected with an error

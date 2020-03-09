@@ -20,16 +20,15 @@ functions:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubLists.settings}
           method: get
           cors: true
-functions:
   HandleListRequest:
     handler: index.HandleListRequest
     events:
       - http:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubLists.list}
-          method: get
+          method: post
           cors: true
   HandleListItemsRequest:
-  handler: index.HandleListItemsMetadataRequest
+    handler: index.HandleListItemsRequest
     events:
       - http:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubLists.items}

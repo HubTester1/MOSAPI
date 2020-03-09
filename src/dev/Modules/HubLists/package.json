@@ -1,10 +1,13 @@
 {
-	"name": "XXX",
+	"name": "hub-lists",
 	"version": "1.0.0",
-	"description": "XXX.",
+	"description": "Handles everything related to SharePoint / Hub lists.",
 	"main": "index.js",
 	"scripts": {},
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
-	"dependencies": {}
+	"dependencies": {
+		"data-queries": "file:../DataQueries",
+		"ms-graph": "file:../MSGraph"
+	}
 }

@@ -1,0 +1,31 @@
+@baseURI = https://yda56tdm0i.execute-api.us-east-1.amazonaws.com/dev
+
+
+#########
+# Get all settings
+GET {{baseURI}}/hubLists/settings
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get list
+POST {{baseURI}}/hubLists/list
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root",
+	"listToken": "ComponentLog"
+}
+
+#########
+# Get list items
+POST {{baseURI}}/hubLists/items
+Authorization: Bearer {{accessToken}}
+
+{
+	"siteToken": "root",
+	"listToken": "ComponentLog",
+	"fieldsArray": ["Title"],
+	"filterString": "ID eq 2"
+}
+
