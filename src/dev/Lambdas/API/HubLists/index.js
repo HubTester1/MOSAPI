@@ -135,6 +135,16 @@ module.exports = {
 	 * @function
 	 * @async
 	 * @description XXX
+	 * 
+	 * 
+	 * 
+	 * NOTE: Any field (column) referenced in a filter string must be an indexed column. 
+	 * There's a way to get around this, but Microsoft says it's not reliable.
+	 * 
+	 * Fields (columns) can actually have multiple names. Some columns in older lists
+	 * have internal names that differ from the names displayed in the browser. If you 
+	 * think this might be the sources of a problem, use a CAML query builder tool to 
+	 * get deeper info about individual fields.
 	 */
 
 	HandleListItemsRequest: (event, context) =>
