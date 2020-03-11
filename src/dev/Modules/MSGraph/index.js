@@ -75,6 +75,7 @@ module.exports = {
 		options: {
 			headers: {
 				Authorization: `Bearer ${accessToken}`,
+				'Content-Type': 'application/json',
 			},
 			timeout: 30000,
 		},
@@ -187,11 +188,6 @@ module.exports = {
 							})
 							// if the promise is rejected with an error, 
 							.catch((dataError) => {
-								console.log('----------------------- URI');
-								console.log(baseConfig.uri);
-
-								console.log('----------------------- dataError');
-								console.log(dataError);
 								// create a generic error
 								const errorToReport = {
 									error: true,
@@ -608,20 +604,30 @@ module.exports = {
 			module.exports.ReturnGraphAccessToken()
 				// if the promise is resolved with the token
 				.then((accessTokenResult) => {
+					let newFolderNameString = '';
+					if (typeof (newFolderName) === 'number') {
+						newFolderNameString = newFolderName.toString();
+					} else {
+						newFolderNameString = newFolderName;
+					}
+
 					const config = module.exports.ReturnGraphQueryConfig(
 						endpoint,
 						accessTokenResult.accessToken,
 					);
 					config.body = {
-						name: newFolderName,
+						name: newFolderNameString,
 						folder: {},
 						'@microsoft.graph.conflictBehavior': 'rename',
 					};
 					axios.post(config.uri, config.body, config.options)
 						// if the promise is resolved
 						.then((createResult) => {
+							console.log('=========== createResult', createResult);
+							console.log('=========== status', createResult.status);
 							// if status indicates success
 							if (createResult.status === 201) {
+								console.log('++++++++++ got the right status');
 								// resolve this promise with the list items
 								resolve({
 									error: false,
@@ -636,7 +642,7 @@ module.exports = {
 									error: true,
 									msGraphError: true,
 									msGraphURI: config.uri,
-									msGraphStatus: createResult.status,
+									msGraphStatus: createResult,
 								};
 								// reject this promise with the error
 								reject(errorToReport);
@@ -644,6 +650,7 @@ module.exports = {
 						})
 						// if the promise is rejected with an error
 						.catch((createError) => {
+							console.log('=========== createError', createError);
 							// create a generic error
 							const errorToReport = {
 								error: true,
@@ -667,10 +674,6 @@ module.exports = {
 				});
 		}),
 
-	// siteToken
-	// driveToken
-	// parentToken
-	// newFolderName
 	CreateFolderInDriveFromTokens: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -682,6 +685,7 @@ module.exports = {
 			module.exports.ReturnDriveFromTokens(optionsCopy)
 				// if the promise is resolved with a result
 				.then((driveResult) => {
+					// console.log('------------ driveResult', driveResult);
 					// set up a container for the promise to identify the parent
 					const parentIdentificationPromise = [];
 					// if the parent token is 'root'
@@ -718,7 +722,6 @@ module.exports = {
 							) {
 								[parentIDResult] = parentIdentificationResult;
 							}
-							
 							// if the parent ID result is 'root'
 							if (parentIDResult === 'root') {
 								// set parent ID to 'root'
@@ -748,14 +751,16 @@ module.exports = {
 									optionsCopy.newFolderName,
 								)
 									// if the promise is resolved with a result
-									.then((result) => {
+									.then((creationResult) => {
+										console.log('------------ creationResult', creationResult);
 										// then resolve this promise with the result
-										resolve(result);
+										resolve(creationResult);
 									})
 									// if the promise is rejected with an error
-									.catch((error) => {
+									.catch((creationError) => {
+										console.log('------------ creationError', creationError);
 										// reject this promise with the error
-										reject(error);
+										reject(creationError);
 									});
 							// if a parent ID was NOT defined
 							} else {
