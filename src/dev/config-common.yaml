@@ -35,20 +35,8 @@ endpoints:
   dev:
     access:
       awsCredentials:         access/aws-credentials
-    health:
-      check:                  health/check
     email:
       send:                   email/send
-    images:
-      resize:                 images/resize
-      jpg:                    images/jpg
-    hubMessages:
-      settings:               hubMessages/settings
-      messages:               hubMessages/messages
-      add:                    hubMessages/add
-      update:                 hubMessages/update
-      nextID:                 hubMessages/nextid
-      images:                 hubMessages/images
     files:
       settings:               files/settings
       drive:                  files/drive
@@ -56,10 +44,18 @@ endpoints:
       driveChild:             files/drive/child
       folder:                 files/folder
       file:                   files/file
+    health:
+      check:                  health/check
     hubLists:
       settings:               hubLists/settings
       list:                   hubLists/list
       items:                  hubLists/items
+    hubMessages:
+      settings:               hubMessages/settings
+      messages:               hubMessages/messages
+      add:                    hubMessages/add
+      update:                 hubMessages/update
+      nextID:                 hubMessages/nextid
     hubSites:
       settings:               hubSites/settings
       site:                   hubSites/site
