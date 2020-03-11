@@ -54,21 +54,6 @@ functions:
           path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.update}
           method: post
           cors: true
-  # HandleImageFormattingRequest:
-  #   handler: index.HandleImageFormattingRequest
-  #   events:
-  #     - http:
-  #         path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-  #         method: post
-  #         cors: true
-  # HandleDeleteImageRequest:
-  #   handler: index.HandleDeleteImageRequest
-  #   events:
-  #     - http:
-  #         path: ${self:custom.file.endpoints.${self:provider.stage}.hubMessages.images}
-  #         method: delete
-  #         cors: true
-
 
 service: ${self:custom.config.service}
 provider:
