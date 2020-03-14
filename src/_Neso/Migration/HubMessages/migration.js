@@ -12,13 +12,15 @@
 	MIGRATE MESSAGE IMAGES
 	===========
 	-from /MOSAPI/
-	lambda-local -l src/dev/Lambdas/API/HubMessages/migration.js -h ReadAndStoreAllMessageImages -e src/dev/Lambdas/API/HubMessages/testing/get-messages-event.js --envfile .env --timeout 30000
+	lambda-local -l src/_Neso/Migration/HubMessages/migration.js -h ReadAndStoreAllMessageImages -e src/dev/Lambdas/sample-event.js --envfile .env --timeout 30000
 
  */
 
 const DataQueries = require('data-queries');
 const Utilities = require('utilities');
 const S3FS = require('s3fs');
+const SP = require('sp-pnp-js');
+
 const axios = require('axios');
 const uuid = require('uuid');
 const dotenv = require('dotenv');
@@ -68,10 +70,12 @@ module.exports = {
 					const newMessageImages = [];
 					// for each of the existing old images
 					existingOldImages.forEach((oldImage) => {
+						console.log('oldImage');
+						console.log(oldImage);
 						// push to container a constructed new message object
 						newMessageImages.push({
 							name: oldImage.name,
-							url: `https://mos-api-misc-storage.s3.amazonaws.com/hub-message-assets/formatted/${oldMessage.messageID}/${oldImage.name}.jpg`,
+							url: `https://bmos.sharepoint.com/_api/v2.0/sharePoint:/MOSAPIMiscStorage/HubMessageAssets/${oldMessage.messageID}/${oldImage.name}:/driveItem/thumbnails/0/c600x999999/content`,
 							key: uuid.v4(),
 						});
 					});
@@ -218,16 +222,41 @@ module.exports = {
 			axios({
 				method: 'get',
 				url: oldURL,
-				responseType: 'stream',
+				responseType: 'blob',
 			})
 				// if the promise is resolved with a result
 				.then((result) => {
-					const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
+					const filesWeb = new SP.Web('https://bmos.sharepoint.com');
+					console.log('filesWeb');
+					console.log(filesWeb);
+					resolve();
+					/* filesWeb.getFolderByServerRelativeUrl(`/MOSAPIMiscStorage/HubMessageAssets/${folderName}/`).files.add(fileName, file, true)
+						// if the promise is resolved with a result
+						.then((fileResult) => {
+							console.log('fileResult.data.Name');
+							console.log(fileResult.data.Name);
+							// then resolve this promise with the file 
+							// 		name, in case it's different from 
+							// 		what we requested
+							resolve({
+								error: false,
+								fileName: fileResult.data.Name,
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((fileError) => {
+							console.log('fileError');
+							console.log(fileError);
+							// reject this promise with the error
+							reject(fileError);
+						}); */
+
+					/* const S3FileSystem = module.exports.ReturnS3FileSystem('mos-api-misc-storage');
 					const writeFilePath = `/hub-message-assets/formatted/${messageID}/${fileName}.jpg`;
 					const writer = S3FileSystem.createWriteStream(writeFilePath, { ACL: 'public-read' });
 					writer.on('finish', resolve);
 					writer.on('error', resolve);
-					result.data.pipe(writer);
+					result.data.pipe(writer); */
 				})
 				// if the promise is rejected with an error
 				.catch((error) => {
@@ -235,15 +264,6 @@ module.exports = {
 					reject(error);
 				});
 		}),
-
-	ReturnS3FileSystem: (bucketName) =>
-		new S3FS(bucketName, module.exports.ReturnS3Options()),
-
-	ReturnS3Options: () => ({
-		region: 'us-east-1',
-		accessKeyId: process.env.authMOSAPISLSAdminAccessKeyID,
-		secretAccessKey: process.env.authMOSAPISLSAdminSecretAccessKey,
-	}),
 
 	AttemptToReadAndStoreOneMessageImage: (messageID, fileName, oldURL) =>
 		// return a new promise

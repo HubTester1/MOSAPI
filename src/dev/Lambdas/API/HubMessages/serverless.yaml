@@ -40,6 +40,7 @@ functions:
                 expiration: true
                 tag: true
                 limit: true
+                offset: true
   HandleAddMessageRequest:
     handler: index.HandleAddMessageRequest
     events:

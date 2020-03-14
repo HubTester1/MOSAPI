@@ -15,7 +15,7 @@ module.exports = {
 
 	// SETTINGS, STATUS, CORS, UTILS
 
-	ReturnADSettings: () =>
+	/* ReturnADSettings: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the emailSettings document collection
@@ -104,9 +104,9 @@ module.exports = {
 				.catch((error) => {
 					reject(error);
 				});
-		}),
+		}), */
 
-	ReplaceAllADSettings: newSettings =>
+	ReplaceAllADSettings: (newSettings) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all email settings
@@ -131,7 +131,7 @@ module.exports = {
 				});
 		}),
 
-	ReplaceOneADSetting: newSingleSettingObject =>
+	ReplaceOneADSetting: (newSingleSettingObject) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all email settings
@@ -164,10 +164,10 @@ module.exports = {
 				});
 		}),
 
-	ReturnNewADUsersFilePathAndName: currentFilePathAndName =>
+	ReturnNewADUsersFilePathAndName: (currentFilePathAndName) =>
 		`${currentFilePathAndName.slice(0, currentFilePathAndName.length - 4)}Copy.csv`,
 
-	ReturnUserNameWeightRelativeToAnother: (a, b) => {
+	/* ReturnUserNameWeightRelativeToAnother: (a, b) => {
 		if (a.lastName < b.lastName) {
 			return -1;
 		}
@@ -181,7 +181,7 @@ module.exports = {
 			return 1;
 		}
 		return 0;
-	},
+	}, */
 
 	// DB DELETIONS
 
@@ -280,7 +280,7 @@ module.exports = {
 	
 	// DB INSERTIONS
 
-	AddAllADUsersToDatabase: adUsers =>
+	/* AddAllADUsersToDatabase: adUsers =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the emailQueue document collection
@@ -293,9 +293,9 @@ module.exports = {
 				.catch((error) => {
 					reject(error);
 				});
-		}),
+		}), */
 
-	AddAllADUsersByDivisionDepartmentToDatabase: adUsersByDivisionDepartment =>
+	AddAllADUsersByDivisionDepartmentToDatabase: (adUsersByDivisionDepartment) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the emailQueue document collection
@@ -310,7 +310,7 @@ module.exports = {
 				});
 		}),
 
-	AddAllADDepartmentsToDatabase: adDepartments =>
+	AddAllADDepartmentsToDatabase: (adDepartments) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the emailQueue document collection
@@ -325,7 +325,7 @@ module.exports = {
 				});
 		}),
 
-	AddAllADManagersSimpleToDatabase: adManagers =>
+	AddAllADManagersSimpleToDatabase: (adManagers) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the emailQueue document collection
@@ -340,7 +340,7 @@ module.exports = {
 				});
 		}),
 
-	AddAllADManagersWithFullFlatDownlinesToDatabase: adManagers =>
+	AddAllADManagersWithFullFlatDownlinesToDatabase: (adManagers) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to insert all documents into the 
@@ -356,7 +356,7 @@ module.exports = {
 				});
 		}),
 
-	AddAllADManagersWithFullHierarchicalDownlinesToDatabase: adManagers =>
+	AddAllADManagersWithFullHierarchicalDownlinesToDatabase: (adManagers) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to insert all documents into the 
@@ -2253,7 +2253,7 @@ module.exports = {
 				});
 		}),
 	// user
-	ReturnOneUser: account =>
+	ReturnOneUser: (account) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve one specified document from the adUsers document collection
@@ -2290,7 +2290,7 @@ module.exports = {
 					reject(error);
 				});
 		}),
-	ReturnAllUsersInDepartment: deptName =>
+	ReturnAllUsersInDepartment: (deptName) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the adUsers document collection
@@ -2306,7 +2306,7 @@ module.exports = {
 					reject(error);
 				});
 		}),
-	ReturnAllUsersInDivision: divName =>
+	ReturnAllUsersInDivision: (divName) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the adUsers document collection
@@ -2987,7 +2987,7 @@ module.exports = {
 				.catch((error) => { reject(error); });
 		}),
 	// downline, upline
-	ReturnDirectReportsForOneManager: mgrAccount =>
+	ReturnDirectReportsForOneManager: (mgrAccount) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the adUsers document collection
@@ -3028,7 +3028,7 @@ module.exports = {
 				.catch((error) => { reject(error); });
 		}),
 	// downline, upline
-	ReturnOneManagerWithFlatDownline: mgrAccount =>
+	ReturnOneManagerWithFlatDownline: (mgrAccount) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the adUsers document collection
@@ -3045,7 +3045,7 @@ module.exports = {
 				});
 		}),
 	// downline, upline
-	ReturnOneManagerWithWithHierarchicalDownline: mgrAccount =>
+	ReturnOneManagerWithWithHierarchicalDownline: (mgrAccount) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents from the adUsers document collection
@@ -3062,7 +3062,7 @@ module.exports = {
 				});
 		}),
 	// downline, upline
-	ReturnFullFlatUplineForOneUser: account =>
+	ReturnFullFlatUplineForOneUser: (account) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to get the user's manager, her manger, and so on, using a graph lookup

@@ -26,6 +26,12 @@ Authorization: Bearer {{accessToken}}
 
 
 #########
+# Get a second page of a quantity of unexpired messages ----------------------------------------------------------
+GET {{baseURI}}/hubMessages/messages?limit=4&skip=4
+Authorization: Bearer {{accessToken}}
+
+
+#########
 # Get all unexpired messages, tagged Announcements
 GET {{baseURI}}/hubMessages/messages?tag=Announcements
 Authorization: Bearer {{accessToken}}

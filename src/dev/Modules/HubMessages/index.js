@@ -181,6 +181,7 @@ module.exports = {
 				'messageCreated',
 				'descending',
 				parseInt(options.limit, 10),
+				parseInt(options.skip, 10),
 			)
 				// if the promise is resolved with a result
 				.then((result) => {

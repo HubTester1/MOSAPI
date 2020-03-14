@@ -101,7 +101,7 @@ module.exports = {
 		})),
 
 	ReturnSpecifiedLimitedDocsFromCollectionSorted: (
-		collection, queryObject, sortField, sortOrder, limit,
+		collection, queryObject, sortField, sortOrder, limit, skip,
 	) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -112,6 +112,9 @@ module.exports = {
 			projectionObject.sort = sortObject;
 			if (limit) {
 				projectionObject.limit = limit;
+			}
+			if (skip) {
+				projectionObject.skip = skip;
 			}
 			// use DataConnection object to query db
 			DataConnection.get(collection)
