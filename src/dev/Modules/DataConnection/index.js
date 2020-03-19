@@ -8,6 +8,10 @@ const monk = require('monk');
 
 const connectTimeoutMS = 30000;
 const socketTimeoutMS = 30000;
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '../../../../../.env' });
+
 
 /**
  * @name ReturnDataConnection

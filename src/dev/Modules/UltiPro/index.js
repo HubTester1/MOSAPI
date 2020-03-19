@@ -17,7 +17,6 @@ module.exports = {
 	 */
 
 	ReturnUltiProEmployeeChangesQueryConfig: (page) => {
-		// 
 		const buffer = Buffer.from(
 			`${process.env.upEmployeeChangesUser}:${process.env.upEmployeeChangesPass}`,
 			'ascii',
@@ -38,7 +37,7 @@ module.exports = {
 					startDate: '1900-12-31T00:00:00Z',
 					endDate: '2199-12-31T00:00:00Z',
 				},
-				timeout: 5000,
+				timeout: 15000,
 			},
 		};
 	},
@@ -58,7 +57,7 @@ module.exports = {
 	 * @param page - Which page to return
 	 */
 
-	ReturnOnePageOfEmployeesFromUltiPro: (page) =>
+	ReturnOnePageOfEmployeesFromUltiPro: (page = 1) =>
 	// return a new promise
 		new Promise((resolve, reject) => {
 			// get URI and options
@@ -118,6 +117,8 @@ module.exports = {
 				module.exports.ReturnOnePageOfEmployeesFromUltiPro(page)
 					// if the promise is resolved
 					.then((result) => {
+						// console.log('one page first');
+						// console.log(result.onePage[0].emailAddress);
 						// if a page of employees was returned
 						if (result.onePage.length > 0) {
 							// add the page of employees to allEmployees
@@ -149,5 +150,3 @@ module.exports = {
 			AttemptToGetOnePageOfEmployeesFromUltiPro();
 		}),
 };
-
-module.exports.ReturnAllEmployeesFromUltiPro();

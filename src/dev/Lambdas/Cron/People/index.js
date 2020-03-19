@@ -4,6 +4,8 @@
  * @description Perform all cron jobs to retrieve and process data for People API
  */
 
+process.on('unhandledRejection', (reason, p) => { console.log(reason); });
+
 const DataQueries = require('data-queries');
 const UltiPro = require('ultipro');
 const MSGraph = require('ms-graph');
@@ -114,14 +116,6 @@ module.exports = {
 
 	// ----- DATA PROCESSING
 
-	/**
-	 * @name AddAllUltiProActiveEmployeesToDatabase
-	 * @function
-	 * @async
-	 * @description Get all active employees via UltiPro service. 
-	 * Insert into 'peopleRawUltiProActiveEmployees' collection.
-	 */
-
 	AddAllNesoPeopleToDatabase: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -165,6 +159,15 @@ module.exports = {
 				});
 		}),
 	
+
+	/**
+	 * @name AddAllUltiProActiveEmployeesToDatabase
+	 * @function
+	 * @async
+	 * @description Get all active employees via UltiPro service. 
+	 * Insert into 'peopleRawUltiProActiveEmployees' collection.
+	 */
+
 	AddAllUltiProActiveEmployeesToDatabase: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -182,6 +185,12 @@ module.exports = {
 								phoneToUse =
 									`${employee.workPhone.slice(0, 3)}-${employee.workPhone.slice(3, 6)}-${employee.workPhone.trim().slice(6)}`;
 							}
+							let jobTitleToUse = '';
+							if (employee.alternateJobTitle) {
+								jobTitleToUse = employee.alternateJobTitle;
+							} else {
+								jobTitleToUse = employee.jobTitle;
+							}
 							const employeeToPush = {
 								account: Utilities
 									.ReturnAccountFromUserAndDomain(employee.emailAddress),
@@ -191,9 +200,7 @@ module.exports = {
 									Utilities.ReturnSubstringPrecedingNewLineCharacters(employee.lastName),
 								preferredName: 
 									Utilities.ReturnSubstringPrecedingNewLineCharacters(employee.preferredName),
-								jobTitle: employee.alternateJobTitle ? 
-									Utilities.ReturnSubstringPrecedingNewLineCharacters(employee.alternateJobTitle) :
-									Utilities.ReturnSubstringPrecedingNewLineCharacters(employee.jobTitle),
+								jobTitle: Utilities.ReturnSubstringPrecedingNewLineCharacters(jobTitleToUse),
 								email: 
 									Utilities.ReturnSubstringPrecedingNewLineCharacters(employee.emailAddress),
 								phone: 
@@ -230,18 +237,18 @@ module.exports = {
 							});
 						})
 						// if the promise is rejected with an error, then reject this promise with an error
-						.catch((error) => {
+						.catch((insertError) => {
 							reject({
 								statusCode: 500,
-								body: JSON.stringify(error),
+								body: JSON.stringify(insertError),
 							});
 						});
 				})
 				// if the promise is rejected with an error, then reject this promise with an error
-				.catch((error) => {
+				.catch((queryError) => {
 					reject({
 						statusCode: 500,
-						body: JSON.stringify(error),
+						body: JSON.stringify(queryError),
 					});
 				});
 		}),
@@ -560,7 +567,6 @@ module.exports = {
 								nesoPeople.forEach((nesoPerson) => {
 									// if this neso person's account matches this employee's account
 									if (nesoPerson.account === employee.account) {
-										console.log(employee.account);
 										// add this employee's division code to the array
 										// 		of those that have been handled
 										divisionsHandled.push(employee.orgLevel1Code);
@@ -699,9 +705,8 @@ module.exports = {
 					reject(returnDataError);
 				});
 		}),
-
 	
-	ProcessPeopleFlat: () =>
+	/* ProcessAllPeopleData: () => 
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve setting indicating whether 
@@ -711,195 +716,7 @@ module.exports = {
 				.then((permittedResults) => {
 					// if it's ok to process people
 					if (permittedResults.dataProcessingPermitted) {
-						// get a promise to sync all raw data
-						module.exports.SyncAllRawData()
-							// if the promise was resolved
-							.then((rawSyncResults) => {
-								// get promises to get all of the relevant raw data
-								Promise.all([
-									DataQueries.ReturnAllDocsFromCollection('peopleSettings'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawMOSPreferences'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphGroups'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphHubComponentGroupAdmins'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawUltiProActiveEmployees'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawTempNesoAD'),
-									DataQueries.ReturnAllDocsFromCollection('peopleRawTempEdgeCaseManagers'),
-								])
-									// if the promise is resolved
-									.then((queryResults) => {
-										// extract results for convenience
-										const groupSettings = queryResults[0].docs[0].groupsTracked;
-										const preferences = queryResults[1].docs;
-										const groups = queryResults[2].docs;
-										const componentGroupAdmins = queryResults[3].docs;
-										const employees = queryResults[4].docs;
-										const nesoPeople = queryResults[5].docs;
-										const edgeCaseManagers = queryResults[6].docs;
-										// set up container for all people
-										const allPeople = [];
-										// iterate over each employee
-										employees.forEach((employee) => {
-											// set up default manager for this employee
-											let thisEmpoyeeManager = null;
-											// find this employee's manager
-											// iterate over employees again
-											employees.forEach((subEmployeeOne) => {
-												// if this subEmployee's ultipro employee ID matches
-												// 		this employee's supervisor's ultipro supervisor ID
-												if (subEmployeeOne.upEmployeeID === employee.upSupervisorId) {
-													// set the manager for this employee to the subEmployee's account
-													thisEmpoyeeManager = subEmployeeOne.account;
-												}
-											});
-											// get flag indicating whether or not this person is a manager
-											const thisEmpoyeeIsManager = 
-												module.exports.ReturnPersonIsManager(
-													employee.account,
-													employees,
-													edgeCaseManagers,
-												);
-											/* // get this employee's division and department
-											const thisEmployeeDivisionAndDepartment = 
-												module.exports.ReturnPersonsDivisionAndDepartment(
-													employee.account,
-													nesoPeople,
-												); */
-
-											// construct this person from the ultipro employee data;
-											// 		some of these properties are named for backward compatibility
-											const thisEmployee = {
-												account: employee.account,
-												employeeID: employee.mosEmployeeID,
-												firstName: employee.firstName,
-												lastName: employee.lastName,
-												preferredName: employee.preferredName,
-												firstInitial: employee.preferredName ? employee.preferredName.slice(0, 1).toUpperCase() : employee.firstName.slice(0, 1).toUpperCase(),
-												lastInitial: employee.lastName.slice(0, 1).toUpperCase(),
-												displayName: employee.preferredName ? `${employee.preferredName} ${employee.lastName}` : `${employee.firstName} ${employee.lastName}`,
-												title: employee.jobTitle,
-												email: employee.email,
-												officePhone: employee.phone,
-												manager: thisEmpoyeeManager,
-												// department: employee.orgLevel2Code,
-												// division: employee.orgLevel1Code,
-												// orgLevel1Code: employee.orgLevel1Code,
-												// orgLevel2Code: employee.orgLevel2Code,
-												// orgLevel3Code: employee.orgLevel3Code,
-												// orgLevel4Code: employee.orgLevel4Code,
-												jobGroupCode: employee.jobGroupCode,
-											};
-											// set up a container for this person's potential roles
-											const thisEmployeeRoles = [];
-											// if flag indicates this person is manager
-											if (thisEmpoyeeIsManager) {
-												// add the manager role to this 
-												thisEmployeeRoles.push('manager');
-											}
-											// iterate over the groups
-											groups.forEach((group) => {
-											// iterate over this group's members
-												group.members.forEach((member) => {
-												// if this group member matches this person
-													if (member === thisEmployee.account) {
-													// iterate over all groups' settings
-														groupSettings.forEach((settingsOneGroup) => {
-														// if the displayName in this group's settings
-														// 		matches the 
-															if (settingsOneGroup.displayName === group.groupName) {
-																thisEmployeeRoles.push(
-																	settingsOneGroup.roleForGroupMembers,
-																);
-															}
-														});
-													}
-												});
-											});
-											// iterate over the component group admins
-											componentGroupAdmins.forEach((componentGroup) => {
-											// iterate over this component group's admins
-												componentGroup.admins.forEach((componentGroupAdmin) => {
-												// if this component group admin matches this person
-													if (componentGroupAdmin === thisEmployee.account) {
-														thisEmployeeRoles
-															.push(
-																`componentGroupAdmin${  
-																	componentGroup.componentGroupName.replace(' ', '')}`,
-															);
-													}
-												});
-											});
-											// if any roles were found for this person
-											if (thisEmployeeRoles[0]) {
-											// add them to thisEmployee
-												thisEmployee.roles = thisEmployeeRoles;
-											}
-											// iterate over the preferences
-											preferences.forEach((preferencesSet) => {
-											// if this preference set's account matches this person
-												if (preferencesSet.account === thisEmployee.account) {
-												// make a copy of this preferenc set
-													const preferencesSetCopy = 
-												Utilities.ReturnCopyOfObject(preferencesSet);
-													// delete the _id and account properties of this preference set copy
-													delete preferencesSetCopy.account;
-													delete preferencesSetCopy._id;
-													// set this person's preferences to the modified preference set copy
-													thisEmployee.preferences = preferencesSetCopy;
-												}
-											});
-
-											// push this person to allPeople
-											allPeople.push(thisEmployee);
-										});
-										// get a promise to delete all documents
-										DataQueries.DeleteAllDocsFromCollection('peopleFlat')
-											// if the promise is resolved with the result
-											.then((deletionResult) => {
-												// get a promise to insert allPeople
-												DataQueries.InsertDocIntoCollection(
-													allPeople,
-													'peopleFlat',
-												)
-													// if the promise is resolved with the result
-													.then((insertResult) => {
-														// resolve this promise with the result
-														resolve({
-															statusCode: 200,
-															// body: JSON.stringify(insertResult),
-														});
-													})
-													// if the promise is rejected with an error
-													.catch((insertError) => {
-														// reject this promise with an error
-														reject({
-															statusCode: 500,
-															body: JSON.stringify(insertError),
-														});
-													});
-											})
-											// if the promise is rejected with an error
-											.catch((deletionError) => {
-												// reject this promise with an error
-												reject({
-													statusCode: 500,
-													body: JSON.stringify(deletionError),
-												});
-											});
-									})
-									// if the promise is rejected with an error
-									.catch((returnDataError) => {
-										// reject this promise with an error
-										reject({
-											statusCode: 500,
-											body: JSON.stringify(returnDataError),
-										});
-									});
-							})
-							// if the promise is rejected with an error
-							.catch((syncError) => {
-								// reject this promise with the error
-								reject(syncError);
-							});
+					
 					// if it's NOT ok to process people
 					} else {
 						// reject this promise with the error
@@ -915,6 +732,188 @@ module.exports = {
 					reject({
 						error: true,
 						permittedError: 'dataProcessingPermitted === false',
+					});
+				});
+		}), */
+	
+	ProcessPeopleFlat: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get promises to get all of the relevant raw data
+			Promise.all([
+				DataQueries.ReturnAllDocsFromCollection('peopleSettings'),
+				DataQueries.ReturnAllDocsFromCollection('peopleRawMOSPreferences'),
+				DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphGroups'),
+				DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphHubComponentGroupAdmins'),
+				DataQueries.ReturnAllDocsFromCollection('peopleRawUltiProActiveEmployees'),
+				DataQueries.ReturnAllDocsFromCollection('peopleRawTempEdgeCaseManagers'),
+				DataQueries.ReturnAllDocsFromCollection('peopleDivisions'),
+				DataQueries.ReturnAllDocsFromCollection('peopleDepartments'),
+			])
+				// if the promise is resolved
+				.then((queryResults) => {
+					// extract results for convenience
+					const groupSettings = queryResults[0].docs[0].groupsTracked;
+					const preferences = queryResults[1].docs;
+					const groups = queryResults[2].docs;
+					const componentGroupAdmins = queryResults[3].docs;
+					const employees = queryResults[4].docs;
+					const edgeCaseManagers = queryResults[5].docs;
+					const divisions = queryResults[6].docs;
+					const departments = queryResults[7].docs;
+					// set up container for all people
+					const allPeople = [];
+					// iterate over each employee
+					employees.forEach((employee) => {
+						// set up default manager for this employee
+						let thisEmpoyeeManager = null;
+						// find this employee's manager
+						// iterate over employees again
+						employees.forEach((subEmployeeOne) => {
+							// if this subEmployee's ultipro employee ID matches
+							// 		this employee's supervisor's ultipro supervisor ID
+							if (subEmployeeOne.upEmployeeID === employee.upSupervisorId) {
+								// set the manager for this employee to the subEmployee's account
+								thisEmpoyeeManager = subEmployeeOne.account;
+							}
+						});
+						// get flag indicating whether or not this person is a manager
+						const thisEmpoyeeIsManager = 
+							module.exports.ReturnPersonIsManager(
+								employee.account,
+								employees,
+								edgeCaseManagers,
+							);
+
+						// construct this person from the ultipro employee data;
+						// 		some of these properties are named for backward compatibility
+						const thisEmployee = {
+							account: employee.account,
+							employeeID: employee.mosEmployeeID,
+							firstName: employee.firstName,
+							lastName: employee.lastName,
+							preferredName: employee.preferredName,
+							firstInitial: employee.preferredName ? 
+								employee.preferredName.slice(0, 1).toUpperCase() : 
+								employee.firstName.slice(0, 1).toUpperCase(),
+							lastInitial: employee.lastName.slice(0, 1).toUpperCase(),
+							displayName: employee.preferredName ? 
+								`${employee.preferredName} ${employee.lastName}` : 
+								`${employee.firstName} ${employee.lastName}`,
+							title: employee.jobTitle,
+							email: employee.email,
+							officePhone: employee.phone,
+							manager: thisEmpoyeeManager,
+							department: 
+								departments.find((element) => 
+									element.orgLevel2Code === employee.orgLevel2Code)
+									.name,
+							jobGroupCode: employee.jobGroupCode,
+						};
+							// set up a container for this person's potential roles
+						const thisEmployeeRoles = [];
+						// if flag indicates this person is manager
+						if (thisEmpoyeeIsManager) {
+							// add the manager role to this 
+							thisEmployeeRoles.push('manager');
+						}
+						// iterate over the groups
+						groups.forEach((group) => {
+							// iterate over this group's members
+							group.members.forEach((member) => {
+								// if this group member matches this person
+								if (member === thisEmployee.account) {
+									// iterate over all groups' settings
+									groupSettings.forEach((settingsOneGroup) => {
+										// if the displayName in this group's settings
+										// 		matches the 
+										if (settingsOneGroup.displayName === group.groupName) {
+											thisEmployeeRoles.push(
+												settingsOneGroup.roleForGroupMembers,
+											);
+										}
+									});
+								}
+							});
+						});
+						// iterate over the component group admins
+						componentGroupAdmins.forEach((componentGroup) => {
+							// iterate over this component group's admins
+							componentGroup.admins.forEach((componentGroupAdmin) => {
+								// if this component group admin matches this person
+								if (componentGroupAdmin === thisEmployee.account) {
+									thisEmployeeRoles
+										.push(
+											`componentGroupAdmin${  
+												componentGroup.componentGroupName.replace(' ', '')}`,
+										);
+								}
+							});
+						});
+						// if any roles were found for this person
+						if (thisEmployeeRoles[0]) {
+							// add them to thisEmployee
+							thisEmployee.roles = thisEmployeeRoles;
+						}
+						// iterate over the preferences
+						preferences.forEach((preferencesSet) => {
+							// if this preference set's account matches this person
+							if (preferencesSet.account === thisEmployee.account) {
+								// make a copy of this preferenc set
+								const preferencesSetCopy = 
+												Utilities.ReturnCopyOfObject(preferencesSet);
+									// delete the _id and account properties of this preference set copy
+								delete preferencesSetCopy.account;
+								delete preferencesSetCopy._id;
+								// set this person's preferences to the modified preference set copy
+								thisEmployee.preferences = preferencesSetCopy;
+							}
+						});
+
+						// push this person to allPeople
+						allPeople.push(thisEmployee);
+					});
+					// get a promise to delete all documents
+					DataQueries.DeleteAllDocsFromCollection('peopleFlat')
+						// if the promise is resolved with the result
+						.then((deletionResult) => {
+							// get a promise to insert allPeople
+							DataQueries.InsertDocIntoCollection(
+								allPeople,
+								'peopleFlat',
+							)
+								// if the promise is resolved with the result
+								.then((insertResult) => {
+									// resolve this promise with the result
+									resolve({
+										statusCode: 200,
+										// body: JSON.stringify(insertResult),
+									});
+								})
+								// if the promise is rejected with an error
+								.catch((insertError) => {
+									// reject this promise with an error
+									reject({
+										statusCode: 500,
+										body: JSON.stringify(insertError),
+									});
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((deletionError) => {
+							// reject this promise with an error
+							reject({
+								statusCode: 500,
+								body: JSON.stringify(deletionError),
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((returnDataError) => {
+					// reject this promise with an error
+					reject({
+						statusCode: 500,
+						body: JSON.stringify(returnDataError),
 					});
 				});
 		}),
@@ -1334,3 +1333,5 @@ module.exports = {
 				});
 		}); */
 };
+
+module.exports.AddAllUltiProActiveEmployeesToDatabase();

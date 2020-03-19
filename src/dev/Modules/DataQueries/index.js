@@ -7,7 +7,6 @@
 
 const { ObjectID } = require('mongodb');
 const DataConnection = require('data-connection');
-// const nesoErrors = require('./nesoErrors');
 
 module.exports = {
 
@@ -422,7 +421,6 @@ module.exports = {
 				(error, countsFromMonk) => {
 					// if there was an error
 					if (error) {
-						console.log('error', error);
 						// construct a custom error
 						const errorToReport = {
 							error: true,
@@ -435,7 +433,6 @@ module.exports = {
 						reject(errorToReport);
 						// if there was NOT an error
 					} else {
-						console.log('countsFromMonk', countsFromMonk);
 						// resolve the promise and return the counts of what happened
 						const docCounts = {};
 						if (countsFromMonk.n) { docCounts.matchedDocs = countsFromMonk.n; }
