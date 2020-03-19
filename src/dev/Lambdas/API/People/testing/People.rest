@@ -1,0 +1,119 @@
+@baseURI = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+#########
+# Get all people
+GET {{baseURI}}/people/all
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get one person
+POST {{baseURI}}/people/person
+Authorization: Bearer {{accessToken}}
+
+{
+	"person": "jbaker"
+}
+
+
+#########
+# Get all people by div and department
+GET {{baseURI}}/people/org
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all people in one department
+POST {{baseURI}}/people/department
+Authorization: Bearer {{accessToken}}
+
+{
+	"department": "Exhibit Maintenance",
+}
+
+
+#########
+# Get all people in one division
+POST {{baseURI}}/people/division
+Authorization: Bearer {{accessToken}}
+
+{
+	"division": "Advancement",
+}
+
+
+#########
+# Get a list of all departments
+GET {{baseURI}}/people/departments
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a list of all managers
+GET {{baseURI}}/people/managers
+Authorization: Bearer {{accessToken}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########
+# Get all managers with flat downlines
+GET {{baseURI}}/people/managers/downlines/flat
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all managers with hierarchical downlines
+GET {{baseURI}}/people/managers/downlines/hierarchical
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a person's direct reports
+GET {{baseURI}}/people/manager/downline/direct
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a person with flat downline
+POST {{baseURI}}/people/manager/downline/flat
+Authorization: Bearer {{accessToken}}
+
+{
+	"person": "psheppard",
+}
+
+
+#########
+# Get a manager with hierarchical downline
+POST {{baseURI}}/people/manager/downline/hierarchical
+Authorization: Bearer {{accessToken}}
+
+{
+	"person": "psheppard",
+}
+
+
+#########
+# Get one person's upline
+GET {{baseURI}}/people/person/upline/flat
+Authorization: Bearer {{accessToken}}
+
+{
+	"person": "msmith",
+}
+

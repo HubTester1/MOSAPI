@@ -1,0 +1,79 @@
+@baseURI = https://neso.mos.org
+
+
+#########
+# Get all people
+GET {{baseURI}}/activeDirectory/users
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get one person
+GET {{baseURI}}/activeDirectory/user/jbaker
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all people by div and department
+GET {{baseURI}}/activeDirectory/divDept
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all people in a department
+GET {{baseURI}}/activeDirectory/divDept/dept/Exhibit Maintenance
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all people in a division
+GET {{baseURI}}/activeDirectory/divDept/div/Advancement
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all departments
+GET {{baseURI}}/activeDirectory/depts
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all managers
+GET {{baseURI}}/activeDirectory/managers
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a manager's direct reports ------------------- ?
+GET {{baseURI}}/activeDirectory/manager/directReports/psheppard
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all managers with flat downlines
+GET {{baseURI}}/activeDirectory/managers/downline/flat
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get all managers with hierarchical downlines
+GET {{baseURI}}/activeDirectory/managers/downline/hierarchical
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a manager with flat downline
+GET {{baseURI}}/activeDirectory/manager/downline/flat/psheppard
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get a manager with hierarchical downline
+GET {{baseURI}}/activeDirectory/manager/downline/hierarchical/psheppard
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Get one person's upline
+GET {{baseURI}}/activeDirectory/user/upline/msmith
+Authorization: Bearer {{accessToken}}

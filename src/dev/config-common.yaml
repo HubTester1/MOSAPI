@@ -34,31 +34,45 @@ upEmployeeChangesUser: ${ssm:up-emp-changes-user}
 endpoints:
   dev:
     access:
-      awsCredentials:         access/aws-credentials
+      awsCredentials:                   access/aws-credentials
     email:
-      send:                   email/send
+      send:                             email/send
     files:
-      settings:               files/settings
-      drive:                  files/drive
-      driveChildren:          files/drive/children
-      driveChild:             files/drive/child
-      folder:                 files/folder
-      file:                   files/file
+      settings:                         files/settings
+      drive:                            files/drive
+      driveChildren:                    files/drive/children
+      driveChild:                       files/drive/child
+      folder:                           files/folder
+      file:                             files/file
     health:
-      check:                  health/check
+      check:                            health/check
     hubLists:
-      settings:               hubLists/settings
-      list:                   hubLists/list
-      items:                  hubLists/items
+      settings:                         hubLists/settings
+      list:                             hubLists/list
+      items:                            hubLists/items
     hubMessages:
-      settings:               hubMessages/settings
-      messages:               hubMessages/messages
-      add:                    hubMessages/add
-      update:                 hubMessages/update
-      nextID:                 hubMessages/nextid
+      settings:                         hubMessages/settings
+      messages:                         hubMessages/messages
+      add:                              hubMessages/add
+      update:                           hubMessages/update
+      nextID:                           hubMessages/nextid
     hubSites:
-      settings:               hubSites/settings
-      site:                   hubSites/site
-      drives:                 hubSites/drives
-      lists:                  hubSites/lists
-
+      settings:                         hubSites/settings
+      site:                             hubSites/site
+      drives:                           hubSites/drives
+      lists:                            hubSites/lists
+    people:
+      process:                          people/process
+      all:                              people/all
+      person:                           people/person
+      org:                              people/org
+      department:                       people/department
+      division:                         people/division
+      departments:                      people/departments
+      managers:                         people/managers
+      managersDownlinesFlat:            people/managers/downlines/flat
+      managersDownlinesHierarchical:    people/managers/downlines/hierarchical
+      managerDownlineDirect:            people/manager/downline/direct
+      managerDownlineFlat:              people/manager/downline/flat
+      managerDownlineHierarchical:      people/manager/downline/hierarchical
+      personUpline:                     people/person/upline/flat

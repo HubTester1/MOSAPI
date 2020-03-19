@@ -1,0 +1,19 @@
+{
+	"name": "cron-people",
+	"version": "1.0.0",
+	"main": "../index.js",
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"scripts": {
+		"update": "rm -rf node_modules; rm package-lock.json; rm -rf .serverless; npm i"
+	},
+	"dependencies": {
+		"access": "file:../../../Modules/Access",
+		"axios": "^0.19.2",
+		"data-queries": "file:../../../Modules/DataQueries",
+		"ms-graph": "file:../../../Modules/MSGraph",
+		"response": "file:../../../Modules/Response",
+		"ultipro": "file:../../../Modules/UltiPro",
+		"utilities": "file:../../../Modules/Utilities"
+	}
+}

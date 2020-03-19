@@ -8,18 +8,17 @@ custom:
 
 # -------------------------------------------------------
 
-    service: cron-people
+    service: api-XXX
     memorySize: 256
     timeout: 5
 
 functions:
-  HandleProcessPeopleFlatEvent:
-    handler: index.HandleProcessPeopleFlatEvent
+  XXX:
+    handler: index.XXX
     events:
-      - schedule: cron(${self:custom.file.cronSchedulePeopleProcessing})
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.people.process}
-          method: post
+          path: ${self:custom.file.endpoints.${self:provider.stage}.XXX.XXX}
+          method: XXX
           cors: true
 
 # -------------------------------------------------------
@@ -53,8 +52,6 @@ provider:
     mongoDbHostUnique: ${self:custom.file.mongoDbHostUnique}
     mongoDbPass: ${self:custom.file.mongoDbPass}
     mongoDbUser: ${self:custom.file.mongoDbUser}
-    spClientID: ${self:custom.file.spClientID}
-    spClientSecret: ${self:custom.file.spClientSecret}
     stage: ${self:provider.stage}
     twitterConsumerKey: ${self:custom.file.twitterConsumerKey}
     twitterConsumerSecret: ${self:custom.file.twitterConsumerSecret}

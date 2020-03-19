@@ -1,0 +1,26 @@
+@baseURI = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+#########
+# Process people
+GET {{baseURI}}/people/process
+Authorization: Bearer {{accessToken}}
+
+
+#########
+# Turn off people processing
+POST {{baseURI}}/people/processing
+Authorization: Bearer {{accessToken}}
+
+{
+	"dataProcessingPermitted": false
+}
+
+#########
+# Turn on people processing
+POST {{baseURI}}/people/processing
+Authorization: Bearer {{accessToken}}
+
+{
+	"dataProcessingPermitted": true
+}
