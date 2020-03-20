@@ -10,7 +10,9 @@ const connectTimeoutMS = 30000;
 const socketTimeoutMS = 30000;
 const dotenv = require('dotenv');
 
-dotenv.config({ path: '../../../../../.env' });
+if (process.env.NODE_ENV === 'local') {
+	dotenv.config({ path: '../../../../../.env' });
+}
 
 
 /**

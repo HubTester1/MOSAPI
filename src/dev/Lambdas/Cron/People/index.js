@@ -11,7 +11,6 @@ const UltiPro = require('ultipro');
 const MSGraph = require('ms-graph');
 const Utilities = require('utilities');
 const axios = require('axios');
-// peopleRawTempEdgeCaseManagers
 
 module.exports = {
 
@@ -171,9 +170,14 @@ module.exports = {
 	AddAllUltiProActiveEmployeesToDatabase: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			UltiPro.ReturnAllEmployeesFromUltiPro()
+			const allEmployees = [];
+			// get a promise to get all employees from UltiPro
+			UltiPro.RecursivelyGetAllPagesOfEmployeesFromUltiPro(1, allEmployees)
 				// if the promise is resolved with the result, then resolve this promise with the result
 				.then((queryResult) => {
+					console.log('--- got resolution :)');
+					resolve({});
+					/* console.log(`got ${queryResult.allEmployees.length} employees`);
 					const allActiveEmployees = [];
 					queryResult.allEmployees.forEach((employee) => {
 						if (employee.isActive) {
@@ -227,6 +231,7 @@ module.exports = {
 							allActiveEmployees.push(employeeToPush);
 						}
 					});
+					console.log(`gonna insert ${allActiveEmployees.length} employees`);
 					// get a promise to insert
 					DataQueries.InsertDocIntoCollection(allActiveEmployees, 'peopleRawUltiProActiveEmployees')
 						// if the promise is resolved with the result, then resolve this promise with the result
@@ -242,7 +247,7 @@ module.exports = {
 								statusCode: 500,
 								body: JSON.stringify(insertError),
 							});
-						});
+						}); */
 				})
 				// if the promise is rejected with an error, then reject this promise with an error
 				.catch((queryError) => {

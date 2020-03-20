@@ -5,6 +5,11 @@
  */
 
 const axios = require('axios');
+const dotenv = require('dotenv');
+
+if (process.env.NODE_ENV === 'local') {
+	dotenv.config({ path: '../../../../.env' });
+}
 
 module.exports = {
 
@@ -57,7 +62,7 @@ module.exports = {
 	 * @param page - Which page to return
 	 */
 
-	ReturnOnePageOfEmployeesFromUltiPro: (page = 1) =>
+	ReturnOnePageOfEmployeesFromUltiPro: (page) =>
 	// return a new promise
 		new Promise((resolve, reject) => {
 			// get URI and options
@@ -106,47 +111,60 @@ module.exports = {
 	 * I.e., Return all of the pages.
 	 */
 
+	RecursivelyGetAllPagesOfEmployeesFromUltiPro: (page, allEmployees) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to retrieve one page of employees
+			module.exports.ReturnOnePageOfEmployeesFromUltiPro(page)
+				// if the promise is resolved
+				.then((result) => {
+					// console.log(`found ${result.onePage.length} employees`);
+					// if a page of employees was returned
+					if (result.onePage.length > 0) {
+						// add the page of employees to allEmployees
+						// eslint-disable-next-line no-param-reassign
+						allEmployees = [...allEmployees, ...result.onePage];
+						// make another attempt
+						module.exports.RecursivelyGetAllPagesOfEmployeesFromUltiPro(page + 1, allEmployees);
+					// if we've reached the end of the pages
+					} else {
+						console.log(`------------ gonna resolve with ${allEmployees.length} employees`);
+						// resolve this promise with all of the employees
+						resolve({
+							error: false,
+							allEmployees,
+						});
+					}
+				})
+				// if the promise is rejected with an error, 
+				.catch((error) => {
+					// create a generic error
+					const errorToReport = {
+						error: true,
+						ultiProError: true,
+						ultiProErrorDetails: error,
+					};
+					// reject this promise with an error
+					reject(errorToReport);
+				});
+		}),
+
 	ReturnAllEmployeesFromUltiPro: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// set up var to receive all employees and be returned
-			let allEmployees = [];
-			// set up recursive function to get all pages of employees
-			const AttemptToGetOnePageOfEmployeesFromUltiPro = (page = 1) => {
-				// get a promise to retrieve one page of employees
-				module.exports.ReturnOnePageOfEmployeesFromUltiPro(page)
-					// if the promise is resolved
-					.then((result) => {
-						// console.log('one page first');
-						// console.log(result.onePage[0].emailAddress);
-						// if a page of employees was returned
-						if (result.onePage.length > 0) {
-							// add the page of employees to allEmployees
-							allEmployees = [...allEmployees, ...result.onePage];
-							// make another attempt
-							AttemptToGetOnePageOfEmployeesFromUltiPro(page + 1);
-						// if we've reached the end of the pages
-						} else {
-							// resolve this promise with all of the employees
-							resolve({
-								error: false,
-								allEmployees,
-							});
-						}
-					})
-					// if the promise is rejected with an error, 
-					.catch((error) => {
-						// create a generic error
-						const errorToReport = {
-							error: true,
-							ultiProError: true,
-							ultiProErrorDetails: error,
-						};
-						// reject this promise with an error
-						reject(errorToReport);
-					});
-			};
-			// start the first attempt to get a page of employees
-			AttemptToGetOnePageOfEmployeesFromUltiPro();
+			// set up var to hold all employees
+			const allEmployees = [];
+			// get a promise to get all employees from UltiPro
+			module.exports.RecursivelyGetAllPagesOfEmployeesFromUltiPro(1, allEmployees)
+				// if the promise is resolved with a result
+				.then((result) => {
+					// then resolve this promise with the result
+					resolve(result);
+				})
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with the error
+					reject(error);
+				});
 		}),
 };
