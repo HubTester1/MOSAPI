@@ -111,10 +111,21 @@ module.exports = {
 	 * I.e., Return all of the pages.
 	 */
 
-	RecursivelyGetAllPagesOfEmployeesFromUltiPro: (page, allEmployees) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve one page of employees
+	RecursivelyGetAllPagesOfEmployeesFromUltiPro: (page, allEmployees) => {
+		// define function to handle result of async call
+		const HandleResult = (result) => {
+			// if result contains no employees
+			if (result.onePage.length === 0) {
+				return allEmployees;
+			} 
+			// eslint-disable-next-line no-param-reassign
+			allEmployees = [...allEmployees, ...result.onePage];
+			return module.exports.RecursivelyGetAllPagesOfEmployeesFromUltiPro(page + 1, allEmployees);
+		};
+		return module.exports.ReturnOnePageOfEmployeesFromUltiPro(page)
+			.then(HandleResult);
+
+		/* // get a promise to retrieve one page of employees
 			module.exports.ReturnOnePageOfEmployeesFromUltiPro(page)
 				// if the promise is resolved
 				.then((result) => {
@@ -147,7 +158,8 @@ module.exports = {
 					// reject this promise with an error
 					reject(errorToReport);
 				});
-		}),
+		}) */
+	},
 
 	ReturnAllEmployeesFromUltiPro: () =>
 		// return a new promise
