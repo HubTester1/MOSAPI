@@ -1,5 +1,5 @@
 {
-	"name": "api-XXXXXXXXX",
+	"name": "api-people",
 	"version": "1.0.0",
 	"main": "../index.js",
 	"author": "Museum of Science, Boston",
@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"access": "file:../../../Modules/Access",
-		"xxxxxxx": "file:../../../Modules/XXXXXXXXXXX",
+		"people": "file:../../../Modules/People",
 		"response": "file:../../../Modules/Response"
 	}
 }

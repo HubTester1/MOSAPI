@@ -9,11 +9,6 @@
 	},
 	"dependencies": {
 		"access": "file:../../../Modules/Access",
-		"axios": "^0.19.2",
-		"data-queries": "file:../../../Modules/DataQueries",
-		"ms-graph": "file:../../../Modules/MSGraph",
-		"response": "file:../../../Modules/Response",
-		"ultipro": "file:../../../Modules/UltiPro",
-		"utilities": "file:../../../Modules/Utilities"
+		"people": "file:../../../Modules/People"
 	}
 }

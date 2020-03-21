@@ -1,0 +1,18 @@
+{
+	"name": "people",
+	"version": "1.0.0",
+	"description": "Handles everything related to people data.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"data-connection": "file:../DataConnection",
+		"data-queries": "file:../DataQueries",
+		"ms-graph": "file:../MSGraph",
+		"response": "file:../Response",
+		"ultipro": "file:../UltiPro",
+		"utilities": "file:../Utilities"
+	}
+}
