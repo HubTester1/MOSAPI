@@ -4,13 +4,12 @@
  * @description Perform all cron jobs to retrieve and process data for People API
  */
 
-process.on('unhandledRejection', (reason, p) => { console.log(reason); });
-
 const DataQueries = require('data-queries');
 const UltiPro = require('ultipro');
 const MSGraph = require('ms-graph');
 const Utilities = require('utilities');
 const axios = require('axios');
+const Response = require('response');
 
 module.exports = {
 
@@ -27,7 +26,7 @@ module.exports = {
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents
-			DataQueries.ReturnAllDocsFromCollection('peopleSettings')
+			DataQueries.ReturnAllDocsFromCollection('_settingsPeople')
 			// if the promise is resolved with the docs
 				.then((result) => {
 					// resolve this promise with the docs
@@ -95,7 +94,7 @@ module.exports = {
 
 	// --- PARENT - execution begins here
 
-	/* ProcessAllPeopleData: () => 
+	ProcessAllPeopleData: (event, context) => 
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve setting indicating whether 
@@ -105,45 +104,163 @@ module.exports = {
 				.then((permittedResults) => {
 					// if it's ok to process people
 					if (permittedResults.dataProcessingPermitted) {
+						// process in order of dependency
+						// get a promise to perform all syncs
+						module.exports.PerformAllDataSyncs()
+							// if the promise is resolved with a result
+							.then((syncResult) => {
+								// get a promise to process divisions and departments
+								Promise.all([
+									module.exports.ProcessAllDivisions(),
+									module.exports.ProcessAllDepartments(),
+								])
+									// if the promise is resolved with a result
+									.then((divisionDepartmentResult) => {
+										// get a promise to process all constituent people data 
+										// 		into a flat array of people
+										module.exports.ProcessPeopleFlat()
+											// if the promise is resolved with a result
+											.then((processPeopleFlatResult) => {
+												// get a promise to process people by division and department
+												module.exports.ProcessPeopleByDivisionsDepartments()
+													// if the promise is resolved with a result
+													.then((peopleByDivisionsDepartmentsResult) => {
+														// get a promise to process managers' downlines
+														Promise.all([
+															module.exports.ProcessManagersWithFlatDownlines(),
+															module.exports.ProcessManagersWithHierarchicalDownlines(),
+														])
+															// if the promise is resolved with a result
+															.then((downlinesResults) => {
+																// send indicative response
+																Response.HandleResponse({
+																	statusCode: 200,
+																	responder: resolve,
+																	content: {
+																		payload: { result: 'success' },
+																		event,
+																		context,
+																	},
+																});
+															})
+															// if the promise is rejected with an error
+															.catch((downlinesErrors) => {
+																// send indicative response
+																Response.HandleResponse({
+																	statusCode: 500,
+																	responder: reject,
+																	content: {
+																		error: downlinesErrors,
+																		event,
+																		context,
+																	},
+																});
+															});
+													})
+													// if the promise is rejected with an error
+													.catch((peopleByDivisionsDepartmentsError) => {
+														// send indicative response
+														Response.HandleResponse({
+															statusCode: 500,
+															responder: reject,
+															content: {
+																error: peopleByDivisionsDepartmentsError,
+																event,
+																context,
+															},
+														});
+													});
+											})
+											// if the promise is rejected with an error
+											.catch((processPeopleFlatError) => {
+												// send indicative response
+												Response.HandleResponse({
+													statusCode: 500,
+													responder: reject,
+													content: {
+														error: processPeopleFlatError,
+														event,
+														context,
+													},
+												});
+											});
+									})
+									// if the promise is rejected with an error
+									.catch((divisionDepartmentError) => {
+										// send indicative response
+										Response.HandleResponse({
+											statusCode: 500,
+											responder: reject,
+											content: {
+												error: divisionDepartmentError,
+												event,
+												context,
+											},
+										});
+									});
+							})
+							// if the promise is rejected with an error
+							.catch((syncError) => {
+								// send indicative response
+								Response.HandleResponse({
+									statusCode: 500,
+									responder: reject,
+									content: {
+										error: syncError,
+										event,
+										context,
+									},
+								});
+							});
 					
 					// if it's NOT ok to process people
 					} else {
-						// reject this promise with the error
-						reject({
-							error: true,
-							permittedError: 'dataProcessingPermitted === false',
+						// send indicative response
+						Response.HandleResponse({
+							statusCode: 500,
+							responder: reject,
+							content: {
+								error: 'data processing not permitted now',
+								event,
+								context,
+							},
 						});
 					}
 				})
 				// if the promise is rejected with an error
 				.catch((permittedError) => {
-					// reject this promise with the error
-					reject({
-						error: true,
-						permittedError: 'dataProcessingPermitted === false',
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 500,
+						responder: reject,
+						content: {
+							error: 'data processing not permitted now',
+							event,
+							context,
+						},
 					});
 				});
-		}), */
+		}),
 
 	// ----- SYNC RAW DATA
 
 	/**
-	 * @name SyncAllRawData
+	 * @name PerformAllDataSyncs
 	 * @function
 	 * @async
 	 * @description Sync (delete, fetch, insert) all raw data sets.
 	 */
 
-	SyncAllRawData: () =>
+	PerformAllDataSyncs: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get promises to sync specific raw data sets
 			Promise.all([
-				module.exports.SyncSpecifiedRawData('nesoPeople'),
-				module.exports.SyncSpecifiedRawData('ultiProActiveEmployees'),
-				module.exports.SyncSpecifiedRawData('graphGroups'),
-				module.exports.SyncSpecifiedRawData('hubAdmins'),
-				module.exports.SyncSpecifiedRawData('edgeCaseManagers'),
+				module.exports.PerformSpecifiedDataSync('nesoPeople'),
+				module.exports.PerformSpecifiedDataSync('ultiProActiveEmployees'),
+				module.exports.PerformSpecifiedDataSync('graphGroups'),
+				module.exports.PerformSpecifiedDataSync('hubAdmins'),
+				module.exports.PerformSpecifiedDataSync('edgeCaseManagers'),
 			])
 				// if all of those promises were resolved
 				.then((syncResults) => {
@@ -164,32 +281,32 @@ module.exports = {
 		}),
 
 	/**
-	 * @name SyncSpecifiedRawData
+	 * @name PerformSpecifiedDataSync
 	 * @function
 	 * @async
 	 * @description Sync (delete, fetch, insert) a specific set of raw data.
 	 * @param {string} dataSetToken - e.g., 'ultiProActiveEmployees', 'graphGroups', 'hubAdmins'
 	 */
 
-	SyncSpecifiedRawData: (dataSetToken) =>
+	PerformSpecifiedDataSync: (dataSetToken) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			let collectionName = '';
 			switch (dataSetToken) {
 			case 'nesoPeople':
-				collectionName = 'peopleRawTempNesoAD';
+				collectionName = '__syncedPeopleTempNesoAD';
 				break;
 			case 'ultiProActiveEmployees':
-				collectionName = 'peopleRawUltiProActiveEmployees';
+				collectionName = '__syncedPeopleUltiProActiveEmployees';
 				break;
 			case 'graphGroups':
-				collectionName = 'peopleRawMSGraphGroups';
+				collectionName = 'peopleMSGraphGroups';
 				break;
 			case 'hubAdmins':
-				collectionName = 'peopleRawMSGraphHubComponentGroupAdmins';
+				collectionName = '__syncedPeopleMSGraphHubComponentGroupAdmins';
 				break;
 			case 'edgeCaseManagers':
-				collectionName = 'AddTempEdgeCaseManagersToDatabase';
+				collectionName = '__syncedPeopleTempEdgeCaseManagers';
 				break;
 			default:
 				break;
@@ -273,7 +390,7 @@ module.exports = {
 						allNesoEmployees.push(employeeToPush);
 					});
 					// get a promise to insert
-					DataQueries.InsertDocIntoCollection(allNesoEmployees, 'peopleRawTempNesoAD')
+					DataQueries.InsertDocIntoCollection(allNesoEmployees, '__syncedPeopleTempNesoAD')
 						// if the promise is resolved with the result, then resolve this promise with the result
 						.then((insertResult) => {
 							resolve({
@@ -301,7 +418,7 @@ module.exports = {
 	 * @function
 	 * @async
 	 * @description Get all active employees via UltiPro service. 
-	 * Insert into 'peopleRawUltiProActiveEmployees' collection.
+	 * Insert into '__syncedPeopleUltiProActiveEmployees' collection.
 	 */
 
 	AddAllUltiProActiveEmployeesToDatabase: () =>
@@ -366,7 +483,7 @@ module.exports = {
 						}
 					});
 					// get a promise to insert
-					DataQueries.InsertDocIntoCollection(allActiveEmployees, 'peopleRawUltiProActiveEmployees')
+					DataQueries.InsertDocIntoCollection(allActiveEmployees, '__syncedPeopleUltiProActiveEmployees')
 						// if the promise is resolved with the result, then resolve this promise with the result
 						.then((insertResult) => {
 							resolve({
@@ -397,7 +514,7 @@ module.exports = {
 	 * @async
 	 * @description Find out from people settings which AD groups 
 	 * we're tracking and then get those group's info via Graph.
-	 * Insert into 'peopleRawMSGraphGroups' collection.
+	 * Insert into 'peopleMSGraphGroups' collection.
 	 */
 
 	AddTrackedMSGraphGroupsToDatabase: () =>
@@ -408,7 +525,7 @@ module.exports = {
 			// set up group membership query promises container
 			const allGroupMembershipQueryPromises = [];
 			// get a promise to get IDs for all of the groups we're tracking
-			DataQueries.ReturnAllDocsFromCollection('peopleSettings')
+			DataQueries.ReturnAllDocsFromCollection('_settingsPeople')
 				// if the promise was resolved with the tracked groups
 				.then((peopleSettingsResult) => {
 					// for each tracked group
@@ -441,7 +558,7 @@ module.exports = {
 							// get a promise to retrieve all documents from the emailQueue document collection
 							DataQueries.InsertDocIntoCollection(
 								allTrackedGroupsWithMembers, 
-								'peopleRawMSGraphGroups',
+								'peopleMSGraphGroups',
 							)
 								// if the promise is resolved with the result
 								.then((insertResult) => {
@@ -475,7 +592,7 @@ module.exports = {
 	 * @function
 	 * @async
 	 * @description Get The Hub's Component Group Admins from SPO via Graph.
-	 * Insert into 'peopleRawMSGraphHubComponentGroupAdmins' collection.
+	 * Insert into '__syncedPeopleMSGraphHubComponentGroupAdmins' collection.
 	 */
 
 	AddHubComponentGroupAdminsToDatabase: () =>
@@ -501,7 +618,7 @@ module.exports = {
 						groupsAndAdmins.push(groupAndAdminToPush);
 					});
 					// get a promise to insert the component groups and their admins
-					DataQueries.InsertDocIntoCollection(groupsAndAdmins, 'peopleRawMSGraphHubComponentGroupAdmins')
+					DataQueries.InsertDocIntoCollection(groupsAndAdmins, '__syncedPeopleMSGraphHubComponentGroupAdmins')
 						// if the promise is resolved with the result
 						.then((insertResult) => {
 							// resolve this promise with the result
@@ -534,7 +651,7 @@ module.exports = {
 	 * @function
 	 * @async
 	 * @description Get The Hub's Component Group Admins from SPO via Graph.
-	 * Insert into 'peopleRawMSGraphHubComponentGroupAdmins' collection.
+	 * Insert into '__syncedPeopleMSGraphHubComponentGroupAdmins' collection.
 	 */
 
 	AddTempEdgeCaseManagersToDatabase: () =>
@@ -551,7 +668,7 @@ module.exports = {
 						managers.push({ account: listItem.fields.Title });
 					});
 					// get a promise to insert the component groups and their admins
-					DataQueries.InsertDocIntoCollection(managers, 'peopleRawTempEdgeCaseManagers')
+					DataQueries.InsertDocIntoCollection(managers, '__syncedPeopleTempEdgeCaseManagers')
 						// if the promise is resolved with the result
 						.then((insertResult) => {
 							// resolve this promise with the result
@@ -586,8 +703,8 @@ module.exports = {
 		new Promise((resolve, reject) => {
 			// get promises to get all of the relevant raw data
 			Promise.all([
-				DataQueries.ReturnAllDocsFromCollection('peopleRawUltiProActiveEmployees'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawTempNesoAD'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleUltiProActiveEmployees'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleTempNesoAD'),
 			])
 				// if the promise is resolved
 				.then((queryResults) => {
@@ -621,6 +738,8 @@ module.exports = {
 							}
 						}
 					});
+					// alphabetize array by division name
+					allDivisions.sort(module.exports.ReturnDivisionOrDepartmentNameWeightRelativeToAnother);
 					// get a promise to delete all documents
 					DataQueries.DeleteAllDocsFromCollection('peopleDivisions')
 						// if the promise is resolved with the result
@@ -668,8 +787,8 @@ module.exports = {
 		new Promise((resolve, reject) => {
 			// get promises to get all of the relevant raw data
 			Promise.all([
-				DataQueries.ReturnAllDocsFromCollection('peopleRawUltiProActiveEmployees'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawTempNesoAD'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleUltiProActiveEmployees'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleTempNesoAD'),
 			])
 				// if the promise is resolved
 				.then((queryResults) => {
@@ -703,6 +822,8 @@ module.exports = {
 							}
 						}
 					});
+					// alphabetize array by department name
+					allDepartments.sort(module.exports.ReturnDivisionOrDepartmentNameWeightRelativeToAnother);
 					// get a promise to delete all documents
 					DataQueries.DeleteAllDocsFromCollection('peopleDepartments')
 						// if the promise is resolved with the result
@@ -758,12 +879,12 @@ module.exports = {
 		new Promise((resolve, reject) => {
 			// get promises to get all of the relevant raw data
 			Promise.all([
-				DataQueries.ReturnAllDocsFromCollection('peopleSettings'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawMOSPreferences'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphGroups'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawMSGraphHubComponentGroupAdmins'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawUltiProActiveEmployees'),
-				DataQueries.ReturnAllDocsFromCollection('peopleRawTempEdgeCaseManagers'),
+				DataQueries.ReturnAllDocsFromCollection('_settingsPeople'),
+				DataQueries.ReturnAllDocsFromCollection('peoplePreferences'),
+				DataQueries.ReturnAllDocsFromCollection('peopleMSGraphGroups'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleMSGraphHubComponentGroupAdmins'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleUltiProActiveEmployees'),
+				DataQueries.ReturnAllDocsFromCollection('__syncedPeopleTempEdgeCaseManagers'),
 				DataQueries.ReturnAllDocsFromCollection('peopleDivisions'),
 				DataQueries.ReturnAllDocsFromCollection('peopleDepartments'),
 			])
@@ -895,6 +1016,8 @@ module.exports = {
 						// push this person to allPeople
 						allPeople.push(thisEmployee);
 					});
+					// alphabetize the people
+					allPeople.sort(module.exports.ReturnPersonNameWeightRelativeToAnother);
 					// get a promise to delete all documents
 					DataQueries.DeleteAllDocsFromCollection('peopleFlat')
 						// if the promise is resolved with the result
@@ -984,13 +1107,35 @@ module.exports = {
 							}
 						}
 					});
+					// alphabetize everything:
+					// set up container for alphabetized object
+					const peopleByDivisionsDepartmentsAlphabetized = {};
+					// set up intermediate arrays of divisions and departments names for sorting
+					const divisionsKeysArray = Object.keys(peopleByDivisionsDepartments);
+					// alphabetize division keys
+					divisionsKeysArray.sort();
+					// for each division key
+					divisionsKeysArray.forEach((divisionKey) => {
+						const thisDivisionAlphabetizedDepartmentSet = {};
+						const thisDivisionDepartmentKeys = 
+							Object.keys(peopleByDivisionsDepartments[divisionKey]);
+						// alphabetize this division's department keys
+						thisDivisionDepartmentKeys.sort();
+						// for each department in this division object
+						thisDivisionDepartmentKeys.forEach((departmentKey) => {
+							thisDivisionAlphabetizedDepartmentSet[departmentKey] =
+								peopleByDivisionsDepartments[divisionKey][departmentKey];
+						});
+						peopleByDivisionsDepartmentsAlphabetized[divisionKey] = 
+							thisDivisionAlphabetizedDepartmentSet;
+					});
 					// get a promise to delete all documents
 					DataQueries.DeleteAllDocsFromCollection('peopleByDivisionsDepartments')
 						// if the promise is resolved with the result
 						.then((deletionResult) => {
 							// get a promise to insert allPeople
 							DataQueries.InsertDocIntoCollection(
-								peopleByDivisionsDepartments,
+								peopleByDivisionsDepartmentsAlphabetized,
 								'peopleByDivisionsDepartments',
 							)
 								// if the promise is resolved with the result
@@ -1389,7 +1534,7 @@ module.exports = {
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve all documents
-			DataQueries.ReturnOneSpecifiedDocFromCollection('peopleSettings', {
+			DataQueries.ReturnOneSpecifiedDocFromCollection('_settingsPeople', {
 				$and: [{
 					account,
 				}],
@@ -1408,31 +1553,6 @@ module.exports = {
 					reject(error);
 				});
 		}),
-
-	/**
-	 * @name XXXXXXXXXXXXX
-	 * @function
-	 * @async
-	 * @description XXXXXXXXXXXXX
-	 */
-
-	/* module.exports.XXXXXXXXXXXXX: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve all documents
-			DataQueries.ReturnAllDocsFromCollection('peopleSettings')
-				// if the promise is resolved with the docs
-				.then((result) => {
-					// resolve this promise with the docs
-					resolve(result);
-				})
-				// if the promise is rejected with an error
-				.catch((error) => {
-					// reject this promise with an error
-					reject(error);
-				});
-		}); */
-
 
 	// --- UTILITIES, ANALYSIS
 
@@ -1483,6 +1603,16 @@ module.exports = {
 		return 0;
 	},
 
+	ReturnDivisionOrDepartmentNameWeightRelativeToAnother: (a, b, propertName) => {
+		if (a.name < b.name) {
+			return -1;
+		}
+		if (a.name > b.name) {
+			return 1;
+		}
+		return 0;
+	},
+
 };
 
-module.exports.ProcessManagersWithFlatDownlines();
+module.exports.ProcessAllPeopleData();
