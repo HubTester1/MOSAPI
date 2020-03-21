@@ -53,8 +53,6 @@ module.exports = {
 	 */
 
 	ReturnValueIsJSONParsableString: (incomingValue) => {
-		// set up return value, defaulting to false
-		let returnValue = false;
 		// try...
 		try {
 			// ...to get a parsed object
@@ -66,20 +64,18 @@ module.exports = {
 			// if type is object and value is truthy
 			if (attemptedObject && typeof attemptedObject === 'object') {
 				// indicate that string is parsable
-				returnValue = true;
+				return true;
 			// if either type is not object or value is not truthy
-			} else {
-				// indicate that string is not parsable
-				returnValue = false;
-			}
+			} 
+			// indicate that string is not parsable
+			return false;
+			
 			
 		// if attempt to get an object resulted in an error
 		} catch (e) {
 			// indicate that string is not parsable
-			returnValue = false;
+			return false;
 		}
-		// return returnValue
-		return returnValue;
 	},
 
 	/**
