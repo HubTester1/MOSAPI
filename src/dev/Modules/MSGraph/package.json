@@ -8,7 +8,6 @@
 	"license": "ISC",
 	"dependencies": {
 		"axios": "^0.19.1",
-		"dotenv": "^8.2.0",
 		"qs": "^6.9.1",
 		"status": "file:../Status",
 		"utilities": "file:../Utilities"

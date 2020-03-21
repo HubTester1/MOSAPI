@@ -5,11 +5,6 @@
  */
 
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-if (process.env.NODE_ENV === 'local') {
-	dotenv.config({ path: '../../../../.env' });
-}
 
 module.exports = {
 
