@@ -14,6 +14,8 @@ const axios = require('axios');
 
 module.exports = {
 
+	// --- META
+
 	/**
 	 * @name ReturnPeopleSettings
 	 * @function
@@ -91,29 +93,165 @@ module.exports = {
 				});
 		}),
 
+	// --- PARENT - execution begins here
+
+	/* ProcessAllPeopleData: () => 
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to retrieve setting indicating whether 
+			// 		people processing is permitted or not
+			module.exports.ReturnPeopleProcessingPermitted()
+				// if the promise was resolved
+				.then((permittedResults) => {
+					// if it's ok to process people
+					if (permittedResults.dataProcessingPermitted) {
+					
+					// if it's NOT ok to process people
+					} else {
+						// reject this promise with the error
+						reject({
+							error: true,
+							permittedError: 'dataProcessingPermitted === false',
+						});
+					}
+				})
+				// if the promise is rejected with an error
+				.catch((permittedError) => {
+					// reject this promise with the error
+					reject({
+						error: true,
+						permittedError: 'dataProcessingPermitted === false',
+					});
+				});
+		}), */
+
+	// ----- SYNC RAW DATA
+
 	/**
-	 * @name ReturnUserNameWeightRelativeToAnother
+	 * @name SyncAllRawData
 	 * @function
-	 * @description Used in alphabetizing sets of people by last name.
+	 * @async
+	 * @description Sync (delete, fetch, insert) all raw data sets.
 	 */
 
-	ReturnUserNameWeightRelativeToAnother: (a, b) => {
-		if (a.lastName < b.lastName) {
-			return -1;
-		}
-		if (a.lastName > b.lastName) {
-			return 1;
-		}
-		if (a.firstName < b.firstName) {
-			return -1;
-		}
-		if (a.firstName > b.firstName) {
-			return 1;
-		}
-		return 0;
-	},
+	SyncAllRawData: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get promises to sync specific raw data sets
+			Promise.all([
+				module.exports.SyncSpecifiedRawData('nesoPeople'),
+				module.exports.SyncSpecifiedRawData('ultiProActiveEmployees'),
+				module.exports.SyncSpecifiedRawData('graphGroups'),
+				module.exports.SyncSpecifiedRawData('hubAdmins'),
+				module.exports.SyncSpecifiedRawData('edgeCaseManagers'),
+			])
+				// if all of those promises were resolved
+				.then((syncResults) => {
+					// resolve this promise
+					resolve({
+						statusCode: 200,
+						body: JSON.stringify(syncResults),
+					});
+				})
+				// if any one promise is rejected with an error
+				.catch((syncError) => {
+					// reject this promise with that error
+					reject({
+						statusCode: 500,
+						body: JSON.stringify(syncError),
+					});
+				});
+		}),
 
-	// ----- DATA PROCESSING
+	/**
+	 * @name SyncSpecifiedRawData
+	 * @function
+	 * @async
+	 * @description Sync (delete, fetch, insert) a specific set of raw data.
+	 * @param {string} dataSetToken - e.g., 'ultiProActiveEmployees', 'graphGroups', 'hubAdmins'
+	 */
+
+	SyncSpecifiedRawData: (dataSetToken) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			let collectionName = '';
+			switch (dataSetToken) {
+			case 'nesoPeople':
+				collectionName = 'peopleRawTempNesoAD';
+				break;
+			case 'ultiProActiveEmployees':
+				collectionName = 'peopleRawUltiProActiveEmployees';
+				break;
+			case 'graphGroups':
+				collectionName = 'peopleRawMSGraphGroups';
+				break;
+			case 'hubAdmins':
+				collectionName = 'peopleRawMSGraphHubComponentGroupAdmins';
+				break;
+			case 'edgeCaseManagers':
+				collectionName = 'AddTempEdgeCaseManagersToDatabase';
+				break;
+			default:
+				break;
+			}
+			// get a promise to delete all documents
+			DataQueries.DeleteAllDocsFromCollection(collectionName)
+				// if the promise is resolved with the result
+				.then((deletionResult) => {
+					// set up a container for promises to add data
+					const additionPromises = [];
+					switch (dataSetToken) {
+					case 'nesoPeople':
+						additionPromises.push(
+							module.exports.AddAllNesoPeopleToDatabase(),
+						);
+						break;
+					case 'ultiProActiveEmployees':
+						additionPromises.push(
+							module.exports.AddAllUltiProActiveEmployeesToDatabase(),
+						);
+						break;
+					case 'graphGroups':
+						additionPromises.push(
+							module.exports.AddTrackedMSGraphGroupsToDatabase(),
+						);
+						break;
+					case 'hubAdmins':
+						additionPromises.push(
+							module.exports.AddHubComponentGroupAdminsToDatabase(),
+						);
+						break;
+					case 'edgeCaseManagers':
+						additionPromises.push(
+							module.exports.AddTempEdgeCaseManagersToDatabase(),
+						);
+						break;
+					default:
+						break;
+					}
+					Promise.all(additionPromises)
+						// if the promise is resolved with the result
+						.then((insertionResult) => {
+							// resolve this promise with the result
+							resolve(insertionResult);
+						})
+						// if the promise is rejected with an error
+						.catch((insertionError) => {
+							//  reject this promise with an error
+							reject({
+								statusCode: 500,
+								body: JSON.stringify(insertionError),
+							});
+						});
+				})
+				// if the promise is rejected with an error, then reject this promise with an error
+				.catch((deletionError) => {
+					reject({
+						statusCode: 500,
+						body: JSON.stringify(deletionError),
+					});
+				});
+		}),
 
 	AddAllNesoPeopleToDatabase: () =>
 		// return a new promise
@@ -157,7 +295,6 @@ module.exports = {
 					reject(nesoError);
 				});
 		}),
-	
 
 	/**
 	 * @name AddAllUltiProActiveEmployeesToDatabase
@@ -393,155 +530,56 @@ module.exports = {
 		}),
 
 	/**
-	 * @name SyncSpecifiedRawData
+	 * @name AddHubComponentGroupAdminsToDatabase
 	 * @function
 	 * @async
-	 * @description Sync (delete, fetch, insert) a specific set of raw data.
-	 * @param {string} dataSetToken - e.g., 'ultiProActiveEmployees', 'graphGroups', 'hubAdmins'
+	 * @description Get The Hub's Component Group Admins from SPO via Graph.
+	 * Insert into 'peopleRawMSGraphHubComponentGroupAdmins' collection.
 	 */
 
-	SyncSpecifiedRawData: (dataSetToken) =>
+	AddTempEdgeCaseManagersToDatabase: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			let collectionName = '';
-			switch (dataSetToken) {
-			case 'nesoPeople':
-				collectionName = 'peopleRawTempNesoAD';
-				break;
-			case 'ultiProActiveEmployees':
-				collectionName = 'peopleRawUltiProActiveEmployees';
-				break;
-			case 'graphGroups':
-				collectionName = 'peopleRawMSGraphGroups';
-				break;
-			case 'hubAdmins':
-				collectionName = 'peopleRawMSGraphHubComponentGroupAdmins';
-				break;
-			default:
-				break;
-			}
-			// get a promise to delete all documents
-			DataQueries.DeleteAllDocsFromCollection(collectionName)
-				// if the promise is resolved with the result
-				.then((deletionResult) => {
-					// set up a container for promises to add data
-					const additionPromises = [];
-					switch (dataSetToken) {
-					case 'nesoPeople':
-						additionPromises.push(
-							module.exports.AddAllNesoPeopleToDatabase(),
-						);
-						break;
-					case 'ultiProActiveEmployees':
-						additionPromises.push(
-							module.exports.AddAllUltiProActiveEmployeesToDatabase(),
-						);
-						break;
-					case 'graphGroups':
-						additionPromises.push(
-							module.exports.AddTrackedMSGraphGroupsToDatabase(),
-						);
-						break;
-					case 'hubAdmins':
-						additionPromises.push(
-							module.exports.AddHubComponentGroupAdminsToDatabase(),
-						);
-						break;
-					default:
-						break;
-					}
-					Promise.all(additionPromises)
+			// get a promise to return the items from the 'Component Group Log' list in 'hubprod' site
+			MSGraph.ReturnAllSpecifiedDataFromGraph('sites/bmos.sharepoint.com,83c7fe0f-025f-43a2-986c-cb8cb6ee600f,cb940f09-8f4d-4384-a92b-24c2e4c5a290/lists/59cd4336-bd10-4ac0-a6c4-239ea93e3ebc/items?expand=fields(select=Title)')
+				// if the promise is resolved with the result, then resolve this promise with the result
+				.then((queryResult) => {
+					// set up var to contain all of the component groups and their admins
+					const managers = [];
+					// iterate over query result
+					queryResult.allValues.forEach((listItem) => {
+						managers.push({ account: listItem.fields.Title });
+					});
+					// get a promise to insert the component groups and their admins
+					DataQueries.InsertDocIntoCollection(managers, 'peopleRawTempEdgeCaseManagers')
 						// if the promise is resolved with the result
-						.then((insertionResult) => {
+						.then((insertResult) => {
 							// resolve this promise with the result
-							resolve(insertionResult);
+							resolve({
+								statusCode: 200,
+								body: JSON.stringify(insertResult),
+							});
 						})
 						// if the promise is rejected with an error
-						.catch((insertionError) => {
-							//  reject this promise with an error
+						.catch((insertError) => {
+							// reject this promise with an error
 							reject({
 								statusCode: 500,
-								body: JSON.stringify(insertionError),
+								body: JSON.stringify(insertError),
 							});
 						});
 				})
-				// if the promise is rejected with an error, then reject this promise with an error
-				.catch((deletionError) => {
+				// if the promise is rejected with an error
+				.catch((error) => {
+					// reject this promise with an error
 					reject({
 						statusCode: 500,
-						body: JSON.stringify(deletionError),
+						body: JSON.stringify(error),
 					});
 				});
 		}),
 
-	/**
-	 * @name SyncAllRawData
-	 * @function
-	 * @async
-	 * @description Sync (delete, fetch, insert) all raw data sets.
-	 */
-
-	SyncAllRawData: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get promises to sync specific raw data sets
-			Promise.all([
-				module.exports.SyncSpecifiedRawData('peopleRawTempNesoAD'),
-				module.exports.SyncSpecifiedRawData('ultiProActiveEmployees'),
-				module.exports.SyncSpecifiedRawData('graphGroups'),
-				module.exports.SyncSpecifiedRawData('hubAdmins'),
-			])
-				// if all of those promises were resolved
-				.then((syncResults) => {
-					// resolve this promise
-					resolve({
-						statusCode: 200,
-						body: JSON.stringify(syncResults),
-					});
-				})
-				// if any one promise is rejected with an error
-				.catch((syncError) => {
-					// reject this promise with that error
-					reject({
-						statusCode: 500,
-						body: JSON.stringify(syncError),
-					});
-				});
-		}),
-
-	/**
-	 * @name ProcessAllPeopleFlat
-	 * @function
-	 * @async
-	 * @description Construct flat set of individual people. 
-	 * Insert into 'peopleFlat' collection. This is the base people data set.
-	 */
-
-	ReturnPersonIsManager: (personAccount, allEmployees, edgeCaseManagers) => {
-		// set up a flag indicating that this person is not a manager
-		let thisPersonIsManager = false;
-		// iterate over employees
-		allEmployees.forEach((employee) => {
-			// if this employee's account matched person account
-			if (employee.account === personAccount) {
-				// alter manager flag
-				thisPersonIsManager = true;
-			}
-		});
-		// if we still haven't determined that this person is a manager
-		if (!thisPersonIsManager) {
-			// iterate over edge case managers
-			edgeCaseManagers.forEach((edgeCaseManager) => {
-				// if this edge case manager's account matches person account
-				if (edgeCaseManager.account === personAccount) {
-					// alter manager flag
-					thisPersonIsManager = true;
-				}
-			});
-		}
-		// return manager flag
-		return thisPersonIsManager;
-	},
+	// --- PROCESS DATA
 
 	ProcessAllDivisions: () =>
 		// return a new promise
@@ -575,8 +613,8 @@ module.exports = {
 										// 		to the array of all divisions
 										allDivisions.push({
 											orgLevel1Code: employee.orgLevel1Code,
-											name: nesoPerson.division,
-											nameWithCode: `${employee.orgLevel1Code} - ${nesoPerson.division}`,
+											name: Utilities.ReplaceAll('\\.', '', nesoPerson.division),
+											nameWithCode: `${employee.orgLevel1Code} - ${Utilities.ReplaceAll('\\.', '', nesoPerson.division)}`,
 										});
 									}
 								});
@@ -657,8 +695,8 @@ module.exports = {
 										// 		to the array of all departments
 										allDepartments.push({
 											orgLevel2Code: employee.orgLevel2Code,
-											name: nesoPerson.department,
-											nameWithCode: `${employee.orgLevel2Code} - ${nesoPerson.department}`,
+											name: Utilities.ReplaceAll('\\.', '', nesoPerson.department),
+											nameWithCode: `${employee.orgLevel2Code} - ${Utilities.ReplaceAll('\\.', '', nesoPerson.department)}`,
 										});
 									}
 								});
@@ -706,37 +744,15 @@ module.exports = {
 					reject(returnDataError);
 				});
 		}),
-	
-	/* ProcessAllPeopleData: () => 
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve setting indicating whether 
-			// 		people processing is permitted or not
-			module.exports.ReturnPeopleProcessingPermitted()
-				// if the promise was resolved
-				.then((permittedResults) => {
-					// if it's ok to process people
-					if (permittedResults.dataProcessingPermitted) {
-					
-					// if it's NOT ok to process people
-					} else {
-						// reject this promise with the error
-						reject({
-							error: true,
-							permittedError: 'dataProcessingPermitted === false',
-						});
-					}
-				})
-				// if the promise is rejected with an error
-				.catch((permittedError) => {
-					// reject this promise with the error
-					reject({
-						error: true,
-						permittedError: 'dataProcessingPermitted === false',
-					});
-				});
-		}), */
-	
+
+	/**
+	 * @name ProcessPeopleFlat
+	 * @function
+	 * @async
+	 * @description Construct flat set of individual people. 
+	 * Insert into 'peopleFlat' collection. This is the base people data set.
+	 */
+
 	ProcessPeopleFlat: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -781,6 +797,7 @@ module.exports = {
 						// get flag indicating whether or not this person is a manager
 						const thisEmpoyeeIsManager = 
 							module.exports.ReturnPersonIsManager(
+								employee.upEmployeeID,
 								employee.account,
 								employees,
 								edgeCaseManagers,
@@ -805,9 +822,13 @@ module.exports = {
 							email: employee.email,
 							officePhone: employee.phone,
 							manager: thisEmpoyeeManager,
-							department: 
-								departments.find((element) => 
+							department:
+								departments.find((element) =>
 									element.orgLevel2Code === employee.orgLevel2Code)
+									.name,
+							division:
+								divisions.find((element) =>
+									element.orgLevel1Code === employee.orgLevel1Code)
 									.name,
 							jobGroupCode: employee.jobGroupCode,
 						};
@@ -922,122 +943,21 @@ module.exports = {
 	ProcessPeopleByDivisionsDepartments: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get a promise to retrieve setting indicating whether 
-			// 		people processing is permitted or not
-			module.exports.ReturnPeopleProcessingPermitted()
-				// if the promise was resolved
-				.then((permittedResults) => {
-					if (permittedResults.dataProcessingPermitted) {
-						// get a promise to 
-						module.exports.ReturnPeopleByDivisionsDepartmentsFromPeopleFlat()
-							// if the promise is resolved with a result
-							.then((returnResults) => {
-								// get a promise to delete all documents
-								DataQueries.DeleteAllDocsFromCollection('peopleByDivisionsDepartments')
-									// if the promise is resolved with the result
-									.then((deletionResult) => {
-										// get a promise to insert allPeople
-										DataQueries.InsertDocIntoCollection(
-											returnResults.peopleByDivisionsDepartments,
-											'peopleByDivisionsDepartments',
-										)
-											// if the promise is resolved with the result
-											.then((insertResult) => {
-												// resolve this promise with the result
-												resolve({
-													statusCode: 200,
-													// body: JSON.stringify(insertResult),
-												});
-											})
-											// if the promise is rejected with an error
-											.catch((insertError) => {
-												// reject this promise with an error
-												reject({
-													statusCode: 500,
-													body: JSON.stringify(insertError),
-												});
-											});
-									})
-									// if the promise is rejected with an error
-									.catch((deletionError) => {
-										// reject this promise with an error
-										reject({
-											statusCode: 500,
-											body: JSON.stringify(deletionError),
-										});
-									});
-							})
-							// if the promise is rejected with an error
-							.catch((error) => {
-								// reject this promise with the error
-								reject(error);
-							});
-					} else {
-						// reject this promise with the error
-						reject({
-							error: true,
-							permittedError: 'dataProcessingPermitted === false',
-						});
-					}
-				})
-				// if the promise is rejected with an error
-				.catch((permittedError) => {
-					// reject this promise with the error
-					reject({
-						error: true,
-						permittedError: 'dataProcessingPermitted === false',
-					});
-				});
-		}),
-
-	/* ProcessPeopleByDivisionsDepartments: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve setting indicating whether 
-			// 		people processing is permitted or not
-			module.exports.ReturnPeopleProcessingPermitted()
-				// if the promise was resolved
-				.then((permittedResults) => {
-					if (permittedResults.dataProcessingPermitted) {
-					} else {
-						// reject this promise with the error
-						reject({
-							error: true,
-							permittedError: 'dataProcessingPermitted === false',
-						});
-					}
-				})
-				// if the promise is rejected with an error
-				.catch((permittedError) => {
-					// reject this promise with the error
-					reject({
-						error: true,
-						permittedError: 'dataProcessingPermitted === false',
-					});
-				});
-		}), */
-
-	ReturnPeopleByDivisionsDepartmentsFromPeopleFlat: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
 			// get a promise to retrieve all docs
 			DataQueries.ReturnAllDocsFromCollection('peopleFlat')
 				// if the promise is resolved with the docs
-				.then((peopleFlatResult) => {
+				.then((queryResult) => {
 					// extract the data from the result
-					const peopleFlat = peopleFlatResult.docs;
+					const peopleFlat = queryResult.docs;
 					// set up empty object to receive the new data
 					const peopleByDivisionsDepartments = {};
 					// iterate over peopleFlat
 					peopleFlat.forEach((person, personIndex) => {
 						// if this user has a division and department
-						if (person.division && person.division !== '' &&
-							person.department && person.department !== '') {
-							// get copies of the division and department names without 
-							// 		characters that are illegal as MongoDB key names
-							const personDivision = Utilities.ReplaceAll('\\.', '', person.division);
-							// console.log(personDivision);
-							const personDepartment = Utilities.ReplaceAll('\\.', '', person.department);
+						if (person.division && person.department) {
+							// extract division and department names for convenient use as keys
+							const personDivision = person.division;
+							const personDepartment = person.department;
 							// if this user's division is not already in peopleByDivisionsDepartments
 							if (typeof (peopleByDivisionsDepartments[personDivision]) === 'undefined') {
 								// add it as an empty object
@@ -1058,196 +978,375 @@ module.exports = {
 							// determine whether or not this user's manager 
 							// 		is already in peopleByDivisionsDepartments
 							// if this user's manager exists
-							if (person.manager) {
-								// set up flag indicating that manager is not already added
-								let thisManagerAlreadyAdded = false;
-								// iterate over managers already added
-								peopleByDivisionsDepartments[personDivision][personDepartment].managers
-									.forEach((manager, managerIndex) => {
-										// if this already added manager is the user's manager
-										if (manager === person.manager) {
-											// set flag to indicate that this user's manager was already added
-											thisManagerAlreadyAdded = true;
-										}
-									});
-								// if this user's manager is not already added to peopleByDivisionsDepartments
-								if (!thisManagerAlreadyAdded) {
-									// add this user's manager's account to peopleByDivisionsDepartments
-									peopleByDivisionsDepartments[personDivision][personDepartment]
-										.managers.push(person.manager);
-								}
+							if (person.roles && person.roles.includes('manager')) {
+								peopleByDivisionsDepartments[personDivision][personDepartment]
+									.managers.push(person);
 							}
 						}
 					});
-					// effectively, convert department managers from accounts to profiles
-					// get an array of peopleByDivisionsDepartments's property keys
-					const divisionKeys = Object.keys(peopleByDivisionsDepartments);
-					// set up vars for tracking whether or not all divisions have been processed
-					const divisionsQuantity = divisionKeys.length;
-					let divisionsProcessedQuantity = 0;
-					// iterate over the array of peopleByDivisionsDepartments's property keys
-					divisionKeys.forEach((divisionKey) => {
-						// increment the number of divisions processed
-						divisionsProcessedQuantity += 1;
-						// get an array of this division's property keys
-						const departmentKeys = Object.keys(peopleByDivisionsDepartments[divisionKey]);
-						// set up vars for tracking whether or not all departments have been processed
-						const adDepartmentsQuantity = departmentKeys.length;
-						let departmentsProcessedQuantity = 0;
-						// iterate over the array of this division object's property keys; 
-						// 		these are departments
-						departmentKeys.forEach((departmentKey) => {
-							// increment the number of departments processed
-							departmentsProcessedQuantity += 1;
-							// extract a copt of the managers array
-							const thisDeptManagerAccounts =
-								peopleByDivisionsDepartments[divisionKey][departmentKey].managers;
-							// delete the managers array
-							delete peopleByDivisionsDepartments[divisionKey][departmentKey].managers;
-							// set up vars for tracking whether or not all departments have been processed
-							const thisDeptManagerAccountsQuantity = thisDeptManagerAccounts.length;
-							let thisDeptManagerAccountsProcessedQuantity = 0;
-							// for each manager account
-							thisDeptManagerAccounts.forEach((managerAccount) => {
-								// get a promise to look up the corresponding user profile
-								DataQueries.ReturnOneSpecifiedDocFromCollection(
-									'peopleFlat',
-									{ account: managerAccount },
-									{},
-								)
-									// if the promise was resolved
-									.then((managerAccountResult) => {
-										// if this department doesn't already have a managers array
-										if (!peopleByDivisionsDepartments[divisionKey][departmentKey].managers) {
-											// create a new, empty managers array
-											peopleByDivisionsDepartments[divisionKey][departmentKey].managers = [];
-										}
-										// add the returned user profile to the new manager array
-										peopleByDivisionsDepartments[divisionKey][departmentKey]
-											.managers.push(managerAccountResult.docs);
-										// increment the number of this department's manager accounts
-										// 		that have been processed
-										thisDeptManagerAccountsProcessedQuantity += 1;
-										// if we're through processing all manager for all departments 
-										// 		for all divisions
-										if (
-											(divisionsQuantity === divisionsProcessedQuantity) &&
-											(adDepartmentsQuantity === departmentsProcessedQuantity) &&
-											(thisDeptManagerAccountsQuantity === thisDeptManagerAccountsProcessedQuantity)
-										) {
-											// resolve this promise with a message and the data
-											resolve({
-												error: false,
-												csvError: false,
-												peopleByDivisionsDepartments,
-											});
-										}
-									})
-									// if the promise was rejects
-									.catch((managerAccountError) => {
-										// increment the number of this department's manager accounts
-										// 		that have been processed
-										thisDeptManagerAccountsProcessedQuantity += 1;
-										// if we're through processing all manager for all departments 
-										// 		for all divisions
-										if (
-											(divisionsQuantity === divisionsProcessedQuantity) &&
-											(adDepartmentsQuantity === departmentsProcessedQuantity) &&
-											(thisDeptManagerAccountsQuantity === thisDeptManagerAccountsProcessedQuantity)
-										) {
-											// resolve this promise with a message and the data
-											resolve({
-												error: false,
-												csvError: false,
-												peopleByDivisionsDepartments,
-											});
-										}
+					// get a promise to delete all documents
+					DataQueries.DeleteAllDocsFromCollection('peopleByDivisionsDepartments')
+						// if the promise is resolved with the result
+						.then((deletionResult) => {
+							// get a promise to insert allPeople
+							DataQueries.InsertDocIntoCollection(
+								peopleByDivisionsDepartments,
+								'peopleByDivisionsDepartments',
+							)
+								// if the promise is resolved with the result
+								.then((insertResult) => {
+									// resolve this promise with the result
+									resolve({
+										statusCode: 200,
+										// body: JSON.stringify(insertResult),
 									});
+								})
+								// if the promise is rejected with an error
+								.catch((insertError) => {
+									// reject this promise with an error
+									reject({
+										statusCode: 500,
+										body: JSON.stringify(insertError),
+									});
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((deletionError) => {
+							// reject this promise with an error
+							reject({
+								statusCode: 500,
+								body: JSON.stringify(deletionError),
 							});
 						});
+				})
+				// if the promise is rejected with an error
+				.catch((queryError) => {
+					// reject this promise with an error
+					reject(queryError);
+				});
+		}),
+
+	ProcessManagersWithFlatDownlines: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get promises to retrieve people in a division and department hierarchy object
+			// 		and as a flat array
+			Promise.all([
+				DataQueries.ReturnAllDocsFromCollection('peopleByDivisionsDepartments'),
+				DataQueries.ReturnAllDocsFromCollection('peopleFlat'),
+			])
+				// when all promises have resolved
+				.then((queryResults) => {
+					// extract results for convenience
+					const peopleByDivDept = queryResults[0].docs[0];
+					const peopleFlat = queryResults[1].docs;
+					delete peopleByDivDept._id;
+					// set up empty array to receive the final data
+					const allManagers = [];
+					// iterate over the array of peopleByDivDept's property keys
+					Object.keys(peopleByDivDept).forEach((divisionKey) => {
+						// iterate over the array of this division object's property keys 
+						// 		(department names)
+						Object.keys(peopleByDivDept[divisionKey]).forEach((departmentKey) => {
+							// if this department has managers
+							if (peopleByDivDept[divisionKey][departmentKey].managers) {
+								// for each manager in this department
+								peopleByDivDept[divisionKey][departmentKey].managers
+									.forEach((managerProfile) => {
+										// preserve function param
+										const manager = Utilities.ReturnUniqueObjectGivenAnyValue(
+											JSON.stringify(managerProfile),
+										);
+										// delete the Mongo ID
+										delete manager._id;
+										// set flag indicating that this manager hasn't
+										// 		already beed added to the final data
+										let thisManagerAlreadyAdded = false;
+										// iterate over managers already added to the final data
+										allManagers.forEach((addedManagerProfile) => {
+											// if this already-added manager is the same as 
+											// 		this department's manager
+											if (
+												manager && manager.account ===
+												addedManagerProfile.account
+											) {
+												// modify flag to indicate that 
+												// 		this department's manager was 
+												// already added
+												thisManagerAlreadyAdded = true;
+											}
+										});
+										// if this manager hasn't already been added
+										if (!thisManagerAlreadyAdded) {
+											// set up vars:
+											// empty object to receive everyone 
+											// 		who reports to this manager, 
+											// 		structured by divisions and departments
+											const downline = [];
+											// array of users for whom to look up reportees
+											const lookupsToBeProcessed = [manager.account];
+											// array of users for whom we've already 
+											// 		looked up reportees
+											const lookupsProcessed = [];
+											// while there is a difference in 
+											// 		lookups to be processed and 
+											// 		those already processed
+											while (lookupsToBeProcessed.length !== lookupsProcessed.length) {
+												// for each users for whom we should look up reportees
+												// eslint-disable-next-line no-loop-func
+												lookupsToBeProcessed.forEach((lookupToProcess) => {
+													// if we haven't already processed this lookup
+													if (lookupsProcessed.indexOf(lookupToProcess) === -1) {
+														// for each user in the flat list of users
+														peopleFlat.forEach((personProfile) => {
+															// if this user reports to this manager
+															if (personProfile.manager === lookupToProcess) {
+																// preserve function param
+																const person = Utilities.ReturnUniqueObjectGivenAnyValue(
+																	JSON.stringify(personProfile),
+																);
+																// delete the Mongo ID
+																delete person._id;
+																// add this user to downline
+																downline.push(person);
+																// add this user to lookupsToBeProcessed, 
+																// 		so that we'll also look up 
+																// 		reportees for this user
+																lookupsToBeProcessed.push(person.account);
+															}
+														});
+														// whether or not any reportees were 
+														// 		found, signify that we performed 
+														// 		the lookup for this manager
+														lookupsProcessed.push(lookupToProcess);
+													}
+												});
+											}
+											// alphabetize the downline
+											downline.sort(module.exports.ReturnUserNameWeightRelativeToAnother);
+											// add downline to this manager
+											manager.downline = downline;
+											// push this manager to the final data
+											allManagers.push(manager);
+										}
+									});
+							}
+						});
 					});
+					// alphabetize the managers
+					allManagers.sort(module.exports.ReturnPersonNameWeightRelativeToAnother);
+					// get a promise to delete all documents
+					DataQueries.DeleteAllDocsFromCollection('peopleManagersWithFlatDownlines')
+						// if the promise is resolved with the result
+						.then((deletionResult) => {
+							// get a promise to insert allPeople
+							DataQueries.InsertDocIntoCollection(
+								allManagers,
+								'peopleManagersWithFlatDownlines',
+							)
+								// if the promise is resolved with the result
+								.then((insertResult) => {
+									// resolve this promise with the result
+									resolve({
+										statusCode: 200,
+										body: JSON.stringify(insertResult),
+									});
+								})
+								// if the promise is rejected with an error
+								.catch((insertError) => {
+									// reject this promise with an error
+									reject({
+										statusCode: 500,
+										body: JSON.stringify(insertError),
+									});
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((deletionError) => {
+							// reject this promise with an error
+							reject({
+								statusCode: 500,
+								body: JSON.stringify(deletionError),
+							});
+						});
 				})
-				// if the promise is rejected with an error
-				.catch((peopleFlatError) => {
-					// reject this promise with an error
-					reject(peopleFlatError);
-				});
-		}),
-
-	ReturnDepartmentsFromPeopleByDivisionsDepartments: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve all docs
-			DataQueries.ReturnAllDocsFromCollection('peopleByDivisionsDepartments')
-				// if the promise is resolved with the docs
-				.then((divDeptResult) => {
-					// resolve this promise with the docs
-					resolve(divDeptResult);
-				})
-				// if the promise is rejected with an error
-				.catch((divDeptError) => {
-					// reject this promise with an error
-					reject(divDeptError);
-				});
-		}),
-
-	ReturnManagersFromPeopleFlat: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve all docs
-			DataQueries.ReturnAllDocsFromCollection('peopleFlat')
-				// if the promise is resolved with the docs
-				.then((peopleFlatResult) => {
-					// resolve this promise with the docs
-					resolve(peopleFlatResult);
-				})
-				// if the promise is rejected with an error
-				.catch((peopleFlatError) => {
-					// reject this promise with an error
-					reject(peopleFlatError);
-				});
-		}),
-
-	ReturnManagersWithFlatDownlinesFromDBQueries: () =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to retrieve all docs
-			Promise.all([
-				module.exports.ReturnAllUsersByDivisionDepartment(),
-				module.exports.ReturnAllPeople(),
-			])
-				// if the promise is resolved with the docs
-				.then((queryResult) => {
-					// resolve this promise with the docs
-					resolve(queryResult);
-				})
-				// if the promise is rejected with an error
+				// if the promise to get all ad users from csv was rejected with an error
 				.catch((queryError) => {
-					// reject this promise with an error
+					// reject this promise with the error
 					reject(queryError);
 				});
 		}),
 
-	ReturnManagersWithHierarchicalDownlinesFromDBQueries: () =>
+	ProcessManagersWithHierarchicalDownlines: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get a promise to retrieve all docs
+			// get promises to retrieve people in a division and department hierarchy object
+			// 		and as a flat array
 			Promise.all([
-				module.exports.ReturnAllUsersByDivisionDepartment(),
-				module.exports.ReturnAllPeople(),
+				DataQueries.ReturnAllDocsFromCollection('peopleByDivisionsDepartments'),
+				DataQueries.ReturnAllDocsFromCollection('peopleFlat'),
 			])
-				// if the promise is resolved with the docs
-				.then((queryResult) => {
-					// resolve this promise with the docs
-					resolve(queryResult);
+				// when all promises have resolved
+				.then((queryResults) => {
+					// extract results for convenience
+					const peopleByDivDept = queryResults[0].docs[0];
+					const peopleFlat = queryResults[1].docs;
+					delete peopleByDivDept._id;
+					// set up empty array to receive the final data
+					const allManagers = [];
+					// iterate over the array of peopleByDivDept's property keys
+					Object.keys(peopleByDivDept).forEach((divisionKey) => {
+						// iterate over the array of this division object's property keys 
+						// 		(department names)
+						Object.keys(peopleByDivDept[divisionKey]).forEach((departmentKey) => {
+							// if this department has managers
+							if (peopleByDivDept[divisionKey][departmentKey].managers) {
+								// for each manager in this department
+								peopleByDivDept[divisionKey][departmentKey].managers
+									.forEach((managerProfile) => {
+										// preserve function param
+										const manager = Utilities.ReturnUniqueObjectGivenAnyValue(
+											JSON.stringify(managerProfile),
+										);
+										// delete the Mongo ID
+										delete manager._id;
+										// set flag indicating that this manager hasn't
+										// 		already beed added to the final data
+										let thisManagerAlreadyAdded = false;
+										// iterate over managers already added to the final data
+										allManagers.forEach((addedManagerProfile) => {
+											// if this already-added manager is the same as 
+											// 		this department's manager
+											if (
+												manager && manager.account ===
+													addedManagerProfile.account
+											) {
+												// modify flag to indicate that 
+												// 		this department's manager was 
+												// already added
+												thisManagerAlreadyAdded = true;
+											}
+										});
+										// if this manager hasn't already been added
+										if (!thisManagerAlreadyAdded) {
+											// set up vars:
+											// empty object to receive everyone 
+											// 		who reports to this manager, 
+											// 		structured by divisions and departments
+											const downline = {};
+											// array of users for whom to look up reportees
+											const lookupsToBeProcessed = [manager.account];
+											// array of users for whom we've already 
+											// 		looked up reportees
+											const lookupsProcessed = [];
+											// while there is a difference in 
+											// 		lookups to be processed and 
+											// 		those already processed
+											while (lookupsToBeProcessed.length !== lookupsProcessed.length) {
+												// for each users for whom we should look up reportees
+												// eslint-disable-next-line no-loop-func
+												lookupsToBeProcessed.forEach((lookupToProcess) => {
+													// if we haven't already processed this lookup
+													if (lookupsProcessed.indexOf(lookupToProcess) === -1) {
+														// for each user in the flat list of users
+														peopleFlat.forEach((personProfile) => {
+															// if this user reports to this manager
+															if (personProfile.manager === lookupToProcess) {
+																// preserve function param
+																const person = Utilities.ReturnUniqueObjectGivenAnyValue(
+																	JSON.stringify(personProfile),
+																);
+																// delete the Mongo ID
+																delete person._id;
+																// if this user's division is not already in downline
+																if (!downline[person.division]) {
+																	// add it as an empty object
+																	downline[person.division] = {};
+																}
+																// if this user's department is not already in downline
+																if (!downline[person.division][person.department]) {
+																	// add it as an empty array
+																	downline[person.division][person.department] = [];
+																}
+																// add this user to the department in downline
+																downline[person.division][person.department]
+																	.push(person);
+																// add this user to lookupsToBeProcessed, 
+																// 		so that we'll also look up 
+																// 		reportees for this user
+																lookupsToBeProcessed.push(person.account);
+															}
+														});
+														// whether or not any reportees were 
+														// 		found, signify that we performed 
+														// 		the lookup for this manager
+														lookupsProcessed.push(lookupToProcess);
+													}
+												});
+											}
+											// alphabetize the downline arrays:
+											// iterate over the division keys
+											Object.keys(downline).forEach((downlineDivisionKey) => {
+												// iterate over the department keys
+												Object.keys(downline[downlineDivisionKey])
+													.forEach((downlineDepartmentKey) => {
+														// alphabetize array
+														downline[downlineDivisionKey][downlineDepartmentKey]
+															.sort(module.exports.ReturnPersonNameWeightRelativeToAnother);
+													});
+											});
+											// add downline to this manager
+											manager.downline = downline;
+											// push this manager to the final data
+											allManagers.push(manager);
+										}
+									});
+							}
+						});
+					});
+					// alphabetize the managers
+					allManagers.sort(module.exports.ReturnPersonNameWeightRelativeToAnother);
+					// get a promise to delete all documents
+					DataQueries.DeleteAllDocsFromCollection('peopleManagersWithHierarchicalDownlines')
+						// if the promise is resolved with the result
+						.then((deletionResult) => {
+							// get a promise to insert allPeople
+							DataQueries.InsertDocIntoCollection(
+								allManagers,
+								'peopleManagersWithHierarchicalDownlines',
+							)
+								// if the promise is resolved with the result
+								.then((insertResult) => {
+									// resolve this promise with the result
+									resolve({
+										statusCode: 200,
+										body: JSON.stringify(insertResult),
+									});
+								})
+								// if the promise is rejected with an error
+								.catch((insertError) => {
+									// reject this promise with an error
+									reject({
+										statusCode: 500,
+										body: JSON.stringify(insertError),
+									});
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((deletionError) => {
+							// reject this promise with an error
+							reject({
+								statusCode: 500,
+								body: JSON.stringify(deletionError),
+							});
+						});
 				})
-				// if the promise is rejected with an error
+				// if the promise to get all ad users from csv was rejected with an error
 				.catch((queryError) => {
-					// reject this promise with an error
+					// reject this promise with the error
 					reject(queryError);
 				});
 		}),
-
 
 	// ----- DATA PULLS
 
@@ -1333,6 +1432,57 @@ module.exports = {
 					reject(error);
 				});
 		}); */
+
+
+	// --- UTILITIES, ANALYSIS
+
+	ReturnPersonIsManager: (personUltiProID, personAccount, allEmployees, edgeCaseManagers) => {
+		// set up a flag indicating that this person is not a manager
+		let thisPersonIsManager = false;
+		// iterate over employees
+		allEmployees.forEach((employee) => {
+			// if this employee's account matched person account
+			if (employee.upSupervisorId === personUltiProID) {
+				// alter manager flag
+				thisPersonIsManager = true;
+			}
+		});
+		// if we still haven't determined that this person is a manager
+		if (!thisPersonIsManager) {
+			// iterate over edge case managers
+			edgeCaseManagers.forEach((edgeCaseManager) => {
+				// if this edge case manager's account matches person account
+				if (edgeCaseManager.account === personAccount) {
+					// alter manager flag
+					thisPersonIsManager = true;
+				}
+			});
+		}
+		// return manager flag
+		return thisPersonIsManager;
+	},
+	/**
+	 * @name ReturnPersonNameWeightRelativeToAnother
+	 * @function
+	 * @description Used in alphabetizing sets of people by last name.
+	 */
+
+	ReturnPersonNameWeightRelativeToAnother: (a, b) => {
+		if (a.lastName < b.lastName) {
+			return -1;
+		}
+		if (a.lastName > b.lastName) {
+			return 1;
+		}
+		if (a.firstName < b.firstName) {
+			return -1;
+		}
+		if (a.firstName > b.firstName) {
+			return 1;
+		}
+		return 0;
+	},
+
 };
 
-module.exports.AddAllUltiProActiveEmployeesToDatabase();
+module.exports.ProcessManagersWithFlatDownlines();
