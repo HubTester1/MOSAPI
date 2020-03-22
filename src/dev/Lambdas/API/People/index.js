@@ -7,6 +7,7 @@
 const Access = require('access');
 const People = require('people');
 const Response = require('response');
+const Utilities = require('utilities');
 
 module.exports = {
 
@@ -137,66 +138,6 @@ module.exports = {
 	 * @description XXX
 	 */
 
-	HandleReturnOnePersonRequest: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				People.ReturnPeopleWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					People.ReturnOnePerson()
-						// if the promise is resolved with a result
-						.then((queryResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: queryResult.docs,
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((queryError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 500,
-								responder: resolve,
-								content: {
-									error: queryError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}),
-
-	/**
-	 * @name XXX
-	 * @function
-	 * @async
-	 * @description XXX
-	 */
-
 	HandleReturnAllPeopleByDivisionDepartmentRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -215,7 +156,7 @@ module.exports = {
 								statusCode: 200,
 								responder: resolve,
 								content: {
-									payload: queryResult.docs,
+									payload: queryResult,
 									event,
 									context,
 								},
@@ -267,7 +208,10 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					People.ReturnAllPeopleInDepartment()
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnAllPeopleInDepartment(eventCopy.body.deptartmentName)
 						// if the promise is resolved with a result
 						.then((queryResult) => {
 							// send indicative response
@@ -327,67 +271,10 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					People.ReturnAllPeopleInDivision()
-						// if the promise is resolved with a result
-						.then((queryResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: queryResult.docs,
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((queryError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 500,
-								responder: resolve,
-								content: {
-									error: queryError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}),
-
-	/**
-	 * @name XXX
-	 * @function
-	 * @async
-	 * @description XXX
-	 */
-
-	HandleReturnAllDepartmentsRequest: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				People.ReturnPeopleWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					People.ReturnAllDepartments()
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnAllPeopleInDivision(eventCopy.body.divisionName)
 						// if the promise is resolved with a result
 						.then((queryResult) => {
 							// send indicative response
@@ -497,66 +384,6 @@ module.exports = {
 	 * @description XXX
 	 */
 
-	HandleReturnDirectReportsForOneManagerRequest: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				People.ReturnPeopleWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					People.ReturnDirectReportsForOneManager()
-						// if the promise is resolved with a result
-						.then((queryResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: queryResult.docs,
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((queryError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 500,
-								responder: resolve,
-								content: {
-									error: queryError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}),
-
-	/**
-	 * @name XXX
-	 * @function
-	 * @async
-	 * @description XXX
-	 */
-
 	HandleReturnAllManagersWithFlatDownlineRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -617,7 +444,7 @@ module.exports = {
 	 * @description XXX
 	 */
 
-	HandleReturnAllManagersWithHierarchicalDownlineRequest: (event, context) =>
+	HandleReturnManagersHierarchicalDownlineRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
@@ -677,6 +504,69 @@ module.exports = {
 	 * @description XXX
 	 */
 
+	HandleReturnDirectReportsForOneManagerRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				People.ReturnPeopleWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnDirectReportsForOneManager(eventCopy.body.account)
+						// if the promise is resolved with a result
+						.then((queryResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: queryResult.docs,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((queryError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: queryError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
+	 * @name XXX
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
 	HandleReturnOneManagerWithFlatDownlineRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
@@ -687,7 +577,10 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					People.ReturnOneManagerWithFlatDownline()
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnOneManagerWithFlatDownline(eventCopy.body.account)
 						// if the promise is resolved with a result
 						.then((queryResult) => {
 							// send indicative response
@@ -747,7 +640,73 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					People.ReturnOneManagerWithWithHierarchicalDownline()
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnOneManagerWithWithHierarchicalDownline(eventCopy.body.account)
+						// if the promise is resolved with a result
+						.then((queryResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: queryResult.docs,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((queryError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: queryError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
+	 * @name XXX
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
+	HandleReturnOnePersonRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				People.ReturnPeopleWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					// ensure event is an object
+					const eventCopy = 
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnOnePerson(eventCopy.body.account)
 						// if the promise is resolved with a result
 						.then((queryResult) => {
 							// send indicative response
@@ -807,7 +766,130 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
-					People.ReturnFullFlatUplineForOneUser()
+					// ensure event is an object
+					const eventCopy =
+						Utilities.ReturnUniqueObjectGivenAnyValue(event);
+					People.ReturnFullFlatUplineForOneUser(eventCopy.body.account)
+						// if the promise is resolved with a result
+						.then((queryResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: queryResult,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((queryError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: queryError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
+	 * @name XXX
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
+	HandleReturnAllDepartmentsRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				People.ReturnPeopleWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					People.ReturnAllDepartments()
+						// if the promise is resolved with a result
+						.then((queryResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: queryResult.docs,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((queryError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: queryError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
+	 * @name XXX
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
+	HandleReturnAllDivisionsRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				People.ReturnPeopleWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					People.ReturnAllDivisions()
 						// if the promise is resolved with a result
 						.then((queryResult) => {
 							// send indicative response

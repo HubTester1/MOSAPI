@@ -10,6 +10,7 @@
 	"dependencies": {
 		"access": "file:../../../Modules/Access",
 		"people": "file:../../../Modules/People",
-		"response": "file:../../../Modules/Response"
+		"response": "file:../../../Modules/Response",
+		"utilities": "file:../../../Modules/Utilities"
 	}
 }

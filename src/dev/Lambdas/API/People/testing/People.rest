@@ -2,6 +2,12 @@
 
 
 #########
+# Get settings
+GET {{baseURI}}/people/settings
+Authorization: Bearer {{accessToken}}
+
+
+#########
 # Get all people
 GET {{baseURI}}/people/all
 Authorization: Bearer {{accessToken}}

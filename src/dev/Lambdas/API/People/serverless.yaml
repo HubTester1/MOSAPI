@@ -8,17 +8,115 @@ custom:
 
 # -------------------------------------------------------
 
-    service: api-XXX
+    service: api-people
     memorySize: 256
     timeout: 5
 
 functions:
-  XXX:
-    handler: index.XXX
+  HandleSettingsRequest:
+    handler: index.HandleSettingsRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.XXX.XXX}
-          method: XXX
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.settings}
+          method: get
+          cors: true
+  HandleReturnAllPeopleRequest:
+    handler: index.HandleReturnAllPeopleRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.allFlat}
+          method: get
+          cors: true
+  HandleReturnAllPeopleByDivisionDepartmentRequest:
+    handler: index.HandleReturnAllPeopleByDivisionDepartmentRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.allHierarchy}
+          method: get
+          cors: true
+  HandleReturnAllPeopleInDepartmentRequest:
+    handler: index.HandleReturnAllPeopleInDepartmentRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetDepartment}
+          method: post
+          cors: true
+  HandleReturnAllPeopleInDivisionRequest:
+    handler: index.HandleReturnAllPeopleInDivisionRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetDivision}
+          method: post
+          cors: true
+  HandleReturnAllManagersFlatRequest:
+    handler: index.HandleReturnAllManagersFlatRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagers}
+          method: get
+          cors: true
+  HandleReturnAllManagersWithFlatDownlineRequest:
+    handler: index.HandleReturnAllManagersWithFlatDownlineRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagersDownlinesFlat}
+          method: get
+          cors: true
+  HandleReturnManagersHierarchicalDownlineRequest:
+    handler: index.HandleReturnManagersHierarchicalDownlineRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagersDownlinesHierarchical}
+          method: get
+          cors: true
+  HandleReturnDirectReportsForOneManagerRequest:
+    handler: index.HandleReturnDirectReportsForOneManagerRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagerDownlineDirect}
+          method: post
+          cors: true
+  HandleReturnOneManagerWithFlatDownlineRequest:
+    handler: index.HandleReturnOneManagerWithFlatDownlineRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagerDownlineFlat}
+          method: post
+          cors: true
+  HandleReturnOneManagerWithWithHierarchicalDownlineRequest:
+    handler: index.HandleReturnOneManagerWithWithHierarchicalDownlineRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetManagerDownlineHierarchical}
+          method: post
+          cors: true
+  HandleReturnOnePersonRequest:
+    handler: index.HandleReturnOnePersonRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetOne}
+          method: post
+          cors: true
+  HandleReturnFullFlatUplineForOneUserRequest:
+    handler: index.HandleReturnFullFlatUplineForOneUserRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.subsetOneUpline}
+          method: post
+          cors: true
+  HandleReturnAllDepartmentsRequest:
+    handler: index.HandleReturnAllDepartmentsRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.listDepartments}
+          method: get
+          cors: true
+  HandleReturnAllDivisionsRequest:
+    handler: index.HandleReturnAllDivisionsRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.people.listDivisions}
+          method: get
           cors: true
 
 # -------------------------------------------------------
