@@ -78,3 +78,6 @@ endpoints:
       subsetOneUpline:                      people/subset/one/upline/flat
       listDepartments:                      people/list/departments
       listDivisions:                        people/list/divisions
+    productsSchedules:
+      settings:               productsSchedules/settings
+      dailyScheduleBulletins: productsSchedules/daily-schedule-bulletins

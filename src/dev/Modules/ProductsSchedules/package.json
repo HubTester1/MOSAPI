@@ -1,0 +1,10 @@
+{
+	"name": "products-and-schedules",
+	"version": "1.0.0",
+	"description": "Handles everything related to Museum products, hours, and operations schedules.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {}
+}

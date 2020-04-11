@@ -1,0 +1,11 @@
+{
+	"name": "api-products-and-schedules",
+	"version": "1.0.0",
+	"main": "../index.js",
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"scripts": {},
+	"dependencies": {
+		"products-schedules": "file:../../../Modules/ProductsSchedules"
+	}
+}
