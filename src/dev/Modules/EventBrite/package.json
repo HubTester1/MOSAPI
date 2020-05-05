@@ -1,0 +1,12 @@
+{
+	"name": "eventbrite",
+	"version": "1.0.0",
+	"description": "Handles all interactions with the EventBrite API.",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Museum of Science, Boston",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.19.1"
+	}
+}

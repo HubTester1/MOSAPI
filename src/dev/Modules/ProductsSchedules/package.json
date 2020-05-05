@@ -6,5 +6,10 @@
 	"scripts": {},
 	"author": "Museum of Science, Boston",
 	"license": "ISC",
-	"dependencies": {}
+	"dependencies": {
+		"axios": "^0.19.1",
+		"data-queries": "file:../DataQueries",
+		"moment": "^2.25.3",
+		"utilities": "file:../Utilities"
+	}
 }

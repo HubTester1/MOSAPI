@@ -1,0 +1,31 @@
+{
+	"schedule": {
+		"2020-05-05": {
+			"hours": {
+				"open": false,
+				"exceptionLocation": "Entire Museum",
+				"exceptionMessage": "The Museum of Science is temporarily closed due to the rapidly evolving developments of the COVID-19 Novel Coronavirus pandemic. <a href=\"https://www.mos.org/coronavirus\" style=\"font-weight:bold;color:#f1eb9c\">Learn More</a>"
+			}
+		},
+		"2020-06-18": {
+			"hours": {
+				"open": true,
+				"closingTime": "17:00",
+				"openingTime": "09:00",
+				"closingTimeFormatted": "5:00 pm",
+				"openingTimeFormatted": "9:00 am"
+			}
+		},
+		"2020-11-25": {
+			"hours": {
+				"open": true,
+				"closingTime": "14:00",
+				"openingTime": "09:00",
+				"closingTimeFormatted": "2:00 pm",
+				"openingTimeFormatted": "9:00 am",
+				"exceptionLocation": "Entire Museum",
+				"exceptionMessage": "The Museum is closing early for the holiday."
+			}
+		}
+	}
+}

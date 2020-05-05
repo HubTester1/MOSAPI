@@ -28,6 +28,7 @@
 			"error",
 			"tab"
 		],
+		"no-control-regex": "off",
 		"no-tabs": "off",
 		"implicit-arrow-linebreak": "off",
 		"prefer-promise-reject-errors":"off",

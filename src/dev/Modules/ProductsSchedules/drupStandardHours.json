@@ -1,0 +1,30 @@
+{
+	"Saturday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	},
+	"Friday": {
+		"closingTime": "21:00",
+		"openingTime": "09:00"
+	},
+	"Thursday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	},
+	"Wednesday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	},
+	"Tuesday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	},
+	"Monday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	},
+	"Sunday": {
+		"closingTime": "17:00",
+		"openingTime": "09:00"
+	}
+}

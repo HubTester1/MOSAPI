@@ -23,9 +23,10 @@ module.exports = {
 	ReturnUniqueObjectGivenAnyValue: (incomingValue) => {
 		// set up return value, defaulting to an empty object
 		let returnValue = {};
-		// if incomingValue is a parsable string representation 
+		// if incomingValue is a string and is a parsable representation 
 		// 		of an object
 		if (
+			typeof (incomingValue) === 'string' &&
 			module.exports
 				.ReturnValueIsJSONParsableString(incomingValue)
 		) {

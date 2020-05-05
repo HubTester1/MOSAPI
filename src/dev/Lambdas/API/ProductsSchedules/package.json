@@ -6,6 +6,8 @@
 	"license": "ISC",
 	"scripts": {},
 	"dependencies": {
-		"products-schedules": "file:../../../Modules/ProductsSchedules"
+		"access": "file:../../../Modules/Access",
+		"products-schedules": "file:../../../Modules/ProductsSchedules",
+		"response": "file:../../../Modules/Response"
 	}
 }
