@@ -79,5 +79,6 @@ endpoints:
       listDepartments:                      people/list/departments
       listDivisions:                        people/list/divisions
     productsSchedules:
-      settings:               productsSchedules/settings
-      dailyScheduleBulletins: productsSchedules/daily-schedule-bulletins
+      settings:                             productsSchedules/settings
+      date:                                 productsSchedules/date
+      dateRange:                            productsSchedules/date-range

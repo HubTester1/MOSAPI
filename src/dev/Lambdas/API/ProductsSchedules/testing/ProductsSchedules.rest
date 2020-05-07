@@ -8,4 +8,4 @@ Authorization: Bearer {{accessToken}}
 
 #########
 # Get 1 day of products by date with mode of sale
-GET https://triton.mos.org/products/productsTodayByDateMOS.json
+GET https://triton.mos.org/products/productsTodayDailyScheduleFeed.json

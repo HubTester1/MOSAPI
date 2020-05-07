@@ -1,0 +1,191 @@
+{
+	"eventdate": [{
+		"date": "2020/05/06",
+		"venue": [{
+			"memberonly": "0",
+			"title": "Adult Offerings",
+			"show": [{
+				"eventnumber": "80912",
+				"title": "Spirits Podcast Live!",
+				"length": "60",
+				"location": "Adult Offerings",
+				"seasonno": "80913",
+				"performanceno": "80916",
+				"time": [{
+					"endtime": "20:30",
+					"instock": "2",
+					"schoolonly": "0",
+					"starttime": "19:30"
+				}, {
+					"endtime": "20:30",
+					"instock": "45",
+					"schoolonly": "0",
+					"starttime": "19:30"
+				}]
+			}, {
+				"eventnumber": "80912",
+				"title": "Spirits Podcast Live!",
+				"length": "60",
+				"location": "Adult Offerings",
+				"seasonno": "80914",
+				"performanceno": "80915",
+				"time": [{
+					"endtime": "20:30",
+					"instock": "2",
+					"schoolonly": "0",
+					"starttime": "19:30"
+				}, {
+					"endtime": "20:30",
+					"instock": "45",
+					"schoolonly": "0",
+					"starttime": "19:30"
+				}]
+			}]
+		}, {
+			"memberonly": "0",
+			"title": "Butterfly Garden",
+			"show": [{
+				"eventnumber": "5723",
+				"title": "Butterfly Garden Experience",
+				"length": "30",
+				"location": "Butterfly Garden",
+				"seasonno": "55196",
+				"performanceno": "57393",
+				"time": [{
+					"endtime": "10:45",
+					"instock": "30",
+					"schoolonly": "1",
+					"starttime": "10:15"
+				}, {
+					"endtime": "11:15",
+					"instock": "30",
+					"schoolonly": "1",
+					"starttime": "10:45"
+				}, {
+					"endtime": "11:45",
+					"instock": "30",
+					"schoolonly": "1",
+					"starttime": "11:15"
+				}]
+			}]
+		}, {
+			"memberonly": "0",
+			"title": "Live Presentations",
+			"show": [{
+				"eventnumber": "1399",
+				"title": "Lightning!",
+				"length": "20",
+				"location": "Theater of Electricity",
+				"seasonno": "55205",
+				"performanceno": "82786",
+				"time": [{
+					"endtime": "12:20",
+					"instock": "350",
+					"schoolonly": "0",
+					"starttime": "12:00 PM"
+				}, {
+					"endtime": "14:20",
+					"instock": "350",
+					"schoolonly": "0",
+					"starttime": "2:00 PM"
+				}]
+			}, {
+				"eventnumber": "6080",
+				"title": "Supercold Science",
+				"length": "20",
+				"location": "Science Live! Stage, Green Wing Lower Level",
+				"seasonno": "55211",
+				"performanceno": "82948",
+				"time": [{
+					"endtime": "11:50",
+					"instock": "125",
+					"schoolonly": "0",
+					"starttime": "11:30"
+				}]
+			}, {
+				"eventnumber": "8140",
+				"title": "Live Animal",
+				"length": "20",
+				"location": "Science Live! Stage, Green Wing Lower Level",
+				"seasonno": "55206",
+				"performanceno": "82897",
+				"time": [{
+					"endtime": "10:50",
+					"instock": "125",
+					"schoolonly": "0",
+					"starttime": "10:30"
+				}, {
+					"endtime": "13:50",
+					"instock": "125",
+					"schoolonly": "0",
+					"starttime": "13:30"
+				}]
+			}, {
+				"eventnumber": "8141",
+				"title": "Science Live!",
+				"length": "20",
+				"location": "Science Live! Stage, Green Wing Lower Level",
+				"seasonno": "55207",
+				"performanceno": "82912",
+				"time": [{
+					"endtime": "15:50",
+					"instock": "125",
+					"schoolonly": "0",
+					"starttime": "15:30"
+				}]
+			}, {
+				"eventnumber": "8142",
+				"title": "Science Snapshot",
+				"length": "20",
+				"location": "Current Science & Technology Stage, Blue Wing Level 1",
+				"seasonno": "55209",
+				"performanceno": "82927",
+				"time": [{
+					"endtime": "12:50",
+					"instock": "75",
+					"schoolonly": "0",
+					"starttime": "12:30"
+				}]
+			}, {
+				"eventnumber": "8143",
+				"title": "Afternoon Report: Dino Month",
+				"length": "20",
+				"location": "CS&T Season Level",
+				"seasonno": "55203",
+				"performanceno": "82882",
+				"time": [{
+					"endtime": "14:50",
+					"instock": "75",
+					"schoolonly": "0",
+					"starttime": "14:30"
+				}]
+			}, {
+				"eventnumber": "8143",
+				"title": "Afternoon Report",
+				"length": "20",
+				"location": "Current Science & Technology Stage",
+				"seasonno": "82878",
+				"performanceno": "82880",
+				"time": [{
+					"endtime": "14:50",
+					"instock": "75",
+					"schoolonly": "0",
+					"starttime": "14:30"
+				}]
+			}, {
+				"eventnumber": "8143",
+				"title": "Afternoon Report: Marisa's Dino Spectacular",
+				"length": "20",
+				"location": "Current Science & Technology Stage, Blue Wing Level 1",
+				"seasonno": "55203",
+				"performanceno": "82881",
+				"time": [{
+					"endtime": "14:50",
+					"instock": "75",
+					"schoolonly": "0",
+					"starttime": "14:30"
+				}]
+			}]
+		}]
+	}]
+}

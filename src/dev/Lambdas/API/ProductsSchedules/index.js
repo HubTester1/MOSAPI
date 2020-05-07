@@ -193,13 +193,74 @@ module.exports = {
 		}),
 
 	/**
+	 * @name HandleReturn365DaysTessituraProductsFromTritonRequest
+	 * @function
+	 * @async
+	 * @description Handle request to 
+	 */
+
+	HandleReturnSpecifiedMOSProductsSchedulesRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				ProductsSchedules.ReturnProductsSchedulesWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					// get a promise to return health status
+					ProductsSchedules.ReturnSpecifiedMOSProductsSchedules()
+						// if the promise is resolved with a result
+						.then((productsSchedulesResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: productsSchedulesResult,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((productsSchedulesError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: productsSchedulesError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
 	 * @name HandleAllPresentFutureEventBriteEventsRequest
 	 * @function
 	 * @async
 	 * @description Handle request to 
 	 */
 
-	HandleAllPresentFutureEventBriteEventsRequest: (event, context) =>
+	/* HandleAllPresentFutureEventBriteEventsRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to check access
@@ -251,66 +312,5 @@ module.exports = {
 						},
 					});
 				});
-		}),
-
-	/**
-	 * @name HandleReturn365DaysTessituraProductsFromTritonRequest
-	 * @function
-	 * @async
-	 * @description Handle request to 
-	 */
-
-	HandleReturn365DaysTessituraProductsFromTritonRequest: (event, context) =>
-		// return a new promise
-		new Promise((resolve, reject) => {
-			// get a promise to check access
-			Access.ReturnRequesterCanAccess(
-				event,
-				ProductsSchedules.ReturnProductsSchedulesWhitelistedDomains,
-			)
-				// if the promise is resolved with a result
-				.then((accessResult) => {
-					// get a promise to return health status
-					ProductsSchedules.Return365DaysTessituraProductsFromTriton()
-						// if the promise is resolved with a result
-						.then((eventsResult) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 200,
-								responder: resolve,
-								content: {
-									payload: eventsResult,
-									event,
-									context,
-								},
-							});
-						})
-						// if the promise is rejected with an error
-						.catch((eventsError) => {
-							// send indicative response
-							Response.HandleResponse({
-								statusCode: 500,
-								responder: resolve,
-								content: {
-									error: eventsError,
-									event,
-									context,
-								},
-							});
-						});
-				})
-				// if the promise is rejected with an error
-				.catch((accessError) => {
-					// send indicative response
-					Response.HandleResponse({
-						statusCode: 401,
-						responder: resolve,
-						content: {
-							error: accessError,
-							event,
-							context,
-						},
-					});
-				});
-		}),
+		}), */
 };

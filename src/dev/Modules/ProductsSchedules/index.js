@@ -134,10 +134,7 @@ module.exports = {
 					// if status indicates success
 					if (result.status === 200) {
 						// resolve this promise with the list items
-						resolve({
-							error: false,
-							exceptions: result.data.exceptions,
-						});
+						resolve(result.data.exceptions);
 						// if status indicates other than success
 					} else {
 						// create a generic error
@@ -395,7 +392,8 @@ module.exports = {
 					onsiteProducts[0] = onsiteProductsToday[0];
 					// eslint-disable-next-line prefer-destructuring
 					onlineProducts[0] = onlineProductsToday[0];
-					// set up empty container schedule
+					// set up empty container schedule; using an object for this so we can easily
+					// 		get elements / properties by date
 					const schedule = {};
 					// get a set of exceptions by individual dates, then times
 					// set up container
@@ -508,8 +506,13 @@ module.exports = {
 					onsiteProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
 						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+						// get this date in the schedule ready to receive products
+						schedule[thisDate].products = {
+							onsite: [],
+							online: [],
+						};
 						// set up container for this date's produts
-						const productsThisDateUnsorted = [];
+						const onsiteProductsThisDate = [];
 						// for each venue on this date
 						oneDateProducts.venue.forEach((oneDateVenueProducts) => {
 							// extract this venue data
@@ -535,6 +538,13 @@ module.exports = {
 									length: oneDateVenueProduct.length,
 									location: oneDateVenueProduct.location,
 									venue: thisVenue,
+									ageRange: {
+										weight: 1,
+										lowestAge: 3,
+										highestAge: 6,
+										shortDisplayString: 'Ages 3 &ndash; 6',
+										longDisplayString: 'Ages 3 &ndash; 6 (Preschool/Early Learners)',
+									},
 								};
 								// for each node in the set of scheduled Drupal nodes
 								scheduledNodes.forEach((scheduledNode) => {
@@ -545,21 +555,22 @@ module.exports = {
 										thisProductCommonData.listingURL = scheduledNode.url;
 									}
 								});
-								// for each time for this show
+								// for each time for this product
 								oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
 									// extract this product's end time for comparison
 									const oneDateVenueProductInstanceEndDatetime = 
 										moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
-									// if this end time is in the present or future and 
+									// if this end time is present or in the future and 
 									// 		it's not full / sold out
 									if (
-										oneDateVenueProductInstanceEndDatetime.isSameOrAfter(thisMoment) && 
+										oneDateVenueProductInstanceEndDatetime.isSameOrAfter(thisMoment, 'second') && 
 										oneDateVenueProductInstance.instock > 0
 									) {
 										// construct a unique product out of the product's 
 										// 		common data and the instance data
 										// start with unique copy of common data
-										const thisProduct = Utilities.ReturnUniqueObjectGivenAnyValue(thisProductCommonData);
+										const thisProduct = 
+											Utilities.ReturnUniqueObjectGivenAnyValue(thisProductCommonData);
 										// add data unique to this instance
 										thisProduct.endTime = oneDateVenueProductInstanceEndDatetime.format('HH:mm');
 										thisProduct.startTime = moment(`${thisDate} ${oneDateVenueProductInstance.starttime}`).format('HH:mm');
@@ -575,29 +586,260 @@ module.exports = {
 											// set corresponding flag on this product
 											thisProduct.schoolOnly = true;
 										}
-										// push to products this date unsorted container
-										// 		
-										productsThisDateUnsorted.push(thisProduct);
+										// push to products this date container
+										onsiteProductsThisDate.push(thisProduct);
 									}
 								});
 							});
 						});
-
-						schedule[thisDate].products = {
-							onsite: productsThisDateUnsorted,
-						};
-
-						// sort by time
+						// sort this date's products by time, ascending
+						onsiteProductsThisDate.sort(
+							module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
+						);
+						// add this date's products to the onsite products for 
+						// 		this date in the schedule
+						schedule[thisDate].products.onsite = onsiteProductsThisDate;
 					});
-
-
-					// then resolve this promise with the result
-					resolve(result);
+					// for each date in the set of online products
+					onlineProducts.forEach((oneDateProducts) => {
+						// extract this date and datetime for convenience
+						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+						// set up container for this date's produts
+						const onlineProductsThisDate = [];
+						// for each venue on this date
+						oneDateProducts.venue.forEach((oneDateVenueProducts) => {
+							// extract this venue data
+							// set up var for this venue
+							let thisVenue = {};
+							// for all venues in the set of venues
+							venues.forEach((oneVenueConfig) => {
+								// if this venue config has a tessitura feed name
+								if (
+									oneVenueConfig.tessituraFeedName &&
+									oneVenueConfig.tessituraFeedName === oneDateVenueProducts.title
+								) {
+									// use this venue config for this venue
+									thisVenue = oneVenueConfig;
+								}
+							});
+							const thisChannel = 
+								module.exports.ReturnChannelNameFromVenue(thisVenue.shortName, channels);
+							// for each product in this venue
+							oneDateVenueProducts.show.forEach((oneDateVenueProduct) => {
+								// extract the data that is common to all instances (times) of this product
+								const thisProductCommonData = {
+									title: oneDateVenueProduct.title,
+									psid: oneDateVenueProduct.eventnumber,
+									length: oneDateVenueProduct.length,
+									channel: thisChannel,
+									ageRange: {
+										weight: 1,
+										lowestAge: 3,
+										highestAge: 6,
+										shortDisplayString: 'Ages 3 &ndash; 6',
+										longDisplayString: 'Ages 3 &ndash; 6 (Preschool/Early Learners)',
+									},
+								};
+								// for each node in the set of scheduled Drupal nodes
+								scheduledNodes.forEach((scheduledNode) => {
+									// if this scheduled node's daily schedule ID matches 
+									// 		this product's psid
+									if (scheduledNode.dailyScheduleID === thisProductCommonData.psid) {
+										// add the node's URL to the common product data
+										thisProductCommonData.listingURL = scheduledNode.url;
+									}
+								});
+								// for each time for this product
+								oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
+									// extract this product's end time for comparison
+									const oneDateVenueProductInstanceEndDatetime =
+										moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
+									// if this end time is present or in the future and 
+									// 		it's not full / sold out
+									if (
+										oneDateVenueProductInstanceEndDatetime.isSameOrAfter(thisMoment) &&
+										oneDateVenueProductInstance.instock > 0
+									) {
+										// construct a unique product out of the product's 
+										// 		common data and the instance data
+										// start with unique copy of common data
+										const thisProduct =
+											Utilities.ReturnUniqueObjectGivenAnyValue(thisProductCommonData);
+										// add data unique to this instance
+										thisProduct.endTime = oneDateVenueProductInstanceEndDatetime.format('HH:mm');
+										thisProduct.startTime = moment(`${thisDate} ${oneDateVenueProductInstance.starttime}`).format('HH:mm');
+										thisProduct.endTimeFormatted =
+											moment(`${thisDate} ${thisProduct.endTime}`)
+												.format('h:mm a');
+										thisProduct.startTimeFormatted =
+											moment(`${thisDate} ${thisProduct.startTime}`)
+												.format('h:mm a');
+										thisProduct.remaining = oneDateVenueProductInstance.instock;
+										// if this product is for schools only
+										if (oneDateVenueProductInstance.schoolonly === '1') {
+											// set corresponding flag on this product
+											thisProduct.schoolOnly = true;
+										}
+										// push to products this date container
+										onlineProductsThisDate.push(thisProduct);
+									}
+								});
+							});
+						});
+						// sort this date's products by time, ascending
+						onlineProductsThisDate.sort(
+							module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
+						);
+						// add this date's products to the online products for
+						// 		this date in the schedule
+						schedule[thisDate].products.online = onlineProductsThisDate;
+					});
+					// convert the schedule object into an array with the date as an array element
+					// set up container
+					const scheduleArray = [];
+					// for each schedule object key, which is a date
+					Object.keys(schedule).forEach((scheduleDateKey) => {
+						// push an object element to container array
+						scheduleArray.push({
+							date: new Date(`${scheduleDateKey}T00:00:00`),
+							hours: schedule[scheduleDateKey].hours,
+							products: schedule[scheduleDateKey].products,
+						});
+					});
+					// resolve this promise with the schedule array
+					resolve(scheduleArray);
 				})
 				// if the promise is rejected with an error
 				.catch((error) => {
 					// reject this promise with the error
 					reject(error);
+				});
+		}),
+
+	ReturnChannelNameFromVenue: (venueShortName, allChannels) => {
+		let channelToReturn;
+		switch (venueShortName) {
+		case 'Exhibits':
+			channelToReturn = allChannels[1];
+			break;
+		case 'Omni Theater':
+			channelToReturn = allChannels[2];
+			break;
+		case 'Planetarium':
+			channelToReturn = allChannels[3];
+			break;
+		case 'Live Presentations':
+			channelToReturn = allChannels[4];
+			break;
+		case 'Drop-In Activities':
+			channelToReturn = allChannels[5];
+			break;
+		case '4-D Theater':
+			channelToReturn = allChannels[6];
+			break;
+		default:
+			channelToReturn = allChannels[0];
+			break;
+		}
+		return channelToReturn;
+	},
+
+
+	ReturnObjectStartTimePropertyWeightRelativeToAnother: (a, b) => {
+		if (a.startTime < b.startTime) {
+			return -1;
+		}
+		if (a.startTime > b.startTime) {
+			return 1;
+		}
+		return 0;
+	},
+
+	UpdateMOSScheduleData: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get fresh schedule data
+			module.exports.ReturnMOSSchedule()
+				// if the promise is resolved with a result
+				.then((scheduleResult) => {
+					// get a promise to delete all documents
+					DataQueries.DeleteAllDocsFromCollection('productsSchedules')
+						// if the promise is resolved with the result
+						.then((deletionResult) => {
+							// for each element in schedule result array
+							scheduleResult.forEach((oneDaySchedule) => {
+								// get a promise to insert
+								DataQueries.InsertDocIntoCollection(oneDaySchedule, 'productsSchedules')
+									// if the promise is resolved with the result
+									.then((insertResult) => {
+										// resolve this promise with the result
+										resolve(insertResult);
+									})
+									// if the promise is rejected with an error, then reject this promise with an error
+									.catch((insertError) => {
+										reject(insertError);
+									});
+							});
+						})
+						// if the promise is rejected with an error, then reject this promise with an error
+						.catch((insertError) => {
+							reject(insertError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((scheduleError) => {
+					// reject this promise with the error
+					reject(scheduleError);
+				});
+		}),
+
+	ReturnSpecifiedMOSProductsSchedules: (firstOrOnlyDateTime, lastDateTime) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// start off query object
+			const queryObject = {};
+			// if there is a last date
+			if (lastDateTime) {
+				// modify query object to use a date range
+				queryObject.date = { 
+					$gte: new Date(
+						moment(firstOrOnlyDateTime).format('YYYY'),
+						parseInt(moment(firstOrOnlyDateTime).format('M'), 10) - 1,
+						moment(firstOrOnlyDateTime).format('D'),
+					),
+					$lte: new Date(
+						moment(lastDateTime).format('YYYY'),
+						parseInt(moment(lastDateTime).format('M'), 10) - 1,
+						moment(lastDateTime).format('D'),
+					),
+				};
+			// if there's no last date
+			} else {
+				// modify the query object to use one date
+				queryObject.date = { 
+					$eq: new Date(
+						moment(firstOrOnlyDateTime).format('YYYY'),
+						parseInt(moment(firstOrOnlyDateTime).format('M'), 10) - 1,
+						moment(firstOrOnlyDateTime).format('D'),
+					),
+				};
+			}
+			// get a promise to 
+			DataQueries.ReturnSpecifiedDocsFromCollectionSorted(
+				'productsSchedules',
+				queryObject,
+				'date',
+				'ascending',
+			)
+				// if the promise is resolved with a result
+				.then((queryResult) => {
+					// then resolve this promise with the result
+					resolve(queryResult.docs);
+				})
+				// if the promise is rejected with an error
+				.catch((queryError) => {
+					// reject this promise with the error
+					reject(queryError);
 				});
 		}),
 
@@ -649,4 +891,3 @@ module.exports = {
 		}), */
 
 };
-module.exports.ReturnMOSSchedule();

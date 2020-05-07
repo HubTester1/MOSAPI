@@ -1,17 +1,23 @@
 custom:
   file: ${file(../../../config-common.yaml)}
-# -------------------------------------------------------
   config:
+    webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+    excludeFiles: ./testing/*
+
+# -------------------------------------------------------
+
     service: api-products-schedules
     memorySize: 256
     timeout: 5
 
 functions:
-  HandleDailyScheduleBulletinsRequest:
-    handler: index.HandleDailyScheduleBulletinsRequest
+  HandleSettingsRequest:
+    handler: index.HandleSettingsRequest
     events:
       - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.dailyScheduleBulletins}
+          path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.settings}
           method: get
           cors: true
 
@@ -54,6 +60,9 @@ provider:
     upApiKey: ${self:custom.file.upApiKey}
     upEmployeeChangesPass: ${self:custom.file.upEmployeeChangesPass}
     upEmployeeChangesUser: ${self:custom.file.upEmployeeChangesUser}
-  layers:
-    - ${self:custom.file.custom.config.layerARNNPM}
-    - ${self:custom.file.custom.config.layerARNServices}
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
