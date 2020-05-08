@@ -20,6 +20,20 @@ functions:
           path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.settings}
           method: get
           cors: true
+  HandleReturnSpecifiedMOSProductsSchedulesRequest:
+    handler: index.HandleReturnSpecifiedMOSProductsSchedulesRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.date}
+          method: get
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                only: true
+                first: true
+                last: true
+                offset: true
 
 # -------------------------------------------------------
 

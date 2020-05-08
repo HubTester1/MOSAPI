@@ -66,6 +66,8 @@ module.exports = {
 		}),
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
+	
+	
 	/**
 	 * @name ReturnTessituraProductsFromTriton
 	 * @function
@@ -843,7 +845,6 @@ module.exports = {
 				});
 		}),
 
-
 	/**
 	 * @name ReturnAllPresentFutureEventBriteEvents
 	 * @function
@@ -851,21 +852,19 @@ module.exports = {
 	 * @description Return events from the EventBrite API
 	 */
 
-	/* ReturnAllPresentFutureEventBriteEvents: () =>
+	ReturnAllLiveEventBriteEvents: (accoutToken) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// get URI and options
-			const organizationID = '10589631133';
 			// get a promise to retrieve
 			axios.get(
-				'https://www.eventbriteapi.com/v3/organizations/10589631133/events',
+				`https://www.eventbriteapi.com/v3/organizations/${process.env.eventBriteMarketingOrganizationID}/events`,
 				{
 					headers: {
-						Authorization: 'Bearer O2LRWDZ2SBW7TAUJRQHE',
-						'Content-Type': 'application/json',
+						Authorization: `Bearer ${process.env.eventBriteMarketingBearerToken}`,
+						// 'Content-Type': 'application/json',
 					},
 					params: {
-						time_filter: 'current_future',
+						status: 'live',
 						expand: 'ticket_availability',
 					},
 					timeout: 15000,
@@ -888,6 +887,7 @@ module.exports = {
 					// reject this promise with an error
 					reject(error);
 				});
-		}), */
+		}),
 
 };
+module.exports.ReturnAllLiveEventBriteEvents();

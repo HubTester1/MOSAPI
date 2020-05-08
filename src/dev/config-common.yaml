@@ -4,7 +4,7 @@ custom:
 #-------------
 provider:
   runtime: nodejs12.x
-  profile: mos-api-programmatic-admin
+  profile: mos-api-programmatic-access
 authJWTPayloadMessage: ${ssm:auth-jwt-payload-message}
 authJWTPayloadSecret: ${ssm:auth-jwt-secret}
 authMOSAPISLSAdminAccessKeyID: ${ssm:auth-mos-api-sls-admin-access-key-id}
@@ -81,4 +81,3 @@ endpoints:
     productsSchedules:
       settings:                             productsSchedules/settings
       date:                                 productsSchedules/date
-      dateRange:                            productsSchedules/date-range
