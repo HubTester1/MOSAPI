@@ -10,6 +10,7 @@
  * @todo build new offerings, including ages
  * @todo integrate new offerings into view
  * @todo integrate new offerings into cron process
+ * @todo listed = true
  * ============
  * @todo nightly audit images - delete for old messages, delete all incoming
  * @todo document vs code, .rest testing, in addition to gulp, lambda-local, serverless

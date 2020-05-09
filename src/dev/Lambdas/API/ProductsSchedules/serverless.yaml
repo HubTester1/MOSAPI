@@ -33,7 +33,7 @@ functions:
                 only: true
                 first: true
                 last: true
-                offset: true
+                type: true
 
 # -------------------------------------------------------
 
