@@ -6,9 +6,12 @@
  */
 
 const axios = require('axios');
+const DataConnection = require('data-connection');
 const DataQueries = require('data-queries');
-const moment = require('moment');
+const moment = require('moment-timezone');
 const Utilities = require('utilities');
+
+moment.suppressDeprecationWarnings = true;
 
 module.exports = {
 
@@ -70,54 +73,54 @@ module.exports = {
 	ReturnSpecifiedMOSProductsSchedules: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			console.log('options');
-			console.log(options);
-			resolve({});
-			/* // start off query object
+			// start off query and projection objects
 			const queryObject = {};
-			// if there is a last date
-			if (lastDateTime) {
-				// modify query object to use a date range
-				queryObject.date = {
-					$gte: new Date(
-						moment(firstOrOnlyDateTime).format('YYYY'),
-						parseInt(moment(firstOrOnlyDateTime).format('M'), 10) - 1,
-						moment(firstOrOnlyDateTime).format('D'),
-					),
-					$lte: new Date(
-						moment(lastDateTime).format('YYYY'),
-						parseInt(moment(lastDateTime).format('M'), 10) - 1,
-						moment(lastDateTime).format('D'),
-					),
+			const projectionObject = {};
+			// if only one date
+			if (options.onlyDate) {
+				// set query object to find docs where
+				// 		dateString is the one date requested
+				queryObject.dateString = {
+					$eq: options.onlyDate,
 				};
-				// if there's no last date
-			} else {
-				// modify the query object to use one date
-				queryObject.date = {
-					$eq: new Date(
-						moment(firstOrOnlyDateTime).format('YYYY'),
-						parseInt(moment(firstOrOnlyDateTime).format('M'), 10) - 1,
-						moment(firstOrOnlyDateTime).format('D'),
-					),
+			// if multiple dates
+			} else if (options.firstDate && options.lastDate) {
+				// set query object to find docs where
+				// 		dateString is >= first date and
+				// 		dateString is <= last date
+				queryObject.dateString = {
+					$gte: options.firstDate,
+					$lte: options.lastDate,
 				};
 			}
-			// get a promise to 
-			DataQueries.ReturnSpecifiedDocsFromCollectionSorted(
-				'productsSchedules',
-				queryObject,
-				'date',
-				'ascending',
-			)
-				// if the promise is resolved with a result
-				.then((queryResult) => {
-					// then resolve this promise with the result
-					resolve(queryResult.docs);
-				})
-				// if the promise is rejected with an error
-				.catch((queryError) => {
-					// reject this promise with the error
-					reject(queryError);
-				}); */
+			// set projection object fields property 
+			// 		to omit _id field
+			projectionObject.fields = {
+				_id: 0,
+			};
+			// if omission of product a type was requested
+			if (options.omitType) {
+			// set projection object fields property 
+			// 		to omit requested field in products field
+				projectionObject.fields[`products.${options.omitType}`] = 0;
+			}
+			// get a promise to get the docs specified above
+			DataConnection.get('productsSchedules')
+				.find(queryObject, projectionObject, (error, docs) => {
+					// if there was an error
+					if (error) {
+						// resolve this promise with a custom error
+						reject({
+							error: true,
+							mongoDBError: true,
+							mongoDBErrorDetails: error,
+						});
+					// if there was NOT an error
+					} else {
+						// resolve this promise with the docs
+						resolve(docs);
+					}
+				});
 		}),
 
 	// --- CRON PROCESSING
@@ -601,7 +604,7 @@ module.exports = {
 					Object.keys(schedule).forEach((scheduleDateKey) => {
 						// push an object element to container array
 						scheduleArray.push({
-							date: new Date(`${scheduleDateKey}T00:00:00`),
+							dateString: scheduleDateKey,
 							hours: schedule[scheduleDateKey].hours,
 							products: schedule[scheduleDateKey].products,
 						});
@@ -870,6 +873,34 @@ module.exports = {
 		return validProductsThisDate;
 	},
 	
+	UpsertOneScheduleDate: (oneDaySchedule) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the docs specified above
+			DataConnection.get('productsSchedules')
+				.findOneAndUpdate(
+					{ dateString: oneDaySchedule.dateString },
+					{
+						$set: {
+							hours: oneDaySchedule.hours,
+							products: oneDaySchedule.products,
+						},
+					},
+					{
+						returnOriginal: false,
+						replaceOne: true,
+					},
+				)
+				.then((upsertResult) => {
+					// resolve this promise with the result
+					resolve(upsertResult);
+				})
+				// if the promise is rejected with an error
+				.catch((upsertError) => {
+					// reject this promise with an error
+					reject(upsertError);
+				});
+		}),
 
 	UpdateMOSScheduleData: () =>
 		// return a new promise
@@ -878,30 +909,95 @@ module.exports = {
 			module.exports.ReturnMOSSchedule()
 				// if the promise is resolved with a result
 				.then((scheduleResult) => {
-					// get a promise to delete all documents
-					DataQueries.DeleteAllDocsFromCollection('productsSchedules')
-						// if the promise is resolved with the result
-						.then((deletionResult) => {
-							// for each element in schedule result array
-							scheduleResult.forEach((oneDaySchedule) => {
-								// get a promise to insert
-								DataQueries.InsertDocIntoCollection(oneDaySchedule, 'productsSchedules')
-									// if the promise is resolved with the result
-									.then((insertResult) => {
-										// resolve this promise with the result
-										resolve(insertResult);
-									})
-									// if the promise is rejected with an error
-									.catch((insertError) => {
-										// reject this promise with an error
-										reject(insertError);
-									});
-							});
+					// set up a container for upsert promises
+					const upsertPromisesContainer = [];
+					// for each element in schedule result array
+					scheduleResult.forEach((oneDaySchedule) => {
+						// push to promise container a promise to 
+						// 		upsert the doc for this date
+						upsertPromisesContainer.push(
+							module.exports.UpsertOneScheduleDate(oneDaySchedule),
+						);
+					});
+					// when all upsert promises have been fulfilled
+					Promise.all(upsertPromisesContainer)
+						// if the promises were resolved with a result
+						.then((upsertResults) => {
+							// then resolve this promise with a simple message
+							resolve(`successful upsert at ${moment().format()}`);
 						})
 						// if the promise is rejected with an error
-						.catch((insertError) => {
-							// reject this promise with an error
-							reject(insertError);
+						.catch((upsertError) => {
+							// reject this promise with the error
+							reject(upsertError);
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((scheduleError) => {
+					// reject this promise with the error
+					reject(scheduleError);
+				});
+		}),
+
+	ReturnDateIsInSchedule: (dateString) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get the docs specified above
+			DataConnection.get('productsSchedules')
+				.findOne(
+					{ dateString1: dateString },
+				)
+				.then((queryResult) => {
+					// if a doc was found
+					if (queryResult && queryResult._id) {
+						// resolve this promise with true
+						resolve(true);
+					// if a doc wasn't found
+					} else {
+						// resolve this promise with false
+						resolve(false);
+					}
+				})
+				// if the promise is rejected with an error
+				.catch((queryError) => {
+					// reject this promise with an error
+					reject(queryError);
+				});
+		}),
+
+	ReplaceMOSScheduleData: () =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to get fresh schedule data
+			module.exports.ReturnMOSSchedule()
+				// if the promise is resolved with a result
+				.then((scheduleResult) => {
+					// get a promise to delete all schedule dates
+					DataQueries.DeleteAllDocsFromCollection(
+						'productsSchedules',
+					)
+						// if the promise was resolved with a result
+						.then((deletionResult) => {
+							// get a promise to insert all schedule dates
+							DataQueries.InsertDocIntoCollection(
+								scheduleResult,
+								'productsSchedules',
+							)
+								// if the promise was resolved with a result
+								.then((insertResults) => {
+									// then resolve this promise with a simple message
+									resolve(`successful insert at ${moment().format()}`);
+								})
+								// if the promise is rejected with an error
+								.catch((insertError) => {
+									// reject this promise with the error
+									reject(insertError);
+								});
+						})
+						// if the promise is rejected with an error
+						.catch((deletionError) => {
+							// reject this promise with the error
+							reject(deletionError);
 						});
 				})
 				// if the promise is rejected with an error

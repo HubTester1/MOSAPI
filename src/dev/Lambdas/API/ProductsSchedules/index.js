@@ -70,6 +70,126 @@ module.exports = {
 		}),
 
 	/**
+	 * @name HandleSettingsRequest
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
+	HandleUpdateScheduleRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				ProductsSchedules.ReturnProductsSchedulesWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					ProductsSchedules.UpdateMOSScheduleData()
+						// if the promise is resolved with a result
+						.then((updateResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: updateResult,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((updateError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: updateError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
+	 * @name HandleSettingsRequest
+	 * @function
+	 * @async
+	 * @description XXX
+	 */
+
+	HandleReplaceScheduleRequest: (event, context) =>
+		// return a new promise
+		new Promise((resolve, reject) => {
+			// get a promise to check access
+			Access.ReturnRequesterCanAccess(
+				event,
+				ProductsSchedules.ReturnProductsSchedulesWhitelistedDomains,
+			)
+				// if the promise is resolved with a result
+				.then((accessResult) => {
+					ProductsSchedules.ReplaceMOSScheduleData()
+						// if the promise is resolved with a result
+						.then((replacementResult) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 200,
+								responder: resolve,
+								content: {
+									payload: replacementResult,
+									event,
+									context,
+								},
+							});
+						})
+						// if the promise is rejected with an error
+						.catch((replacementError) => {
+							// send indicative response
+							Response.HandleResponse({
+								statusCode: 500,
+								responder: resolve,
+								content: {
+									error: replacementError,
+									event,
+									context,
+								},
+							});
+						});
+				})
+				// if the promise is rejected with an error
+				.catch((accessError) => {
+					// send indicative response
+					Response.HandleResponse({
+						statusCode: 401,
+						responder: resolve,
+						content: {
+							error: accessError,
+							event,
+							context,
+						},
+					});
+				});
+		}),
+
+	/**
 	 * @name HandleReturn365DaysTessituraProductsFromTritonRequest
 	 * @function
 	 * @async
@@ -132,10 +252,4 @@ module.exports = {
 				});
 		}),
 
-	/**
-	 * @name HandleAllPresentFutureEventBriteEventsRequest
-	 * @function
-	 * @async
-	 * @description Handle request to 
-	 */
 };

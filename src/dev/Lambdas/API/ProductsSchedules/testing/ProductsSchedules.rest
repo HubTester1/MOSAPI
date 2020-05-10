@@ -7,13 +7,26 @@ GET {{baseURI}}/productsSchedules/settings
 Authorization: Bearer {{accessToken}}
 
 #########
-# Get 1 day of products by date that are relevant after 1 pm
-GET {{baseURI}}/productsSchedules/settings
+# Get 1 day of products by date
+GET {{baseURI}}/productsSchedules/date?onlyDate=2020-05-11
+Authorization: Bearer {{accessToken}}
 
 #########
-# Triton testing
-GET https://triton.mos.org/products/productsTodayMOSatHome14Days.json
+# Get 3 days of products by date
+GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-11&lastDate=2020-05-13
+Authorization: Bearer {{accessToken}}
 
 #########
-# Triton testing
-GET https://triton.mos.org/products/productsTodayDailyScheduleFeed.json
+# Get 3 days of products by date and omit onsite products
+GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-11&lastDate=2020-05-13&omitType=onsite
+Authorization: Bearer {{accessToken}}
+
+#########
+# Update schedule data
+GET {{baseURI}}/productsSchedules/update
+Authorization: Bearer {{accessToken}}
+
+#########
+# Replace schedule data
+GET {{baseURI}}/productsSchedules/replace
+Authorization: Bearer {{accessToken}}

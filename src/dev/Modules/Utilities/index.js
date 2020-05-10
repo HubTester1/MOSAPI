@@ -4,7 +4,7 @@
  * @description Miscellaneous utility functions
  */
 
-const moment = require('moment');
+const moment = require('moment-timezone');
 const axios = require('axios');
 const atob = require('atob');
 
@@ -375,4 +375,6 @@ module.exports = {
 					HandleResponse(response);
 				});
 		}),
+
+	ReturnUTCFormatBostonTimezoneOffset: (timestamp, incomingFormat) => moment(timestamp, incomingFormat).tz('America/New_York', true).format('Z'),
 };

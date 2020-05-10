@@ -20,8 +20,8 @@ functions:
           path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.settings}
           method: get
           cors: true
-  HandleReturnSpecifiedMOSProductsSchedulesRequest:
-    handler: index.HandleReturnSpecifiedMOSProductsSchedulesRequest
+  HandleReturnProductsSchedulesRequest:
+    handler: index.HandleReturnProductsSchedulesRequest
     events:
       - http:
           path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.date}
@@ -30,10 +30,24 @@ functions:
           request:
             parameters:
               querystrings:
-                only: true
-                first: true
-                last: true
-                type: true
+                onlyDate: true
+                firstDate: true
+                lastDate: true
+                omitType: true
+  HandleUpdateScheduleRequest:
+    handler: index.HandleUpdateScheduleRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.update}
+          method: get
+          cors: true
+  HandleReplaceScheduleRequest:
+    handler: index.HandleReplaceScheduleRequest
+    events:
+      - http:
+          path: ${self:custom.file.endpoints.${self:provider.stage}.productsSchedules.replace}
+          method: get
+          cors: true
 
 # -------------------------------------------------------
 
@@ -60,9 +74,15 @@ provider:
     cronScheduleGSESignupReminders: ${self:custom.file.cronScheduleGSESignupReminders}
     cronScheduleGSECreditReminders: ${self:custom.file.cronScheduleGSECreditReminders}
     cronSchedulePeopleProcessing: ${self:custom.file.cronSchedulePeopleProcessing}
+    cronScheduleProductsSchedulesDeleteYesterday: ${self:custom.file.cronScheduleProductsSchedulesDeleteYesterday}
+    cronScheduleProductsSchedulesUpdate: ${self:custom.file.cronScheduleProductsSchedulesUpdate}
     graphClientID: ${self:custom.file.graphClientID}
     graphClientSecret: ${self:custom.file.graphClientSecret}
     graphTenantID: ${self:custom.file.graphTenantID}
+    eventBriteEiEBearerToken: ${self:custom.file.eventBriteEiEBearerToken}
+    eventBriteEiEOrganizationID: ${self:custom.file.eventBriteEiEOrganizationID}
+    eventBriteMarketingBearerToken: ${self:custom.file.eventBriteMarketingBearerToken}
+    eventBriteMarketingOrganizationID: ${self:custom.file.eventBriteMarketingOrganizationID}
     mongoDbHostUnique: ${self:custom.file.mongoDbHostUnique}
     mongoDbPass: ${self:custom.file.mongoDbPass}
     mongoDbUser: ${self:custom.file.mongoDbUser}

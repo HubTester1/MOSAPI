@@ -16,9 +16,15 @@ cronScheduleGSESignupSync: ${ssm:cron-schedule-gse-signup-sync}
 cronScheduleGSESignupReminders: ${ssm:cron-schedule-gse-signup-reminders}
 cronScheduleGSECreditReminders: ${ssm:cron-schedule-gse-credit-reminders}
 cronSchedulePeopleProcessing: ${ssm:cron-schedule-people-processing}
+cronScheduleProductsSchedulesDeleteYesterday: ${ssm:cron-schedule-products-schedules-delete-yesterday}
+cronScheduleProductsSchedulesUpdate: ${ssm:cron-schedule-products-schedules-update}
 graphClientID: ${ssm:graph-client-id}
 graphClientSecret: ${ssm:graph-client-secret}
 graphTenantID: ${ssm:graph-tenant-id}
+eventBriteEiEBearerToken: ${ssm:eventbrite-eie-bearer-token}
+eventBriteEiEOrganizationID: ${ssm:eventbrite-eie-org-id}
+eventBriteMarketingBearerToken: ${ssm:eventbrite-marketing-bearer-token}
+eventBriteMarketingOrganizationID: ${ssm:eventbrite-marketing-org-id}
 mongoDbHostUnique: ${ssm:mongodb-host-unique}
 mongoDbPass: ${ssm:mongodb-pass}
 mongoDbUser: ${ssm:mongodb-user}
@@ -81,3 +87,5 @@ endpoints:
     productsSchedules:
       settings:                             productsSchedules/settings
       date:                                 productsSchedules/date
+      update:                               productsSchedules/update
+      replace:                              productsSchedules/replace
