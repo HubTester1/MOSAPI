@@ -5,13 +5,6 @@
  * @description Literally, a todo list
  * 
  * 
- * @todo get EiE data into Tessitura
- * @todo intregrate production feeds
- * @todo build new offerings, including ages
- * @todo integrate new offerings into view
- * @todo integrate new offerings into cron process
- * @todo listed = true
- * ============
  * @todo nightly audit images - delete for old messages, delete all incoming
  * @todo document vs code, .rest testing, in addition to gulp, lambda-local, serverless
  * @todo for API event handlers, document event and what has to be in event

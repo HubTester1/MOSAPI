@@ -67,10 +67,13 @@ module.exports = {
 				});
 		}),
 
-	ReturnSpecifiedMOSProductsSchedules: (firstOrOnlyDateTime, lastDateTime) =>
+	ReturnSpecifiedMOSProductsSchedules: (options) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			// start off query object
+			console.log('options');
+			console.log(options);
+			resolve({});
+			/* // start off query object
 			const queryObject = {};
 			// if there is a last date
 			if (lastDateTime) {
@@ -114,7 +117,7 @@ module.exports = {
 				.catch((queryError) => {
 					// reject this promise with the error
 					reject(queryError);
-				});
+				}); */
 		}),
 
 	// --- CRON PROCESSING
@@ -435,7 +438,6 @@ module.exports = {
 					onlineProducts.sort(
 						module.exports.ReturnObjectDatePropertyWeightRelativeToAnother,
 					);
-
 					// set up empty container schedule; using an object for this so we can easily
 					// 		get elements / properties by date
 					const schedule = {};
@@ -488,7 +490,13 @@ module.exports = {
 						quantityDaysInSkeletonScheduleProcessed < quantityDaysInSkeletonSchedule
 					) {
 						// add a date to skeleton schedule
-						schedule[moment(dateToday).add(quantityDaysInSkeletonScheduleProcessed, 'days').format('YYYY-MM-DD')] = {};
+						schedule[moment(dateToday).add(quantityDaysInSkeletonScheduleProcessed, 'days').format('YYYY-MM-DD')] = {
+							hours: {},
+							products: {
+								onsite: [],
+								online: [],
+							},
+						};
 						// add 1 to days processed
 						quantityDaysInSkeletonScheduleProcessed += 1;
 					}
@@ -549,256 +557,42 @@ module.exports = {
 					// for each date in the set of onsite products
 					onsiteProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
-						let thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
-
-
-						// ----- TEMPORARY BELOW
-
-						if (thisDate === '2020-05-08') {
-							thisDate = '2020-05-13';
+						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+						// if this date is in the schedule
+						if (schedule[thisDate]) {
+							// add this date's valid augmented products to the online products for
+							// 		this date in the schedule
+							schedule[thisDate].products.onsite =
+								module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
+									thisMoment,
+									thisDate,
+									oneDateProducts,
+									scheduledNodes,
+									venues,
+									channels,
+									ageRanges,
+								});
 						}
-
-						// ----- TEMPORARY ABOVE
-
-
-						// get this date in the schedule ready to receive products
-						schedule[thisDate].products = {
-							onsite: [],
-							online: [],
-						};
-						// set up container for this date's produts
-						const onsiteProductsThisDate = [];
-						// for each venue on this date
-						oneDateProducts.venue.forEach((oneDateVenueProducts) => {
-							// extract this venue data
-							// set up var for this venue
-							let thisVenue = {};
-							// for all venues in the set of venues
-							venues.forEach((oneVenueConfig) => {
-								// if this venue config has a tessitura feed name
-								if (
-									oneVenueConfig.tessituraFeedName &&
-									oneVenueConfig.tessituraFeedName === oneDateVenueProducts.title
-								) {
-									// use this venue config for this venue
-									thisVenue = oneVenueConfig;
-								}
-							});
-							// for each product in this venue
-							oneDateVenueProducts.show.forEach((oneDateVenueProduct) => {
-								// extract the data that is common to all 
-								// 		instances (times) of this product
-								const thisProductCommonData = {
-									title: oneDateVenueProduct.title,
-									psid: oneDateVenueProduct.eventnumber,
-									length: oneDateVenueProduct.length,
-									location: oneDateVenueProduct.location,
-									venue: thisVenue,
-									ageRange: {
-										weight: 1,
-										lowestAge: 3,
-										highestAge: 6,
-										shortDisplayString: 'Ages 3 &ndash; 6',
-										longDisplayString: 'Ages 3 &ndash; 6 (Preschool/Early Learners)',
-									},
-								};
-								// for each node in the set of scheduled Drupal nodes
-								scheduledNodes.forEach((scheduledNode) => {
-									// if this scheduled node's daily schedule ID matches 
-									// 		this product's psid
-									if (scheduledNode.dailyScheduleID === thisProductCommonData.psid) {
-										// add the node's URL to the common product data
-										thisProductCommonData.listingURL = scheduledNode.url;
-									}
-								});
-								// for each time for this product
-								oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
-									// extract this product's end time for comparison
-									const oneDateVenueProductInstanceEndDatetime = 
-										moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
-									// if this end time is present or in the future and 
-									// 		it's not full / sold out
-									if (
-										oneDateVenueProductInstanceEndDatetime
-											.isSameOrAfter(thisMoment, 'second') && 
-										oneDateVenueProductInstance.instock > 0
-									) {
-										// construct a unique product out of the product's 
-										// 		common data and the instance data
-										// start with unique copy of common data
-										const thisProduct = 
-											Utilities.ReturnUniqueObjectGivenAnyValue(
-												thisProductCommonData,
-											);
-										// add data unique to this instance
-										thisProduct.endTime = 
-											oneDateVenueProductInstanceEndDatetime.format('HH:mm');
-										thisProduct.startTime = 
-											moment(
-												`${thisDate} ${oneDateVenueProductInstance.starttime}`,
-											).format('HH:mm');
-										thisProduct.endTimeFormatted =
-											moment(`${thisDate} ${thisProduct.endTime}`)
-												.format('h:mm a');
-										thisProduct.startTimeFormatted =
-											moment(`${thisDate} ${thisProduct.startTime}`)
-												.format('h:mm a');
-										thisProduct.remaining = oneDateVenueProductInstance.instock;
-										// if this product is for schools only
-										if (oneDateVenueProductInstance.schoolonly === '1') {
-											// set corresponding flag on this product
-											thisProduct.schoolOnly = true;
-										}
-										// push to products this date container
-										onsiteProductsThisDate.push(thisProduct);
-									}
-								});
-							});
-						});
-						// sort this date's products by time, ascending
-						onsiteProductsThisDate.sort(
-							module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
-						);
-						// add this date's products to the onsite products for 
-						// 		this date in the schedule
-						schedule[thisDate].products.onsite = onsiteProductsThisDate;
 					});
-
-					// -----------------------------------------------MOVE TO SEP FUNCTION
-
 					// for each date in the set of online products
 					onlineProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
-						let thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
-
-
-						// ----- TEMPORARY BELOW
-
-						if (thisDate === '2020-05-08') {
-							thisDate = '2020-05-13';
-						}
-
-						// ----- TEMPORARY ABOVE
-
-
-						// set up container for this date's produts
-						const onlineProductsThisDate = [];
-						// for each venue on this date
-						oneDateProducts.venue.forEach((oneDateVenueProducts) => {
-							// extract this venue data
-							/* // set up var for this venue
-							let thisVenue = {};
-							// for all venues in the set of venues
-							venues.forEach((oneVenueConfig) => {
-								// if this venue config has a tessitura feed name
-								if (
-									oneVenueConfig.tessituraFeedName &&
-									oneVenueConfig.tessituraFeedName === oneDateVenueProducts.title
-								) {
-									// use this venue config for this venue
-									thisVenue = oneVenueConfig;
-								}
-							}); */
-							// for each product in this venue
-							oneDateVenueProducts.show.forEach((oneDateVenueProduct) => {
-								// set var for the scheduled node for this product,
-								// 		defaulting to no node
-								let scheduledNodeForThisProduct = null;
-								// extract the data that is common to all instances (times) 
-								// 		of this product
-								// set up container var
-								const thisProductCommonData = {};
-								// for each node in the set of scheduled Drupal nodes
-								scheduledNodes.forEach((scheduledNode) => {
-									// if this scheduled node's tessitura psid matches 
-									// 		this product's psid
-									if (
-										scheduledNode['tessitura-psid'] ===
-										thisProductCommonData.psid
-									) {
-										// set this node as the scheduled node for this product
-										scheduledNodeForThisProduct = scheduledNode;
-									}
-									// if this scheduled node's registration URL matches 
-									// 		this product's registration URL
-									if (
-										scheduledNode['registration-url'] ===
-										thisProductCommonData.registrationURL
-									) {
-										// set this node as the scheduled node for this product
-										scheduledNodeForThisProduct = scheduledNode;
-									}
+						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+						// if this date is in the schedule
+						if (schedule[thisDate]) {
+							// add this date's valid augmented products to the online products for
+							// 		this date in the schedule
+							schedule[thisDate].products.online = 
+								module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
+									thisMoment,
+									thisDate,
+									oneDateProducts,
+									scheduledNodes,
+									venues,
+									channels,
+									ageRanges,
 								});
-								// continuing only if there is a scheduled node for this product
-								if (scheduledNodeForThisProduct) {
-									// if this product has a psid (seasonno)
-									if (oneDateVenueProduct.seasonno) {
-										// add it to the product's common data
-										thisProductCommonData.psid =
-											oneDateVenueProduct.seasonno;
-									}
-									// if this product has an event link
-									if (oneDateVenueProduct.eventlink) {
-										// add it to the product's common data
-										thisProductCommonData.eventLink =
-											oneDateVenueProduct.eventlink;
-									}
-									// if this product has a registration url
-									if (oneDateVenueProduct.registrationURL) {
-										// add it to the product's common data
-										thisProductCommonData.registrationURL = 
-											oneDateVenueProduct.registrationURL;
-									}
-									// add the node's URL, age data, and channel
-									// 		to the common product data
-									thisProductCommonData.listingURL = scheduledNodeForThisProduct.url;
-									thisProductCommonData.channel = scheduledNodeForThisProduct.channel;
-									thisProductCommonData.ageRange = scheduledNodeForThisProduct['age-ranges'].split(', ');
-									// for each time for this product
-									oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
-										// extract this product's end time for comparison
-										const oneDateVenueProductInstanceEndDatetime =
-											moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
-										// if this end time is present or in the future and 
-										// 		it's not full / sold out
-										if (
-											oneDateVenueProductInstanceEndDatetime.isSameOrAfter(thisMoment) &&
-											oneDateVenueProductInstance.instock > 0
-										) {
-											// construct a unique product out of the product's 
-											// 		common data and the instance data
-											// start with unique copy of common data
-											const thisProduct =
-												Utilities.ReturnUniqueObjectGivenAnyValue(thisProductCommonData);
-											// add data unique to this instance
-											thisProduct.endTime = oneDateVenueProductInstanceEndDatetime.format('HH:mm');
-											thisProduct.startTime = moment(`${thisDate} ${oneDateVenueProductInstance.starttime}`).format('HH:mm');
-											thisProduct.endTimeFormatted =
-												moment(`${thisDate} ${thisProduct.endTime}`)
-													.format('h:mm a');
-											thisProduct.startTimeFormatted =
-												moment(`${thisDate} ${thisProduct.startTime}`)
-													.format('h:mm a');
-											thisProduct.remaining = oneDateVenueProductInstance.instock;
-											// if this product is for schools only
-											if (oneDateVenueProductInstance.schoolonly === '1') {
-												// set corresponding flag on this product
-												thisProduct.schoolOnly = true;
-											}
-											// push to products this date container
-											onlineProductsThisDate.push(thisProduct);
-										}
-									});
-								}
-							});
-						});
-						// sort this date's products by time, ascending
-						onlineProductsThisDate.sort(
-							module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
-						);
-						// add this date's products to the online products for
-						// 		this date in the schedule
-						schedule[thisDate].products.online = onlineProductsThisDate;
+						}
 					});
 					// convert the schedule object into an array with the date as an array element
 					// set up container
@@ -821,6 +615,261 @@ module.exports = {
 					reject(error);
 				});
 		}),
+	
+	ReturnAgeDataForProduct: (productAgeRangeIDArray, ageRanges) => {
+		// set up age array container and formatted age range string
+		const productAgeRangeArray = [];
+		let productAgeRangeFormatted = '';
+		// for each age id in age id array
+		productAgeRangeIDArray.forEach((ageRangeID) => {
+			// for each age range in the array of age ranges
+			ageRanges.forEach((ageRange) => {
+				// if this age range's ID matches this product age range ID
+				if (ageRange.id === ageRangeID) {
+					// push this age range to the age range array
+					productAgeRangeArray.push(ageRange);
+				}
+			});
+		});
+		// set a flag to default to displaying prefixes only
+		let displayPrefixesOnly = true;
+		// for each age range in the array of age ranges for this product
+		productAgeRangeArray.forEach((ageRange) => {
+			// if this age range should NOT display prefix only
+			if (
+				!ageRange['prefix-only'] ||
+				ageRange['prefix-only'] === '0'
+			) {
+				// alter flag to indicate we should not show prefixes only
+				displayPrefixesOnly = false;
+			}
+		});
+		// if we are displaying prefix only
+		if (displayPrefixesOnly) {
+			// then, de facto, there is only one age range
+			// add the age range prefix to display string and be done
+			productAgeRangeFormatted = productAgeRangeArray[0].prefix;
+		// if we are not displaying prefix only
+		} else {
+			// begin display string with prefix
+			productAgeRangeFormatted = productAgeRangeArray[0].prefix;
+			// set the lower end of the age range we'll use to 
+			// 		the lowest weighted age range's lower age
+			const ageRangeLowerEnd = productAgeRangeArray[0]['lower-age'];
+			// set the lower end of the age range we'll use to 
+			// 		the lowest weighted age range's lower age
+			const ageRangeUpperEnd = productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'];
+			// add lower and upper ages to display string
+			productAgeRangeFormatted += 
+				` ${ageRangeLowerEnd} &ndash; ${ageRangeUpperEnd} (`;
+			// get all the suffixes from all of the age ranges
+			// set up container for all age range suffixes
+			const ageRangeSuffixes = [];
+			// for each age range in the array of age ranges for this product
+			productAgeRangeArray.forEach((ageRange) => {
+				// for each suffix for this age range
+				ageRange.suffixes.split(';')
+					.forEach((suffix) => {
+						// add this suffix to the array of suffixes
+						ageRangeSuffixes.push(suffix);
+					});
+			});
+			// for each age range suffix in the array of age range suffixes
+			ageRangeSuffixes.forEach((suffixValue, suffixIndex) => {
+				// if this is not the first element in the array
+				if (suffixIndex !== 0) {
+					// add separator before this suffix
+					productAgeRangeFormatted += ' / ';
+				}
+				// add this suffix to this display string
+				productAgeRangeFormatted += suffixValue;
+			});
+			// finish out display string
+			productAgeRangeFormatted += ')';
+		}
+		// return object with all data
+		return {
+			ageRangeFormatted: productAgeRangeFormatted,
+			ageRangeArray: productAgeRangeArray,
+		};
+	},
+
+	ReturnAllValidAugmentedFormattedProductsForDay: ({ 
+		thisMoment,
+		thisDate,
+		oneDateProducts,
+		scheduledNodes,
+		venues,
+		channels,
+		ageRanges,
+	}) => {
+		// set up container for products for this date
+		const validProductsThisDate = [];
+		// for each venue on this date
+		oneDateProducts.venue.forEach((oneDateVenueProducts) => {
+			// extract this venue data
+			// set up var for this venue
+			let thisVenue = {};
+			// for all venues in the set of venues
+			venues.forEach((oneVenueConfig) => {
+				// if this venue config has a tessitura feed name
+				if (
+					oneVenueConfig.tessituraFeedName &&
+					oneVenueConfig.tessituraFeedName === oneDateVenueProducts.title
+				) {
+					// use this venue config for this venue
+					thisVenue = oneVenueConfig;
+				}
+			});
+			// for each product in this venue
+			oneDateVenueProducts.show.forEach((oneDateVenueProduct) => {
+				// set var for the scheduled node for this product,
+				// 		defaulting to no node
+				let scheduledNodeForThisProduct = null;
+				// extract the data that is common to all instances (times)
+				// 		of this product
+				// set up container var
+				const thisProductCommonData = {};
+				// if a venue was found
+				if (thisVenue) {
+					// set the venue as the venue for this product
+					thisProductCommonData.venue = thisVenue;
+				}
+				// if this product has a psid (seasonno)
+				if (oneDateVenueProduct.seasonno) {
+					// add it to the product's common data
+					thisProductCommonData.psid =
+						oneDateVenueProduct.seasonno;
+				}
+				// if this product has an event link
+				if (oneDateVenueProduct.eventlink) {
+					// add it to the product's common data
+					thisProductCommonData.eventLink =
+						oneDateVenueProduct.eventlink;
+				}
+				// if this product has a registration url
+				if (oneDateVenueProduct.registrationURL) {
+					// add it to the product's common data
+					thisProductCommonData.registrationURL =
+						oneDateVenueProduct.registrationURL;
+				}
+				// for each node in the set of scheduled Drupal nodes
+				scheduledNodes.forEach((scheduledNode) => {
+					// if this scheduled node's registration URL matches
+					// 		this product's registration URL
+					if (
+						scheduledNode['registration-url'] && 
+						scheduledNode['registration-url'] ===
+						thisProductCommonData.registrationURL
+					) {
+						// set this node as the scheduled node for this product
+						scheduledNodeForThisProduct = scheduledNode;
+					}
+					// if this scheduled node's tessitura psid matches
+					// 		this product's psid
+					if (
+						scheduledNode['tessitura-psid'] && 
+						scheduledNode['tessitura-psid'] ===
+						thisProductCommonData.psid
+					) {
+						// set this node as the scheduled node for this product
+						scheduledNodeForThisProduct = scheduledNode;
+					}
+				});
+				// continuing only if there is a scheduled node for this product
+				if (scheduledNodeForThisProduct) {
+					// add the node's URL, age data, and channel
+					// 		to the common product data
+					thisProductCommonData.title =
+						scheduledNodeForThisProduct.title;
+					thisProductCommonData.subtitle =
+						scheduledNodeForThisProduct.subtitle;
+					thisProductCommonData.listingURL =
+						scheduledNodeForThisProduct.url;
+					// if this node has a channel
+					if (scheduledNodeForThisProduct.channel) {
+						// for each channel in the array of channels
+						channels.forEach((channel) => {
+							// if this channel's id matches this node's channel id
+							if (scheduledNodeForThisProduct.channel === channel.id) {
+								// set this channel as the product's channel
+								thisProductCommonData.channel = channel;
+							}
+						});
+					}
+					// if this node has 1+ age ranges
+					if (scheduledNodeForThisProduct['age-ranges']) {
+						// get the formatted age data from the node's age data and 
+						// 		assign to this product
+						thisProductCommonData.ageRanges = 
+							module.exports.ReturnAgeDataForProduct(
+								scheduledNodeForThisProduct['age-ranges'].split(', '),
+								ageRanges,
+							);
+					}
+					// for each time for this product
+					oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
+						// extract this product's end time for comparison
+						const oneDateVenueProductInstanceEndDatetime =
+							moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
+						// if this end time is present or in the future and
+						// 		either we're not tracking capacity or we are 
+						// 		and it's not full / sold out
+						if (
+							oneDateVenueProductInstanceEndDatetime
+								.isSameOrAfter(thisMoment) &&
+							(
+								!oneDateVenueProductInstance.instock ||
+								oneDateVenueProductInstance.instock > 0
+							)
+						) {
+							// construct a unique product out of the product's
+							// 		common data and the instance data
+							// start with unique copy of common data
+							const thisProduct =
+								Utilities.ReturnUniqueObjectGivenAnyValue(
+									thisProductCommonData,
+								);
+							// add data unique to this instance
+							thisProduct.endTime =
+								oneDateVenueProductInstanceEndDatetime
+									.format('HH:mm');
+							thisProduct.startTime =
+								moment(
+									`${thisDate} ${oneDateVenueProductInstance.starttime}`,
+								).format('HH:mm');
+							thisProduct.endTimeFormatted =
+								moment(`${thisDate} ${thisProduct.endTime}`)
+									.format('h:mm a');
+							thisProduct.startTimeFormatted =
+								moment(`${thisDate} ${thisProduct.startTime}`)
+									.format('h:mm a');
+							// if this product has a remaining capacity
+							if (oneDateVenueProductInstance.instock) {
+								// set value on this product
+								thisProduct.remaining =
+									oneDateVenueProductInstance.instock;
+							}
+							// if this product is for schools only
+							if (oneDateVenueProductInstance.schoolonly === '1') {
+								// set corresponding flag on this product
+								thisProduct.schoolOnly = true;
+							}
+							// push to products this date container
+							validProductsThisDate.push(thisProduct);
+						}
+					});
+				}
+			});
+		});
+		// sort this date's products by time, ascending
+		validProductsThisDate.sort(
+			module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
+		);
+		// return container of products for this date
+		return validProductsThisDate;
+	},
+	
 
 	UpdateMOSScheduleData: () =>
 		// return a new promise
@@ -842,14 +891,16 @@ module.exports = {
 										// resolve this promise with the result
 										resolve(insertResult);
 									})
-									// if the promise is rejected with an error, then reject this promise with an error
+									// if the promise is rejected with an error
 									.catch((insertError) => {
+										// reject this promise with an error
 										reject(insertError);
 									});
 							});
 						})
-						// if the promise is rejected with an error, then reject this promise with an error
+						// if the promise is rejected with an error
 						.catch((insertError) => {
+							// reject this promise with an error
 							reject(insertError);
 						});
 				})
@@ -861,6 +912,17 @@ module.exports = {
 		}),
 
 	// --- UTILITIES
+
+
+	ReturnObjectWeightPropertyWeightRelativeToAnother: (a, b) => {
+		if (a.weight < b.weight) {
+			return -1;
+		}
+		if (a.weight > b.weight) {
+			return 1;
+		}
+		return 0;
+	},
 
 
 	ReturnObjectDatePropertyWeightRelativeToAnother: (a, b) => {
