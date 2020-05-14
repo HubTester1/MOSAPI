@@ -16,11 +16,11 @@ functions:
   HandleReplaceScheduleEvent:
     handler: index.HandleReplaceScheduleEvent
     events:
-      - schedule: cron(${self:custom.file.cronSchedulePeopleProcessing})
-      - http:
-          path: ${self:custom.file.endpoints.${self:provider.stage}.people.process}
-          method: post
-          cors: true
+      - schedule: cron(${self:custom.file.cronScheduleProductsSchedulesReplace})
+  HandleUpdateScheduleEvent:
+    handler: index.HandleUpdateScheduleEvent
+    events:
+      - schedule: cron(${self:custom.file.cronScheduleProductsSchedulesUpdate})
 
 # -------------------------------------------------------
 
@@ -47,9 +47,15 @@ provider:
     cronScheduleGSESignupReminders: ${self:custom.file.cronScheduleGSESignupReminders}
     cronScheduleGSECreditReminders: ${self:custom.file.cronScheduleGSECreditReminders}
     cronSchedulePeopleProcessing: ${self:custom.file.cronSchedulePeopleProcessing}
+    cronScheduleProductsSchedulesReplace: ${self:custom.file.cronScheduleProductsSchedulesReplace}
+    cronScheduleProductsSchedulesUpdate: ${self:custom.file.cronScheduleProductsSchedulesUpdate}
     graphClientID: ${self:custom.file.graphClientID}
     graphClientSecret: ${self:custom.file.graphClientSecret}
     graphTenantID: ${self:custom.file.graphTenantID}
+    eventBriteEiEBearerToken: ${self:custom.file.eventBriteEiEBearerToken}
+    eventBriteEiEOrganizationID: ${self:custom.file.eventBriteEiEOrganizationID}
+    eventBriteMarketingBearerToken: ${self:custom.file.eventBriteMarketingBearerToken}
+    eventBriteMarketingOrganizationID: ${self:custom.file.eventBriteMarketingOrganizationID}
     mongoDbHostUnique: ${self:custom.file.mongoDbHostUnique}
     mongoDbPass: ${self:custom.file.mongoDbPass}
     mongoDbUser: ${self:custom.file.mongoDbUser}

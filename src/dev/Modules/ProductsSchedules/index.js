@@ -983,21 +983,16 @@ module.exports = {
 	ReplaceMOSScheduleData: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			console.log('--------------- in the func');
 			// get a promise to get fresh schedule data
 			module.exports.ReturnMOSSchedule()
 				// if the promise is resolved with a result
 				.then((scheduleResult) => {
-					console.log('--------------- sched result');
-					console.log(scheduleResult);
 					// get a promise to delete all schedule dates
 					DataQueries.DeleteAllDocsFromCollection(
 						'productsSchedules',
 					)
 						// if the promise was resolved with a result
 						.then((deletionResult) => {
-							console.log('--------------- del result');
-							console.log(deletionResult);
 							// get a promise to insert all schedule dates
 							DataQueries.InsertDocIntoCollection(
 								scheduleResult,
@@ -1005,31 +1000,23 @@ module.exports = {
 							)
 								// if the promise was resolved with a result
 								.then((insertResults) => {
-									console.log('--------------- ins result');
-									console.log(insertResults);
 									// then resolve this promise with a simple message
 									resolve(`successful insert at ${moment().format()}`);
 								})
 								// if the promise is rejected with an error
 								.catch((insertError) => {
-									console.log('--------------- ins error');
-									console.log(insertError);
 									// reject this promise with the error
 									reject(insertError);
 								});
 						})
 						// if the promise is rejected with an error
 						.catch((deletionError) => {
-							console.log('--------------- del error');
-							console.log(deletionError);
 							// reject this promise with the error
 							reject(deletionError);
 						});
 				})
 				// if the promise is rejected with an error
 				.catch((scheduleError) => {
-					console.log('--------------- sched error');
-					console.log(scheduleError);
 					// reject this promise with the error
 					reject(scheduleError);
 				});

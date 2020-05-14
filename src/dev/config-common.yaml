@@ -16,7 +16,7 @@ cronScheduleGSESignupSync: ${ssm:cron-schedule-gse-signup-sync}
 cronScheduleGSESignupReminders: ${ssm:cron-schedule-gse-signup-reminders}
 cronScheduleGSECreditReminders: ${ssm:cron-schedule-gse-credit-reminders}
 cronSchedulePeopleProcessing: ${ssm:cron-schedule-people-processing}
-cronScheduleProductsSchedulesDeleteYesterday: ${ssm:cron-schedule-products-schedules-delete-yesterday}
+cronScheduleProductsSchedulesReplace: ${ssm:cron-schedule-products-schedules-replace}
 cronScheduleProductsSchedulesUpdate: ${ssm:cron-schedule-products-schedules-update}
 graphClientID: ${ssm:graph-client-id}
 graphClientSecret: ${ssm:graph-client-secret}
