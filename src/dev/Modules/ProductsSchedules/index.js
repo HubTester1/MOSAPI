@@ -183,7 +183,7 @@ module.exports = {
 		// return a new promise
 		new Promise((resolve, reject) => {
 			// get a promise to retrieve
-			axios.get(`https://www.mos.org/views-api/${apiEndpointToken}`)
+			axios.get(`https://www.mos.org${apiEndpointToken}`)
 				// if the promise is resolved
 				.then((result) => {
 					// if status indicates success
@@ -332,9 +332,9 @@ module.exports = {
 		// for each day in received array of days
 		hoursArray.forEach((dayObject) => {
 			// add a day with times to container object
-			standardHoursByDays[dayObject.name] = {
-				openingTime: dayObject.openingTime,
-				closingTime: dayObject.closingTime,
+			standardHoursByDays[dayObject['day-of-week']] = {
+				openingTime: dayObject['opening-time'],
+				closingTime: dayObject['closing-time'],
 			};
 		});
 		// return container for all the days
@@ -353,12 +353,12 @@ module.exports = {
 		new Promise((resolve, reject) => {
 			// get promises to resolve all data
 			Promise.all([
-				module.exports.ReturnDataFromMOSDrupal('venues'),
-				module.exports.ReturnDataFromMOSDrupal('channels'),
-				module.exports.ReturnDataFromMOSDrupal('hours-standard'),
-				module.exports.ReturnDataFromMOSDrupal('hours-exceptions'),
-				module.exports.ReturnDataFromMOSDrupal('scheduled-nodes'),
-				module.exports.ReturnDataFromMOSDrupal('age-ranges'),
+				module.exports.ReturnDataFromMOSDrupal('/api-config/venues'),
+				module.exports.ReturnDataFromMOSDrupal('/api-config/channels'),
+				module.exports.ReturnDataFromMOSDrupal('/api-config/hours-standard'),
+				module.exports.ReturnDataFromMOSDrupal('/api-content/hours-exceptions'),
+				module.exports.ReturnDataFromMOSDrupal('/api-content/scheduled-nodes'),
+				module.exports.ReturnDataFromMOSDrupal('/api-config/age-ranges'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('products365DaysDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayMOSAtHome.json'),
@@ -451,8 +451,8 @@ module.exports = {
 					hoursExceptions.forEach((oneException) => {
 						// get / interpret this exception's start and end dates
 						// eslint-disable-next-line prefer-const
-						let startDate = moment(oneException.startDate);
-						const endDate = moment(oneException.endDate);
+						let startDate = moment(oneException['start-date']);
+						const endDate = moment(oneException['end-date']);
 						// get an array of the dates for this exception
 						// set up container array
 						const datesThisException = [];
@@ -474,12 +474,12 @@ module.exports = {
 								location: oneException.location,
 								message: oneException.message,
 							};
-							if (oneException.closedAllDay) {
+							if (oneException['closed-all-day']) {
 								newException.closedAllDay = true;
 							}
-							if (oneException.openingTime) {
-								newException.openingTime = oneException.openingTime;
-								newException.closingTime = oneException.closingTime;
+							if (oneException['opening-time']) {
+								newException.openingTime = oneException['opening-time'];
+								newException.closingTime = oneException['closing-time'];
 							}
 							hoursExceptionsByDate[moment(oneDateThisException).format('YYYY-MM-DD')] = newException;
 						});
@@ -634,67 +634,71 @@ module.exports = {
 				}
 			});
 		});
-		// set a flag to default to displaying prefixes only
-		let displayPrefixesOnly = true;
-		// for each age range in the array of age ranges for this product
-		productAgeRangeArray.forEach((ageRange) => {
-			// if this age range should NOT display prefix only
-			if (
-				!ageRange['prefix-only'] ||
-				ageRange['prefix-only'] === '0'
-			) {
-				// alter flag to indicate we should not show prefixes only
-				displayPrefixesOnly = false;
-			}
-		});
-		// if we are displaying prefix only
-		if (displayPrefixesOnly) {
-			// then, de facto, there is only one age range
-			// add the age range prefix to display string and be done
-			productAgeRangeFormatted = productAgeRangeArray[0].prefix;
-		// if we are not displaying prefix only
-		} else {
-			// begin display string with prefix
-			productAgeRangeFormatted = productAgeRangeArray[0].prefix;
-			// set the lower end of the age range we'll use to 
-			// 		the lowest weighted age range's lower age
-			const ageRangeLowerEnd = productAgeRangeArray[0]['lower-age'];
-			// set the lower end of the age range we'll use to 
-			// 		the lowest weighted age range's lower age
-			const ageRangeUpperEnd = productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'];
-			// add lower and upper ages to display string
-			productAgeRangeFormatted += 
-				` ${ageRangeLowerEnd} &ndash; ${ageRangeUpperEnd} (`;
-			// get all the suffixes from all of the age ranges
-			// set up container for all age range suffixes
-			const ageRangeSuffixes = [];
+		// if an age range was found
+		if (productAgeRangeArray[0]) {
+			// set a flag to default to displaying prefixes only
+			let displayPrefixesOnly = true;
 			// for each age range in the array of age ranges for this product
 			productAgeRangeArray.forEach((ageRange) => {
-				// for each suffix for this age range
-				ageRange.suffixes.split(';')
-					.forEach((suffix) => {
-						// add this suffix to the array of suffixes
-						ageRangeSuffixes.push(suffix);
-					});
-			});
-			// for each age range suffix in the array of age range suffixes
-			ageRangeSuffixes.forEach((suffixValue, suffixIndex) => {
-				// if this is not the first element in the array
-				if (suffixIndex !== 0) {
-					// add separator before this suffix
-					productAgeRangeFormatted += ' / ';
+			// if this age range should NOT display prefix only
+				if (
+					!ageRange['prefix-only'] ||
+				ageRange['prefix-only'] === '0'
+				) {
+				// alter flag to indicate we should not show prefixes only
+					displayPrefixesOnly = false;
 				}
-				// add this suffix to this display string
-				productAgeRangeFormatted += suffixValue;
 			});
-			// finish out display string
-			productAgeRangeFormatted += ')';
+			// if we are displaying prefix only
+			if (displayPrefixesOnly) {
+			// then, de facto, there is only one age range
+			// add the age range prefix to display string and be done
+				productAgeRangeFormatted = productAgeRangeArray[0].prefix;
+				// if we are not displaying prefix only
+			} else {
+			// begin display string with prefix
+				productAgeRangeFormatted = productAgeRangeArray[0].prefix;
+				// set the lower end of the age range we'll use to 
+				// 		the lowest weighted age range's lower age
+				const ageRangeLowerEnd = productAgeRangeArray[0]['lower-age'];
+				// set the lower end of the age range we'll use to 
+				// 		the lowest weighted age range's lower age
+				const ageRangeUpperEnd = productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'];
+				// add lower and upper ages to display string
+				productAgeRangeFormatted += 
+				` ${ageRangeLowerEnd} &ndash; ${ageRangeUpperEnd} (`;
+				// get all the suffixes from all of the age ranges
+				// set up container for all age range suffixes
+				const ageRangeSuffixes = [];
+				// for each age range in the array of age ranges for this product
+				productAgeRangeArray.forEach((ageRange) => {
+				// for each suffix for this age range
+					ageRange.suffixes.split(';')
+						.forEach((suffix) => {
+						// add this suffix to the array of suffixes
+							ageRangeSuffixes.push(suffix);
+						});
+				});
+				// for each age range suffix in the array of age range suffixes
+				ageRangeSuffixes.forEach((suffixValue, suffixIndex) => {
+				// if this is not the first element in the array
+					if (suffixIndex !== 0) {
+					// add separator before this suffix
+						productAgeRangeFormatted += ' / ';
+					}
+					// add this suffix to this display string
+					productAgeRangeFormatted += suffixValue;
+				});
+				// finish out display string
+				productAgeRangeFormatted += ')';
+			}
+			// return object with all data
+			return {
+				ageRangeFormatted: productAgeRangeFormatted,
+				ageRangeArray: productAgeRangeArray,
+			};
 		}
-		// return object with all data
-		return {
-			ageRangeFormatted: productAgeRangeFormatted,
-			ageRangeArray: productAgeRangeArray,
-		};
+		return {};
 	},
 
 	ReturnAllValidAugmentedFormattedProductsForDay: ({ 
@@ -717,8 +721,8 @@ module.exports = {
 			venues.forEach((oneVenueConfig) => {
 				// if this venue config has a tessitura feed name
 				if (
-					oneVenueConfig.tessituraFeedName &&
-					oneVenueConfig.tessituraFeedName === oneDateVenueProducts.title
+					oneVenueConfig['tessitura-feed-name'] &&
+					oneVenueConfig['tessitura-feed-name'] === oneDateVenueProducts.title
 				) {
 					// use this venue config for this venue
 					thisVenue = oneVenueConfig;
@@ -788,25 +792,29 @@ module.exports = {
 					thisProductCommonData.subtitle =
 						scheduledNodeForThisProduct.subtitle;
 					thisProductCommonData.listingURL =
-						scheduledNodeForThisProduct.url;
-					// if this node has a channel
-					if (scheduledNodeForThisProduct.channel) {
-						// for each channel in the array of channels
-						channels.forEach((channel) => {
-							// if this channel's id matches this node's channel id
-							if (scheduledNodeForThisProduct.channel === channel.id) {
-								// set this channel as the product's channel
-								thisProductCommonData.channel = channel;
-							}
-						});
+						scheduledNodeForThisProduct['drupal-url'];
+					// if this node has channel IDs
+					if (scheduledNodeForThisProduct['channel-ids']) {
+						// for each channel ID
+						scheduledNodeForThisProduct['channel-ids']
+							.split(', ').forEach((nodeChannelID) => {
+								// for each channel in the array of channels
+								channels.forEach((channel) => {
+									// if this channel's id matches this node's channel id
+									if (nodeChannelID === channel.id) {
+										// set this channel as the product's channel
+										thisProductCommonData.channel = channel;
+									}
+								});
+							});
 					}
 					// if this node has 1+ age ranges
-					if (scheduledNodeForThisProduct['age-ranges']) {
+					if (scheduledNodeForThisProduct['age-range-ids']) {
 						// get the formatted age data from the node's age data and 
 						// 		assign to this product
 						thisProductCommonData.ageRanges = 
 							module.exports.ReturnAgeDataForProduct(
-								scheduledNodeForThisProduct['age-ranges'].split(', '),
+								scheduledNodeForThisProduct['age-range-ids'].split(', '),
 								ageRanges,
 							);
 					}
@@ -1044,4 +1052,4 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-module.exports.UpdateMOSScheduleData();
+module.exports.ReturnMOSSchedule();
