@@ -79,6 +79,7 @@ module.exports = {
 	HandleUpdateScheduleRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			console.log('--------------- issued promise');
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
@@ -86,9 +87,11 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
+					console.log('--------------- got access');
 					ProductsSchedules.UpdateMOSScheduleData()
 						// if the promise is resolved with a result
 						.then((updateResult) => {
+							console.log('--------------- update result');
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
@@ -102,6 +105,7 @@ module.exports = {
 						})
 						// if the promise is rejected with an error
 						.catch((updateError) => {
+							console.log('--------------- update error');
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
@@ -116,6 +120,7 @@ module.exports = {
 				})
 				// if the promise is rejected with an error
 				.catch((accessError) => {
+					console.log('--------------- denied access');
 					// send indicative response
 					Response.HandleResponse({
 						statusCode: 401,
@@ -139,6 +144,7 @@ module.exports = {
 	HandleReplaceScheduleRequest: (event, context) =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			console.log('--------------- issued promise');
 			// get a promise to check access
 			Access.ReturnRequesterCanAccess(
 				event,
@@ -146,9 +152,11 @@ module.exports = {
 			)
 				// if the promise is resolved with a result
 				.then((accessResult) => {
+					console.log('--------------- got access');
 					ProductsSchedules.ReplaceMOSScheduleData()
 						// if the promise is resolved with a result
 						.then((replacementResult) => {
+							console.log('--------------- replacement result');
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 200,
@@ -162,6 +170,7 @@ module.exports = {
 						})
 						// if the promise is rejected with an error
 						.catch((replacementError) => {
+							console.log('--------------- replacement error');
 							// send indicative response
 							Response.HandleResponse({
 								statusCode: 500,
@@ -176,6 +185,7 @@ module.exports = {
 				})
 				// if the promise is rejected with an error
 				.catch((accessError) => {
+					console.log('--------------- denied access');
 					// send indicative response
 					Response.HandleResponse({
 						statusCode: 401,

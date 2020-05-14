@@ -913,10 +913,13 @@ module.exports = {
 	UpdateMOSScheduleData: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			console.log('--------------- in the func');
 			// get a promise to get fresh schedule data
 			module.exports.ReturnMOSSchedule()
 				// if the promise is resolved with a result
 				.then((scheduleResult) => {
+					console.log('--------------- sched result');
+					console.log(scheduleResult);
 					// set up a container for upsert promises
 					const upsertPromisesContainer = [];
 					// for each element in schedule result array
@@ -927,21 +930,25 @@ module.exports = {
 							module.exports.UpsertOneScheduleDate(oneDaySchedule),
 						);
 					});
+					console.log('--------------- issued all promises');
 					// when all upsert promises have been fulfilled
 					Promise.all(upsertPromisesContainer)
 						// if the promises were resolved with a result
 						.then((upsertResults) => {
+							console.log('--------------- resolved all promises');
 							// then resolve this promise with a simple message
 							resolve(`successful upsert at ${moment().format()}`);
 						})
 						// if the promise is rejected with an error
 						.catch((upsertError) => {
+							console.log('--------------- promise rejected');
 							// reject this promise with the error
 							reject(upsertError);
 						});
 				})
 				// if the promise is rejected with an error
 				.catch((scheduleError) => {
+					console.log('--------------- sched error');
 					// reject this promise with the error
 					reject(scheduleError);
 				});
@@ -976,16 +983,21 @@ module.exports = {
 	ReplaceMOSScheduleData: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
+			console.log('--------------- in the func');
 			// get a promise to get fresh schedule data
 			module.exports.ReturnMOSSchedule()
 				// if the promise is resolved with a result
 				.then((scheduleResult) => {
+					console.log('--------------- sched result');
+					console.log(scheduleResult);
 					// get a promise to delete all schedule dates
 					DataQueries.DeleteAllDocsFromCollection(
 						'productsSchedules',
 					)
 						// if the promise was resolved with a result
 						.then((deletionResult) => {
+							console.log('--------------- del result');
+							console.log(deletionResult);
 							// get a promise to insert all schedule dates
 							DataQueries.InsertDocIntoCollection(
 								scheduleResult,
@@ -993,23 +1005,31 @@ module.exports = {
 							)
 								// if the promise was resolved with a result
 								.then((insertResults) => {
+									console.log('--------------- ins result');
+									console.log(insertResults);
 									// then resolve this promise with a simple message
 									resolve(`successful insert at ${moment().format()}`);
 								})
 								// if the promise is rejected with an error
 								.catch((insertError) => {
+									console.log('--------------- ins error');
+									console.log(insertError);
 									// reject this promise with the error
 									reject(insertError);
 								});
 						})
 						// if the promise is rejected with an error
 						.catch((deletionError) => {
+							console.log('--------------- del error');
+							console.log(deletionError);
 							// reject this promise with the error
 							reject(deletionError);
 						});
 				})
 				// if the promise is rejected with an error
 				.catch((scheduleError) => {
+					console.log('--------------- sched error');
+					console.log(scheduleError);
 					// reject this promise with the error
 					reject(scheduleError);
 				});
@@ -1052,4 +1072,3 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-module.exports.ReturnMOSSchedule();

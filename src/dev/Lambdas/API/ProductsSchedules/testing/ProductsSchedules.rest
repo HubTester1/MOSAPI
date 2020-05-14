@@ -7,18 +7,18 @@ GET {{baseURI}}/productsSchedules/settings
 Authorization: Bearer {{accessToken}}
 
 #########
-# Get 1 day of products by date
-GET {{baseURI}}/productsSchedules/date?onlyDate=2020-05-11
+# Get 1 day by date
+GET {{baseURI}}/productsSchedules/date?onlyDate=2020-05-26
 Authorization: Bearer {{accessToken}}
 
 #########
-# Get 3 days of products by date
-GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-11&lastDate=2020-05-13
+# Get 3 days by date
+GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-26&lastDate=2020-05-28
 Authorization: Bearer {{accessToken}}
 
 #########
-# Get 3 days of products by date and omit onsite products
-GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-11&lastDate=2020-05-13&omitType=onsite
+# Get 3 days by date and omit onsite products
+GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-26&lastDate=2020-05-29&omitType=onsite
 Authorization: Bearer {{accessToken}}
 
 #########
