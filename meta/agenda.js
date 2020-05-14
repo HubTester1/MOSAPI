@@ -5,11 +5,11 @@
  * @description Literally, a todo list
  * 
  * === WEB PROD
+ * @todo finish color update in style service, vars, Figma, taxonomy
  * @todo build new CA pages in prod
- * @todo content agg schedules vs teasers
  * @todo copy down db
  * 
- * === CON AGG
+ * === CON AGG PROJECT
  * @todo content agg sections for explore and mos at home
  * @todo hero image http://mos.dd:8083/exhibits/yawkey-gallery-on-the-charles-river
  * @todo other http://mos.dd:8083/exhibits/yawkey-gallery-on-the-charles-river
@@ -17,7 +17,9 @@
  * @todo other http://mos.dd:8083/live-presentations/lightning
  * 
  * === AWS
+ * @todo integrate new data
  * @todo debug update and replace
+ * @todo delete old contents, content types, views
  * 
  * === MISC
  * @todo Exhibit Halls Schools FY20 54250
