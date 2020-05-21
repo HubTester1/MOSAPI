@@ -33,7 +33,10 @@ functions:
                 onlyDate: true
                 firstDate: true
                 lastDate: true
-                omitType: true
+                omitHours: true
+                omitProducts: true
+                omitProductType: true
+                groupProductsByTime: true
   HandleUpdateScheduleRequest:
     handler: index.HandleUpdateScheduleRequest
     events:

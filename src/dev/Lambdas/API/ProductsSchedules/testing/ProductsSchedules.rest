@@ -8,7 +8,7 @@ Authorization: Bearer {{accessToken}}
 
 #########
 # Get 1 day by date
-GET {{baseURI}}/productsSchedules/date?onlyDate=2020-05-26
+GET {{baseURI}}/productsSchedules/date?onlyDate=2020-11-26
 Authorization: Bearer {{accessToken}}
 
 #########

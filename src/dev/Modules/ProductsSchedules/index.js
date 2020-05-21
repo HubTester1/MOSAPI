@@ -98,11 +98,23 @@ module.exports = {
 			projectionObject.fields = {
 				_id: 0,
 			};
-			// if omission of product a type was requested
-			if (options.omitType) {
-			// set projection object fields property 
-			// 		to omit requested field in products field
-				projectionObject.fields[`products.${options.omitType}`] = 0;
+			// if omission of all products was requested
+			if (options.omitHours) {
+				// set projection object fields property 
+				// 		to omit requested field in products field
+				projectionObject.fields.hours = 0;
+			}
+			// if omission of all products was requested
+			if (options.omitProducts) {
+				// set projection object fields property 
+				// 		to omit requested field in products field
+				projectionObject.fields.products = 0;
+			}
+			// if omission of a product type was requested
+			if (options.omitProductType) {
+				// set projection object fields property 
+				// 		to omit requested field in products field
+				projectionObject.fields[`products.${options.omitProductType}`] = 0;
 			}
 			// get a promise to get the docs specified above
 			DataConnection.get('productsSchedules')
@@ -115,13 +127,81 @@ module.exports = {
 							mongoDBError: true,
 							mongoDBErrorDetails: error,
 						});
-					// if there was NOT an error
+					// if there was NOT an error and groupProductsByTime was passed 
+					// 		and omitProducts was NOT passed
+					} else if (
+						options.groupProductsByTime && 
+						!options.omitProducts
+					) {
+						// set up container for newly organized days
+						const daysWithProductsGroupedByTime = [];
+						// for each day in the docs
+						docs.forEach((day) => {
+							daysWithProductsGroupedByTime.push(
+								module.exports.ReturnDayWithProductsGroupedByTime(day),
+							);
+						});
+						resolve(daysWithProductsGroupedByTime);
+					// if there was NOT an error and if groupProductsByTime was NOT passed
 					} else {
 						// resolve this promise with the docs
 						resolve(docs);
 					}
 				});
 		}),
+	ReturnProductsGroupedByTime: (products) => {
+		// set up products container
+		const productsByTime = {};
+		// for each product in array of products
+		products.forEach((product) => {
+			// if this product's start time is not 
+			// 		already in products by time
+			if (!productsByTime[product.startTime]) {
+				// add this time
+				productsByTime[product.startTime] = [];
+			}
+			// push this product to this time
+			productsByTime[product.startTime].push({
+				startTimeFormatted: product.startTimeFormatted,
+				product,
+			});
+		});
+		return productsByTime;
+	},
+
+	ReturnDayWithProductsGroupedByTime: (day) => {
+		// set up container for this day's reorganized data
+		const reorganizedDay = {
+			dateString: day.dateString,
+		};
+		// if day has hours
+		if (day.hours) {
+			// add this day's hours to container
+			reorganizedDay.hours = day.hours;
+		}
+		// if day has products
+		if (day.products) {
+			// add this day's hours to container
+			reorganizedDay.products = [];
+			// if day has onsite products
+			if (
+				day.products.onsite &&
+				day.products.onsite[0]
+			) {
+				reorganizedDay.products.onsite =
+					module.exports.ReturnProductsGroupedByTime(day.products.onsite);
+			}
+			// if day has online products
+			if (
+				day.products.online &&
+				day.products.online[0]
+			) {
+				reorganizedDay.products.online =
+					module.exports.ReturnProductsGroupedByTime(day.products.online);
+			}
+		}
+		return reorganizedDay;
+	},
 
 	// --- CRON PROCESSING
 
@@ -359,6 +439,7 @@ module.exports = {
 				module.exports.ReturnDataFromMOSDrupal('/api-content/hours-exceptions'),
 				module.exports.ReturnDataFromMOSDrupal('/api-content/scheduled-nodes'),
 				module.exports.ReturnDataFromMOSDrupal('/api-config/age-ranges'),
+				module.exports.ReturnDataFromMOSDrupal('/api-config/svgs'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('products365DaysDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayMOSAtHome.json'),
@@ -380,12 +461,13 @@ module.exports = {
 					const hoursExceptions = result[3];
 					const scheduledNodes = result[4];
 					const ageRanges = result[5];
-					const onsiteProductsToday = result[6];
-					const onsiteProducts = result[7];
-					const onlineProductsToday = result[8];
-					const onlineProducts = result[9];
-					const marketingEventBriteEvents = result[10];
-					const eieEventBriteEvents = result[11];
+					const svgs = result[6];
+					const onsiteProductsToday = result[7];
+					const onsiteProducts = result[8];
+					const onlineProductsToday = result[9];
+					const onlineProducts = result[10];
+					const marketingEventBriteEvents = result[11];
+					const eieEventBriteEvents = result[12];
 					// get an array of all valid event brite events in a Tessitura-like format; 
 					// 		validity means live, listed, and online in EventBrite, and 
 					// 		published in Drupal
@@ -430,7 +512,7 @@ module.exports = {
 									title: 'MOS at Home',
 									memberonly: '0',
 									show: [{
-										registrationURL: eventBriteEvent['registration-url'],
+										'registration-url': eventBriteEvent['registration-url'],
 										time: eventBriteEvent.time,
 									}],
 								}],
@@ -557,7 +639,7 @@ module.exports = {
 						// add hours this day to schedule
 						schedule[scheduleKey].hours = hoursThisDay;
 					});
-					// for each date in the set of onsite products
+					/* // for each date in the set of onsite products
 					onsiteProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
 						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
@@ -574,9 +656,10 @@ module.exports = {
 									venues,
 									channels,
 									ageRanges,
+									svgs,
 								});
 						}
-					});
+					}); */
 					// for each date in the set of online products
 					onlineProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
@@ -594,6 +677,7 @@ module.exports = {
 									venues,
 									channels,
 									ageRanges,
+									svgs,
 								});
 						}
 					});
@@ -709,6 +793,7 @@ module.exports = {
 		venues,
 		channels,
 		ageRanges,
+		svgs,
 	}) => {
 		// set up container for products for this date
 		const validProductsThisDate = [];
@@ -755,10 +840,10 @@ module.exports = {
 						oneDateVenueProduct.eventlink;
 				}
 				// if this product has a registration url
-				if (oneDateVenueProduct.registrationURL) {
+				if (oneDateVenueProduct['registration-url']) {
 					// add it to the product's common data
 					thisProductCommonData.registrationURL =
-						oneDateVenueProduct.registrationURL;
+						oneDateVenueProduct['registration-url'];
 				}
 				// for each node in the set of scheduled Drupal nodes
 				scheduledNodes.forEach((scheduledNode) => {
@@ -802,12 +887,32 @@ module.exports = {
 								channels.forEach((channel) => {
 									// if this channel's id matches this node's channel id
 									if (nodeChannelID === channel.id) {
-										// set this channel as the product's channel
-										thisProductCommonData.channel = channel;
+										// if this product doesn't already have 
+										// 		a channels property
+										if (!thisProductCommonData.channels) {
+											// create it
+											thisProductCommonData.channels = [];
+										}
+										// add this channel to the product's channels
+										thisProductCommonData.channels.push(channel);
 									}
 								});
 							});
 					}
+					/* // if this product has channels
+					if (thisProductCommonData.channels) {
+						// for each of the product's channels
+						thisProductCommonData.channels.forEach((productChannel) => {
+							// for each svg
+							svgs.forEach((svg) => {
+								// if this svg id matches this channels
+								if (svg.id === productChannel['svg-id']) {
+									// add this svg as the channel's icon
+									productChannel.icon = decodeURI(svg.content);
+								}
+							});
+						});
+					} */
 					// if this node has 1+ age ranges
 					if (scheduledNodeForThisProduct['age-range-ids']) {
 						// get the formatted age data from the node's age data and 
@@ -1059,3 +1164,12 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
+
+/* module.exports.ReturnSpecifiedMOSProductsSchedules({
+	firstDate: '2020-05-17',
+	lastDate: '2020-05-30',
+	omitProductType: 'onsite',
+	groupProductsByTime: true,
+}); */
+
+module.exports.ReturnMOSSchedule();
