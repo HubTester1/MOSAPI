@@ -17,10 +17,11 @@ functions:
     handler: index.HandleReplaceScheduleEvent
     events:
       - schedule: cron(${self:custom.file.cronScheduleProductsSchedulesReplace})
-  HandleUpdateScheduleEvent:
-    handler: index.HandleUpdateScheduleEvent
-    events:
       - schedule: cron(${self:custom.file.cronScheduleProductsSchedulesUpdate})
+  # HandleUpdateScheduleEvent:
+  #   handler: index.HandleUpdateScheduleEvent
+  #   events:
+  #     - schedule: cron(${self:custom.file.cronScheduleProductsSchedulesUpdate})
 
 # -------------------------------------------------------
 
