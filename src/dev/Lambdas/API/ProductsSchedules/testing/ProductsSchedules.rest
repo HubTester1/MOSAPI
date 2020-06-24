@@ -17,8 +17,8 @@ GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-26&lastDate=2020-05-28
 Authorization: Bearer {{accessToken}}
 
 #########
-# Get 3 days by date and omit onsite products
-GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-26&lastDate=2020-05-29&omitType=onsite
+# Get X days by date, omit hours and onsite products, and group products by time
+GET {{baseURI}}/productsSchedules/date?firstDate=2020-05-21&lastDate=2020-05-29&omitProductType=onsite&omitHours=true&groupProductsByTime=true
 Authorization: Bearer {{accessToken}}
 
 #########
