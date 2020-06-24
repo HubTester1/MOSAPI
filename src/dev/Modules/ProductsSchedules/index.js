@@ -12,6 +12,7 @@ const moment = require('moment-timezone');
 const Utilities = require('utilities');
 
 moment.suppressDeprecationWarnings = true;
+moment.tz.setDefault('UTC');
 
 module.exports = {
 
@@ -158,13 +159,13 @@ module.exports = {
 			// 		already in products by time
 			if (!productsByTime[product.startTime]) {
 				// add this time
-				productsByTime[product.startTime] = [];
+				productsByTime[product.startTime] = {
+					startTimeFormatted: product.startTimeFormatted,
+					productsThisTime: [],
+				};
 			}
 			// push this product to this time
-			productsByTime[product.startTime].push({
-				startTimeFormatted: product.startTimeFormatted,
-				product,
-			});
+			productsByTime[product.startTime].productsThisTime.push(product);
 		});
 		return productsByTime;
 	},
@@ -182,7 +183,7 @@ module.exports = {
 		// if day has products
 		if (day.products) {
 			// add this day's hours to container
-			reorganizedDay.products = [];
+			reorganizedDay.products = {};
 			// if day has onsite products
 			if (
 				day.products.onsite &&
@@ -355,7 +356,7 @@ module.exports = {
 				// if this node has a registration URL and it matches the event's url
 				if (
 					scheduledNode['registration-url'] &&
-						scheduledNode['registration-url'] === event.url
+					scheduledNode['registration-url'] === event.url
 				) {
 					// alter the flag to indicate that the event is published in Drupal
 					publishedInDrupal = true;
@@ -370,21 +371,56 @@ module.exports = {
 					'registration-url': event.url,
 					time: [
 						{
-							endtime: moment(event.start.local).format('HH:mm'),
+							endtime: moment(event.end.local).format('HH:mm'),
 							instock: null,
-							starttime: moment(event.end.local).format('HH:mm'),
+							starttime: moment(event.start.local).format('HH:mm'),
 						},
 					],
 				};
 				// return this promise with the event
 				return formattedEvent;
-			// if this event is NOT publised in Drupal
-			} 
+				// if this event is NOT publised in Drupal
+			}
 			// return this promise with a null value
 			return null;
-			
-		// if this event is NOT listed (i.e., not public)
-		} 
+
+			// if this event is NOT listed (i.e., not public)
+		}
+		// return this promise with a null value
+		return null;
+	},
+
+	// validity means all required fields populated and published in Drupal; Drupal-only
+	// 		means that the even does not exist in Tessitura or EventBrite
+	ReturnValidDrupalOnlyEventInTessituraFormat: (event) => {
+		// if this event does not have a Tessitura PSID, and its third-party
+		// 		registration URL is not an EventBrite URL, and it has
+		// 		the required fields
+		if (
+			event && 
+			!event['tessitura-psid'] &&
+			event['registration-url'] &&
+			!event['registration-url'].includes('eventbrite.com') && 
+			event.title && 
+			event['start-date'] && 
+			event['end-date'] && 
+			event['age-range-ids'] && 
+			event.published && 
+			event.published === '1'
+		) {
+			return {
+				date: moment(event['start-date']).format('YYYY/MM/DD'),
+				venue: event['channel-ids'] ? 'MOS at Home' : 'Events',
+				'registration-url': event['registration-url'],
+				time: [
+					{
+						endtime: moment(event['end-date']).format('HH:mm'),
+						instock: null,
+						starttime: moment(event['start-date']).format('HH:mm'),
+					},
+				],
+			};
+		}
 		// return this promise with a null value
 		return null;
 	},
@@ -397,6 +433,24 @@ module.exports = {
 			// attempt to get a formatted event
 			const attemptedFormattedEvent = module.exports
 				.ReturnValidEventBriteEventInTessituraFormat(event, scheduledNodes);
+			// if an event was returned
+			if (attemptedFormattedEvent) {
+				// add it to the container
+				validFormattedEvents.push(attemptedFormattedEvent);
+			}
+		});
+		return validFormattedEvents;
+	},
+
+
+	ReturnValidDrupalOnlyEventSetInTessituraFormat: (scheduledNodes) => {
+		// set up a container for valid, formatted events
+		const validFormattedEvents = [];
+		// for each node in the node set
+		scheduledNodes.forEach((node) => {
+			// attempt to get a formatted, Drupal-only event
+			const attemptedFormattedEvent = module.exports
+				.ReturnValidDrupalOnlyEventInTessituraFormat(node);
 			// if an event was returned
 			if (attemptedFormattedEvent) {
 				// add it to the container
@@ -452,7 +506,7 @@ module.exports = {
 					// get today's date
 					const dateToday = moment().format('YYYY-MM-DD');
 					// get this moment in time
-					const thisMoment = moment();
+					const thisMoment = moment().tz('UTC');
 					// extract data for convenience
 					const venues = result[0];
 					const channels = result[1];
@@ -479,6 +533,13 @@ module.exports = {
 							eieEventBriteEvents,
 							scheduledNodes,
 						));
+					// get an array of all valid non-EventBrite and non-Tessitura events in a 
+					// 		Tessitura-like format; valid means that all required fields were
+					// 		populated in Drupal and the node was published
+					const allValidDrupalOnlyEventsFormatted =
+						module.exports.ReturnValidDrupalOnlyEventSetInTessituraFormat(
+							scheduledNodes,
+						);
 					// merge all schedule data into two places, one onsite and the other online
 					// substitute today's fresher data sets for the stale data 
 					// 		in the larger data set
@@ -514,6 +575,39 @@ module.exports = {
 									show: [{
 										'registration-url': eventBriteEvent['registration-url'],
 										time: eventBriteEvent.time,
+									}],
+								}],
+							});
+						}
+					});
+					// add drupal-only events to online products
+					// for each drupal-only event
+					allValidDrupalOnlyEventsFormatted.forEach((drupalEvent) => {
+						// set flag indicating that this event's date is not already
+						// 		in online products
+						let thisdrupalEventDateAlreadyInOnlineProducts = false;
+						// for each date in the set of online products
+						onlineProducts.forEach((oneDateProducts) => {
+							// if this drupal event date matches this date in online products
+							if (drupalEvent.date === oneDateProducts.date) {
+								// push this event to array of this day's mos at home venue's shows
+								oneDateProducts.venue[0].show.push(drupalEvent);
+								// alter flag to indicate that this event brite event's date
+								// 		was already in online products
+								thisdrupalEventDateAlreadyInOnlineProducts = true;
+							}
+						});
+						// if this event brite event's date was not already in online products
+						if (!thisdrupalEventDateAlreadyInOnlineProducts) {
+							// then push a new date to online products
+							onlineProducts.push({
+								date: drupalEvent.date,
+								venue: [{
+									title: 'MOS at Home',
+									memberonly: '0',
+									show: [{
+										'registration-url': drupalEvent['registration-url'],
+										time: drupalEvent.time,
 									}],
 								}],
 							});
@@ -727,7 +821,7 @@ module.exports = {
 			// if this age range should NOT display prefix only
 				if (
 					!ageRange['prefix-only'] ||
-				ageRange['prefix-only'] === '0'
+					ageRange['prefix-only'] === '0'
 				) {
 				// alter flag to indicate we should not show prefixes only
 					displayPrefixesOnly = false;
@@ -747,7 +841,10 @@ module.exports = {
 				const ageRangeLowerEnd = productAgeRangeArray[0]['lower-age'];
 				// set the lower end of the age range we'll use to 
 				// 		the lowest weighted age range's lower age
-				const ageRangeUpperEnd = productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'];
+				const ageRangeUpperEnd = 
+					productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'] !== '19' ? 
+						productAgeRangeArray[productAgeRangeArray.length - 1]['upper-age'] :
+						'Adults';
 				// add lower and upper ages to display string
 				productAgeRangeFormatted += 
 				` ${ageRangeLowerEnd} &ndash; ${ageRangeUpperEnd} (`;
@@ -919,7 +1016,7 @@ module.exports = {
 						// 		assign to this product
 						thisProductCommonData.ageRanges = 
 							module.exports.ReturnAgeDataForProduct(
-								scheduledNodeForThisProduct['age-range-ids'].split(', '),
+								scheduledNodeForThisProduct['age-range-ids'].split(';'),
 								ageRanges,
 							);
 					}
@@ -927,7 +1024,8 @@ module.exports = {
 					oneDateVenueProduct.time.forEach((oneDateVenueProductInstance) => {
 						// extract this product's end time for comparison
 						const oneDateVenueProductInstanceEndDatetime =
-							moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`);
+							moment(`${thisDate} ${oneDateVenueProductInstance.endtime}`)
+								.add(4, 'hours');
 						// if this end time is present or in the future and
 						// 		either we're not tracking capacity or we are 
 						// 		and it's not full / sold out
@@ -947,9 +1045,6 @@ module.exports = {
 									thisProductCommonData,
 								);
 							// add data unique to this instance
-							thisProduct.endTime =
-								oneDateVenueProductInstanceEndDatetime
-									.format('HH:mm');
 							thisProduct.startTime =
 								moment(
 									`${thisDate} ${oneDateVenueProductInstance.starttime}`,
@@ -960,6 +1055,14 @@ module.exports = {
 							thisProduct.startTimeFormatted =
 								moment(`${thisDate} ${thisProduct.startTime}`)
 									.format('h:mm a');
+							// if this product has an end time
+							if (oneDateVenueProductInstance.endtime) {
+								// set end time on this product
+								thisProduct.endTime =
+									moment(
+										`${thisDate} ${oneDateVenueProductInstance.endtime}`,
+									).format('HH:mm');
+							}
 							// if this product has a remaining capacity
 							if (oneDateVenueProductInstance.instock) {
 								// set value on this product
@@ -1164,12 +1267,5 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-
-/* module.exports.ReturnSpecifiedMOSProductsSchedules({
-	firstDate: '2020-05-17',
-	lastDate: '2020-05-30',
-	omitProductType: 'onsite',
-	groupProductsByTime: true,
-}); */
-
-module.exports.ReturnMOSSchedule();
+// module.exports.ReturnMOSSchedule();
+// module.exports.ReplaceMOSScheduleData();
