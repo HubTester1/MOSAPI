@@ -1,7 +1,0 @@
-@baseURI = https://XXXXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev
-
-
-#########
-# XXXXXXXXXXXXXXXXXXX
-GET {{baseURI}}/XXX/XXX
-Authorization: Bearer {{accessToken}}
