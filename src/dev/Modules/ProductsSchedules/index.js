@@ -493,7 +493,7 @@ module.exports = {
 				module.exports.ReturnDataFromMOSDrupal('/api-content/hours-exceptions'),
 				module.exports.ReturnDataFromMOSDrupal('/api-content/scheduled-nodes'),
 				module.exports.ReturnDataFromMOSDrupal('/api-config/age-ranges'),
-				module.exports.ReturnDataFromMOSDrupal('/api-config/svgs'),
+				module.exports.ReturnDataFromMOSDrupal('/api/v1/svg.json'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('products365DaysDailyScheduleFeed.json'),
 				module.exports.ReturnTessituraProductsFromTriton('productsTodayMOSAtHome.json'),
@@ -733,7 +733,7 @@ module.exports = {
 						// add hours this day to schedule
 						schedule[scheduleKey].hours = hoursThisDay;
 					});
-					/* // for each date in the set of onsite products
+					// for each date in the set of onsite products
 					onsiteProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
 						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
@@ -753,7 +753,7 @@ module.exports = {
 									svgs,
 								});
 						}
-					}); */
+					});
 					// for each date in the set of online products
 					onlineProducts.forEach((oneDateProducts) => {
 						// extract this date and datetime for convenience
