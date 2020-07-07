@@ -33,7 +33,7 @@
 		"install": "^0.13.0",
 		"jsdoc-x": "^4.0.3",
 		"json-format": "^1.0.1",
-		"npm": "^6.13.4",
+		"npm": "^6.14.6",
 		"serverless-webpack": "^5.3.1",
 		"uuid": "^7.0.0",
 		"webpack": "^4.42.0",
