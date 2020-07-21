@@ -556,7 +556,10 @@ module.exports = {
 						// for each date in the set of online products
 						onlineProducts.forEach((oneDateProducts) => {
 							// if this event brite event date matches this date in online products
-							if (eventBriteEvent.date === oneDateProducts.date) {
+							if (
+								oneDateProducts && oneDateProducts.date && 
+								eventBriteEvent.date === oneDateProducts.date
+							) {
 								// push this event to array of this day's mos at home venue's shows
 								oneDateProducts.venue[0].show.push(eventBriteEvent);
 								// alter flag to indicate that this event brite event's date
@@ -735,44 +738,50 @@ module.exports = {
 					});
 					// for each date in the set of onsite products
 					onsiteProducts.forEach((oneDateProducts) => {
-						// extract this date and datetime for convenience
-						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
-						// if this date is in the schedule
-						if (schedule[thisDate]) {
-							// add this date's valid augmented products to the online products for
-							// 		this date in the schedule
-							schedule[thisDate].products.onsite =
-								module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
-									thisMoment,
-									thisDate,
-									oneDateProducts,
-									scheduledNodes,
-									venues,
-									channels,
-									ageRanges,
-									svgs,
-								});
+						// if oneDateProducts is truthy
+						if (oneDateProducts) {
+							// extract this date and datetime for convenience
+							const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+							// if this date is in the schedule
+							if (schedule[thisDate]) {
+								// add this date's valid augmented products to the online products for
+								// 		this date in the schedule
+								schedule[thisDate].products.onsite =
+									module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
+										thisMoment,
+										thisDate,
+										oneDateProducts,
+										scheduledNodes,
+										venues,
+										channels,
+										ageRanges,
+										svgs,
+									});
+							}
 						}
 					});
 					// for each date in the set of online products
 					onlineProducts.forEach((oneDateProducts) => {
-						// extract this date and datetime for convenience
-						const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
-						// if this date is in the schedule
-						if (schedule[thisDate]) {
-							// add this date's valid augmented products to the online products for
-							// 		this date in the schedule
-							schedule[thisDate].products.online = 
-								module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
-									thisMoment,
-									thisDate,
-									oneDateProducts,
-									scheduledNodes,
-									venues,
-									channels,
-									ageRanges,
-									svgs,
-								});
+						// if oneDateProducts is truthy
+						if (oneDateProducts) {
+							// extract this date and datetime for convenience
+							const thisDate = moment(oneDateProducts.date).format('YYYY-MM-DD');
+							// if this date is in the schedule
+							if (schedule[thisDate]) {
+								// add this date's valid augmented products to the online products for
+								// 		this date in the schedule
+								schedule[thisDate].products.online = 
+									module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
+										thisMoment,
+										thisDate,
+										oneDateProducts,
+										scheduledNodes,
+										venues,
+										channels,
+										ageRanges,
+										svgs,
+									});
+							}
 						}
 					});
 					// convert the schedule object into an array with the date as an array element
@@ -1267,5 +1276,5 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-// module.exports.ReturnMOSSchedule();
+module.exports.ReturnMOSSchedule();
 // module.exports.ReplaceMOSScheduleData();
