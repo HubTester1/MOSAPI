@@ -7,6 +7,11 @@ GET {{baseURI}}/productsSchedules/settings
 Authorization: Bearer {{accessToken}}
 
 #########
+# Daily Schedule call
+GET {{baseURI}}/productsSchedules/date?onlyDate=2020-07-20&groupProductsByTime=true
+Authorization: Bearer {{accessToken}}
+
+#########
 # Get 1 day by date
 GET {{baseURI}}/productsSchedules/date?onlyDate=2020-11-26
 Authorization: Bearer {{accessToken}}
