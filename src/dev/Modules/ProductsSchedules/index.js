@@ -500,6 +500,7 @@ module.exports = {
 				module.exports.ReturnTessituraProductsFromTriton('products14DaysMOSAtHome.json'),
 				module.exports.ReturnAllLiveEventBriteEvents('Marketing'),
 				module.exports.ReturnAllLiveEventBriteEvents('EiE'),
+				module.exports.ReturnDataFromMOSDrupal('/api-content/old-offerings-for-schedule'),
 			])
 				// if the promise is resolved with a result
 				.then((result) => {
@@ -513,7 +514,7 @@ module.exports = {
 					const hoursStandard = 
 						module.exports.ReturnStandardHoursAsObjectByDays(result[2]);
 					const hoursExceptions = result[3];
-					const scheduledNodes = result[4];
+					let scheduledNodes = result[4];
 					const ageRanges = result[5];
 					const svgs = result[6];
 					const onsiteProductsToday = result[7];
@@ -522,6 +523,9 @@ module.exports = {
 					const onlineProducts = result[10];
 					const marketingEventBriteEvents = result[11];
 					const eieEventBriteEvents = result[12];
+					const oldOfferingNodes = result[13];
+					// temporary - merge old and new offerings
+					scheduledNodes = scheduledNodes.concat(oldOfferingNodes);
 					// get an array of all valid event brite events in a Tessitura-like format; 
 					// 		validity means live, listed, and online in EventBrite, and 
 					// 		published in Drupal
@@ -543,10 +547,14 @@ module.exports = {
 					// merge all schedule data into two places, one onsite and the other online
 					// substitute today's fresher data sets for the stale data 
 					// 		in the larger data set
-					// eslint-disable-next-line prefer-destructuring
-					onsiteProducts[0] = onsiteProductsToday[0];
-					// eslint-disable-next-line prefer-destructuring
-					onlineProducts[0] = onlineProductsToday[0];
+					if (onsiteProductsToday && onsiteProductsToday[0]) {
+						// eslint-disable-next-line prefer-destructuring
+						onsiteProducts[0] = onsiteProductsToday[0];
+					}
+					if (onlineProductsToday && onlineProductsToday[0]) {
+						// eslint-disable-next-line prefer-destructuring
+						onlineProducts[0] = onlineProductsToday[0];
+					}
 					// add event brite events to online products
 					// for each event brite event
 					allValidEventBriteEventsFormatted.forEach((eventBriteEvent) => {
@@ -963,15 +971,32 @@ module.exports = {
 						// set this node as the scheduled node for this product
 						scheduledNodeForThisProduct = scheduledNode;
 					}
-					// if this scheduled node's tessitura psid matches
-					// 		this product's psid
+					// if this scheduled node has a tessitura psid string
 					if (
 						scheduledNode['tessitura-psid'] && 
-						scheduledNode['tessitura-psid'] ===
-						thisProductCommonData.psid
+						typeof (scheduledNode['tessitura-psid']) === 'string'
 					) {
-						// set this node as the scheduled node for this product
-						scheduledNodeForThisProduct = scheduledNode;
+						let scheduledNodePSIDs;
+						// if tessitura psids contain a comma and space
+						if (scheduledNode['tessitura-psid'].includes(', ')) {
+							scheduledNodePSIDs = scheduledNode['tessitura-psid'].split(', ');
+						} else {
+							scheduledNodePSIDs = [scheduledNode['tessitura-psid']];
+						}
+						// if there's at least one PSID
+						if (scheduledNodePSIDs && scheduledNodePSIDs[0]) {
+							// for each of this scheduled node's tessitura psids 
+							scheduledNodePSIDs.forEach((scheduledNodePSID) => {
+								// if this scheduled node PSID matches this product's psid
+								if (
+									scheduledNodePSID ===
+									thisProductCommonData.psid
+								) {
+									// set this node as the scheduled node for this product
+									scheduledNodeForThisProduct = scheduledNode;
+								}
+							});
+						}
 					}
 				});
 				// continuing only if there is a scheduled node for this product
@@ -1005,7 +1030,7 @@ module.exports = {
 								});
 							});
 					}
-					/* // if this product has channels
+					// if this product has channels
 					if (thisProductCommonData.channels) {
 						// for each of the product's channels
 						thisProductCommonData.channels.forEach((productChannel) => {
@@ -1018,7 +1043,7 @@ module.exports = {
 								}
 							});
 						});
-					} */
+					}
 					// if this node has 1+ age ranges
 					if (scheduledNodeForThisProduct['age-range-ids']) {
 						// get the formatted age data from the node's age data and 
@@ -1130,13 +1155,10 @@ module.exports = {
 	UpdateMOSScheduleData: () =>
 		// return a new promise
 		new Promise((resolve, reject) => {
-			console.log('--------------- in the func');
 			// get a promise to get fresh schedule data
 			module.exports.ReturnMOSSchedule()
 				// if the promise is resolved with a result
 				.then((scheduleResult) => {
-					console.log('--------------- sched result');
-					console.log(scheduleResult);
 					// set up a container for upsert promises
 					const upsertPromisesContainer = [];
 					// for each element in schedule result array
@@ -1147,25 +1169,21 @@ module.exports = {
 							module.exports.UpsertOneScheduleDate(oneDaySchedule),
 						);
 					});
-					console.log('--------------- issued all promises');
 					// when all upsert promises have been fulfilled
 					Promise.all(upsertPromisesContainer)
 						// if the promises were resolved with a result
 						.then((upsertResults) => {
-							console.log('--------------- resolved all promises');
 							// then resolve this promise with a simple message
 							resolve(`successful upsert at ${moment().format()}`);
 						})
 						// if the promise is rejected with an error
 						.catch((upsertError) => {
-							console.log('--------------- promise rejected');
 							// reject this promise with the error
 							reject(upsertError);
 						});
 				})
 				// if the promise is rejected with an error
 				.catch((scheduleError) => {
-					console.log('--------------- sched error');
 					// reject this promise with the error
 					reject(scheduleError);
 				});
@@ -1276,5 +1294,5 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-// module.exports.ReturnMOSSchedule();
-// module.exports.ReplaceMOSScheduleData();
+
+module.exports.ReplaceMOSScheduleData();
