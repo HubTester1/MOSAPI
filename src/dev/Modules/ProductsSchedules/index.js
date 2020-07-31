@@ -828,7 +828,10 @@ module.exports = {
 								hoursThisDay.open = false;
 							// if exception does not indicate all day closure 
 							// 		and does indicate an opening time
-							} else if (hoursExceptionThisDay.openingTime) {
+							} else if (
+								hoursExceptionThisDay.openingTime && 
+								hoursExceptionThisDay.closingTime
+							) {
 								// set open = true for hours this day
 								hoursThisDay.open = true;
 								// add opening and closing times 
@@ -839,6 +842,15 @@ module.exports = {
 								hoursThisDay.closingTime = 
 									moment(`${scheduleKey} ${hoursExceptionThisDay.closingTime}`)
 										.format('HH:mm');
+							// if not closed all day and no opening and closing times
+							// 		were specified
+							} else {
+								// add to hours for this day the standard 
+								// 		opening and closing times for
+								// 		this day of the week
+								hoursThisDay = hoursStandard[moment(scheduleKey).format('dddd')];
+								// set open = true for hours this day
+								hoursThisDay.open = true;
 							}
 						// if NO exception for this day was found
 						} else {
