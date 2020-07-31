@@ -182,7 +182,6 @@ module.exports = {
 		// set up products container
 		const productsWithSummarizedVenues = {
 			standardProducts: [],
-			summarizedVenues: {},
 		};
 		// set up an intermediate container
 		const summarizedVenues = {};
@@ -886,7 +885,7 @@ module.exports = {
 								// 		this date in the schedule
 								schedule[thisDate].products.onsite =
 									module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
-										thisMoment,
+										dateToday,
 										thisDate,
 										oneDateProducts,
 										scheduledNodes,
@@ -910,7 +909,7 @@ module.exports = {
 								// 		this date in the schedule
 								schedule[thisDate].products.online = 
 									module.exports.ReturnAllValidAugmentedFormattedProductsForDay({
-										thisMoment,
+										dateToday,
 										thisDate,
 										oneDateProducts,
 										scheduledNodes,
@@ -1030,7 +1029,7 @@ module.exports = {
 	},
 
 	ReturnAllValidAugmentedFormattedProductsForDay: ({ 
-		thisMoment,
+		dateToday,
 		thisDate,
 		oneDateProducts,
 		scheduledNodes,
@@ -1195,7 +1194,7 @@ module.exports = {
 						// 		and it's not full / sold out
 						if (
 							oneDateVenueProductInstanceEndDatetime
-								.isSameOrAfter(thisMoment) &&
+								.isSameOrAfter(dateToday, 'day') &&
 							(
 								!oneDateVenueProductInstance.instock ||
 								oneDateVenueProductInstance.instock > 0
