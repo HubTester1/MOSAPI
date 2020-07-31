@@ -128,25 +128,30 @@ module.exports = {
 							mongoDBError: true,
 							mongoDBErrorDetails: error,
 						});
-					// if there was NOT an error and groupProductsByTime was passed 
-					// 		and omitProducts was NOT passed
-					} else if (
-						options.groupProductsByTime && 
-						!options.omitProducts
-					) {
-						// set up container for newly organized days
-						const daysWithProductsGroupedByTime = [];
+					// if there was NOT an error
+					} else {
+						// set up container for days
+						const allDays = [];
 						// for each day in the docs
 						docs.forEach((day) => {
-							daysWithProductsGroupedByTime.push(
-								module.exports.ReturnDayWithProductsGroupedByTime(day),
+							// get a copy of the day to preserve param
+							let thisDay = { ...day };
+							// if the summarize venues option was passed
+							if (options.summarizeVenues) {
+								// set this day to a day with summarized venues
+								thisDay = module.exports.ReturnDayWithSummarizedVenues(thisDay, options.summarizeVenues);
+							}
+							// the group products by time option was passed
+							if (options.groupProductsByTime) {
+								// set this day to a day with summarized venues
+								thisDay = module.exports.ReturnDayWithProductsGroupedByTime(thisDay);
+							}
+							// 
+							allDays.push(
+								thisDay,
 							);
 						});
-						resolve(daysWithProductsGroupedByTime);
-					// if there was NOT an error and if groupProductsByTime was NOT passed
-					} else {
-						// resolve this promise with the docs
-						resolve(docs);
+						resolve(allDays);
 					}
 				});
 		}),
@@ -170,7 +175,107 @@ module.exports = {
 		return productsByTime;
 	},
 
+	ReturnProductsWithSummarizedVenues: (products, summaryVenues) => {
+		// set up products container
+		const productsWithSummarizedVenues = {
+			standardProducts: [],
+			summarizedVenues: {},
+		};
+		// set up an intermediate container
+		const summarizedVenues = {};
+		// for each product in array of products
+		products.forEach((product) => {
+			// if this product's venue's short name is in the array of summary venues
+			if (summaryVenues.includes(product.venue['short-name'])) {
+				// if this venue is not already in the summarized venues object
+				if (!summarizedVenues[product.venue['short-name']]) {
+					// add this venue to the summarized venues object
+					summarizedVenues[product.venue['short-name']] = 
+						product.venue;
+					// add a prodcuts container to this venue in the summarized venues object
+					summarizedVenues[product.venue['short-name']].products = {
+						allProducts: [],
+						earliestProduct: null,
+						latestProduct: null,
+					};
+				}
+				// get a copy of the product, minus the venue
+				const productCopy = { ...product };
+				delete productCopy.venue;
+				// add this product, minus venue, to this venue's all products
+				summarizedVenues[product.venue['short-name']].products.allProducts.push(productCopy);
+			// if this product's venue's short name is NOT in the array of summary venues
+			} else {
+				productsWithSummarizedVenues.standardProducts.push(product);
+			}
+		});
+		// for each summarized venue
+		Object.keys(summarizedVenues).forEach((summarizedVenueKey) => {
+			// sort all products by time, ascending
+			summarizedVenues[summarizedVenueKey].products.allProducts.sort(
+				module.exports.ReturnObjectStartTimePropertyWeightRelativeToAnother,
+			);
+			// set the earliest and latest products
+			// eslint-disable-next-line prefer-destructuring
+			summarizedVenues[summarizedVenueKey].products.earliestProduct =
+				summarizedVenues[summarizedVenueKey].products.allProducts[0];
+			summarizedVenues[summarizedVenueKey].products.latestProduct =
+				summarizedVenues[summarizedVenueKey].products.allProducts[summarizedVenues[summarizedVenueKey].products.allProducts.length - 1];
+		});
+		// add intermediate container into main container
+		productsWithSummarizedVenues.summarizedVenues = 
+			summarizedVenues;
+		return productsWithSummarizedVenues;
+	},
+	
+
 	ReturnDayWithProductsGroupedByTime: (day) => {
+		// set up container for this day's reorganized data
+		const reorganizedDay = {
+			dateString: day.dateString,
+		};
+		// if day has hours
+		if (day.hours) {
+			// add this day's hours to container
+			reorganizedDay.hours = day.hours;
+		}
+		// if day has products
+		if (day.products) {
+			// add this day's hours to container
+			reorganizedDay.products = {};
+			// if day has plain onsite products
+			if (
+				day.products.onsite &&
+				day.products.onsite[0]
+			) {
+				reorganizedDay.products.onsite =
+					module.exports.ReturnProductsGroupedByTime(day.products.onsite);
+			}
+			// if day has onsite standard products
+			if (
+				day.products.onsite &&
+				day.products.onsite.standardProducts && 
+				day.products.onsite.standardProducts[0]
+			) {
+				reorganizedDay.products.onsite = {
+					summarizedVenues: day.products.onsite.summarizedVenues,
+					standardProducts: 
+						module.exports.ReturnProductsGroupedByTime(day.products.onsite.standardProducts),
+				};
+			}
+			// if day has online products
+			if (
+				day.products.online &&
+				day.products.online[0]
+			) {
+				reorganizedDay.products.online =
+					module.exports.ReturnProductsGroupedByTime(day.products.online);
+			}
+		}
+		return reorganizedDay;
+	},
+
+	ReturnDayWithSummarizedVenues: (day, summaryVenues) => {
 		// set up container for this day's reorganized data
 		const reorganizedDay = {
 			dateString: day.dateString,
@@ -190,15 +295,17 @@ module.exports = {
 				day.products.onsite[0]
 			) {
 				reorganizedDay.products.onsite =
-					module.exports.ReturnProductsGroupedByTime(day.products.onsite);
+					module.exports.ReturnProductsWithSummarizedVenues(
+						day.products.onsite, 
+						summaryVenues.split(','),
+					);
 			}
 			// if day has online products
 			if (
 				day.products.online &&
 				day.products.online[0]
 			) {
-				reorganizedDay.products.online =
-					module.exports.ReturnProductsGroupedByTime(day.products.online);
+				reorganizedDay.products.online = day.products.online;
 			}
 		}
 		return reorganizedDay;
