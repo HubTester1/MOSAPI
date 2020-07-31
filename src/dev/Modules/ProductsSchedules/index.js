@@ -1294,5 +1294,3 @@ module.exports = {
 
 	ReturnTritonDataScrubRegularExpression: () => new RegExp(/[\x00-\x1F\x7F-\xFF\uFFFD]/g),
 };
-
-module.exports.ReplaceMOSScheduleData();

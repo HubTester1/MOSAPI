@@ -37,6 +37,7 @@ functions:
                 omitProducts: true
                 omitProductType: true
                 groupProductsByTime: true
+                summarizeVenues: true
   HandleUpdateScheduleRequest:
     handler: index.HandleUpdateScheduleRequest
     events:

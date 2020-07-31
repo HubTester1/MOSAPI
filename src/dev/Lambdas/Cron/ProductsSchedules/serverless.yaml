@@ -9,7 +9,7 @@ custom:
 # -------------------------------------------------------
 
     service: cron-products-schedules
-    memorySize: 256
+    memorySize: 768
     timeout: 5
 
 functions:
