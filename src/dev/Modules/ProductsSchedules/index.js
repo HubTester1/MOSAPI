@@ -159,20 +159,22 @@ module.exports = {
 	ReturnProductsGroupedByTime: (products) => {
 		// set up products container
 		const productsByTime = {};
-		// for each product in array of products
-		products.forEach((product) => {
-			// if this product's start time is not 
-			// 		already in products by time
-			if (!productsByTime[product.startTime]) {
-				// add this time
-				productsByTime[product.startTime] = {
-					startTimeFormatted: product.startTimeFormatted,
-					productsThisTime: [],
-				};
-			}
-			// push this product to this time
-			productsByTime[product.startTime].productsThisTime.push(product);
-		});
+		if (products && products[0]) {			
+			// for each product in array of products
+			products.forEach((product) => {
+				// if this product's start time is not 
+				// 		already in products by time
+				if (!productsByTime[product.startTime]) {
+					// add this time
+					productsByTime[product.startTime] = {
+						startTimeFormatted: product.startTimeFormatted,
+						productsThisTime: [],
+					};
+				}
+				// push this product to this time
+				productsByTime[product.startTime].productsThisTime.push(product);
+			});
+		}
 		return productsByTime;
 	},
 
