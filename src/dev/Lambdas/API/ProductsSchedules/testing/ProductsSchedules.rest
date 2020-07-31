@@ -8,7 +8,7 @@ Authorization: Bearer {{accessToken}}
 
 #########
 # Daily Schedule call
-GET {{baseURI}}/productsSchedules/date?onlyDate=2020-08-07&groupProductsByTime=true
+GET {{baseURI}}/productsSchedules/date?onlyDate=2020-07-31&groupProductsByTime=true&summarizeVenues=Special Exhibits,Drop-In Activities,Butterfly Garden
 Authorization: Bearer {{accessToken}}
 
 #########

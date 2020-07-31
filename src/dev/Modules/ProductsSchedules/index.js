@@ -10,6 +10,7 @@ const DataConnection = require('data-connection');
 const DataQueries = require('data-queries');
 const moment = require('moment-timezone');
 const Utilities = require('utilities');
+const { ReturnTerseEmailAddressFromFriendly } = require('utilities');
 
 moment.suppressDeprecationWarnings = true;
 moment.tz.setDefault('UTC');
@@ -243,13 +244,21 @@ module.exports = {
 		if (day.products) {
 			// add this day's hours to container
 			reorganizedDay.products = {};
-			// if day has plain onsite products
-			if (
-				day.products.onsite &&
-				day.products.onsite[0]
-			) {
-				reorganizedDay.products.onsite =
-					module.exports.ReturnProductsGroupedByTime(day.products.onsite);
+			// if day has onsite products
+			if (day.products.onsite) {
+				// set up container
+				reorganizedDay.products.onsite = {
+					summarizedVenues: day.products.onsite.summarizedVenues,
+				};
+				// if there are standard products for this day
+				if (
+					day.products.onsite.standardProducts &&
+					day.products.onsite.standardProducts[0]
+				) {
+					// add them to container grouped by time
+					reorganizedDay.products.onsite.standardProducts = 
+						module.exports.ReturnProductsGroupedByTime(day.products.onsite.standardProducts[0]);
+				}
 			}
 			// if day has onsite standard products
 			if (
